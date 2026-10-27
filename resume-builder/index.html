@@ -34,6 +34,13 @@
     <p>Fill in the form and watch your resume take shape. When it looks right, download a clean, single-column PDF that applicant tracking systems can read. Your draft saves in this browser as you type.</p>
   </header>
 
+  <section class="panel look" aria-label="Template and colour">
+      <fieldset class="tpl-pick" id="tplPick"><legend>Pick a template</legend>
+        <div class="tpl-grid" id="tplGrid"></div>
+      </fieldset>
+      <fieldset class="acc-pick" id="accPick"><legend>Accent colour</legend><div class="swatches" id="swatches"></div></fieldset>
+  </section>
+
   <div class="builder">
     <form class="panel rb-form" id="rbForm" autocomplete="on" novalidate>
       <div class="rb-bar">
@@ -48,6 +55,9 @@
           <div class="f"><label for="f-phone">Phone</label><input id="f-phone" data-k="phone" autocomplete="tel"></div>
           <div class="f"><label for="f-loc">City, country</label><input id="f-loc" data-k="location"></div>
           <div class="f"><label for="f-links">Links (one per line)</label><textarea id="f-links" data-k="links" data-lines rows="2" placeholder="linkedin.com/in/you"></textarea></div>
+          <div class="f full photo-field"><span class="flabel">Photo <small>(optional, used by Designer templates only)</small></span>
+            <div class="photo-row"><img id="photoImg" alt="" hidden><label class="icon-btn" for="f-photo">Upload photo</label><input type="file" id="f-photo" accept="image/*" hidden><button class="icon-btn" type="button" id="photoDel" hidden>Remove</button></div>
+            <small class="photo-tip">A clear, friendly headshot works best. In India and the Gulf photos are common; for US and UK jobs, most people leave them out.</small></div>
         </div>
       </fieldset>
       <fieldset><legend>Summary</legend>
@@ -62,18 +72,17 @@
       <fieldset><legend>Certifications</legend>
         <div class="f"><label for="f-certs">One per line</label><textarea id="f-certs" data-k="certifications" data-lines rows="3"></textarea></div>
       </fieldset>
+      <fieldset><legend>Languages &amp; interests</legend>
+        <div class="grid2">
+          <div class="f"><label for="f-langs">Languages, one per line</label><textarea id="f-langs" data-k="languages" data-lines rows="3" placeholder="English (fluent)"></textarea></div>
+          <div class="f"><label for="f-int">Interests (optional)</label><textarea id="f-int" data-k="interests" rows="3" placeholder="e.g. Hiking, chess, volunteering"></textarea></div>
+        </div>
+      </fieldset>
     </form>
 
     <div class="rb-side">
-      <fieldset class="tpl-pick" id="tplPick"><legend>Pick a look <span class="tpl-note">all four are ATS-safe</span></legend>
-        <label><input type="radio" name="tpl" value="classic"><span class="tp tp-classic"><i aria-hidden="true"></i><b>Classic</b></span></label>
-        <label><input type="radio" name="tpl" value="modern"><span class="tp tp-modern"><i aria-hidden="true"></i><b>Modern</b></span></label>
-        <label><input type="radio" name="tpl" value="compact"><span class="tp tp-compact"><i aria-hidden="true"></i><b>Compact</b></span></label>
-        <label><input type="radio" name="tpl" value="elegant"><span class="tp tp-elegant"><i aria-hidden="true"></i><b>Elegant</b></span></label>
-      </fieldset>
-      <div class="preview-wrap" aria-label="Live preview">
-        <div class="preview" id="preview"></div>
-        <div class="wm" aria-hidden="true"></div>
+      <div class="preview-wrap" id="pvWrap" aria-label="Live preview">
+        <div class="pv-sizer"><iframe id="pvFrame" class="pv-frame" title="Resume preview" tabindex="-1"></iframe><div class="wm" aria-hidden="true"></div></div>
       </div>
       <div class="rb-buy">
         <button class="btn primary" id="dlBtn" type="button">Download clean PDF · ₹169</button>
@@ -97,7 +106,7 @@
       <li><b>One page per 8 to 10 years of experience</b> is a good rule of thumb.</li>
     </ul>
     <h2>Frequently asked questions</h2>
-    <details><summary>Which template should I pick?</summary><p>Classic suits most roles. Modern adds a touch of colour for tech and startup jobs. Compact fits more on one page if you have lots of experience. Elegant uses a serif font that suits finance, law and senior roles. All four use one column and real text, so ATS software reads every one of them correctly.</p></details>
+    <details><summary>Which template should I pick?</summary><p>The first seven are ATS-safe. Classic and Compact suit almost any role. Modern, Banner and Timeline add colour for tech, startup and creative-leaning jobs. Executive and Minimal suit senior, finance and consulting roles. Those seven are ATS-safe: one column, one clear reading order. The five Designer templates (Studio, Profile, Evergreen, Split and Midnight) add a sidebar and an optional photo, which looks great when you email your resume to a person, but two columns can confuse some job-portal ATS software. A good habit: send a Designer PDF by email and upload an ATS-safe one to portals. You can switch templates and colours any time without retyping.</p></details>
     <details><summary>What do I pay for?</summary><p>Building and previewing are free. ₹169 unlocks the clean PDF with no watermark. You can re-download up to 5 times in the same tab within 48 hours.</p></details>
     <details><summary>Where is my resume saved?</summary><p>Your draft is saved only in this browser. When you download, the details are sent to our server to create the clean file and are not stored.</p></details>
     <details><summary>The print window opened. What now?</summary><p>Set the destination to <b>Save as PDF</b> and click Save. On a phone, choose Print, then Save as PDF or Share.</p></details>
@@ -114,6 +123,7 @@
 </div></footer>
 <script src="../assets/site.js"></script>
 
+<script src="../assets/resume-templates.js"></script>
 <script src="../assets/pay.js"></script>
 <script>
 (function(){
@@ -129,9 +139,11 @@
     projects: [{ name: 'Customer churn analysis', detail: 'Predicted churn for 10,000 customers with Python and shared findings with the marketing team.' }],
     skills: 'SQL, Python, Power BI, Excel, Pandas, Data cleaning, Dashboarding',
     education: [{ degree: 'B.Sc. Statistics', school: 'Example University', year: '2022', detail: '' }],
-    certifications: ['Microsoft Power BI Data Analyst (PL-300)']
+    certifications: ['Microsoft Power BI Data Analyst (PL-300)'],
+    languages: ['English (fluent)', 'Hindi (native)', 'Kannada (conversational)'],
+    interests: 'Badminton, data visualisation challenges, travel photography'
   };
-  var EMPTY = { name: '', title: '', email: '', phone: '', location: '', links: [], summary: '', experience: [{ role: '', company: '', location: '', start: '', end: '', bullets: [''] }], projects: [], skills: '', education: [{ degree: '', school: '', year: '', detail: '' }], certifications: [] };
+  var EMPTY = { name: '', title: '', email: '', phone: '', location: '', links: [], summary: '', experience: [{ role: '', company: '', location: '', start: '', end: '', bullets: [''] }], projects: [], skills: '', education: [{ degree: '', school: '', year: '', detail: '' }], certifications: [], languages: [], interests: '', photo: '' };
   var S;
   try { S = JSON.parse(localStorage.getItem('dd-resume') || 'null'); } catch(e){}
   var isExample = !S;
@@ -172,25 +184,22 @@
     document.querySelectorAll('[data-k]').forEach(function(el){ var v = S[el.dataset.k]; el.value = Array.isArray(v) ? v.join('\n') : (v || ''); });
   }
 
-  function preview(){
-    var d = S, h = '';
-    var c = [d.email, d.phone, d.location].concat(d.links || []).filter(Boolean).map(esc).join('  ·  ');
-    h += '<div class="pv-head"><div><h1>' + esc(d.name || 'Your Name') + '</h1>' + (d.title ? '<div class="pv-title">' + esc(d.title) + '</div>' : '') + '</div>' + (c ? '<div class="pv-contact">' + c + '</div>' : '') + '</div>';
-    if (d.summary) h += '<h2>Summary</h2><p>' + esc(d.summary) + '</p>';
-    var ex = (d.experience || []).filter(function(x){ return x.role || x.company; });
-    if (ex.length) { h += '<h2>Experience</h2>'; ex.forEach(function(x){
-      h += '<div class="pv-item"><div class="pv-row"><b>' + esc(x.role) + (x.company ? ', <span>' + esc(x.company) + '</span>' : '') + '</b><i>' + esc([x.start, x.end].filter(Boolean).join(' – ')) + '</i></div>' +
-        (x.location ? '<div class="pv-sub">' + esc(x.location) + '</div>' : '') + '<ul>' + (x.bullets || []).filter(function(b){ return String(b).trim(); }).map(function(b){ return '<li>' + esc(b) + '</li>'; }).join('') + '</ul></div>'; }); }
-    var pr = (d.projects || []).filter(function(p){ return p.name || p.detail; });
-    if (pr.length) { h += '<h2>Projects</h2>'; pr.forEach(function(p){ h += '<div class="pv-item"><b>' + esc(p.name) + '</b><p>' + esc(p.detail) + '</p></div>'; }); }
-    if (d.skills) h += '<h2>Skills</h2><p>' + d.skills.split(/[,\n]/).map(function(s){ return s.trim(); }).filter(Boolean).map(esc).join(' · ') + '</p>';
-    var ed = (d.education || []).filter(function(e){ return e.degree || e.school; });
-    if (ed.length) { h += '<h2>Education</h2>'; ed.forEach(function(e){ h += '<div class="pv-item"><div class="pv-row"><b>' + esc(e.degree) + (e.school ? ', <span>' + esc(e.school) + '</span>' : '') + '</b><i>' + esc(e.year) + '</i></div>' + (e.detail ? '<div class="pv-sub">' + esc(e.detail) + '</div>' : '') + '</div>'; }); }
-    var ce = (d.certifications || []).filter(Boolean);
-    if (ce.length) h += '<h2>Certifications</h2><ul>' + ce.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
-    $('preview').innerHTML = h;
-    $('preview').className = 'preview tpl-' + (S.template || 'classic');
+  function say(t, cls){ var st = $('status'); st.textContent = t; st.className = 'status' + (cls ? ' ' + cls : ''); }
+  var pvTimer;
+  function fitFrame(fr, wrap){
+    var sc = wrap.clientWidth / 794;
+    fr.style.transform = 'scale(' + sc + ')';
+    try { var h = Math.max(1123, fr.contentDocument.documentElement.scrollHeight); fr.style.height = h + 'px'; wrap.style.setProperty('--pvh', (h * sc) + 'px'); } catch(e){}
   }
+  function preview(){
+    clearTimeout(pvTimer);
+    pvTimer = setTimeout(function(){
+      var fr = $('pvFrame'), wrap = $('pvWrap'), y = wrap.scrollTop;
+      fr.onload = function(){ fitFrame(fr, wrap); wrap.scrollTop = y; try { fr.contentDocument.fonts.ready.then(function(){ fitFrame(fr, wrap); }); } catch(e){} };
+      fr.srcdoc = RT.render(S, { screen: true });
+    }, 120);
+  }
+  window.addEventListener('resize', function(){ fitFrame($('pvFrame'), $('pvWrap')); document.querySelectorAll('.tp-frame').forEach(function(f){ fitFrame(f, f.parentNode); }); });
 
   var form = $('rbForm');
   form.addEventListener('input', function(e){
@@ -208,10 +217,9 @@
     else return;
     save(); renderLists(); preview();
   });
-  $('clearBtn').addEventListener('click', function(){ var keep = S.template; S = JSON.parse(JSON.stringify(EMPTY)); S.template = keep; save(); fillSimple(); renderLists(); preview(); $('f-name').focus(); });
+  $('clearBtn').addEventListener('click', function(){ var keep = S.template, keepAc = S.accent, keepCh = S.accentChosen; S = JSON.parse(JSON.stringify(EMPTY)); S.template = keep; S.accent = keepAc; S.accentChosen = keepCh; photoUi(); save(); fillSimple(); renderLists(); preview(); $('f-name').focus(); });
 
-  var status = $('status'), btn = $('dlBtn');
-  function say(t, cls){ status.textContent = t; status.className = 'status' + (cls ? ' ' + cls : ''); }
+  var btn = $('dlBtn');
   btn.addEventListener('click', function(){
     if (!S.name || !S.email) { say('Add at least your name and email first.', 'err'); $(!S.name ? 'f-name' : 'f-email').focus(); return; }
     if (!DDPay.ready()) { say('Payments open very soon. Please check back in a little while.', 'err'); return; }
@@ -219,7 +227,7 @@
     DDPay.run('resume', '/resume', { data: S }, { name: S.name, email: S.email, contact: S.phone })
       .then(function(res){
         var fr = $('printFrame');
-        fr.onload = function(){ setTimeout(function(){ try { fr.contentWindow.focus(); fr.contentWindow.print(); } catch(e){} }, 250); };
+        fr.onload = function(){ var go = function(){ try { fr.contentWindow.focus(); fr.contentWindow.print(); } catch(e){} }; try { fr.contentDocument.fonts.ready.then(function(){ setTimeout(go, 150); }); } catch(e){ setTimeout(go, 600); } };
         fr.srcdoc = res.html;
         say('Ready ✓ In the print window, choose "Save as PDF".', 'ok'); btn.textContent = 'Download again';
       })
@@ -228,9 +236,71 @@
   });
   if (DDPay.hasPaid('resume')) btn.textContent = 'Download again';
 
-  if (!S.template) S.template = 'classic';
-  var radios = document.querySelectorAll('input[name="tpl"]');
-  radios.forEach(function(r){ r.checked = r.value === S.template; r.addEventListener('change', function(){ S.template = r.value; save(); preview(); }); });
+  if (!S.template || !RT.templates[S.template]) S.template = 'classic';
+  if (!S.accent || !RT.accents[S.accent]) S.accent = 'blue';
+  var grid = $('tplGrid');
+  var AVATAR = (function(){ try { var c = document.createElement('canvas'); c.width = c.height = 160; var x = c.getContext('2d');
+    x.fillStyle = '#C9D3E3'; x.fillRect(0, 0, 160, 160); x.fillStyle = '#8A97AD'; x.beginPath(); x.arc(80, 58, 28, 0, 7); x.fill(); x.beginPath(); x.ellipse(80, 150, 56, 48, 0, 0, 7); x.fill();
+    return c.toDataURL('image/png'); } catch(e){ return ''; } })();
+  var lastKind = '';
+  Object.keys(RT.templates).forEach(function(k){
+    var t = RT.templates[k], lab = document.createElement('label');
+    if (t.kind !== lastKind) {
+      lastKind = t.kind; var h = document.createElement('p'); h.className = 'tpl-group';
+      h.innerHTML = t.kind === 'ats' ? '<b>ATS-safe</b> Best for job portals like Naukri, LinkedIn and company career sites' : '<b>Designer</b> Best for emailing a PDF to a person. Two columns can confuse some ATS software';
+      grid.appendChild(h);
+    }
+    lab.innerHTML = '<input type="radio" name="tpl" value="' + k + '"><span class="tp"><span class="tp-thumb"><iframe class="tp-frame" tabindex="-1" aria-hidden="true" loading="lazy"></iframe></span><b></b><small></small></span>';
+    lab.querySelector('b').textContent = t.label; lab.querySelector('small').textContent = t.hint;
+    var r = lab.querySelector('input'); r.checked = k === S.template;
+    r.addEventListener('change', function(){
+      S.template = k;
+      if (!S.accentChosen && t.defaultAccent) { S.accent = t.defaultAccent; document.querySelectorAll('input[name="acc"]').forEach(function(x){ x.checked = x.value === S.accent; }); }
+      save(); preview(); photoUi();
+    });
+    grid.appendChild(lab);
+  });
+  function thumbs(){
+    document.querySelectorAll('#tplGrid label').forEach(function(lab){
+      var k = lab.querySelector('input').value, f = lab.querySelector('.tp-frame');
+      f.onload = function(){ fitFrame(f, f.parentNode); };
+      var t = RT.templates[k];
+      f.srcdoc = RT.render(Object.assign({}, EXAMPLE, { template: k, photo: AVATAR, accent: S.accentChosen ? S.accent : (t.defaultAccent || S.accent) }), { screen: true });
+    });
+  }
+  var sw = $('swatches');
+  Object.keys(RT.accents).forEach(function(k){
+    var lab = document.createElement('label');
+    lab.innerHTML = '<input type="radio" name="acc" value="' + k + '"><span class="sw" style="background:' + RT.accents[k] + '"></span><span class="sr">' + k + '</span>';
+    var r = lab.querySelector('input'); r.checked = k === S.accent;
+    r.addEventListener('change', function(){ S.accent = k; S.accentChosen = true; save(); preview(); thumbs(); });
+    sw.appendChild(lab);
+  });
+  thumbs();
+
+  /* photo: centre-crop to a small square JPEG so it stays light */
+  function photoUi(){
+    var has = !!S.photo; $('photoImg').hidden = !has; $('photoDel').hidden = !has;
+    if (has) $('photoImg').src = S.photo;
+  }
+  $('f-photo').addEventListener('change', function(){
+    var file = this.files[0]; this.value = ''; if (!file) return;
+    if (!/^image\//.test(file.type)) { say('Please choose an image file.', 'err'); return; }
+    var img = new Image(), url = URL.createObjectURL(file);
+    img.onload = function(){
+      var sz = Math.min(img.width, img.height), c = document.createElement('canvas'); c.width = c.height = 320;
+      c.getContext('2d').drawImage(img, (img.width - sz) / 2, (img.height - sz) / 2.6, sz, sz, 0, 0, 320, 320);
+      URL.revokeObjectURL(url);
+      var q = .82, data = c.toDataURL('image/jpeg', q);
+      while (data.length > 150000 && q > .4) { q -= .1; data = c.toDataURL('image/jpeg', q); }
+      S.photo = data; save(); photoUi(); preview();
+      if (RT.templates[S.template].kind !== 'designer') say('Photo added. It shows on Designer templates: pick one above to see it.', 'ok');
+    };
+    img.onerror = function(){ say("Couldn't read that image. Try a JPG or PNG.", 'err'); };
+    img.src = url;
+  });
+  $('photoDel').addEventListener('click', function(){ S.photo = ''; save(); photoUi(); preview(); });
+  photoUi();
   fillSimple(); renderLists(); preview();
 })();
 </script>
