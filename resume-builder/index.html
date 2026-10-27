@@ -65,6 +65,12 @@
     </form>
 
     <div class="rb-side">
+      <fieldset class="tpl-pick" id="tplPick"><legend>Pick a look <span class="tpl-note">all four are ATS-safe</span></legend>
+        <label><input type="radio" name="tpl" value="classic"><span class="tp tp-classic"><i aria-hidden="true"></i><b>Classic</b></span></label>
+        <label><input type="radio" name="tpl" value="modern"><span class="tp tp-modern"><i aria-hidden="true"></i><b>Modern</b></span></label>
+        <label><input type="radio" name="tpl" value="compact"><span class="tp tp-compact"><i aria-hidden="true"></i><b>Compact</b></span></label>
+        <label><input type="radio" name="tpl" value="elegant"><span class="tp tp-elegant"><i aria-hidden="true"></i><b>Elegant</b></span></label>
+      </fieldset>
       <div class="preview-wrap" aria-label="Live preview">
         <div class="preview" id="preview"></div>
         <div class="wm" aria-hidden="true"></div>
@@ -91,6 +97,7 @@
       <li><b>One page per 8 to 10 years of experience</b> is a good rule of thumb.</li>
     </ul>
     <h2>Frequently asked questions</h2>
+    <details><summary>Which template should I pick?</summary><p>Classic suits most roles. Modern adds a touch of colour for tech and startup jobs. Compact fits more on one page if you have lots of experience. Elegant uses a serif font that suits finance, law and senior roles. All four use one column and real text, so ATS software reads every one of them correctly.</p></details>
     <details><summary>What do I pay for?</summary><p>Building and previewing are free. ₹169 unlocks the clean PDF with no watermark. You can re-download up to 5 times in the same tab within 48 hours.</p></details>
     <details><summary>Where is my resume saved?</summary><p>Your draft is saved only in this browser. When you download, the details are sent to our server to create the clean file and are not stored.</p></details>
     <details><summary>The print window opened. What now?</summary><p>Set the destination to <b>Save as PDF</b> and click Save. On a phone, choose Print, then Save as PDF or Share.</p></details>
@@ -167,9 +174,8 @@
 
   function preview(){
     var d = S, h = '';
-    h += '<h1>' + esc(d.name || 'Your Name') + '</h1>' + (d.title ? '<div class="pv-title">' + esc(d.title) + '</div>' : '');
     var c = [d.email, d.phone, d.location].concat(d.links || []).filter(Boolean).map(esc).join('  ·  ');
-    if (c) h += '<div class="pv-contact">' + c + '</div>';
+    h += '<div class="pv-head"><div><h1>' + esc(d.name || 'Your Name') + '</h1>' + (d.title ? '<div class="pv-title">' + esc(d.title) + '</div>' : '') + '</div>' + (c ? '<div class="pv-contact">' + c + '</div>' : '') + '</div>';
     if (d.summary) h += '<h2>Summary</h2><p>' + esc(d.summary) + '</p>';
     var ex = (d.experience || []).filter(function(x){ return x.role || x.company; });
     if (ex.length) { h += '<h2>Experience</h2>'; ex.forEach(function(x){
@@ -183,6 +189,7 @@
     var ce = (d.certifications || []).filter(Boolean);
     if (ce.length) h += '<h2>Certifications</h2><ul>' + ce.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
     $('preview').innerHTML = h;
+    $('preview').className = 'preview tpl-' + (S.template || 'classic');
   }
 
   var form = $('rbForm');
@@ -201,7 +208,7 @@
     else return;
     save(); renderLists(); preview();
   });
-  $('clearBtn').addEventListener('click', function(){ S = JSON.parse(JSON.stringify(EMPTY)); save(); fillSimple(); renderLists(); preview(); $('f-name').focus(); });
+  $('clearBtn').addEventListener('click', function(){ var keep = S.template; S = JSON.parse(JSON.stringify(EMPTY)); S.template = keep; save(); fillSimple(); renderLists(); preview(); $('f-name').focus(); });
 
   var status = $('status'), btn = $('dlBtn');
   function say(t, cls){ status.textContent = t; status.className = 'status' + (cls ? ' ' + cls : ''); }
@@ -221,6 +228,9 @@
   });
   if (DDPay.hasPaid('resume')) btn.textContent = 'Download again';
 
+  if (!S.template) S.template = 'classic';
+  var radios = document.querySelectorAll('input[name="tpl"]');
+  radios.forEach(function(r){ r.checked = r.value === S.template; r.addEventListener('change', function(){ S.template = r.value; save(); preview(); }); });
   fillSimple(); renderLists(); preview();
 })();
 </script>

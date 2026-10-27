@@ -63,11 +63,14 @@
       <div class="dial note c-pro"><span class="d">ATS score</span><b id="rScore">0</b><span class="grade" id="rGrade"></span></div>
       <div class="breakdown" id="rParts"></div>
     </div>
+    <div class="fit" id="rFitBox" hidden><h3>How you fit this job</h3><p id="rFit"></p></div>
     <div class="kw">
       <div><h3>Missing keywords</h3><p class="kw-note">Add the ones you genuinely have, using the same wording as the job.</p><div class="chips miss" id="rMissing"></div></div>
-      <div><h3>Already matched</h3><div class="chips hit" id="rMatched"></div></div>
+      <div><h3>Already matched</h3><div class="chips hit" id="rMatched"></div>
+        <div id="rEqBox" hidden><h4>Counted under different wording</h4><div class="chips eq" id="rEquiv"></div></div></div>
     </div>
     <div class="fixes"><h3>Fix these first</h3><ol id="rTips"></ol></div>
+    <div class="rewrites" id="rRwBox" hidden><h3>Stronger bullets</h3><p class="kw-note">Suggested by AI from your own bullets. Replace anything in [brackets] with your real number before you use it.</p><div id="rRw"></div></div>
     <div class="report-actions"><button class="btn" id="copyReport" type="button">Copy report</button><a class="btn" href="../resume-builder/index.html">Rebuild my resume →</a></div>
   </section>
 
@@ -98,6 +101,7 @@
 
     <h2>Frequently asked questions</h2>
     <details><summary>What do I get for ₹169?</summary><p>Your score out of 100 with a breakdown, the missing and matched keywords, and a list of fixes. The payment covers up to 5 checks in the same browser tab for 48 hours, so you can edit and re-check.</p></details>
+    <details><summary>Does it use AI?</summary><p>Partly. The score itself comes from fixed, consistent rules, so the same resume always gets the same score. On top of that, an AI model (Llama, running on Cloudflare) spots skills you list under different wording, sums up how well you fit the job, and rewrites a few weak bullets. Anything the AI claims about your resume is checked against your actual text before we show it.</p></details>
     <details><summary>Is my resume stored?</summary><p>No. Your resume and the job description are sent to our server only to calculate the report and are not saved. We keep only the payment reference, so we can count your checks.</p></details>
     <details><summary>Which files can I upload?</summary><p>PDF, Word (.docx) and plain text. The file is read in your browser. If a scanned PDF shows no text, paste your resume text instead.</p></details>
     <details><summary>Can I get a refund?</summary><p>If you paid and didn't get your report because of a problem on our side, email us within 7 days and we'll refund you in full. See the <a href="../refund.html">refund policy</a>.</p></details>
@@ -172,6 +176,18 @@
     else if (!r.missing.length) miss.appendChild(chip('None. Nice work.'));
     r.missing.forEach(function(k){ miss.appendChild(chip(k)); });
     r.matched.forEach(function(k){ hit.appendChild(chip(k)); });
+    $('rFitBox').hidden = !r.fit; $('rFit').textContent = r.fit || '';
+    var eq = $('rEquiv'); eq.innerHTML = ''; (r.equivalents || []).forEach(function(e){ eq.appendChild(chip(e.term + ' ← "' + e.evidence + '"')); });
+    $('rEqBox').hidden = !(r.equivalents && r.equivalents.length);
+    var rw = $('rRw'); rw.innerHTML = '';
+    (r.rewrites || []).forEach(function(x){
+      var c = document.createElement('div'); c.className = 'rw';
+      c.innerHTML = '<div class="rw-b"><span class="mono">Before</span><p></p></div><div class="rw-a"><span class="mono">After</span><p></p><button type="button" class="icon-btn">Copy</button></div>';
+      c.querySelector('.rw-b p').textContent = x.before; c.querySelector('.rw-a p').textContent = x.after;
+      c.querySelector('button').addEventListener('click', function(){ TB.copy(x.after).then(function(ok){ say(ok ? 'Bullet copied ✓' : 'Copy failed. Select the text manually.', ok ? 'ok' : 'err'); }); });
+      rw.appendChild(c);
+    });
+    $('rRwBox').hidden = !(r.rewrites && r.rewrites.length);
     var tips = $('rTips'); tips.innerHTML = '';
     (r.tips.length ? r.tips : ['Your resume is in great shape for this job.']).forEach(function(t){ var li = document.createElement('li'); li.textContent = t; tips.appendChild(li); });
     $('report').hidden = false; $('report').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -193,7 +209,8 @@
   $('copyReport').addEventListener('click', function(){
     var r = window._ddReport; if (!r) return;
     var txt = 'ATS score: ' + r.score + '/100 (' + r.grade + ')\n\n' + r.parts.map(function(p){ return p.name + ': ' + p.score + '/' + p.max + '. ' + p.note; }).join('\n') +
-      '\n\nMissing keywords: ' + (r.missing.join(', ') || 'none') + '\nMatched: ' + r.matched.join(', ') + '\n\nFixes:\n' + r.tips.map(function(t, i){ return (i + 1) + '. ' + t; }).join('\n');
+      '\n\nMissing keywords: ' + (r.missing.join(', ') || 'none') + '\nMatched: ' + r.matched.join(', ') + '\n\nFixes:\n' + r.tips.map(function(t, i){ return (i + 1) + '. ' + t; }).join('\n') +
+      (r.fit ? '\n\nFit: ' + r.fit : '') + ((r.rewrites || []).length ? '\n\nStronger bullets:\n' + r.rewrites.map(function(x){ return '- ' + x.after; }).join('\n') : '');
     TB.copy(txt).then(function(ok){ say(ok ? 'Report copied ✓' : 'Copy failed. Select the text manually.', ok ? 'ok' : 'err'); });
   });
 })();
