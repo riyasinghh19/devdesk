@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://riyasinghh19.github.io/devdesk/sitemap.xml

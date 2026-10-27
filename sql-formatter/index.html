@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SQL Formatter: format and beautify SQL online (free) · DevDesk</title>
+<meta name="description" content="Free online SQL formatter. Paste messy SQL and get clean, readable queries for Snowflake, SQL Server, PostgreSQL, MySQL, BigQuery and more. Runs in your browser.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/sql-formatter/">
+<meta property="og:title" content="SQL Formatter: format and beautify SQL online (free) · DevDesk">
+<meta property="og:description" content="Free online SQL formatter. Paste messy SQL and get clean, readable queries for Snowflake, SQL Server, PostgreSQL, MySQL, BigQuery and more. Runs in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/sql-formatter/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Data &amp; developer tools / SQL Formatter</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Day 01 · Data &amp; developer tools</span>
+    <h1>SQL <span class="hand">Formatter</span></h1>
+    <p>Paste a query, pick your database and get clean, readable SQL. It runs in your browser, so your query never leaves your device.</p>
+  </header>
+
+  <section class="panel" aria-label="SQL formatter">
+    <div class="toolbar">
+      <div class="opt"><label for="dialect">Database</label>
+        <select id="dialect">
+          <option value="sql">Standard SQL</option>
+          <option value="snowflake">Snowflake</option>
+          <option value="transactsql">SQL Server (T-SQL)</option>
+          <option value="postgresql">PostgreSQL</option>
+          <option value="mysql">MySQL</option>
+          <option value="bigquery">BigQuery</option>
+          <option value="spark">Spark SQL / Databricks</option>
+          <option value="redshift">Amazon Redshift</option>
+          <option value="plsql">Oracle PL/SQL</option>
+          <option value="sqlite">SQLite</option>
+        </select></div>
+      <div class="opt"><label for="kcase">Keywords</label>
+        <select id="kcase"><option value="upper">UPPERCASE</option><option value="lower">lowercase</option><option value="preserve">As typed</option></select></div>
+      <div class="opt"><label for="indent">Indent</label>
+        <select id="indent"><option value="2">2 spaces</option><option value="4">4 spaces</option><option value="tab">Tab</option></select></div>
+      <div class="opt"><label for="logic">AND / OR</label>
+        <select id="logic"><option value="before">Start of line</option><option value="after">End of line</option></select></div>
+      <span class="spacer"></span>
+      <button class="btn" id="sampleBtn" type="button">Try a sample</button>
+    </div>
+    <div class="panes">
+      <div class="pane">
+        <div class="pane-head"><span>Your SQL <span class="meta" id="inMeta">0 lines</span></span>
+          <div class="pane-actions"><button class="icon-btn" id="clearBtn" type="button">Clear</button></div></div>
+        <label for="sqlIn" style="position:absolute;left:-9999px">SQL to format</label>
+        <textarea id="sqlIn" class="code" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Paste your SQL here, e.g. select id,name from customers where city='Pune'"></textarea>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span>Formatted <span class="meta" id="outMeta"></span></span>
+          <div class="pane-actions">
+            <button class="icon-btn" id="copyBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Copy</button>
+            <button class="icon-btn" id="dlBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 19h16"/></svg>.sql</button>
+          </div></div>
+        <label for="sqlOut" style="position:absolute;left:-9999px">Formatted SQL</label>
+        <textarea id="sqlOut" class="code out" spellcheck="false" readonly placeholder="Your formatted SQL appears here."></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="fmtBtn" type="button">Format SQL</button>
+      <button class="btn" id="minBtn" type="button">Minify</button>
+      <span class="status" id="status" aria-live="polite">Tip: press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to format.</span>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How to use the SQL formatter</h2>
+    <ol>
+      <li>Paste your query into <b>Your SQL</b>. Pasting formats it straight away.</li>
+      <li>Pick your <b>database</b> so dialect-specific syntax, such as Snowflake's <code>QUALIFY</code> or T-SQL's <code>[brackets]</code>, is understood.</li>
+      <li>Choose keyword case, indentation and where <code>AND</code>/<code>OR</code> go. The output updates as you change them.</li>
+      <li>Click <b>Copy</b> or download a <code>.sql</code> file. Use <b>Minify</b> when you need the whole query on one line, for example inside a config file.</li>
+    </ol>
+
+    <h2>What formatting changes</h2>
+    <p>Formatting only changes whitespace and the case of SQL keywords. Table names, column names, string values and the logic of your query stay exactly as they were. Here's a small query before and after:</p>
+    <pre><code>select o.id,c.name,sum(o.amount) total from orders o join customers c on c.id=o.customer_id where o.status='PAID' and o.dt>='2026-01-01' group by o.id,c.name</code></pre>
+    <pre><code>SELECT
+  o.id,
+  c.name,
+  SUM(o.amount) total
+FROM
+  orders o
+  JOIN customers c ON c.id = o.customer_id
+WHERE
+  o.status = 'PAID'
+  AND o.dt >= '2026-01-01'
+GROUP BY
+  o.id,
+  c.name</code></pre>
+
+    <h2>Supported databases</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Database</th><th>Good to know</th></tr></thead>
+      <tbody>
+        <tr><td>Snowflake</td><td>Understands <code>QUALIFY</code>, <code>FLATTEN</code>, semi-structured paths like <code>col:field</code> and <code>$1</code> stage columns.</td></tr>
+        <tr><td>SQL Server (T-SQL)</td><td>Handles <code>[bracketed]</code> names, <code>TOP</code>, <code>@variables</code> and <code>GO</code> batches.</td></tr>
+        <tr><td>PostgreSQL</td><td>Handles <code>::</code> casts, <code>$$</code> function bodies and <code>RETURNING</code>.</td></tr>
+        <tr><td>MySQL</td><td>Handles <code>`backtick`</code> names and MySQL functions.</td></tr>
+        <tr><td>BigQuery</td><td>Handles <code>`project.dataset.table`</code> names, <code>STRUCT</code> and <code>ARRAY</code>.</td></tr>
+        <tr><td>Spark SQL / Databricks</td><td>Handles <code>LATERAL VIEW</code>, <code>USING DELTA</code> and Spark functions.</td></tr>
+        <tr><td>Redshift, Oracle, SQLite</td><td>Each with its own keywords and quoting rules.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Tips for readable SQL</h2>
+    <ul>
+      <li><b>One column per line.</b> Diffs in pull requests then show exactly which column changed.</li>
+      <li><b>Name your CTEs for what they hold.</b> <code>monthly_revenue</code> reads better than <code>t1</code>.</li>
+      <li><b>Put conditions at the start of the line.</b> Leading <code>AND</code> makes it easy to comment one filter out while debugging.</li>
+      <li><b>Pick one keyword case and keep it.</b> Most teams use uppercase keywords and lowercase names.</li>
+      <li><b>Alias every table in a join.</b> Short, meaningful aliases like <code>o</code> for orders stop ambiguity errors.</li>
+    </ul>
+
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is my SQL sent anywhere?</summary><p>No. Formatting happens in your browser with JavaScript. Your query is not uploaded or stored, which makes it safe for queries that mention internal table names.</p></details>
+    <details><summary>Why did I get a "couldn't format" message?</summary><p>The formatter needs to read the query. An unclosed quote or bracket, or syntax from a different database, usually causes it. Check the database selector first, then look for a missing <code>'</code> or <code>)</code>.</p></details>
+    <details><summary>Will formatting change my query's results?</summary><p>No. Only spacing, line breaks and keyword case change. The query runs exactly the same.</p></details>
+    <details><summary>Can I format several queries at once?</summary><p>Yes. Separate them with semicolons and they're formatted one after another, with a blank line between each.</p></details>
+    <details><summary>What does Minify do?</summary><p>It removes comments and extra whitespace and puts the whole query on one line, while leaving text inside quotes untouched.</p></details>
+
+    <h2>More data tools</h2>
+    <div class="related"><div class="note locked c-data" data-q="cron expression explainer paste a cron schedule and read it in plain english, with the next run times."><span class="d">Day 02 · Data</span><h3>Cron Expression Explainer</h3><p>Paste a cron schedule and read it in plain English, with the next run times.</p><span class="go">Tomorrow</span></div><div class="note locked c-data" data-q="json to csv converter flatten json arrays into a spreadsheet-ready csv."><span class="d">Day 03 · Data</span><h3>JSON to CSV Converter</h3><p>Flatten JSON arrays into a spreadsheet-ready CSV.</p><span class="go">Day 03</span></div><div class="note locked c-data" data-q="csv to sql insert turn a csv into insert statements for any table."><span class="d">Day 04 · Data</span><h3>CSV to SQL INSERT</h3><p>Turn a CSV into INSERT statements for any table.</p><span class="go">Day 04</span></div><div class="note locked c-data" data-q="epoch &amp; timestamp converter convert unix time to ist, utc and back."><span class="d">Day 05 · Data</span><h3>Epoch &amp; Timestamp Converter</h3><p>Convert Unix time to IST, UTC and back.</p><span class="go">Day 05</span></div></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sql-formatter@15.8.2/dist/sql-formatter.min.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var inp = $('sqlIn'), out = $('sqlOut'), status = $('status');
+  var opts = ['dialect','kcase','indent','logic'];
+  var SAMPLE = "with monthly as (select partner_id,date_trunc('month',sale_date) as month,sum(amount) as revenue from sales.orders where sale_date>='2026-01-01' and status='COMPLETE' group by 1,2) select p.partner_name,m.month,m.revenue,round(m.revenue*p.commission_rate,2) as commission from monthly m join dim_partner p on p.partner_id=m.partner_id and p.is_current=true qualify row_number() over (partition by p.partner_name order by m.month desc)<=3 order by m.month desc,commission desc;";
+
+  try { var saved = JSON.parse(localStorage.getItem('tb-sqlfmt') || '{}'); opts.forEach(function(k){ if (saved[k]) $(k).value = saved[k]; }); } catch(e){}
+  function save(){ try { var o = {}; opts.forEach(function(k){ o[k] = $(k).value; }); localStorage.setItem('tb-sqlfmt', JSON.stringify(o)); } catch(e){} }
+
+  function lines(s){ return s ? s.split('\n').length : 0; }
+  function meta(){ $('inMeta').textContent = lines(inp.value) + ' lines'; $('outMeta').textContent = out.value ? lines(out.value) + ' lines' : ''; }
+  function say(t, cls){ status.textContent = t; status.className = 'status' + (cls ? ' ' + cls : ''); }
+
+  function format(){
+    var src = inp.value;
+    if (!src.trim()){ out.value = ''; meta(); say('Paste some SQL first.', 'err'); return; }
+    if (!window.sqlFormatter){ say('The formatter is still loading. Try again in a moment.', 'err'); return; }
+    var ind = $('indent').value;
+    try {
+      out.value = sqlFormatter.format(src, {
+        language: $('dialect').value,
+        keywordCase: $('kcase').value,
+        tabWidth: ind === 'tab' ? 4 : +ind,
+        useTabs: ind === 'tab',
+        logicalOperatorNewline: $('logic').value,
+        linesBetweenQueries: 2
+      });
+      meta(); say('Formatted ✓', 'ok');
+    } catch(e){
+      say("Couldn't format: " + String(e.message || e).split('\n')[0] + '. Check the database setting and for unclosed quotes or brackets.', 'err');
+    }
+  }
+
+  function minify(src){
+    var o = '', i = 0, n = src.length, q = null;
+    while (i < n){
+      var c = src[i], d = src[i+1];
+      if (q){ o += c; if (c === q){ if (d === q){ o += d; i += 2; continue; } q = null; } i++; continue; }
+      if (c === "'" || c === '"' || c === '`'){ q = c; o += c; i++; continue; }
+      if (c === '-' && d === '-'){ while (i < n && src[i] !== '\n') i++; continue; }
+      if (c === '/' && d === '*'){ var e = src.indexOf('*/', i + 2); i = e < 0 ? n : e + 2; o += ' '; continue; }
+      if (/\s/.test(c)){ if (o && !/[\s(,=]$/.test(o)) o += ' '; i++; continue; }
+      if (/[),=;]/.test(c) && / $/.test(o)) o = o.slice(0, -1);
+      o += c; i++;
+    }
+    return o.trim();
+  }
+
+  $('fmtBtn').addEventListener('click', format);
+  $('minBtn').addEventListener('click', function(){
+    if (!inp.value.trim()){ say('Paste some SQL first.', 'err'); return; }
+    out.value = minify(inp.value); meta(); say('Minified to one line ✓', 'ok');
+  });
+  inp.addEventListener('keydown', function(e){ if ((e.ctrlKey || e.metaKey) && e.key === 'Enter'){ e.preventDefault(); format(); } });
+  inp.addEventListener('paste', function(){ setTimeout(format, 0); });
+  inp.addEventListener('input', meta);
+  opts.forEach(function(k){ $(k).addEventListener('change', function(){ save(); if (inp.value.trim()) format(); }); });
+  $('sampleBtn').addEventListener('click', function(){ inp.value = SAMPLE; $('dialect').value = 'snowflake'; save(); format(); });
+  $('clearBtn').addEventListener('click', function(){ inp.value = ''; out.value = ''; meta(); say(''); inp.focus(); });
+  $('copyBtn').addEventListener('click', function(){
+    if (!out.value){ say('Nothing to copy yet.', 'err'); return; }
+    TB.copy(out.value).then(function(ok){
+      if (ok) say('Copied to clipboard ✓', 'ok');
+      else { out.focus(); out.select(); say('Selected. Press Ctrl + C to copy.'); }
+    });
+  });
+  $('dlBtn').addEventListener('click', function(){
+    if (!out.value){ say('Nothing to download yet.', 'err'); return; }
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([out.value + '\n'], {type:'text/plain'}));
+    a.download = 'formatted.sql'; document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+    say('Downloaded formatted.sql ✓', 'ok');
+  });
+  meta();
+})();
+</script>
+
+</body>
+</html>
