@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ATS Resume Score Checker: match your resume to a job · DevDesk</title>
+<meta name="description" content="Check how well your resume matches a job description. Get an ATS score, missing keywords and specific fixes. Upload a PDF or Word file. ₹169 (about $2).">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/ats-score-checker/">
+<meta property="og:title" content="ATS Resume Score Checker: match your resume to a job · DevDesk">
+<meta property="og:description" content="Check how well your resume matches a job description. Get an ATS score, missing keywords and specific fixes. Upload a PDF or Word file. ₹169 (about $2).">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/ats-score-checker/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Pro tools / ATS Score Checker</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Pro · Career · ₹169</span>
+    <h1>ATS <span class="hand">Score Checker</span></h1>
+    <p>Upload your resume and paste the job you want. You get a score out of 100, the keywords you're missing, and a short list of fixes to make before you apply.</p>
+  </header>
+
+  <section class="panel" aria-label="ATS score checker">
+    <div class="panes">
+      <div class="pane">
+        <div class="pane-head"><span>Your resume <span class="meta" id="rMeta">0 words</span></span>
+          <div class="pane-actions">
+            <label class="icon-btn" for="rFile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Upload PDF / Word</label>
+            <input type="file" id="rFile" accept=".pdf,.docx,.txt" hidden>
+          </div></div>
+        <label for="rText" class="sr">Resume text</label>
+        <textarea id="rText" class="code plain" spellcheck="false" placeholder="Upload your resume above, or paste its text here."></textarea>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span>Job description <span class="meta" id="jMeta">0 words</span></span></div>
+        <label for="jText" class="sr">Job description</label>
+        <textarea id="jText" class="code plain" spellcheck="false" placeholder="Paste the full job description from LinkedIn, Naukri or the company's site."></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="checkBtn" type="button">Get my ATS score · ₹169</button>
+      <span class="status" id="status" aria-live="polite"></span>
+    </div>
+    <p class="paynote">Secure payment by Razorpay: UPI, cards, net banking and wallets. One payment covers up to 5 checks in this tab for 48 hours, so you can fix your resume and check again.</p>
+  </section>
+
+  <section class="report" id="report" hidden aria-live="polite">
+    <div class="report-top">
+      <div class="dial note c-pro"><span class="d">ATS score</span><b id="rScore">0</b><span class="grade" id="rGrade"></span></div>
+      <div class="breakdown" id="rParts"></div>
+    </div>
+    <div class="kw">
+      <div><h3>Missing keywords</h3><p class="kw-note">Add the ones you genuinely have, using the same wording as the job.</p><div class="chips miss" id="rMissing"></div></div>
+      <div><h3>Already matched</h3><div class="chips hit" id="rMatched"></div></div>
+    </div>
+    <div class="fixes"><h3>Fix these first</h3><ol id="rTips"></ol></div>
+    <div class="report-actions"><button class="btn" id="copyReport" type="button">Copy report</button><a class="btn" href="../resume-builder/index.html">Rebuild my resume →</a></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>What the score measures</h2>
+    <p>Applicant tracking systems (ATS) are the software many companies use to sort applications. Each one works a little differently, so no checker can promise a result. This one checks the things recruiters and ATS software consistently reward:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Check</th><th>Points</th><th>What we look for</th></tr></thead>
+      <tbody>
+        <tr><td>Keyword match</td><td>40</td><td>Skills, tools and phrases from the job description that appear in your resume.</td></tr>
+        <tr><td>Sections</td><td>15</td><td>Contact details, summary, experience, education and skills under clear headings.</td></tr>
+        <tr><td>Measurable impact</td><td>15</td><td>Bullets with numbers: time saved, money, volume, percentages.</td></tr>
+        <tr><td>Action verbs</td><td>10</td><td>Bullets that start with verbs like Built, Led, Reduced or Automated.</td></tr>
+        <tr><td>Length</td><td>10</td><td>Roughly 400 to 1,000 words, about one to two pages.</td></tr>
+        <tr><td>Clarity</td><td>10</td><td>No vague phrases like "responsible for", no "I/my", no overlong bullets.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>How to raise your score</h2>
+    <ul>
+      <li><b>Mirror the job's wording.</b> If the job says "Azure Data Factory", write that, not "ADF" alone.</li>
+      <li><b>Put numbers in your bullets.</b> "Cut report run time from 40 to 6 minutes" beats "Improved performance".</li>
+      <li><b>Use standard headings.</b> "Experience" and "Education" are read correctly. Creative headings often aren't.</li>
+      <li><b>Keep the layout simple.</b> Tables, text boxes and icons can confuse ATS parsers. Our <a href="../resume-builder/index.html">Resume Builder</a> exports a clean, single-column PDF.</li>
+    </ul>
+
+    <h2>Frequently asked questions</h2>
+    <details><summary>What do I get for ₹169?</summary><p>Your score out of 100 with a breakdown, the missing and matched keywords, and a list of fixes. The payment covers up to 5 checks in the same browser tab for 48 hours, so you can edit and re-check.</p></details>
+    <details><summary>Is my resume stored?</summary><p>No. Your resume and the job description are sent to our server only to calculate the report and are not saved. We keep only the payment reference, so we can count your checks.</p></details>
+    <details><summary>Which files can I upload?</summary><p>PDF, Word (.docx) and plain text. The file is read in your browser. If a scanned PDF shows no text, paste your resume text instead.</p></details>
+    <details><summary>Can I get a refund?</summary><p>If you paid and didn't get your report because of a problem on our side, email us within 7 days and we'll refund you in full. See the <a href="../refund.html">refund policy</a>.</p></details>
+    <details><summary>Does a high score guarantee interviews?</summary><p>No. It means your resume is clear, complete and closely matched to the job, which gives it the best chance of reaching a person.</p></details>
+
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-pro" href="../resume-builder/index.html" data-q="resume builder fill a form, see it live, download a clean ats-friendly pdf."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Pro · ₹169</span><h3>Resume Builder</h3><p>Fill a form, see it live, download a clean ATS-friendly PDF.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../refund.html">Refunds</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script src="../assets/pay.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var rText = $('rText'), jText = $('jText'), status = $('status'), btn = $('checkBtn');
+  function words(s){ return (s.match(/[A-Za-z0-9][A-Za-z0-9'+#.\-]*/g) || []).length; }
+  function say(t, cls){ status.textContent = t; status.className = 'status' + (cls ? ' ' + cls : ''); }
+  function meta(){ $('rMeta').textContent = words(rText.value) + ' words'; $('jMeta').textContent = words(jText.value) + ' words'; }
+  try { rText.value = sessionStorage.getItem('dd-ats-r') || ''; jText.value = sessionStorage.getItem('dd-ats-j') || ''; } catch(e){}
+  [rText, jText].forEach(function(t){ t.addEventListener('input', function(){ meta(); try { sessionStorage.setItem('dd-ats-r', rText.value); sessionStorage.setItem('dd-ats-j', jText.value); } catch(e){} }); });
+  meta();
+
+  function loadScript(src){ return new Promise(function(res, rej){ var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+  $('rFile').addEventListener('change', function(){
+    var f = this.files[0]; if (!f) return;
+    say('Reading ' + f.name + '…');
+    var name = f.name.toLowerCase(), job;
+    if (name.endsWith('.pdf')) {
+      job = loadScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js').then(function(){
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+        return f.arrayBuffer();
+      }).then(function(buf){ return pdfjsLib.getDocument({ data: buf }).promise; }).then(function(pdf){
+        var pages = []; for (var i = 1; i <= pdf.numPages; i++) pages.push(pdf.getPage(i).then(function(p){ return p.getTextContent(); }).then(function(tc){
+          var out = '', lastY = null;
+          tc.items.forEach(function(it){ var y = it.transform[5]; if (lastY !== null && Math.abs(y - lastY) > 2) out += '\n'; else if (out && !out.endsWith(' ')) out += ' '; out += it.str; lastY = y; });
+          return out;
+        }));
+        return Promise.all(pages).then(function(t){ return t.join('\n'); });
+      });
+    } else if (name.endsWith('.docx')) {
+      job = loadScript('https://cdn.jsdelivr.net/npm/mammoth@1.11.0/mammoth.browser.min.js').then(function(){ return f.arrayBuffer(); })
+        .then(function(buf){ return mammoth.extractRawText({ arrayBuffer: buf }); }).then(function(r){ return r.value; });
+    } else { job = f.text(); }
+    job.then(function(text){
+      text = text.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+      if (words(text) < 40) { say("We couldn't read much text from that file. If it's a scanned PDF, paste your resume text instead.", 'err'); return; }
+      rText.value = text; rText.dispatchEvent(new Event('input')); say('Loaded ' + f.name + ' ✓', 'ok');
+    }).catch(function(){ say("Couldn't read that file. Try a different format or paste the text.", 'err'); });
+    this.value = '';
+  });
+
+  function chip(t){ var s = document.createElement('span'); s.textContent = t; return s; }
+  function show(r){
+    $('rScore').textContent = r.score; $('rGrade').textContent = r.grade;
+    var parts = $('rParts'); parts.innerHTML = '';
+    r.parts.forEach(function(p){
+      var row = document.createElement('div'); row.className = 'bd';
+      row.innerHTML = '<div class="bd-top"><b></b><span class="mono"></span></div><div class="bd-bar"><i></i></div><p></p>';
+      row.querySelector('b').textContent = p.name; row.querySelector('.mono').textContent = p.score + ' / ' + p.max;
+      row.querySelector('i').style.width = Math.round(p.score / p.max * 100) + '%'; row.querySelector('p').textContent = p.note;
+      parts.appendChild(row);
+    });
+    var miss = $('rMissing'), hit = $('rMatched'); miss.innerHTML = ''; hit.innerHTML = '';
+    if (!r.hasJd) miss.appendChild(chip('Paste a job description to see these'));
+    else if (!r.missing.length) miss.appendChild(chip('None. Nice work.'));
+    r.missing.forEach(function(k){ miss.appendChild(chip(k)); });
+    r.matched.forEach(function(k){ hit.appendChild(chip(k)); });
+    var tips = $('rTips'); tips.innerHTML = '';
+    (r.tips.length ? r.tips : ['Your resume is in great shape for this job.']).forEach(function(t){ var li = document.createElement('li'); li.textContent = t; tips.appendChild(li); });
+    $('report').hidden = false; $('report').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window._ddReport = r;
+  }
+
+  btn.addEventListener('click', function(){
+    if (words(rText.value) < 40) { say('Upload or paste your full resume first.', 'err'); rText.focus(); return; }
+    if (words(jText.value) < 20) { say('Paste the job description too. It drives the keyword score.', 'err'); jText.focus(); return; }
+    if (!DDPay.ready()) { say('Payments open very soon. Please check back in a little while.', 'err'); return; }
+    btn.disabled = true; say(DDPay.hasPaid('ats') ? 'Checking…' : 'Opening secure payment…');
+    DDPay.run('ats', '/ats', { resume: rText.value, jd: jText.value })
+      .then(function(res){ show(res.report); say('Report ready ✓', 'ok'); btn.textContent = 'Check again'; })
+      .catch(function(e){ say(e.message, 'err'); })
+      .then(function(){ btn.disabled = false; });
+  });
+  if (DDPay.hasPaid('ats')) btn.textContent = 'Check again';
+
+  $('copyReport').addEventListener('click', function(){
+    var r = window._ddReport; if (!r) return;
+    var txt = 'ATS score: ' + r.score + '/100 (' + r.grade + ')\n\n' + r.parts.map(function(p){ return p.name + ': ' + p.score + '/' + p.max + '. ' + p.note; }).join('\n') +
+      '\n\nMissing keywords: ' + (r.missing.join(', ') || 'none') + '\nMatched: ' + r.matched.join(', ') + '\n\nFixes:\n' + r.tips.map(function(t, i){ return (i + 1) + '. ' + t; }).join('\n');
+    TB.copy(txt).then(function(ok){ say(ok ? 'Report copied ✓' : 'Copy failed. Select the text manually.', ok ? 'ok' : 'err'); });
+  });
+})();
+</script>
+
+</body>
+</html>

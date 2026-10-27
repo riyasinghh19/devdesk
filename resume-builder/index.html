@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Free Resume Builder with ATS-friendly PDF · DevDesk</title>
+<meta name="description" content="Build a clean, ATS-friendly resume in minutes. Fill in the form, watch the live preview, and download a single-column PDF that applicant tracking systems read correctly. ₹169 (about $2).">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/resume-builder/">
+<meta property="og:title" content="Free Resume Builder with ATS-friendly PDF · DevDesk">
+<meta property="og:description" content="Build a clean, ATS-friendly resume in minutes. Fill in the form, watch the live preview, and download a single-column PDF that applicant tracking systems read correctly. ₹169 (about $2).">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/resume-builder/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Pro tools / Resume Builder</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Pro · Career · ₹169</span>
+    <h1>Resume <span class="hand">Builder</span></h1>
+    <p>Fill in the form and watch your resume take shape. When it looks right, download a clean, single-column PDF that applicant tracking systems can read. Your draft saves in this browser as you type.</p>
+  </header>
+
+  <div class="builder">
+    <form class="panel rb-form" id="rbForm" autocomplete="on" novalidate>
+      <div class="rb-bar">
+        <span class="eyebrow" id="draftNote">Example loaded. Replace it with your details.</span>
+        <button class="icon-btn" type="button" id="clearBtn">Start blank</button>
+      </div>
+      <fieldset><legend>Basics</legend>
+        <div class="grid2">
+          <div class="f"><label for="f-name">Full name</label><input id="f-name" data-k="name" autocomplete="name"></div>
+          <div class="f"><label for="f-title">Headline</label><input id="f-title" data-k="title" placeholder="e.g. Senior Data Engineer"></div>
+          <div class="f"><label for="f-email">Email</label><input id="f-email" data-k="email" type="email" autocomplete="email"></div>
+          <div class="f"><label for="f-phone">Phone</label><input id="f-phone" data-k="phone" autocomplete="tel"></div>
+          <div class="f"><label for="f-loc">City, country</label><input id="f-loc" data-k="location"></div>
+          <div class="f"><label for="f-links">Links (one per line)</label><textarea id="f-links" data-k="links" data-lines rows="2" placeholder="linkedin.com/in/you"></textarea></div>
+        </div>
+      </fieldset>
+      <fieldset><legend>Summary</legend>
+        <div class="f"><label for="f-sum">Two or three lines about what you do best</label><textarea id="f-sum" data-k="summary" rows="3"></textarea></div>
+      </fieldset>
+      <fieldset><legend>Experience</legend><div id="expList"></div><button class="icon-btn add" type="button" data-add="experience">+ Add a job</button></fieldset>
+      <fieldset><legend>Projects</legend><div id="projList"></div><button class="icon-btn add" type="button" data-add="projects">+ Add a project</button></fieldset>
+      <fieldset><legend>Skills</legend>
+        <div class="f"><label for="f-skills">Separate with commas</label><textarea id="f-skills" data-k="skills" rows="2"></textarea></div>
+      </fieldset>
+      <fieldset><legend>Education</legend><div id="eduList"></div><button class="icon-btn add" type="button" data-add="education">+ Add education</button></fieldset>
+      <fieldset><legend>Certifications</legend>
+        <div class="f"><label for="f-certs">One per line</label><textarea id="f-certs" data-k="certifications" data-lines rows="3"></textarea></div>
+      </fieldset>
+    </form>
+
+    <div class="rb-side">
+      <div class="preview-wrap" aria-label="Live preview">
+        <div class="preview" id="preview"></div>
+        <div class="wm" aria-hidden="true"></div>
+      </div>
+      <div class="rb-buy">
+        <button class="btn primary" id="dlBtn" type="button">Download clean PDF · ₹169</button>
+        <span class="status" id="status" aria-live="polite"></span>
+        <p class="paynote">The PDF has no watermark and uses a layout ATS software reads correctly. Pay once with UPI, card or wallet via Razorpay, then re-download up to 5 times in this tab for 48 hours to fix typos. In the print window, choose <b>Save as PDF</b>.</p>
+      </div>
+    </div>
+  </div>
+  <iframe id="printFrame" title="Resume for printing" class="sr" tabindex="-1"></iframe>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Why a simple layout wins</h2>
+    <p>Fancy two-column templates with icons and skill bars look good to people but often scramble when applicant tracking systems read them. Dates end up next to the wrong job and skills disappear. This builder uses one column, standard headings and real text, so both the software and the recruiter read it the way you intended.</p>
+    <h2>Tips while you write</h2>
+    <ul>
+      <li><b>Lead with your strongest recent role.</b> Recruiters spend seconds on the first scan.</li>
+      <li><b>Three to six bullets per job.</b> Start each with a verb and include a number where you can.</li>
+      <li><b>Match the job's words.</b> Run your finished resume through the <a href="../ats-score-checker/index.html">ATS Score Checker</a> against the job you want.</li>
+      <li><b>One page per 8 to 10 years of experience</b> is a good rule of thumb.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>What do I pay for?</summary><p>Building and previewing are free. ₹169 unlocks the clean PDF with no watermark. You can re-download up to 5 times in the same tab within 48 hours.</p></details>
+    <details><summary>Where is my resume saved?</summary><p>Your draft is saved only in this browser. When you download, the details are sent to our server to create the clean file and are not stored.</p></details>
+    <details><summary>The print window opened. What now?</summary><p>Set the destination to <b>Save as PDF</b> and click Save. On a phone, choose Print, then Save as PDF or Share.</p></details>
+    <details><summary>Can I get a refund?</summary><p>If you paid and couldn't download your resume because of a problem on our side, email us within 7 days for a full refund. See the <a href="../refund.html">refund policy</a>.</p></details>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-pro" href="../ats-score-checker/index.html" data-q="ats score checker score your resume against a job and see the missing keywords."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Pro · ₹169</span><h3>ATS Score Checker</h3><p>Score your resume against a job and see the missing keywords.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../refund.html">Refunds</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script src="../assets/pay.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var EXAMPLE = {
+    name: 'Ananya Rao', title: 'Data Analyst', email: 'ananya.rao@example.com', phone: '+91 98765 43210', location: 'Bengaluru, India',
+    links: ['linkedin.com/in/ananya-example'],
+    summary: 'Data analyst with 3 years of experience turning sales and operations data into dashboards that teams use every day. Strong in SQL, Python and Power BI.',
+    experience: [
+      { role: 'Data Analyst', company: 'Example Retail Pvt Ltd', location: 'Bengaluru', start: 'Jan 2024', end: 'Present', bullets: ['Built 12 Power BI dashboards used by 40 store managers each week', 'Automated a weekly sales report in Python, saving 6 hours of manual work', 'Cleaned and merged 3 data sources into one SQL model for regional reporting'] },
+      { role: 'Junior Analyst', company: 'Example Services', location: 'Pune', start: 'Jun 2022', end: 'Dec 2023', bullets: ['Wrote SQL queries to answer 20+ ad-hoc business questions a month', 'Reduced dashboard refresh time from 15 to 3 minutes by tuning queries'] }
+    ],
+    projects: [{ name: 'Customer churn analysis', detail: 'Predicted churn for 10,000 customers with Python and shared findings with the marketing team.' }],
+    skills: 'SQL, Python, Power BI, Excel, Pandas, Data cleaning, Dashboarding',
+    education: [{ degree: 'B.Sc. Statistics', school: 'Example University', year: '2022', detail: '' }],
+    certifications: ['Microsoft Power BI Data Analyst (PL-300)']
+  };
+  var EMPTY = { name: '', title: '', email: '', phone: '', location: '', links: [], summary: '', experience: [{ role: '', company: '', location: '', start: '', end: '', bullets: [''] }], projects: [], skills: '', education: [{ degree: '', school: '', year: '', detail: '' }], certifications: [] };
+  var S;
+  try { S = JSON.parse(localStorage.getItem('dd-resume') || 'null'); } catch(e){}
+  var isExample = !S;
+  if (!S) S = JSON.parse(JSON.stringify(EXAMPLE));
+  $('draftNote').textContent = isExample ? 'Example loaded. Replace it with your details.' : 'Your draft is saved in this browser.';
+
+  var FIELDS = {
+    experience: [['role','Job title'],['company','Company'],['location','Location'],['start','Start (e.g. Mar 2024)'],['end','End (or Present)'],['bullets','Achievements, one per line','lines']],
+    projects: [['name','Project name'],['detail','One or two lines about it','area']],
+    education: [['degree','Degree'],['school','School or university'],['year','Year'],['detail','Grade or detail (optional)']]
+  };
+  var LISTS = { experience: 'expList', projects: 'projList', education: 'eduList' };
+  var uid = 0;
+
+  function save(){ try { localStorage.setItem('dd-resume', JSON.stringify(S)); } catch(e){} $('draftNote').textContent = 'Your draft is saved in this browser.'; }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  function renderLists(){
+    Object.keys(LISTS).forEach(function(key){
+      var box = $(LISTS[key]); box.innerHTML = '';
+      S[key].forEach(function(item, i){
+        var d = document.createElement('div'); d.className = 'entry';
+        var html = '<div class="entry-head"><b>' + ({experience:'Job',projects:'Project',education:'Education'})[key] + ' ' + (i + 1) + '</b><span class="entry-btns">' +
+          (i > 0 ? '<button type="button" class="icon-btn" data-move="' + key + ':' + i + ':-1" aria-label="Move up">↑</button>' : '') +
+          '<button type="button" class="icon-btn" data-del="' + key + ':' + i + '" aria-label="Remove">Remove</button></span></div><div class="grid2">';
+        FIELDS[key].forEach(function(f){
+          var id = 'e' + (uid++), val = item[f[0]];
+          var full = f[2] ? ' full' : '';
+          html += '<div class="f' + full + '"><label for="' + id + '">' + f[1] + '</label>' +
+            (f[2] ? '<textarea id="' + id + '" rows="' + (f[2] === 'lines' ? 4 : 2) + '" data-list="' + key + ':' + i + ':' + f[0] + '"' + (f[2] === 'lines' ? ' data-lines' : '') + '>' + esc(Array.isArray(val) ? val.join('\n') : val) + '</textarea>'
+                  : '<input id="' + id + '" value="' + esc(val) + '" data-list="' + key + ':' + i + ':' + f[0] + '">') + '</div>';
+        });
+        d.innerHTML = html + '</div>'; box.appendChild(d);
+      });
+    });
+  }
+  function fillSimple(){
+    document.querySelectorAll('[data-k]').forEach(function(el){ var v = S[el.dataset.k]; el.value = Array.isArray(v) ? v.join('\n') : (v || ''); });
+  }
+
+  function preview(){
+    var d = S, h = '';
+    h += '<h1>' + esc(d.name || 'Your Name') + '</h1>' + (d.title ? '<div class="pv-title">' + esc(d.title) + '</div>' : '');
+    var c = [d.email, d.phone, d.location].concat(d.links || []).filter(Boolean).map(esc).join('  ·  ');
+    if (c) h += '<div class="pv-contact">' + c + '</div>';
+    if (d.summary) h += '<h2>Summary</h2><p>' + esc(d.summary) + '</p>';
+    var ex = (d.experience || []).filter(function(x){ return x.role || x.company; });
+    if (ex.length) { h += '<h2>Experience</h2>'; ex.forEach(function(x){
+      h += '<div class="pv-item"><div class="pv-row"><b>' + esc(x.role) + (x.company ? ', <span>' + esc(x.company) + '</span>' : '') + '</b><i>' + esc([x.start, x.end].filter(Boolean).join(' – ')) + '</i></div>' +
+        (x.location ? '<div class="pv-sub">' + esc(x.location) + '</div>' : '') + '<ul>' + (x.bullets || []).filter(function(b){ return String(b).trim(); }).map(function(b){ return '<li>' + esc(b) + '</li>'; }).join('') + '</ul></div>'; }); }
+    var pr = (d.projects || []).filter(function(p){ return p.name || p.detail; });
+    if (pr.length) { h += '<h2>Projects</h2>'; pr.forEach(function(p){ h += '<div class="pv-item"><b>' + esc(p.name) + '</b><p>' + esc(p.detail) + '</p></div>'; }); }
+    if (d.skills) h += '<h2>Skills</h2><p>' + d.skills.split(/[,\n]/).map(function(s){ return s.trim(); }).filter(Boolean).map(esc).join(' · ') + '</p>';
+    var ed = (d.education || []).filter(function(e){ return e.degree || e.school; });
+    if (ed.length) { h += '<h2>Education</h2>'; ed.forEach(function(e){ h += '<div class="pv-item"><div class="pv-row"><b>' + esc(e.degree) + (e.school ? ', <span>' + esc(e.school) + '</span>' : '') + '</b><i>' + esc(e.year) + '</i></div>' + (e.detail ? '<div class="pv-sub">' + esc(e.detail) + '</div>' : '') + '</div>'; }); }
+    var ce = (d.certifications || []).filter(Boolean);
+    if (ce.length) h += '<h2>Certifications</h2><ul>' + ce.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    $('preview').innerHTML = h;
+  }
+
+  var form = $('rbForm');
+  form.addEventListener('input', function(e){
+    var el = e.target, val = el.hasAttribute('data-lines') ? el.value.split('\n').map(function(s){ return s.replace(/^[•\-*]\s*/, ''); }) : el.value;
+    if (el.dataset.k) S[el.dataset.k] = val;
+    else if (el.dataset.list) { var p = el.dataset.list.split(':'); S[p[0]][+p[1]][p[2]] = val; }
+    else return;
+    save(); preview();
+  });
+  form.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.add) { var k = b.dataset.add; S[k].push(k === 'experience' ? { role:'', company:'', location:'', start:'', end:'', bullets:[''] } : k === 'projects' ? { name:'', detail:'' } : { degree:'', school:'', year:'', detail:'' }); }
+    else if (b.dataset.del) { var p = b.dataset.del.split(':'); S[p[0]].splice(+p[1], 1); }
+    else if (b.dataset.move) { var m = b.dataset.move.split(':'), arr = S[m[0]], i = +m[1]; var t = arr[i]; arr[i] = arr[i - 1]; arr[i - 1] = t; }
+    else return;
+    save(); renderLists(); preview();
+  });
+  $('clearBtn').addEventListener('click', function(){ S = JSON.parse(JSON.stringify(EMPTY)); save(); fillSimple(); renderLists(); preview(); $('f-name').focus(); });
+
+  var status = $('status'), btn = $('dlBtn');
+  function say(t, cls){ status.textContent = t; status.className = 'status' + (cls ? ' ' + cls : ''); }
+  btn.addEventListener('click', function(){
+    if (!S.name || !S.email) { say('Add at least your name and email first.', 'err'); $(!S.name ? 'f-name' : 'f-email').focus(); return; }
+    if (!DDPay.ready()) { say('Payments open very soon. Please check back in a little while.', 'err'); return; }
+    btn.disabled = true; say(DDPay.hasPaid('resume') ? 'Preparing your PDF…' : 'Opening secure payment…');
+    DDPay.run('resume', '/resume', { data: S }, { name: S.name, email: S.email, contact: S.phone })
+      .then(function(res){
+        var fr = $('printFrame');
+        fr.onload = function(){ setTimeout(function(){ try { fr.contentWindow.focus(); fr.contentWindow.print(); } catch(e){} }, 250); };
+        fr.srcdoc = res.html;
+        say('Ready ✓ In the print window, choose "Save as PDF".', 'ok'); btn.textContent = 'Download again';
+      })
+      .catch(function(e){ say(e.message, 'err'); })
+      .then(function(){ btn.disabled = false; });
+  });
+  if (DDPay.hasPaid('resume')) btn.textContent = 'Download again';
+
+  fillSimple(); renderLists(); preview();
+})();
+</script>
+
+</body>
+</html>
