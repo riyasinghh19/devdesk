@@ -2,7 +2,7 @@
    API is the payment server's address. Leave it empty until the server is deployed;
    the pages then say payments are opening soon instead of failing. */
 (function(){
-  var API = "";            // e.g. "https://devdesk-pay.<your-subdomain>.workers.dev"
+  var API = "https://devdesk-pay.riyasingh10x.workers.dev";
   var PRICE = "₹169";
   var USES = 5;
 
