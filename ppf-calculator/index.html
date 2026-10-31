@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PPF Calculator: maturity value at 7.1% with year-by-year table (free) · DevDesk</title>
+<meta name="description" content="Calculate your PPF maturity value at the current 7.1% rate. See year-by-year growth, the effect of depositing before 5 April, and 5-year extensions. Free, no sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/ppf-calculator/">
+<meta property="og:title" content="PPF Calculator: maturity value at 7.1% with year-by-year table (free) · DevDesk">
+<meta property="og:description" content="Calculate your PPF maturity value at the current 7.1% rate. See year-by-year growth, the effect of depositing before 5 April, and 5-year extensions. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/ppf-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Money calculators / PPF calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Money calculators</span>
+    <h1>PPF <span class="hand">calculator</span></h1>
+    <p>See how your Public Provident Fund grows over 15 years and beyond. The current rate is 7.1% a year (October–December 2026).</p>
+  </header>
+
+  <section class="panel" aria-label="PPF calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><div class="top"><label for="dep">Yearly deposit (₹)</label><input class="inp" id="dep" type="number" inputmode="numeric" min="500" max="150000" step="500" value="150000"></div>
+          <input type="range" id="depR" min="500" max="150000" step="500" value="150000" aria-label="Yearly deposit slider"><span class="hint">Minimum ₹500, maximum ₹1,50,000 a financial year.</span></div>
+        <div class="field"><div class="top"><label for="rate">Interest rate (% a year)</label><input class="inp" id="rate" type="number" inputmode="decimal" min="1" max="15" step="0.05" value="7.1"></div>
+          <input type="range" id="rateR" min="5" max="9" step="0.05" value="7.1" aria-label="Rate slider"><span class="hint">Set by the government every quarter. 7.1% since April 2020.</span></div>
+        <div class="field"><div class="top"><label for="yrs">Years</label>
+          <select class="inp" id="yrs" style="width:200px"><option value="15">15 (maturity)</option><option value="20">20 (one extension)</option><option value="25">25 (two extensions)</option><option value="30">30 (three extensions)</option></select></div></div>
+        <div class="field"><div class="top"><label for="when">I deposit</label>
+          <select class="inp" id="when" style="width:250px"><option value="apr">By 5 April each year</option><option value="mon">Monthly, before the 5th</option><option value="late">Late in the year (March)</option></select></div>
+          <span class="hint">Interest is paid on the lowest balance between the 5th and the end of each month.</span></div>
+        <div class="field"><div class="top"><label for="bal">Existing balance (₹)</label><input class="inp" id="bal" type="number" inputmode="numeric" min="0" step="1000" value="0"></div></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Value after <span id="yLbl">15</span> years</span><b id="mat">—</b></div>
+        <div class="split-bar" aria-hidden="true"><i id="barP"></i><i id="barI"></i></div>
+        <div class="legend"><span>You deposit</span><span>Interest (tax-free)</span></div>
+        <div class="stats">
+          <div><span class="k">Total deposited</span><b id="tDep">—</b></div>
+          <div><span class="k">Total interest</span><b id="tInt">—</b></div>
+          <div><span class="k">Lost by depositing late</span><b id="lost">—</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:22px" aria-label="Year by year">
+    <h2 class="box-title" style="margin-bottom:10px">Year by year</h2>
+    <div class="data-wrap"><table class="data-table" id="tbl"><thead><tr><th>Year</th><th class="n">Opening</th><th class="n">Deposit</th><th class="n">Interest</th><th class="n">Closing</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Why deposit before 5 April</h2>
+    <p>PPF interest is worked out each month on the lowest balance between the 5th and the last day of the month, then added once a year on 31 March. A deposit made by 5 April earns interest for all 12 months. The same deposit made in March earns almost nothing that year. Over 15 years, that difference adds up to tens of thousands of rupees.</p>
+    <h2>Key PPF rules</h2>
+    <ul>
+      <li><b>Lock-in:</b> 15 full financial years from the end of the year you open the account.</li>
+      <li><b>Tax:</b> exempt at all three stages (EEE). Deposits count for 80C in the old regime; interest and maturity are tax-free in both regimes.</li>
+      <li><b>Extensions:</b> after maturity, extend in blocks of 5 years, with or without fresh deposits.</li>
+      <li><b>Partial withdrawal:</b> allowed from the 7th financial year, up to 50% of an earlier balance.</li>
+      <li><b>Loan:</b> available from the 3rd to the 6th year, up to 25% of the balance two years earlier.</li>
+      <li><b>Minimum:</b> ₹500 a year to keep the account active.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Will the rate stay at 7.1%?</summary><p>No one knows. The government reviews it every quarter. It has stayed at 7.1% since April 2020, including the October–December 2026 quarter.</p></details>
+    <details><summary>Can I open PPF for my child?</summary><p>Yes, as guardian. But the ₹1.5 lakh yearly limit is shared between your own account and your minor child's.</p></details>
+    <h2>More money calculators</h2>
+    <div class="related"><a class="note live c-money" href="../emi-calculator/index.html" data-q="emi calculator monthly emi, total interest and a full repayment schedule."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>EMI Calculator</h3><p>Monthly EMI, total interest and a full repayment schedule.</p><span class="go">Open →</span></a><a class="note live c-money" href="../sip-calculator/index.html" data-q="sip calculator what your monthly sip grows to over time."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>SIP Calculator</h3><p>What your monthly SIP grows to over time.</p><span class="go">Open →</span></a><a class="note live c-money" href="../gst-calculator/index.html" data-q="gst calculator add or remove gst at any rate in one click."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>GST Calculator</h3><p>Add or remove GST at any rate in one click.</p><span class="go">Open →</span></a><a class="note live c-money" href="../income-tax-calculator/index.html" data-q="income tax: old vs new regime compare your tax under both regimes."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>Income Tax: Old vs New Regime</h3><p>Compare your tax under both regimes.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function run(D, R, Y, when, bal0){
+    var bal = bal0, dep = 0, rows = [], r = R / 100 / 12;
+    for (var y = 1; y <= Y; y++) {
+      var open = bal, int = 0, d = D;
+      for (var m = 0; m < 12; m++) {
+        if (when === 'apr' && m === 0) bal += d;
+        if (when === 'mon') bal += d / 12;
+        if (when === 'late' && m === 11) { int += bal * r; bal += d; continue; }
+        int += bal * r;
+      }
+      bal += int; dep += d; rows.push([y, open, d, int, bal]);
+    }
+    return { bal: bal, dep: dep, rows: rows };
+  }
+  function calc(){
+    var D = Math.min(150000, +$('dep').value || 0), R = +$('rate').value || 0, Y = +$('yrs').value, when = $('when').value, b0 = +$('bal').value || 0;
+    TB.save('dd-ppf', { D: D, R: R, Y: Y, when: when, b0: b0 });
+    var s = run(D, R, Y, when, b0), best = run(D, R, Y, 'apr', b0);
+    $('yLbl').textContent = Y; $('mat').textContent = TB.inr(s.bal); $('tDep').textContent = TB.inr(s.dep + b0); $('tInt').textContent = TB.inr(s.bal - s.dep - b0);
+    $('lost').textContent = when === 'apr' ? '₹0' : TB.inr(best.bal - s.bal);
+    var p = s.bal > 0 ? (s.dep + b0) / s.bal * 100 : 100; $('barP').style.width = p + '%'; $('barI').style.width = (100 - p) + '%';
+    $('tbl').tBodies[0].innerHTML = s.rows.map(function(r){ return '<tr' + (r[0] === 15 ? ' class="sum"' : '') + '><td>' + r[0] + (r[0] === 15 ? ' · matures' : '') + '</td><td class="n">' + TB.inr(r[1]) + '</td><td class="n">' + TB.inr(r[2]) + '</td><td class="n">' + TB.inr(r[3]) + '</td><td class="n">' + TB.inr(r[4]) + '</td></tr>'; }).join('');
+  }
+  ['dep', 'rate'].forEach(function(id){ TB.pair(id, id + 'R', calc); });
+  ['yrs', 'when', 'bal'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  var o = TB.load('dd-ppf'); if (o) { $('dep').value = o.D; $('depR').value = o.D; $('rate').value = o.R; $('rateR').value = o.R; $('yrs').value = o.Y; $('when').value = o.when; $('bal').value = o.b0; }
+  calc();
+})();
+</script>
+
+</body>
+</html>

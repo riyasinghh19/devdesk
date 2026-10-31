@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Data Engineering Glossary: 60 terms explained simply, A to Z (free) · DevDesk</title>
+<meta name="description" content="Plain-English definitions of data engineering terms: ACID, CDC, data lake, lakehouse, medallion, partitioning, SCD, star schema, Z-ordering and more, with examples.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/data-engineering-glossary/">
+<meta property="og:title" content="Data Engineering Glossary: 60 terms explained simply, A to Z (free) · DevDesk">
+<meta property="og:description" content="Plain-English definitions of data engineering terms: ACID, CDC, data lake, lakehouse, medallion, partitioning, SCD, star schema, Z-ordering and more, with examples.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/data-engineering-glossary/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Data engineering glossary</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Data engineering <span class="hand">glossary</span></h1>
+    <p>From ACID to Z-ordering, the words you'll hear in data teams, explained in a sentence or two with an example. Useful for interviews, new joiners and anyone moving into data.</p>
+  </header>
+
+  <section class="panel" aria-label="Glossary">
+    <div class="toolbar">
+      <div class="opt" style="flex:1 1 260px"><label for="q">Search terms</label><input class="inp" id="q" type="search" placeholder="e.g. partition, lake, SCD" style="width:100%"></div>
+    </div>
+    <div class="panel-body glossary">
+      <nav class="letters" id="letters" aria-label="Jump to letter"></nav>
+      <p class="say" id="count"></p>
+      <dl id="list"></dl>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Want to practise?</h2>
+    <p>Test yourself with the <a href="../data-engineer-interview-questions/index.html">data engineer interview questions</a>, which use many of these terms in real answers.</p>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../salary-hike-calculator/index.html" data-q="salary hike calculator your new ctc from a hike percentage, and the reverse."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Salary Hike Calculator</h3><p>Your new CTC from a hike percentage, and the reverse.</p><span class="go">Open →</span></a><a class="note live c-career" href="../notice-period-calculator/index.html" data-q="notice period calculator your last working day from your resignation date."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Notice Period Calculator</h3><p>Your last working day from your resignation date.</p><span class="go">Open →</span></a><a class="note live c-career" href="../resume-bullet-builder/index.html" data-q="resume bullet builder strong action verbs and templates for resume points."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Resume Bullet Builder</h3><p>Strong action verbs and templates for resume points.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineer-interview-questions/index.html" data-q="data engineer interview questions sql, adf and snowflake questions with answers."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineer Interview Questions</h3><p>SQL, ADF and Snowflake questions with answers.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var G = [
+    ['ACID', 'Four guarantees for database transactions: Atomicity (all or nothing), Consistency (rules always hold), Isolation (transactions don\'t see each other\'s half-finished work) and Durability (committed data survives a crash).'],
+    ['Airflow', 'An open-source tool for scheduling and monitoring workflows written in Python. Each workflow is a DAG of tasks.'],
+    ['API', 'A way for one system to request data from another, usually over HTTP returning JSON. Many pipelines start by calling a REST API.'],
+    ['Backfill', 'Re-running a pipeline for past dates, for example to load history or fix a bug. Pipelines should be idempotent so backfills are safe.'],
+    ['Batch processing', 'Processing data in chunks on a schedule (hourly, nightly) rather than continuously. Simpler and cheaper than streaming.'],
+    ['Broadcast join', 'A Spark join where the small table is copied to every worker, so the big table doesn\'t need to be shuffled.'],
+    ['CDC (change data capture)', 'Capturing only the inserts, updates and deletes made in a source system, instead of copying the full table each time. Tools: Debezium, SQL Server CDC, Snowflake Streams.'],
+    ['Clustering key', 'In Snowflake, columns used to keep related rows physically together so queries can skip more data. Example: cluster a huge events table by event_date.'],
+    ['Columnar storage', 'Storing data column by column instead of row by row. Analytics queries read only the columns they need, and similar values compress well. Parquet and Snowflake are columnar.'],
+    ['DAG', 'Directed acyclic graph: tasks connected by arrows showing order, with no loops. Airflow, dbt and Spark all build DAGs.'],
+    ['Data catalog', 'A searchable inventory of datasets with descriptions, owners, lineage and tags. Examples: Unity Catalog, Microsoft Purview, DataHub.'],
+    ['Data contract', 'An agreement between a data producer and its consumers on schema, meaning and quality, so upstream changes don\'t silently break downstream pipelines.'],
+    ['Data lake', 'Cheap storage (like ADLS or S3) holding raw files of any type: CSV, JSON, Parquet, images. Flexible, but needs structure on top to stay usable.'],
+    ['Data lakehouse', 'A data lake plus warehouse features: tables with ACID transactions, schemas and SQL, using formats like Delta Lake or Apache Iceberg.'],
+    ['Data lineage', 'The map of where data came from and what happened to it on the way, e.g. "this dashboard metric comes from these three source tables".'],
+    ['Data mart', 'A smaller, subject-focused part of a warehouse for one team, like a sales mart or finance mart.'],
+    ['Data quality', 'How fit data is for use: complete, accurate, unique, timely and valid. Checked with tests such as not-null, unique and accepted values.'],
+    ['Data warehouse', 'A database designed for analysis and reporting, holding cleaned, structured, historical data. Examples: Snowflake, BigQuery, Synapse, Redshift.'],
+    ['dbt', 'Data build tool: you write SELECT statements and dbt turns them into tables and views in the right order, with tests, documentation and version control.'],
+    ['Delta Lake', 'An open table format on top of Parquet that adds ACID transactions, MERGE, time travel and schema enforcement. Used heavily in Databricks.'],
+    ['Denormalisation', 'Deliberately repeating data (e.g. putting customer city on every order row) to avoid joins and make queries faster.'],
+    ['Dimension table', 'A table describing the who, what and where of events: customers, products, dates. Joined to fact tables.'],
+    ['ELT', 'Extract, Load, Transform: load raw data into the warehouse first, then transform it there with SQL. The common pattern with cloud warehouses.'],
+    ['ETL', 'Extract, Transform, Load: transform data in a separate tool before loading it into the warehouse.'],
+    ['Fact table', 'A table of measurable events (sales, clicks, payments) with numeric measures and keys to dimensions.'],
+    ['Grain', 'What one row of a table represents, e.g. "one row per order line per day". Defining the grain first prevents double counting.'],
+    ['Idempotent', 'Running a job twice gives the same result as running it once. Achieved with MERGE or delete-then-insert instead of blind appends.'],
+    ['Incremental load', 'Loading only new or changed records since the last run, usually tracked with a watermark column like updated_at.'],
+    ['Lakehouse', 'See Data lakehouse.'],
+    ['Late-arriving data', 'Records that arrive after the period they belong to has been processed, e.g. yesterday\'s sales arriving today. Handled with look-back windows.'],
+    ['Medallion architecture', 'Organising a lakehouse into bronze (raw), silver (cleaned) and gold (business-ready) layers.'],
+    ['MERGE', 'A SQL statement that inserts, updates or deletes rows in a target based on a source, in one step. Also called upsert.'],
+    ['Metadata', 'Data about data: column names, types, row counts, owners, refresh times.'],
+    ['Micro-partition', 'Snowflake\'s automatic storage unit (50–500 MB uncompressed), with min/max values per column used to skip data.'],
+    ['Normalisation', 'Splitting data into related tables to avoid duplication, common in transactional (OLTP) databases.'],
+    ['OLAP vs OLTP', 'OLTP systems run day-to-day transactions (many small reads and writes). OLAP systems answer analytical questions over large history. Warehouses are OLAP.'],
+    ['Orchestration', 'Scheduling and coordinating pipeline steps, with dependencies, retries and alerts. Tools: Airflow, ADF, Dagster, Prefect.'],
+    ['Parquet', 'A compressed, columnar file format that stores the schema with the data. The default format for data lakes.'],
+    ['Partitioning', 'Splitting a table into parts by a column (often date) so queries read only the parts they need.'],
+    ['Partition pruning', 'Skipping partitions that can\'t contain matching rows, based on the WHERE clause. The main reason to filter on partition columns.'],
+    ['Pipeline', 'A series of steps that moves and transforms data from sources to destinations.'],
+    ['Primary key', 'A column (or set) that uniquely identifies each row. Warehouses often don\'t enforce it, so test for uniqueness.'],
+    ['Reverse ETL', 'Sending modelled warehouse data back into business tools like a CRM or marketing platform.'],
+    ['SCD (slowly changing dimension)', 'How a dimension keeps changes over time. Type 1 overwrites, Type 2 adds a new row with validity dates, Type 3 keeps the previous value in a column.'],
+    ['Schema drift', 'When a source\'s columns change without notice: added, renamed or retyped. Pipelines should detect it rather than fail silently.'],
+    ['Schema-on-read', 'Applying structure when you query the data (typical in lakes), rather than when you write it (schema-on-write, typical in warehouses).'],
+    ['Shuffle', 'In Spark, moving data between workers so rows with the same key end up together. Needed for joins and group-bys; often the slowest step.'],
+    ['Skew', 'When a few keys hold most of the data, so one task does most of the work. Fixed with salting, broadcast joins or adaptive query execution.'],
+    ['Snowflake schema', 'A star schema whose dimensions are normalised into sub-tables (product → category → department).'],
+    ['SQL window function', 'A function that calculates across related rows without collapsing them: ROW_NUMBER, RANK, LAG, LEAD, running SUM.'],
+    ['Star schema', 'A fact table in the middle joined directly to denormalised dimension tables. The standard model for BI.'],
+    ['Streaming', 'Processing data continuously as events arrive, with latency in seconds. Tools: Kafka, Event Hubs, Spark Structured Streaming.'],
+    ['Surrogate key', 'A system-generated ID for a row, used instead of the source\'s business key. Needed for SCD Type 2.'],
+    ['Time travel', 'Querying a table as it was at an earlier time. Available in Snowflake, Delta Lake and Iceberg.'],
+    ['Upsert', 'Update the row if it exists, insert it if it doesn\'t. Done with MERGE.'],
+    ['Watermark', 'The last value loaded (like the max updated_at), stored so the next incremental run knows where to start. In streaming, how late data can arrive.'],
+    ['Z-ordering', 'A Delta Lake technique that sorts data by several columns at once so filters on any of them skip more files.'],
+    ['Zero-copy clone', 'In Snowflake, an instant copy of a table or database that shares storage with the original until either changes.']
+  ];
+  G.sort(function(a, b){ return a[0].localeCompare(b[0]); });
+  var list = $('list'), letters = {};
+  G.forEach(function(g){
+    var L = g[0][0].toUpperCase(), div = document.createElement('div'); div.className = 'entry'; div.dataset.s = (g[0] + ' ' + g[1]).toLowerCase();
+    if (!letters[L]) { letters[L] = 1; div.id = 'L-' + L; }
+    var dt = document.createElement('dt'), dd = document.createElement('dd'); dt.textContent = g[0]; dd.textContent = g[1]; div.appendChild(dt); div.appendChild(dd); list.appendChild(div);
+  });
+  Object.keys(letters).forEach(function(L){ var a = document.createElement('a'); a.href = '#L-' + L; a.className = 'chip-btn'; a.textContent = L; a.style.textDecoration = 'none'; $('letters').appendChild(a); });
+  function show(){ var q = $('q').value.trim().toLowerCase(), n = 0; list.querySelectorAll('.entry').forEach(function(e){ var ok = !q || e.dataset.s.indexOf(q) >= 0; e.hidden = !ok; if (ok) n++; }); $('count').textContent = n + ' term' + (n === 1 ? '' : 's'); }
+  $('q').addEventListener('input', show); show();
+})();
+</script>
+
+</body>
+</html>

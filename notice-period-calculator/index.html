@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Notice Period Calculator: last working day and buyout cost (free) · DevDesk</title>
+<meta name="description" content="Find your last working day from your resignation date and notice period (30, 60 or 90 days, or months). Work out the notice buyout cost and how leave balance shortens your notice.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/notice-period-calculator/">
+<meta property="og:title" content="Notice Period Calculator: last working day and buyout cost (free) · DevDesk">
+<meta property="og:description" content="Find your last working day from your resignation date and notice period (30, 60 or 90 days, or months). Work out the notice buyout cost and how leave balance shortens your notice.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/notice-period-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Notice period calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Notice period <span class="hand">calculator</span></h1>
+    <p>Resigning? Find your last working day, and what it would cost to leave early if your new company wants you sooner.</p>
+  </header>
+
+  <section class="panel" aria-label="Notice period calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><label for="res">Resignation date</label><input class="inp wide" id="res" type="date"></div>
+        <div class="row-inline">
+          <div class="field" style="flex:1 1 100px"><label for="n">Notice period</label><input class="inp wide" id="n" type="number" inputmode="numeric" min="0" value="90"></div>
+          <div class="field" style="flex:1 1 130px"><label for="u">Unit</label><select class="inp wide" id="u"><option value="d">Days</option><option value="m">Months</option></select></div>
+        </div>
+        <div class="chips-row"><button class="chip-btn" type="button" data-n="30,d">30 days</button><button class="chip-btn" type="button" data-n="60,d">60 days</button><button class="chip-btn" type="button" data-n="90,d">90 days</button><button class="chip-btn" type="button" data-n="1,m">1 month</button><button class="chip-btn" type="button" data-n="3,m">3 months</button></div>
+        <div class="field"><div class="top"><label for="start">Notice counts from</label><select class="inp" id="start" style="width:210px"><option value="0">Resignation day</option><option value="1">The next day</option></select></div><span class="hint">Policies differ; check your appointment letter.</span></div>
+        <div class="field"><div class="top"><label for="leave">Leave adjusted against notice (days)</label><input class="inp" id="leave" type="number" min="0" value="0"></div><span class="hint">Only if your company allows it.</span></div>
+        <div class="field"><label for="join">New company wants you by (optional)</label><input class="inp wide" id="join" type="date"></div>
+        <div class="field"><div class="top"><label for="sal">Monthly salary for buyout (₹)</label><input class="inp" id="sal" type="number" inputmode="numeric" min="0" step="1000" value="100000"></div><span class="hint">Usually basic or gross monthly pay, per your policy.</span></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Last working day</span><b id="lwd">—</b></div>
+        <div class="stats">
+          <div><span class="k">Working days left (Mon–Fri)</span><b id="wd">—</b></div>
+          <div><span class="k">Calendar days left from today</span><b id="left">—</b></div>
+        </div>
+        <div class="kv" id="buy"></div>
+        <p class="say" id="say"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How the last working day is counted</h2>
+    <p>If your notice period is 90 days and it starts on the day you resign, your last working day is the 90th day, counting the resignation day as day 1. For example, resigning on 1 November with 90 days' notice gives a last working day of 29 January. If notice starts the next day, it moves one day later.</p>
+    <p>For notice in months, the last day is the day before the same date that many months later: resigning on 15 November with 2 months' notice ends on 14 January.</p>
+    <h2>Notice buyout</h2>
+    <p>Many companies let you leave early by paying for the days you don't serve. The usual formula is:</p>
+    <pre><code>Buyout = days not served × monthly salary ÷ 30</code></pre>
+    <p>Some companies use basic pay, others gross pay, and some divide by the days in that month. Often the new employer reimburses the buyout; ask during negotiation.</p>
+    <h2>Tips for a smooth exit</h2>
+    <ul>
+      <li>Resign in writing (email is fine) and keep a copy with the date.</li>
+      <li>Ask HR to confirm the last working day and any early release in writing.</li>
+      <li>Plan a handover document early. Managers are far more willing to release early when work is covered.</li>
+      <li>Check how unused leave is treated: encashed, adjusted against notice, or lapsed.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Do weekends count in the notice period?</summary><p>Yes, almost always. Notice periods are in calendar days, so weekends and holidays count.</p></details>
+    <details><summary>Can my company refuse early release?</summary><p>Yes; the notice period is part of your contract. Most companies agree to a buyout or a shorter notice if the handover is done.</p></details>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../salary-hike-calculator/index.html" data-q="salary hike calculator your new ctc from a hike percentage, and the reverse."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Salary Hike Calculator</h3><p>Your new CTC from a hike percentage, and the reverse.</p><span class="go">Open →</span></a><a class="note live c-career" href="../resume-bullet-builder/index.html" data-q="resume bullet builder strong action verbs and templates for resume points."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Resume Bullet Builder</h3><p>Strong action verbs and templates for resume points.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineer-interview-questions/index.html" data-q="data engineer interview questions sql, adf and snowflake questions with answers."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineer Interview Questions</h3><p>SQL, ADF and Snowflake questions with answers.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineering-glossary/index.html" data-q="data engineering glossary from acid to z-ordering, explained simply."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineering Glossary</h3><p>From ACID to Z-ordering, explained simply.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function iso(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function parse(v){ var p = v.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function dc(a, b){ return Math.round((Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) - Date.UTC(a.getFullYear(), a.getMonth(), a.getDate())) / 86400000); }
+  function long(d){ return d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' }); }
+  function workdays(a, b){ var n = 0, d = new Date(a); while (d <= b) { var w = d.getDay(); if (w && w !== 6) n++; d.setDate(d.getDate() + 1); } return n; }
+  function calc(){
+    if (!$('res').value) return;
+    TB.save('dd-notice', { n: $('n').value, u: $('u').value, start: $('start').value, sal: $('sal').value });
+    var r = parse($('res').value), n = Math.max(0, +$('n').value || 0), u = $('u').value, st = +$('start').value, leave = Math.max(0, +$('leave').value || 0);
+    var first = new Date(r), lwd; first.setDate(first.getDate() + st);
+    if (u === 'd') { lwd = new Date(first); lwd.setDate(lwd.getDate() + n - 1); }
+    else { var y = first.getFullYear(), m = first.getMonth() + n, dim = new Date(y, m + 1, 0).getDate(); lwd = new Date(y, m, Math.min(first.getDate(), dim)); lwd.setDate(lwd.getDate() - 1); }
+    var full = new Date(lwd); lwd.setDate(lwd.getDate() - leave);
+    $('lwd').textContent = long(lwd);
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var from = today > first ? today : first;
+    $('wd').textContent = lwd >= from ? workdays(from, lwd) : 0;
+    $('left').textContent = Math.max(0, dc(today, lwd));
+    var box = $('buy'); box.innerHTML = ''; $('say').textContent = leave ? 'Without the leave adjustment, it would be ' + long(full) + '.' : '';
+    if ($('join').value) {
+      var j = parse($('join').value), last = new Date(j); last.setDate(last.getDate() - 1);
+      var short = dc(last, lwd), sal = +$('sal').value || 0;
+      var rows = short > 0 ? [['Leave early on', long(last)], ['Days to buy out', String(short)], ['Approx. buyout cost', TB.inr(short * sal / 30)]] : [['Buyout needed', 'None. You finish before joining.']];
+      rows.forEach(function(x){ var k = document.createElement('div'); k.className = 'k'; k.textContent = x[0]; var v = document.createElement('div'); v.className = 'v'; v.textContent = x[1]; var c = document.createElement('div'); c.className = 'c'; box.appendChild(k); box.appendChild(v); box.appendChild(c); });
+    }
+  }
+  $('res').value = iso(new Date());
+  document.querySelectorAll('[data-n]').forEach(function(b){ b.addEventListener('click', function(){ var v = b.dataset.n.split(','); $('n').value = v[0]; $('u').value = v[1]; calc(); }); });
+  ['res', 'n', 'u', 'start', 'leave', 'join', 'sal'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  var o = TB.load('dd-notice'); if (o) { $('n').value = o.n; $('u').value = o.u; $('start').value = o.start; $('sal').value = o.sal; }
+  calc();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Meeting Time-Zone Planner: IST, UK, US overlap finder (free) · DevDesk</title>
+<meta name="description" content="Find a meeting time that works across India, the UK, the US, Europe, the Gulf and Asia. See everyone&#x27;s working hours side by side, with daylight saving handled for the date you pick.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/time-zone-planner/">
+<meta property="og:title" content="Meeting Time-Zone Planner: IST, UK, US overlap finder (free) · DevDesk">
+<meta property="og:description" content="Find a meeting time that works across India, the UK, the US, Europe, the Gulf and Asia. See everyone&#x27;s working hours side by side, with daylight saving handled for the date you pick.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/time-zone-planner/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Time-zone planner</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Meeting <span class="hand">time-zone</span> planner</h1>
+    <p>Add the cities in your meeting. Green is working hours (9 to 6), yellow is early or late, grey is night. Click a column to get a time you can paste into the invite.</p>
+  </header>
+
+  <section class="panel" aria-label="Time-zone planner">
+    <div class="toolbar">
+      <div class="opt"><label for="date">Date</label><input class="inp" type="date" id="date"></div>
+      <div class="opt"><label for="add">Add a city</label><select id="add"><option value="">Choose…</option></select></div>
+      <div class="opt"><label for="wStart">Working hours</label>
+        <div class="row-inline" style="gap:6px;flex-wrap:nowrap"><select id="wStart" aria-label="Work starts"></select><span>to</span><select id="wEnd" aria-label="Work ends"></select></div></div>
+      <span class="spacer"></span>
+      <button class="btn" id="mine" type="button">Add my time zone</button>
+    </div>
+    <div class="panel-body" style="display:flex;flex-direction:column;gap:12px">
+      <div class="tz-grid"><table id="grid"></table></div>
+      <p class="say" id="say" aria-live="polite"></p>
+      <div class="card-box" id="pick" hidden style="box-shadow:none;border-color:var(--line)">
+        <div class="kv" id="pickKv"></div>
+        <div class="row-inline"><button class="btn" id="copy" type="button">Copy for the invite</button></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Good overlap windows from India</h2>
+    <table>
+      <thead><tr><th>With</th><th>Best time in IST</th><th>Their time</th></tr></thead>
+      <tbody>
+        <tr><td>UK (London)</td><td>1:30 pm – 6:00 pm</td><td>9:00 am – 1:30 pm (winter, GMT) or 10:00 am – 2:30 pm (summer, BST)</td></tr>
+        <tr><td>Central Europe</td><td>1:30 pm – 6:00 pm</td><td>9:00 am – 1:30 pm (winter) or 10:00 am – 2:30 pm (summer)</td></tr>
+        <tr><td>US East (New York)</td><td>6:30 pm – 9:30 pm</td><td>8:00 am – 11:00 am (winter) or 9:00 am – 12:00 pm (summer)</td></tr>
+        <tr><td>US West (San Francisco)</td><td>9:30 pm – 10:30 pm, or 7:30 am – 9:30 am</td><td>8:00 am – 9:00 am, or 6:00 pm – 8:00 pm the day before</td></tr>
+        <tr><td>Dubai</td><td>10:30 am – 6:00 pm</td><td>9:00 am – 4:30 pm</td></tr>
+        <tr><td>Singapore</td><td>9:00 am – 3:30 pm</td><td>11:30 am – 6:00 pm</td></tr>
+      </tbody>
+    </table>
+    <h2>Daylight saving: the twice-a-year surprise</h2>
+    <p>India doesn't change its clocks, but the UK, Europe and the US do, on <b>different dates</b>. For a few weeks in March and in October–November, the gap to the US shrinks by an hour before Europe catches up. If a recurring meeting suddenly feels an hour off, this is why. Pick the meeting date above and the planner uses the right offset for that day.</p>
+    <ul>
+      <li><b>US:</b> clocks go forward on the second Sunday of March and back on the first Sunday of November.</li>
+      <li><b>UK and EU:</b> forward on the last Sunday of March, back on the last Sunday of October.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why is IST "+5:30" and not a whole hour?</summary><p>India uses one time zone based on 82.5° E longitude, which is 5 hours 30 minutes ahead of UTC. A few other places, like Nepal (+5:45), also use non-whole offsets.</p></details>
+    <details><summary>Does it work for any city?</summary><p>The list covers the most common business cities. "Add my time zone" adds whatever zone your device is set to.</p></details>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../salary-hike-calculator/index.html" data-q="salary hike calculator your new ctc from a hike percentage, and the reverse."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Salary Hike Calculator</h3><p>Your new CTC from a hike percentage, and the reverse.</p><span class="go">Open →</span></a><a class="note live c-career" href="../notice-period-calculator/index.html" data-q="notice period calculator your last working day from your resignation date."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Notice Period Calculator</h3><p>Your last working day from your resignation date.</p><span class="go">Open →</span></a><a class="note live c-career" href="../resume-bullet-builder/index.html" data-q="resume bullet builder strong action verbs and templates for resume points."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Resume Bullet Builder</h3><p>Strong action verbs and templates for resume points.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineer-interview-questions/index.html" data-q="data engineer interview questions sql, adf and snowflake questions with answers."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineer Interview Questions</h3><p>SQL, ADF and Snowflake questions with answers.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var CITIES = [
+    ['India (IST)', 'Asia/Kolkata'], ['London', 'Europe/London'], ['New York', 'America/New_York'], ['San Francisco', 'America/Los_Angeles'], ['Chicago', 'America/Chicago'],
+    ['Toronto', 'America/Toronto'], ['Berlin', 'Europe/Berlin'], ['Paris', 'Europe/Paris'], ['Amsterdam', 'Europe/Amsterdam'], ['Dublin', 'Europe/Dublin'],
+    ['Dubai', 'Asia/Dubai'], ['Riyadh', 'Asia/Riyadh'], ['Singapore', 'Asia/Singapore'], ['Kuala Lumpur', 'Asia/Kuala_Lumpur'], ['Hong Kong', 'Asia/Hong_Kong'],
+    ['Tokyo', 'Asia/Tokyo'], ['Sydney', 'Australia/Sydney'], ['Melbourne', 'Australia/Melbourne'], ['Auckland', 'Pacific/Auckland'], ['Kathmandu', 'Asia/Kathmandu'],
+    ['Dhaka', 'Asia/Dhaka'], ['Colombo', 'Asia/Colombo'], ['Johannesburg', 'Africa/Johannesburg'], ['Nairobi', 'Africa/Nairobi'], ['São Paulo', 'America/Sao_Paulo'], ['UTC', 'UTC']
+  ];
+  var zones = [['India (IST)', 'Asia/Kolkata'], ['London', 'Europe/London'], ['New York', 'America/New_York']], sel = null;
+  CITIES.forEach(function(c){ var o = document.createElement('option'); o.value = c[1]; o.textContent = c[0]; $('add').appendChild(o); });
+  for (var h = 5; h <= 23; h++) { ['wStart', 'wEnd'].forEach(function(id){ var o = document.createElement('option'); o.value = h; o.textContent = (h % 12 || 12) + ' ' + (h < 12 ? 'am' : 'pm'); $(id).appendChild(o); }); }
+  $('wStart').value = 9; $('wEnd').value = 18;
+  function parts(ms, tz){ var p = {}; new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', weekday: 'short' }).formatToParts(new Date(ms)).forEach(function(x){ p[x.type] = x.value; }); return p; }
+  function offMin(tz, ms){ var p = parts(ms, tz); return Math.round((Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute) - Math.floor(ms / 60000) * 60000) / 60000); }
+  function abbr(tz, ms){ if (tz === 'Asia/Kolkata') return 'IST'; if (tz === 'UTC') return 'UTC'; var get = function(loc){ try { return new Intl.DateTimeFormat(loc, { timeZone: tz, timeZoneName: 'short' }).formatToParts(new Date(ms)).find(function(x){ return x.type === 'timeZoneName'; }).value; } catch(e){ return ''; } }; var n = get('en-US'); if (/^(GMT|UTC)/.test(n)) { var g = get('en-GB'); if (!/^(GMT|UTC)[+-]/.test(g)) n = g; } return n; }
+  function hm(p){ var h = +p.hour % 24; return (h % 12 || 12) + (p.minute !== '00' ? ':' + p.minute : '') + (h < 12 ? 'a' : 'p'); }
+  function startMs(){
+    var v = $('date').value.split('-'), base = zones[0][1];
+    var guess = Date.UTC(+v[0], +v[1] - 1, +v[2], 0, 0); return guess - offMin(base, guess) * 60000;
+  }
+  function cls(p){ var h = +p.hour % 24 + (+p.minute) / 60, ws = +$('wStart').value, we = +$('wEnd').value; return h >= ws && h + 1 <= we ? 'work' : (h >= ws - 2 && h < ws) || (h >= we && h < we + 3) || (h > ws - 1 && h < we) ? 'edge' : 'night'; }
+  function render(){
+    try { localStorage.setItem('dd-tz', JSON.stringify({ z: zones, ws: $('wStart').value, we: $('wEnd').value })); } catch(e){}
+    var t0 = startMs(), t = $('grid'), html = '', allOk = [];
+    zones.forEach(function(z, zi){
+      var mid = t0 + 12 * 3600000, off = offMin(z[1], mid), sign = off < 0 ? '−' : '+', a = Math.abs(off);
+      html += '<tr><th><span class="zn"></span><br><small style="color:var(--muted);font-weight:400">' + abbr(z[1], mid) + ' · UTC' + sign + Math.floor(a / 60) + (a % 60 ? ':' + String(a % 60).padStart(2, '0') : '') + '</small>' + (zi ? ' <button class="icon-btn rm" type="button" data-i="' + zi + '" aria-label="Remove ' + z[0] + '" style="padding:0 7px;min-height:24px">×</button>' : '') + '</th>';
+      for (var h = 0; h < 24; h++) {
+        var ms = t0 + h * 3600000, p = parts(ms, z[1]), c = cls(p);
+        if (!allOk[h]) allOk[h] = []; allOk[h].push(c);
+        html += '<td class="' + c + (sel === h ? ' sel' : '') + '" data-h="' + h + '" title="' + p.weekday + ' ' + hm(p) + '">' + hm(p) + '</td>';
+      }
+      html += '</tr>';
+    });
+    html += '<tr class="all"><th>Everyone working</th>';
+    var good = [];
+    for (var h2 = 0; h2 < 24; h2++) { var ok = allOk[h2].every(function(c){ return c === 'work'; }), ok2 = allOk[h2].every(function(c){ return c !== 'night'; }); if (ok) good.push(h2); html += '<td class="' + (ok ? 'ok' : '') + (sel === h2 ? ' sel' : '') + '" data-h="' + h2 + '">' + (ok ? '✓' : ok2 ? '~' : '') + '</td>'; }
+    t.innerHTML = html + '</tr>';
+    t.querySelectorAll('.zn').forEach(function(s, i){ s.textContent = zones[i][0]; });
+    t.querySelectorAll('.rm').forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); zones.splice(+b.dataset.i, 1); sel = null; render(); }); });
+    t.querySelectorAll('td[data-h]').forEach(function(td){ td.style.cursor = 'pointer'; td.addEventListener('click', function(){ sel = +td.dataset.h; render(); }); });
+    var say = $('say');
+    if (good.length) { var a = parts(t0 + good[0] * 3600000, zones[0][1]), b = parts(t0 + (good[good.length - 1] + 1) * 3600000, zones[0][1]); say.className = 'say ok'; say.textContent = 'Everyone is in working hours from ' + hm(a) + ' to ' + hm(b) + ' ' + zones[0][0].replace(/ \(.*\)/, '') + ' time (' + good.length + ' hour' + (good.length > 1 ? 's' : '') + ').'; }
+    else { say.className = 'say'; say.textContent = 'No hour is inside working hours for everyone. Columns marked ~ avoid night-time for all; try one of those.'; }
+    showPick(t0);
+  }
+  var pickText = '';
+  function showPick(t0){
+    if (sel === null) { $('pick').hidden = true; return; }
+    var ms = t0 + sel * 3600000, kv = $('pickKv'), lines = []; kv.innerHTML = '';
+    zones.forEach(function(z){
+      var s = new Intl.DateTimeFormat('en-GB', { timeZone: z[1], weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', hour12: true }).format(new Date(ms)).replace(',', '');
+      s += ' ' + abbr(z[1], ms); lines.push(z[0] + ': ' + s);
+      var k = document.createElement('div'); k.className = 'k'; k.textContent = z[0]; var v = document.createElement('div'); v.className = 'v'; v.textContent = s; var c = document.createElement('div'); c.className = 'c'; kv.appendChild(k); kv.appendChild(v); kv.appendChild(c);
+    });
+    pickText = lines.join('\n'); $('pick').hidden = false;
+  }
+  $('copy').addEventListener('click', function(){ var b = this; TB.copy(pickText).then(function(ok){ b.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(function(){ b.textContent = 'Copy for the invite'; }, 1400); }); });
+  $('add').addEventListener('change', function(){ var v = this.value; if (v && !zones.some(function(z){ return z[1] === v; }) && zones.length < 8) zones.push([this.options[this.selectedIndex].text, v]); this.value = ''; render(); });
+  $('mine').addEventListener('click', function(){ var tz = Intl.DateTimeFormat().resolvedOptions().timeZone; if (tz && !zones.some(function(z){ return z[1] === tz; })) zones.push(['My time (' + tz.split('/').pop().replace(/_/g, ' ') + ')', tz]); render(); });
+  ['date', 'wStart', 'wEnd'].forEach(function(id){ $(id).addEventListener('change', render); });
+  try { var o = JSON.parse(localStorage.getItem('dd-tz') || 'null'); if (o && o.z && o.z.length) { zones = o.z; $('wStart').value = o.ws; $('wEnd').value = o.we; } } catch(e){}
+  var d = new Date(); $('date').value = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  render();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Salary Hike Calculator: new CTC from hike %, and hike % from an offer (free) · DevDesk</title>
+<meta name="description" content="Work out your new salary from a hike percentage, or the hike percentage of a new offer. See the monthly difference, the hike after inflation and a quick table of common hikes.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/salary-hike-calculator/">
+<meta property="og:title" content="Salary Hike Calculator: new CTC from hike %, and hike % from an offer (free) · DevDesk">
+<meta property="og:description" content="Work out your new salary from a hike percentage, or the hike percentage of a new offer. See the monthly difference, the hike after inflation and a quick table of common hikes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/salary-hike-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Salary hike calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Salary hike <span class="hand">calculator</span></h1>
+    <p>Appraisal letter or a new offer? Find your new CTC from a hike percentage, or the real hike percentage of an offer.</p>
+  </header>
+
+  <section class="panel" aria-label="Salary hike calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="seg" role="group" aria-label="Mode"><button type="button" id="mPct" aria-pressed="true">I know the hike %</button><button type="button" id="mNew" aria-pressed="false">I have a new offer</button></div>
+        <div class="field"><div class="top"><label for="cur">Current CTC (₹ a year)</label><input class="inp" id="cur" type="number" inputmode="numeric" min="0" step="10000" value="1200000"></div>
+          <input type="range" id="curR" min="200000" max="10000000" step="50000" value="1200000" aria-label="Current CTC slider"></div>
+        <div class="field" id="pctF"><div class="top"><label for="pct">Hike (%)</label><input class="inp" id="pct" type="number" inputmode="decimal" min="-50" max="300" step="0.5" value="10"></div>
+          <input type="range" id="pctR" min="0" max="100" step="0.5" value="10" aria-label="Hike slider"></div>
+        <div class="field" id="newF" hidden><div class="top"><label for="nw">New CTC offered (₹ a year)</label><input class="inp" id="nw" type="number" inputmode="numeric" min="0" step="10000" value="1600000"></div></div>
+        <div class="field"><div class="top"><label for="inf">Inflation (% a year)</label><input class="inp" id="inf" type="number" inputmode="decimal" min="0" max="20" step="0.5" value="5"></div><span class="hint">Used to show your real raise.</span></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k" id="bigK">New CTC</span><b id="big">—</b></div>
+        <div class="stats">
+          <div><span class="k">Increase a year</span><b id="incY">—</b></div>
+          <div><span class="k">Increase a month (CTC)</span><b id="incM">—</b></div>
+          <div><span class="k">Real hike after inflation</span><b id="real">—</b></div>
+          <div><span class="k">New CTC in LPA</span><b id="lpa">—</b></div>
+        </div>
+        <p class="say" id="say"></p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:22px" aria-label="Common hikes">
+    <h2 class="box-title" style="margin-bottom:10px">Quick table for your salary</h2>
+    <div class="data-wrap"><table class="data-table" id="tbl"><thead><tr><th>Hike</th><th class="n">New CTC</th><th class="n">LPA</th><th class="n">Extra a month</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How to calculate a salary hike</h2>
+    <pre><code>New CTC = Current CTC × (1 + hike% ÷ 100)
+Hike %  = (New CTC − Current CTC) ÷ Current CTC × 100</code></pre>
+    <p>Example: ₹12 LPA with a 10% hike becomes ₹13.2 LPA. An offer of ₹16 LPA on a current ₹12 LPA is a 33.3% hike.</p>
+    <h2>Compare like with like</h2>
+    <ul>
+      <li><b>Fixed vs variable:</b> a ₹16 LPA offer with ₹3 L variable is ₹13 L fixed. Compare fixed pay to fixed pay.</li>
+      <li><b>Joining and retention bonuses</b> are one-time. They don't carry into next year's hike.</li>
+      <li><b>Benefits:</b> insurance, NPS and gratuity are often counted in CTC. Check your in-hand with the <a href="../ctc-to-in-hand/index.html">CTC to in-hand calculator</a>.</li>
+      <li><b>ESOPs or RSUs</b> are worth something only if they vest and can be sold. Value them conservatively.</li>
+    </ul>
+    <h2>What counts as a good hike in India?</h2>
+    <p>Annual appraisals at most companies have averaged around 8–10% in recent years, with top performers getting more. When switching jobs, 20–40% is a common range, and more for in-demand skills. These are broad averages, not promises; your industry and level matter a lot.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is "real" hike?</summary><p>It's your raise after inflation eats into it. A 6% hike with 5% inflation increases what you can buy by only about 1%.</p></details>
+    <details><summary>How do I ask for a bigger hike?</summary><p>Bring evidence: outcomes you delivered with numbers, the market rate for your role, and the scope you've taken on. The <a href="../resume-bullet-builder/index.html">resume bullet builder</a> helps you phrase your achievements.</p></details>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../notice-period-calculator/index.html" data-q="notice period calculator your last working day from your resignation date."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Notice Period Calculator</h3><p>Your last working day from your resignation date.</p><span class="go">Open →</span></a><a class="note live c-career" href="../resume-bullet-builder/index.html" data-q="resume bullet builder strong action verbs and templates for resume points."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Resume Bullet Builder</h3><p>Strong action verbs and templates for resume points.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineer-interview-questions/index.html" data-q="data engineer interview questions sql, adf and snowflake questions with answers."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineer Interview Questions</h3><p>SQL, ADF and Snowflake questions with answers.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineering-glossary/index.html" data-q="data engineering glossary from acid to z-ordering, explained simply."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineering Glossary</h3><p>From ACID to Z-ordering, explained simply.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var mode = 'pct';
+  function lpa(n){ return (n / 1e5).toLocaleString('en-IN', { maximumFractionDigits: 2 }) + ' LPA'; }
+  function calc(){
+    var cur = +$('cur').value || 0, inf = +$('inf').value || 0, pct, nw;
+    if (mode === 'pct') { pct = +$('pct').value || 0; nw = cur * (1 + pct / 100); } else { nw = +$('nw').value || 0; pct = cur ? (nw - cur) / cur * 100 : 0; }
+    TB.save('dd-hike', { mode: mode, cur: cur, pct: $('pct').value, nw: $('nw').value, inf: inf });
+    $('bigK').textContent = mode === 'pct' ? 'New CTC' : 'Your hike';
+    $('big').textContent = mode === 'pct' ? TB.inr(nw) : pct.toFixed(1) + '%';
+    $('incY').textContent = TB.inr(nw - cur); $('incM').textContent = TB.inr((nw - cur) / 12);
+    var real = ((1 + pct / 100) / (1 + inf / 100) - 1) * 100; $('real').textContent = real.toFixed(1) + '%'; $('lpa').textContent = lpa(nw);
+    $('say').className = 'say' + (real < 0 ? ' err' : ''); $('say').textContent = real < 0 ? 'This hike is below inflation, so your buying power falls.' : '';
+    $('tbl').tBodies[0].innerHTML = [5, 8, 10, 12, 15, 20, 25, 30, 40, 50].map(function(h){ var n = cur * (1 + h / 100); return '<tr><td>' + h + '%</td><td class="n">' + TB.inr(n) + '</td><td class="n">' + lpa(n) + '</td><td class="n">' + TB.inr((n - cur) / 12) + '</td></tr>'; }).join('');
+  }
+  function setMode(m){ mode = m; $('mPct').setAttribute('aria-pressed', m === 'pct'); $('mNew').setAttribute('aria-pressed', m === 'new'); $('pctF').hidden = m !== 'pct'; $('newF').hidden = m !== 'new'; calc(); }
+  $('mPct').addEventListener('click', function(){ setMode('pct'); }); $('mNew').addEventListener('click', function(){ setMode('new'); });
+  TB.pair('cur', 'curR', calc); TB.pair('pct', 'pctR', calc);
+  ['nw', 'inf'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  var o = TB.load('dd-hike'); if (o) { $('cur').value = o.cur; $('curR').value = o.cur; $('pct').value = o.pct; $('pctR').value = o.pct; $('nw').value = o.nw; $('inf').value = o.inf; }
+  setMode(o && o.mode === 'new' ? 'new' : 'pct');
+})();
+</script>
+
+</body>
+</html>

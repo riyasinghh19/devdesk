@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Age Calculator: exact age in years, months and days (free) · DevDesk</title>
+<meta name="description" content="Find your exact age in years, months and days from your date of birth, your age on any date (for exam and job cut-offs), and a countdown to your next birthday.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/age-calculator/">
+<meta property="og:title" content="Age Calculator: exact age in years, months and days (free) · DevDesk">
+<meta property="og:description" content="Find your exact age in years, months and days from your date of birth, your age on any date (for exam and job cut-offs), and a countdown to your next birthday.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/age-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Everyday utilities / Age calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Everyday utilities</span>
+    <h1>Age <span class="hand">calculator</span></h1>
+    <p>Your exact age today, or on any date. Handy for exam forms and job applications that ask for your age "as on" a cut-off date.</p>
+  </header>
+
+  <section class="panel" aria-label="Age calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><label for="dob">Date of birth</label><input class="inp wide" id="dob" type="date" value="1998-06-15"></div>
+        <div class="field"><label for="on">Age as on</label><input class="inp wide" id="on" type="date"><div class="chips-row"><button class="chip-btn" type="button" id="today">Today</button><button class="chip-btn" type="button" id="jan1">1 Jan this year</button><button class="chip-btn" type="button" id="aug1">1 Aug this year</button></div></div>
+        <p class="say" id="err"></p>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Age</span><b id="age">—</b></div>
+        <div class="stats">
+          <div><span class="k">Total months</span><b id="tm">—</b></div>
+          <div><span class="k">Total weeks</span><b id="tw">—</b></div>
+          <div><span class="k">Total days</span><b id="td">—</b></div>
+          <div><span class="k">Total hours</span><b id="th">—</b></div>
+        </div>
+        <div class="kv" id="out"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How age is counted</h2>
+    <p>The calculator counts full years first, then full months, then the days left over, the same way government forms and HR systems do.</p>
+    <h2>Age "as on" a date</h2>
+    <p>Many applications ask for your age on a fixed date rather than today. For example, a recruitment notice might say "age as on 1 August 2026: 21 to 32 years". Set "Age as on" to that date and check the result.</p>
+    <h2>Born on 29 February?</h2>
+    <p>In non-leap years, the calculator treats your birthday as 28 February for the countdown. Legally, many places count it as 1 March; check the rules for your form.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is my date of birth stored?</summary><p>Only in your own browser, so it's filled in next time. Nothing is uploaded.</p></details>
+    <details><summary>Why does my age in days differ from another site?</summary><p>Some tools count the end date as an extra day. This calculator counts the days between the two dates, not including the end date.</p></details>
+    <h2>More everyday tools</h2>
+    <div class="related"><a class="note live c-everyday" href="../word-counter/index.html" data-q="word &amp; character counter counts with linkedin and x limits built in."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Word &amp; Character Counter</h3><p>Counts with LinkedIn and X limits built in.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../days-between-dates/index.html" data-q="days between dates count days, weeks and working days between two dates."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Days Between Dates</h3><p>Count days, weeks and working days between two dates.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../qr-code-generator/index.html" data-q="qr code generator make a qr code for a link, upi id or wi-fi."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>QR Code Generator</h3><p>Make a QR code for a link, UPI ID or Wi-Fi.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../password-generator/index.html" data-q="password generator strong, random passwords made on your device."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Password Generator</h3><p>Strong, random passwords made on your device.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  function iso(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function parse(v){ var p = v.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function dim(y, m){ return new Date(y, m + 1, 0).getDate(); }
+  function addM(a, n){ var y = a.getFullYear() + Math.floor((a.getMonth() + n) / 12), m = (a.getMonth() + n) % 12; return new Date(y, m, Math.min(a.getDate(), dim(y, m))); }
+  function diff(a, b){
+    var months = (b.getFullYear() - a.getFullYear()) * 12 + b.getMonth() - a.getMonth();
+    if (addM(a, months) > b) months--;
+    return [Math.floor(months / 12), months % 12, dayCount(addM(a, months), b)];
+  }
+  function dayCount(a, b){ return Math.round((Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) - Date.UTC(a.getFullYear(), a.getMonth(), a.getDate())) / 86400000); }
+  function pl(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); }
+  function calc(){
+    var dv = $('dob').value, ov = $('on').value;
+    try { localStorage.setItem('dd-age', dv); } catch(e){}
+    if (!dv || !ov) return;
+    var a = parse(dv), b = parse(ov);
+    if (b < a) { $('err').className = 'say err'; $('err').textContent = 'The "as on" date is before the date of birth.'; $('age').textContent = '—'; return; }
+    $('err').textContent = '';
+    var r = diff(a, b), days = dayCount(a, b);
+    $('age').textContent = pl(r[0], 'year') + ', ' + pl(r[1], 'month') + ', ' + pl(r[2], 'day');
+    $('tm').textContent = (r[0] * 12 + r[1]).toLocaleString('en-IN'); $('tw').textContent = Math.floor(days / 7).toLocaleString('en-IN') + (days % 7 ? ' + ' + pl(days % 7, 'day') : '');
+    $('td').textContent = days.toLocaleString('en-IN'); $('th').textContent = (days * 24).toLocaleString('en-IN');
+    var ny = b.getFullYear(), next = new Date(ny, a.getMonth(), Math.min(a.getDate(), dim(ny, a.getMonth())));
+    if (next <= b) next = new Date(ny + 1, a.getMonth(), Math.min(a.getDate(), dim(ny + 1, a.getMonth())));
+    var until = dayCount(b, next), born = DAYS[a.getDay()];
+    var rows = [['Born on a', born], ['Next birthday', next.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })], ['Days to go', until === 0 ? 'Today! 🎂' : pl(until, 'day')], ['Turning', String(next.getFullYear() - a.getFullYear())]];
+    var out = $('out'); out.innerHTML = '';
+    rows.forEach(function(x){ var k = document.createElement('div'); k.className = 'k'; k.textContent = x[0]; var v = document.createElement('div'); v.className = 'v'; v.textContent = x[1]; var c = document.createElement('div'); c.className = 'c'; out.appendChild(k); out.appendChild(v); out.appendChild(c); });
+  }
+  var now = new Date();
+  $('on').value = iso(now);
+  $('today').addEventListener('click', function(){ $('on').value = iso(new Date()); calc(); });
+  $('jan1').addEventListener('click', function(){ $('on').value = new Date().getFullYear() + '-01-01'; calc(); });
+  $('aug1').addEventListener('click', function(){ $('on').value = new Date().getFullYear() + '-08-01'; calc(); });
+  ['dob', 'on'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  try { var s = localStorage.getItem('dd-age'); if (s) $('dob').value = s; } catch(e){}
+  calc();
+})();
+</script>
+
+</body>
+</html>

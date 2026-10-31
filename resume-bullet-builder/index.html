@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Resume Bullet Builder: action verbs and achievement templates (free) · DevDesk</title>
+<meta name="description" content="Write strong resume bullet points with the action + task + result formula. Pick from 150+ action verbs, check a bullet for weak phrases and missing numbers, and copy ready-made examples by role.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/resume-bullet-builder/">
+<meta property="og:title" content="Resume Bullet Builder: action verbs and achievement templates (free) · DevDesk">
+<meta property="og:description" content="Write strong resume bullet points with the action + task + result formula. Pick from 150+ action verbs, check a bullet for weak phrases and missing numbers, and copy ready-made examples by role.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/resume-bullet-builder/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Resume bullet builder</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Resume bullet <span class="hand">builder</span></h1>
+    <p>Turn "responsible for reports" into "Automated 12 weekly reports with Python, saving the team 6 hours a week". Fill in the blanks, or paste a bullet to check it.</p>
+  </header>
+
+  <section class="panel" aria-label="Bullet builder">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><label for="verb">1. Start with an action verb</label><input class="inp wide" id="verb" value="Automated" spellcheck="false">
+          <div class="row-inline"><div class="opt" style="flex:1 1 100%"><label for="vcat">Show verbs for</label><select id="vcat"></select></div></div>
+          <div class="chips-row" id="verbs"></div></div>
+        <div class="field"><label for="what">2. What did you do?</label><input class="inp wide" id="what" value="12 weekly sales reports"></div>
+        <div class="field"><label for="how">3. How, or with what? (optional)</label><input class="inp wide" id="how" value="using Python and Airflow"></div>
+        <div class="field"><label for="res">4. What was the result? Use a number.</label><input class="inp wide" id="res" value="saving the team 6 hours a week"></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Your bullet</span></div>
+        <div class="pw-out" id="out" style="font-family:var(--f-body);font-size:18px"></div>
+        <div class="row-inline"><button class="btn primary" id="copy" type="button">Copy</button><button class="btn" id="add" type="button">Add to my list</button></div>
+        <ul class="runs" id="checks"></ul>
+        <h3 style="font-size:16px">My list</h3>
+        <ol class="bullet-out" id="list"></ol>
+        <div class="row-inline"><button class="icon-btn" id="copyAll" type="button">Copy all</button><button class="icon-btn" id="clearAll" type="button">Clear list</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel card-box" style="margin-top:18px" aria-label="Check a bullet">
+    <h2 class="box-title">Check a bullet you already have</h2>
+    <label for="chk" class="sr">Paste a bullet</label>
+    <textarea id="chk" class="code" style="min-height:80px;font-family:var(--f-body);font-size:16px" placeholder="Responsible for handling the monthly reporting process for the finance team"></textarea>
+    <ul class="runs" id="chkOut"></ul>
+  </section>
+
+  <section class="panel card-box" style="margin-top:18px" aria-label="Examples by role">
+    <h2 class="box-title">Examples by role</h2>
+    <div class="chips-row" id="roles"></div>
+    <ul class="runs" id="examples"></ul>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>The formula</h2>
+    <p><b>Action verb + what you did + how + measurable result.</b> Recruiters skim a resume in seconds; a bullet that starts with a strong verb and ends with a number gets read.</p>
+    <h2>Where to find your numbers</h2>
+    <ul>
+      <li><b>Time:</b> hours saved, faster runtime, shorter turnaround ("from 3 days to 4 hours").</li>
+      <li><b>Money:</b> cost cut, revenue influenced, budget managed.</li>
+      <li><b>Scale:</b> rows, users, tables, reports, team size, number of clients.</li>
+      <li><b>Quality:</b> fewer errors, higher accuracy, uptime, customer rating.</li>
+    </ul>
+    <p>Estimates are fine if they're honest and you can explain them in an interview. "About 40%" beats no number.</p>
+    <h2>Words to avoid</h2>
+    <p>"Responsible for", "worked on", "helped with", "involved in" and "duties included" describe a job, not an achievement. Replace them with what you actually did.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>How many bullets per job?</summary><p>3–5 for recent roles, 1–3 for older ones. Put the most impressive one first.</p></details>
+    <details><summary>Should bullets end with a full stop?</summary><p>Either is fine. Just be consistent across the resume.</p></details>
+    <details><summary>Will this help with ATS?</summary><p>Strong bullets help people; keywords help ATS. Use the job description's words for tools and skills, then check with the <a href="../ats-score-checker/index.html">ATS score checker</a>.</p></details>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../salary-hike-calculator/index.html" data-q="salary hike calculator your new ctc from a hike percentage, and the reverse."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Salary Hike Calculator</h3><p>Your new CTC from a hike percentage, and the reverse.</p><span class="go">Open →</span></a><a class="note live c-career" href="../notice-period-calculator/index.html" data-q="notice period calculator your last working day from your resignation date."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Notice Period Calculator</h3><p>Your last working day from your resignation date.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineer-interview-questions/index.html" data-q="data engineer interview questions sql, adf and snowflake questions with answers."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineer Interview Questions</h3><p>SQL, ADF and Snowflake questions with answers.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineering-glossary/index.html" data-q="data engineering glossary from acid to z-ordering, explained simply."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineering Glossary</h3><p>From ACID to Z-ordering, explained simply.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var VERBS = {
+    'Built something': 'Built Designed Developed Engineered Created Launched Implemented Architected Prototyped Shipped Established Introduced Configured Deployed Integrated',
+    'Improved something': 'Improved Optimised Streamlined Accelerated Upgraded Refactored Modernised Enhanced Redesigned Simplified Strengthened Standardised Overhauled Revamped Tuned',
+    'Saved time or money': 'Automated Reduced Cut Eliminated Consolidated Saved Minimised Lowered Decreased Recovered Negotiated Trimmed Replaced Migrated Centralised',
+    'Grew something': 'Increased Grew Boosted Expanded Generated Doubled Drove Raised Scaled Won Acquired Converted Captured Maximised Delivered',
+    'Led people': 'Led Managed Mentored Coached Directed Coordinated Supervised Guided Hired Onboarded Trained Headed Organised Mobilised Championed',
+    'Analysed data': 'Analysed Modelled Forecasted Identified Measured Evaluated Investigated Audited Quantified Mapped Tracked Validated Researched Diagnosed Benchmarked',
+    'Worked with others': 'Partnered Collaborated Liaised Presented Persuaded Influenced Aligned Facilitated Advised Consulted Communicated Negotiated Resolved Supported Represented'
+  };
+  var WEAK = [[/\b(was )?responsible for\b/i, '"Responsible for" describes a duty. Start with what you did, e.g. "Managed" or "Built".'], [/\bworked on\b/i, '"Worked on" is vague. Say what you built, fixed or improved.'], [/\bhelped( with| to)?\b/i, '"Helped" undersells you. Name your part: "Designed", "Co-led", "Wrote".'], [/\b(was )?involved in\b/i, '"Involved in" hides your role. What exactly did you do?'], [/\bduties included\b/i, 'Drop "duties included" and list achievements instead.'], [/\bvarious\b|\betc\.?\b/i, '"Various" and "etc." are filler. Be specific or leave it out.'], [/\b(I|my|me)\b/, 'Resumes skip "I" and "my". Start directly with the verb.'], [/\bteam player\b|\bhard[- ]?working\b|\bgo-getter\b/i, 'Clichés like "team player" add nothing. Show it with an example.']];
+  var ROLES = {
+    'Data engineer': ['Built 40+ ADF and dbt pipelines loading 2 TB a day into Snowflake, cutting data latency from 24 hours to 30 minutes', 'Reduced Snowflake compute cost by 35% by right-sizing warehouses and clustering the 5 largest tables', 'Automated data-quality checks on 120 tables with Great Expectations, catching 95% of issues before business users saw them', 'Migrated 300 SQL Server stored procedures to Databricks, finishing two weeks ahead of schedule'],
+    'Data analyst': ['Designed a Power BI sales dashboard used daily by 60 regional managers, replacing 15 Excel reports', 'Identified a ₹1.2 crore revenue leak by analysing 3 years of discount data in SQL', 'Forecast monthly demand with 92% accuracy, helping cut overstock by 18%'],
+    'Software developer': ['Shipped a React checkout flow that raised mobile conversion by 12%', 'Cut API response time from 800 ms to 120 ms by adding Redis caching and fixing N+1 queries', 'Raised unit-test coverage from 40% to 85%, reducing production bugs by half'],
+    'Sales': ['Closed ₹2.4 crore in new business in FY26, 130% of target', 'Grew the Pune enterprise pipeline from 8 to 35 qualified accounts in 6 months', 'Won back 12 lapsed clients through a quarterly review programme'],
+    'Marketing': ['Grew Instagram followers from 5K to 48K in 9 months with a weekly reel series', 'Lowered cost per lead by 40% by restructuring Google Ads campaigns', 'Launched an email nurture sequence that converted 9% of trial users to paid'],
+    'HR / recruiting': ['Hired 85 engineers in 6 months, reducing average time-to-hire from 45 to 28 days', 'Designed an onboarding programme that cut first-year attrition by 20%', 'Rolled out a performance-review process for 600 employees across 4 offices'],
+    'Fresher / student': ['Built a college event app used by 1,200 students, with 4.6★ on the Play Store', 'Led a 4-person final-year project predicting crop yield with 88% accuracy', 'Organised a 300-participant hackathon, securing ₹1.5 lakh in sponsorship']
+  };
+  Object.keys(VERBS).forEach(function(k){ var o = document.createElement('option'); o.textContent = k; $('vcat').appendChild(o); });
+  function showVerbs(){ var box = $('verbs'); box.innerHTML = ''; VERBS[$('vcat').value].split(' ').forEach(function(v){ var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-btn'; b.textContent = v; b.addEventListener('click', function(){ $('verb').value = v; build(); }); box.appendChild(b); }); }
+  function checks(text){
+    var out = [];
+    WEAK.forEach(function(w){ if (w[0].test(text)) out.push(['✕', w[1]]); });
+    if (!/\d/.test(text)) out.push(['✕', 'No number yet. Add a figure: %, ₹, hours, users, rows or count.']);
+    else out.push(['✓', 'Has a number. Good.']);
+    var first = (text.trim().split(/\s+/)[0] || '').replace(/[^A-Za-z]/g, ''), all = Object.keys(VERBS).map(function(k){ return VERBS[k]; }).join(' ').toLowerCase().split(' ');
+    if (first && all.indexOf(first.toLowerCase()) >= 0) out.push(['✓', 'Starts with a strong action verb.']);
+    else if (first) out.push(['•', 'Consider starting with an action verb from the list above.']);
+    var words = text.trim().split(/\s+/).filter(Boolean).length;
+    if (words > 30) out.push(['•', words + ' words. Aim for under 30 so it fits on one or two lines.']);
+    return out;
+  }
+  function list(el, items){ el.innerHTML = ''; items.forEach(function(x){ var li = document.createElement('li'), s = document.createElement('span'); s.textContent = x[1]; li.style.justifyContent = 'flex-start'; li.style.fontFamily = 'var(--f-body)'; var b = document.createElement('b'); b.textContent = x[0]; b.style.color = x[0] === '✓' ? 'var(--ok)' : x[0] === '✕' ? 'var(--err)' : 'var(--muted)'; li.appendChild(b); li.appendChild(s); el.appendChild(li); }); }
+  var bullet = '', mine = TB.load('dd-bullets') || [];
+  function build(){
+    var parts = [$('verb').value.trim(), $('what').value.trim(), $('how').value.trim()].filter(Boolean).join(' '), res = $('res').value.trim();
+    bullet = parts + (res ? ', ' + res.replace(/^,\s*/, '') : ''); bullet = bullet.charAt(0).toUpperCase() + bullet.slice(1);
+    $('out').textContent = bullet || '—'; list($('checks'), bullet ? checks(bullet) : []);
+  }
+  function drawList(){ var ol = $('list'); ol.innerHTML = ''; mine.forEach(function(b){ var li = document.createElement('li'); li.textContent = b; ol.appendChild(li); }); TB.save('dd-bullets', mine); }
+  function copyBtn(btn, text, label){ TB.copy(text).then(function(ok){ btn.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(function(){ btn.textContent = label; }, 1400); }); }
+  ['verb', 'what', 'how', 'res'].forEach(function(id){ $(id).addEventListener('input', build); });
+  $('vcat').addEventListener('change', showVerbs);
+  $('copy').addEventListener('click', function(){ copyBtn(this, bullet, 'Copy'); });
+  $('add').addEventListener('click', function(){ if (bullet && mine.indexOf(bullet) < 0) { mine.push(bullet); drawList(); } });
+  $('copyAll').addEventListener('click', function(){ copyBtn(this, mine.map(function(b){ return '• ' + b; }).join('\n'), 'Copy all'); });
+  $('clearAll').addEventListener('click', function(){ mine = []; drawList(); });
+  $('chk').addEventListener('input', function(){ var v = this.value.trim(); list($('chkOut'), v ? checks(v) : []); });
+  Object.keys(ROLES).forEach(function(r, i){ var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-btn'; b.textContent = r; b.addEventListener('click', function(){ document.querySelectorAll('#roles .chip-btn').forEach(function(x){ x.classList.remove('on'); }); b.classList.add('on'); showRole(r); }); $('roles').appendChild(b); if (!i) b.classList.add('on'); });
+  function showRole(r){ var ul = $('examples'); ul.innerHTML = ''; ROLES[r].forEach(function(t){ var li = document.createElement('li'), s = document.createElement('span'), btn = document.createElement('button'); s.textContent = t; s.style.cssText = 'font-family:var(--f-body);color:var(--ink);font-size:15px;flex:1 1 300px'; btn.type = 'button'; btn.className = 'icon-btn'; btn.textContent = 'Copy'; btn.addEventListener('click', function(){ copyBtn(btn, t, 'Copy'); }); li.appendChild(s); li.appendChild(btn); ul.appendChild(li); }); }
+  showVerbs(); build(); drawList(); showRole('Data engineer');
+})();
+</script>
+
+</body>
+</html>

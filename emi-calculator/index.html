@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>EMI Calculator: home, car and personal loan EMI with schedule (free) · DevDesk</title>
+<meta name="description" content="Work out your monthly EMI, total interest and total payment for any loan in rupees. See a year-by-year and month-by-month repayment schedule and download it as a spreadsheet.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/emi-calculator/">
+<meta property="og:title" content="EMI Calculator: home, car and personal loan EMI with schedule (free) · DevDesk">
+<meta property="og:description" content="Work out your monthly EMI, total interest and total payment for any loan in rupees. See a year-by-year and month-by-month repayment schedule and download it as a spreadsheet.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/emi-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Money calculators / EMI calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Money calculators</span>
+    <h1>EMI <span class="hand">calculator</span></h1>
+    <p>Enter the loan amount, interest rate and tenure. You'll see the EMI, how much of it is interest, and the full repayment schedule.</p>
+  </header>
+
+  <section class="panel" aria-label="EMI calculator"><div class="panel-body">
+    <div class="calc-grid">
+      <div class="calc-form">
+        <div class="field"><label for="amt">Loan amount (₹)</label><input class="inp" id="amt" inputmode="decimal" value="3000000"><span class="hint" id="amtWords"></span></div>
+        <div class="field"><label for="rate">Interest rate (% per year)</label><input class="inp" id="rate" inputmode="decimal" value="8.5"></div>
+        <div class="field"><label for="tenure">Tenure</label>
+          <div class="field-row"><input class="inp" id="tenure" inputmode="numeric" value="20" aria-label="Tenure value">
+            <select id="unit" aria-label="Tenure unit"><option value="y">Years</option><option value="m">Months</option></select></div></div>
+        <div class="field"><label for="start">First EMI month</label><input class="inp" type="month" id="start"></div>
+        <div class="chips-row" aria-label="Typical rates"><span class="hint">Typical:</span>
+          <button class="chip-btn" type="button" data-r="8.5" data-t="20">Home 8.5% · 20 y</button>
+          <button class="chip-btn" type="button" data-r="9.5" data-t="5">Car 9.5% · 5 y</button>
+          <button class="chip-btn" type="button" data-r="12" data-t="3">Personal 12% · 3 y</button>
+          <button class="chip-btn" type="button" data-r="10" data-t="10">Education 10% · 10 y</button></div>
+      </div>
+      <div class="calc-form">
+        <div class="tiles" id="tiles"></div>
+        <div id="split"></div>
+        <p class="say" id="say"></p>
+      </div>
+    </div>
+  </div></section>
+
+  <section style="margin-top:22px" aria-label="Repayment schedule">
+    <div class="row-inline" style="justify-content:space-between;margin-bottom:10px">
+      <div class="seg" role="radiogroup" aria-label="Schedule view"><label><input type="radio" name="view" value="y" checked><span>Yearly</span></label><label><input type="radio" name="view" value="m"><span>Monthly</span></label></div>
+      <button class="icon-btn" id="dl" type="button">Download schedule (.csv)</button>
+    </div>
+    <div class="data-wrap"><table class="data-table" id="sched"></table></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How EMI is calculated</h2>
+    <p>Banks use the reducing-balance formula:</p>
+    <pre><code>EMI = P × r × (1 + r)^n ÷ ((1 + r)^n − 1)</code></pre>
+    <p><b>P</b> is the loan amount, <b>r</b> is the monthly interest rate (annual rate ÷ 12 ÷ 100) and <b>n</b> is the number of monthly instalments. For ₹30 lakh at 8.5% for 20 years, r = 0.007083 and n = 240, which gives an EMI of about ₹26,035.</p>
+    <h2>Why early EMIs are mostly interest</h2>
+    <p>Interest is charged on the outstanding balance. At the start the balance is highest, so most of each EMI goes to interest. As you repay, the interest part shrinks and the principal part grows. That's why prepaying in the first few years saves the most.</p>
+    <h2>Ways to pay less interest</h2>
+    <ul>
+      <li><b>Prepay early.</b> Even one extra EMI a year can cut years off a 20-year home loan.</li>
+      <li><b>Choose the shortest tenure you can afford.</b> A higher EMI over fewer years costs far less in total.</li>
+      <li><b>Ask for a lower rate</b> when your credit score improves, or switch lenders through a balance transfer.</li>
+      <li><b>Home loan tax benefit:</b> under the old tax regime, up to ₹2 lakh of interest a year on a self-occupied home is deductible (section 24b). See the <a href="../income-tax-calculator/index.html">tax calculator</a>.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is this the same EMI my bank will charge?</summary><p>For a standard reducing-balance loan, yes, within a few rupees of rounding. Processing fees, insurance and the pre-EMI period are not included.</p></details>
+    <details><summary>What is a flat-rate loan?</summary><p>Some personal and vehicle loans charge interest on the original amount for the whole tenure. A 10% flat rate is roughly an 18% reducing rate over three years, so always ask for the reducing-balance rate.</p></details>
+    <details><summary>Is my data saved?</summary><p>Your last inputs are remembered in this browser only. Nothing is uploaded.</p></details>
+    <h2>More money calculators</h2>
+    <div class="related"><a class="note live c-money" href="../sip-calculator/index.html" data-q="sip calculator what your monthly sip grows to over time."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>SIP Calculator</h3><p>What your monthly SIP grows to over time.</p><span class="go">Open →</span></a><a class="note live c-money" href="../gst-calculator/index.html" data-q="gst calculator add or remove gst at any rate in one click."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>GST Calculator</h3><p>Add or remove GST at any rate in one click.</p><span class="go">Open →</span></a><a class="note live c-money" href="../income-tax-calculator/index.html" data-q="income tax: old vs new regime compare your tax under both regimes."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>Income Tax: Old vs New Regime</h3><p>Compare your tax under both regimes.</p><span class="go">Open →</span></a><a class="note live c-money" href="../fd-rd-calculator/index.html" data-q="fd &amp; rd calculator maturity value for fixed and recurring deposits."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>FD &amp; RD Calculator</h3><p>Maturity value for fixed and recurring deposits.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script src="../assets/calc.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var rows = { y: [], m: [] };
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function calc(){
+    var P = DC.num('amt'), R = DC.num('rate'), t = DC.num('tenure'), n = Math.round($('unit').value === 'y' ? t * 12 : t);
+    $('amtWords').textContent = P ? DC.words(P) : '';
+    if (P <= 0 || n <= 0 || R < 0 || n > 600) { $('tiles').innerHTML = ''; $('split').innerHTML = ''; $('say').className = 'say err'; $('say').textContent = 'Enter a loan amount, a rate and a tenure up to 50 years.'; $('sched').innerHTML = ''; return; }
+    var r = R / 1200, emi = r ? P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) : P / n;
+    var bal = P, st = ($('start').value || '').split('-'), y0 = +st[0] || new Date().getFullYear(), m0 = (+st[1] || new Date().getMonth() + 1) - 1;
+    rows.m = []; rows.y = []; var yr = null;
+    for (var k = 0; k < n; k++) {
+      var intr = bal * r, prin = Math.min(bal, emi - intr); bal = Math.max(0, bal - prin);
+      var mm = (m0 + k) % 12, yy = y0 + Math.floor((m0 + k) / 12);
+      rows.m.push([MON[mm] + ' ' + yy, DC.inr(emi), DC.inr(prin), DC.inr(intr), DC.inr(bal)]);
+      if (!yr || yr.y !== yy) { yr = { y: yy, e: 0, p: 0, i: 0, b: 0 }; rows.y.push(yr); }
+      yr.e += emi; yr.p += prin; yr.i += intr; yr.b = bal;
+    }
+    rows.y = rows.y.map(function(x){ return x.y ? [String(x.y), DC.inr(x.e), DC.inr(x.p), DC.inr(x.i), DC.inr(x.b)] : x; });
+    var total = emi * n, interest = total - P;
+    DC.tiles($('tiles'), [['Monthly EMI', DC.inr(emi), 'hero'], ['Total interest', DC.inr(interest), '', DC.words(interest)], ['Total payment', DC.inr(total), '', DC.words(total)]]);
+    DC.split($('split'), [['Principal', P], ['Interest', interest]]);
+    $('say').className = 'say';
+    $('say').textContent = 'You pay ' + (interest / P * 100).toFixed(0) + '% of the loan amount again as interest. One extra EMI each year would shorten this loan noticeably.';
+    show();
+  }
+  function show(){
+    var v = document.querySelector('input[name="view"]:checked').value;
+    DC.table($('sched'), [v === 'y' ? 'Year' : 'Month', 'EMI paid', 'Principal', 'Interest', 'Balance'], rows[v]);
+  }
+  document.querySelectorAll('input[name="view"]').forEach(function(x){ x.addEventListener('change', show); });
+  document.querySelectorAll('[data-r]').forEach(function(b){ b.addEventListener('click', function(){ $('rate').value = b.dataset.r; $('tenure').value = b.dataset.t; $('unit').value = 'y'; $('rate').dispatchEvent(new Event('input')); }); });
+  $('dl').addEventListener('click', function(){ var v = document.querySelector('input[name="view"]:checked').value; DC.csv('emi-schedule.csv', [v === 'y' ? 'Year' : 'Month', 'EMI paid', 'Principal', 'Interest', 'Balance'], rows[v]); });
+  var d = new Date(); d.setMonth(d.getMonth() + 1); $('start').value = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+  DC.remember('dd-emi', ['amt', 'rate', 'tenure', 'unit'], calc);
+  $('start').addEventListener('input', calc);
+})();
+</script>
+
+</body>
+</html>

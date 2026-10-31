@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Data Engineer Interview Questions with Answers: SQL, Spark, Snowflake, ADF (free) · DevDesk</title>
+<meta name="description" content="40 real data engineer interview questions with clear answers and code: SQL window functions, PySpark, Snowflake, Azure Data Factory, dbt, data modelling and pipeline design. Filter by topic and level.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/data-engineer-interview-questions/">
+<meta property="og:title" content="Data Engineer Interview Questions with Answers: SQL, Spark, Snowflake, ADF (free) · DevDesk">
+<meta property="og:description" content="40 real data engineer interview questions with clear answers and code: SQL window functions, PySpark, Snowflake, Azure Data Factory, dbt, data modelling and pipeline design. Filter by topic and level.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/data-engineer-interview-questions/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Data engineer interview questions</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Data engineer <span class="hand">interview questions</span></h1>
+    <p>Questions that actually come up in data engineering interviews, with short answers you can explain in your own words. Written by a working data engineer.</p>
+  </header>
+
+  <section class="panel" aria-label="Question filters">
+    <div class="toolbar">
+      <div class="opt" style="flex:1 1 240px"><label for="q">Search</label><input class="inp" id="q" type="search" placeholder="e.g. window, SCD, partition" style="width:100%"></div>
+      <div class="opt"><label for="lvl">Level</label><select id="lvl"><option value="">All levels</option><option value="Basic">Basic</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select></div>
+      <div class="opt"><label>&nbsp;</label><div class="row-inline"><button class="icon-btn" id="open" type="button">Expand all</button><button class="icon-btn" id="shut" type="button">Collapse all</button><button class="icon-btn" id="rand" type="button">Quiz me 🎲</button></div></div>
+    </div>
+    <div class="panel-body">
+      <div class="chips-row" id="topics" role="group" aria-label="Topics"></div>
+      <p class="say" id="count"></p>
+      <div class="qa" id="list"></div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How to prepare</h2>
+    <ul>
+      <li><b>SQL is round one almost everywhere.</b> Practise window functions, joins on messy data and "find the second highest" style questions until you can write them without looking anything up.</li>
+      <li><b>Know one cloud stack deeply.</b> For Azure: ADF, ADLS, Databricks or Synapse, Key Vault. Be ready to draw a pipeline you've built.</li>
+      <li><b>Bring numbers.</b> Data volumes, runtimes, cost savings. "Loaded 2 TB a day" is more convincing than "worked on big data".</li>
+      <li><b>Practise system design out loud:</b> source → ingestion → storage layers → transformation → serving, plus monitoring, retries and late data.</li>
+    </ul>
+    <p>Polish your resume with the <a href="../resume-bullet-builder/index.html">bullet builder</a> and check it against the job description with the <a href="../ats-score-checker/index.html">ATS score checker</a>.</p>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../salary-hike-calculator/index.html" data-q="salary hike calculator your new ctc from a hike percentage, and the reverse."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Salary Hike Calculator</h3><p>Your new CTC from a hike percentage, and the reverse.</p><span class="go">Open →</span></a><a class="note live c-career" href="../notice-period-calculator/index.html" data-q="notice period calculator your last working day from your resignation date."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Notice Period Calculator</h3><p>Your last working day from your resignation date.</p><span class="go">Open →</span></a><a class="note live c-career" href="../resume-bullet-builder/index.html" data-q="resume bullet builder strong action verbs and templates for resume points."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Resume Bullet Builder</h3><p>Strong action verbs and templates for resume points.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineering-glossary/index.html" data-q="data engineering glossary from acid to z-ordering, explained simply."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineering Glossary</h3><p>From ACID to Z-ordering, explained simply.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  // [topic, level, question, answer (HTML, trusted static content)]
+  var Q = [
+    ['SQL', 'Basic', 'What is the difference between WHERE and HAVING?', '<p><code>WHERE</code> filters rows before grouping; <code>HAVING</code> filters groups after <code>GROUP BY</code>, so it can use aggregates.</p><pre><code>SELECT dept, COUNT(*) AS n\nFROM emp\nWHERE active = 1\nGROUP BY dept\nHAVING COUNT(*) &gt; 10;</code></pre>'],
+    ['SQL', 'Basic', 'Explain the types of JOIN.', '<p><b>INNER</b> keeps matching rows only. <b>LEFT</b> keeps all left rows, with NULLs where the right has no match. <b>RIGHT</b> is the mirror. <b>FULL OUTER</b> keeps everything from both. <b>CROSS</b> returns every combination. A <b>self join</b> joins a table to itself, e.g. employee to manager.</p>'],
+    ['SQL', 'Basic', 'ROW_NUMBER vs RANK vs DENSE_RANK?', '<p>For salaries 100, 100, 90: <code>ROW_NUMBER</code> gives 1, 2, 3 (always unique); <code>RANK</code> gives 1, 1, 3 (skips after ties); <code>DENSE_RANK</code> gives 1, 1, 2 (no gaps).</p>'],
+    ['SQL', 'Intermediate', 'Find the second highest salary in each department.', '<pre><code>SELECT dept, salary\nFROM (\n  SELECT dept, salary,\n         DENSE_RANK() OVER (PARTITION BY dept ORDER BY salary DESC) AS rk\n  FROM emp\n) t\nWHERE rk = 2;</code></pre><p>Use <code>DENSE_RANK</code> so ties at the top don\'t hide the real second value. In Snowflake you can use <code>QUALIFY rk = 2</code> without a subquery.</p>'],
+    ['SQL', 'Intermediate', 'How do you remove duplicate rows but keep one?', '<pre><code>-- keep the latest row per customer\nSELECT *\nFROM customers\nQUALIFY ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY updated_at DESC) = 1;</code></pre><p>Without <code>QUALIFY</code>, wrap it in a CTE and filter <code>rn = 1</code>. To delete in place in SQL Server, <code>DELETE</code> from a CTE where <code>rn &gt; 1</code>.</p>'],
+    ['SQL', 'Intermediate', 'Write a running total and a 7-day moving average.', '<pre><code>SELECT order_date, amount,\n  SUM(amount) OVER (ORDER BY order_date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total,\n  AVG(amount) OVER (ORDER BY order_date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS ma_7\nFROM daily_sales;</code></pre><p>Mention <code>ROWS</code> vs <code>RANGE</code>: <code>RANGE</code> treats rows with the same order value as one group, which changes results when dates repeat.</p>'],
+    ['SQL', 'Intermediate', 'Why can NOT IN return no rows when the subquery has NULLs?', '<p><code>x NOT IN (1, NULL)</code> means <code>x &lt;&gt; 1 AND x &lt;&gt; NULL</code>. Comparing with NULL is UNKNOWN, so the whole condition is never TRUE. Use <code>NOT EXISTS</code> or filter NULLs in the subquery.</p>'],
+    ['SQL', 'Advanced', 'Find users who logged in on 3 or more consecutive days.', '<pre><code>WITH d AS (\n  SELECT DISTINCT user_id, login_date FROM logins\n), g AS (\n  SELECT user_id, login_date,\n         DATEADD(day, -ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY login_date), login_date) AS grp\n  FROM d\n)\nSELECT user_id, MIN(login_date) AS start_date, COUNT(*) AS streak\nFROM g GROUP BY user_id, grp\nHAVING COUNT(*) &gt;= 3;</code></pre><p>The "gaps and islands" trick: consecutive dates minus their row number give the same value.</p>'],
+    ['SQL', 'Advanced', 'How would you speed up a slow query?', '<p>Read the execution plan first. Then: filter early and on partition or cluster keys; select only needed columns; avoid functions on filtered columns (<code>WHERE YEAR(dt) = 2026</code> blocks pruning; use a date range); check for exploding joins from duplicate keys; replace correlated subqueries with joins or window functions; pre-aggregate large tables; add indexes (row stores) or clustering (Snowflake).</p>'],
+    ['Python & Spark', 'Basic', 'What is the difference between a list and a tuple? A list and a set?', '<p>Lists are mutable and ordered; tuples are immutable and can be dictionary keys. Sets hold unique, unordered items with O(1) membership checks, handy for de-duplication.</p>'],
+    ['Python & Spark', 'Intermediate', 'What is lazy evaluation in Spark? Transformations vs actions?', '<p>Transformations (<code>select</code>, <code>filter</code>, <code>join</code>) only build a plan. Nothing runs until an action (<code>count</code>, <code>collect</code>, <code>write</code>, <code>show</code>). This lets Spark\'s Catalyst optimiser combine steps, push filters down and prune columns.</p>'],
+    ['Python & Spark', 'Intermediate', 'Narrow vs wide transformations?', '<p>Narrow transformations (<code>filter</code>, <code>map</code>) work within one partition. Wide ones (<code>groupBy</code>, <code>join</code>, <code>distinct</code>, <code>orderBy</code>) need a <b>shuffle</b>, moving data across the network, which is usually the slowest part of a job. Each shuffle starts a new stage.</p>'],
+    ['Python & Spark', 'Intermediate', 'repartition vs coalesce?', '<p><code>repartition(n)</code> does a full shuffle and can increase or decrease partitions evenly. <code>coalesce(n)</code> only merges partitions without a full shuffle, so it\'s cheaper but can leave uneven sizes. Use <code>coalesce</code> to reduce output files before writing.</p>'],
+    ['Python & Spark', 'Advanced', 'How do you handle data skew in a Spark join?', '<p>Signs: one task runs far longer than the rest. Fixes: enable Adaptive Query Execution (<code>spark.sql.adaptive.skewJoin.enabled</code>), broadcast the small table, filter or handle null keys separately, or "salt" the hot key by adding a random suffix on the big side and exploding the small side to match.</p>'],
+    ['Python & Spark', 'Advanced', 'When does Spark use a broadcast join?', '<p>When one side is smaller than <code>spark.sql.autoBroadcastJoinThreshold</code> (10 MB by default), or when you hint <code>broadcast(df)</code>. The small table is copied to every executor, so the large table isn\'t shuffled. Don\'t broadcast tables that are hundreds of MB; executors can run out of memory.</p>'],
+    ['Python & Spark', 'Intermediate', 'Why prefer Parquet or Delta over CSV?', '<p>Parquet is columnar and compressed: queries read only the columns they need, files are 5–10× smaller and types are stored. Delta Lake adds ACID transactions, <code>MERGE</code>, time travel and schema enforcement on top of Parquet.</p>'],
+    ['Snowflake', 'Basic', 'Explain Snowflake\'s architecture.', '<p>Three layers: <b>storage</b> (compressed columnar micro-partitions in cloud storage), <b>compute</b> (virtual warehouses that scale independently and can run in parallel without blocking each other), and <b>cloud services</b> (metadata, optimisation, security, transactions). Storage and compute are billed separately.</p>'],
+    ['Snowflake', 'Intermediate', 'What are micro-partitions and clustering keys?', '<p>Snowflake stores tables in micro-partitions of 50–500 MB uncompressed, with min/max metadata per column. Queries skip partitions that can\'t match (pruning). A clustering key keeps related rows together on very large tables so pruning works better, at the cost of background reclustering credits.</p>'],
+    ['Snowflake', 'Intermediate', 'Time Travel vs Fail-safe?', '<p><b>Time Travel</b> lets you query, clone or undrop data as it was in the past: 1 day by default, up to 90 days on Enterprise. <b>Fail-safe</b> is a further 7 days that only Snowflake support can recover from. Transient and temporary tables have no fail-safe.</p>'],
+    ['Snowflake', 'Intermediate', 'How do Streams and Tasks work together?', '<p>A <b>stream</b> tracks inserts, updates and deletes on a table since it was last consumed (change data capture). A <b>task</b> runs SQL on a schedule or after another task. Together: a task checks <code>SYSTEM$STREAM_HAS_DATA</code> and <code>MERGE</code>s the stream\'s changes into a target, giving incremental pipelines inside Snowflake.</p>'],
+    ['Snowflake', 'Advanced', 'How would you reduce Snowflake costs?', '<p>Set auto-suspend to 60 seconds, right-size warehouses (bigger isn\'t always faster), separate workloads into their own warehouses, use resource monitors, cluster only very large tables, avoid <code>SELECT *</code>, use result caching, and review <code>QUERY_HISTORY</code> and <code>WAREHOUSE_METERING_HISTORY</code> for the most expensive queries.</p>'],
+    ['Snowflake', 'Intermediate', 'What is zero-copy cloning?', '<p><code>CREATE TABLE dev_orders CLONE prod_orders;</code> creates a copy instantly without duplicating storage; it only points to the same micro-partitions. New storage is used only for changes after the clone. Great for dev and test environments.</p>'],
+    ['Azure & ADF', 'Basic', 'What are the main components of Azure Data Factory?', '<p><b>Pipelines</b> (workflows), <b>activities</b> (steps such as Copy, Data Flow, Lookup, ForEach), <b>datasets</b> (pointers to data), <b>linked services</b> (connections), <b>integration runtimes</b> (compute: Azure, self-hosted for on-premises sources, SSIS) and <b>triggers</b> (schedule, tumbling window, storage event).</p>'],
+    ['Azure & ADF', 'Intermediate', 'How do you build an incremental load in ADF?', '<p>Keep a watermark (last loaded <code>modified_at</code>) in a control table. A <b>Lookup</b> reads the old and new watermarks, a <b>Copy</b> activity loads rows between them, and a Stored Procedure activity updates the watermark after success. For sources with change tracking or CDC, use those instead.</p>'],
+    ['Azure & ADF', 'Intermediate', 'Schedule trigger vs tumbling window trigger?', '<p>A schedule trigger just fires at set times. A tumbling window trigger runs for fixed, non-overlapping time slices, passes the window start and end to the pipeline, supports dependencies and retries, and can backfill past windows. Use it for time-sliced incremental loads.</p>'],
+    ['Azure & ADF', 'Intermediate', 'How do you keep secrets out of ADF pipelines?', '<p>Store passwords and keys in <b>Azure Key Vault</b> and reference them from linked services. Better still, use <b>managed identity</b> authentication so there\'s no secret at all. Parameterise linked services per environment and deploy with CI/CD (ARM templates or the ADF publish branch).</p>'],
+    ['Azure & ADF', 'Advanced', 'How do you make a pipeline restartable and idempotent?', '<p>Idempotent means re-running gives the same result. Load into staging, then <code>MERGE</code> or delete-and-insert by partition/date rather than blind appends. Record batch IDs and status in a control table, so a rerun skips finished steps. Use the pipeline run ID for audit columns.</p>'],
+    ['Modelling', 'Basic', 'Fact table vs dimension table?', '<p><b>Facts</b> store measurable events (sales, clicks) with foreign keys and numeric measures; they\'re tall. <b>Dimensions</b> describe the who, what, where (customer, product, date); they\'re wide and smaller. Together they form a star schema.</p>'],
+    ['Modelling', 'Intermediate', 'Star schema vs snowflake schema?', '<p>In a <b>star</b> schema, dimensions are denormalised and join directly to the fact: fewer joins, simpler for BI. In a <b>snowflake</b> schema, dimensions are normalised into sub-tables (product → category): less redundancy, more joins. Modern warehouses usually favour star schemas.</p>'],
+    ['Modelling', 'Intermediate', 'Explain SCD Type 1, 2 and 3.', '<p><b>Type 1</b> overwrites the old value (no history). <b>Type 2</b> adds a new row with <code>valid_from</code>, <code>valid_to</code> and <code>is_current</code>, keeping full history. <b>Type 3</b> keeps the previous value in an extra column (limited history). Type 2 is the most common for attributes like customer address. dbt snapshots implement it for you.</p>'],
+    ['Modelling', 'Intermediate', 'What is a surrogate key and why use one?', '<p>A system-generated key (integer or hash) instead of the source\'s natural key. It survives source key changes, lets you combine sources, is needed for SCD Type 2 (one natural key, many versions), and joins faster.</p>'],
+    ['Modelling', 'Advanced', 'What is the grain of a fact table and why does it matter?', '<p>The grain is what one row represents, e.g. "one line item per order". Declare it first. Mixing grains (order-level shipping fee on line-level rows) causes double counting when people sum.</p>'],
+    ['dbt & concepts', 'Basic', 'ETL vs ELT?', '<p>ETL transforms data before loading it into the warehouse. ELT loads raw data first, then transforms it inside the warehouse with SQL (dbt). Cloud warehouses made ELT the default because compute is elastic and raw data stays available for reprocessing.</p>'],
+    ['dbt & concepts', 'Intermediate', 'What are the dbt materialisations?', '<p><b>view</b> (default), <b>table</b> (rebuilt each run), <b>incremental</b> (only new or changed rows, using <code>is_incremental()</code> and a <code>unique_key</code>) and <b>ephemeral</b> (inlined as a CTE). Snapshots handle SCD Type 2.</p>'],
+    ['dbt & concepts', 'Intermediate', 'How do you test data in dbt?', '<p>Generic tests in YAML: <code>unique</code>, <code>not_null</code>, <code>accepted_values</code>, <code>relationships</code>. Singular tests are SQL files that should return zero rows. Packages like dbt-expectations add more. Run them in CI on every pull request.</p>'],
+    ['dbt & concepts', 'Intermediate', 'What is the medallion architecture?', '<p>Layers in a lakehouse: <b>bronze</b> (raw, as ingested), <b>silver</b> (cleaned, de-duplicated, conformed types), <b>gold</b> (business-level aggregates and star schemas for reporting). Each layer can be rebuilt from the one before.</p>'],
+    ['dbt & concepts', 'Advanced', 'Batch vs streaming: when would you choose each?', '<p>Batch is simpler and cheaper; use it when hourly or daily freshness is fine. Streaming (Kafka, Event Hubs, Spark Structured Streaming, Snowpipe Streaming) is for seconds-to-minutes latency, such as fraud alerts or live dashboards. Many teams use micro-batches as a middle ground.</p>'],
+    ['dbt & concepts', 'Advanced', 'How do you handle late-arriving data?', '<p>Reprocess a look-back window (e.g. the last 3 days) on each incremental run, use event time rather than load time, and <code>MERGE</code> on a unique key so reprocessing is idempotent. For late dimensions, insert an "unknown" member and update the fact key later.</p>'],
+    ['dbt & concepts', 'Advanced', 'Design a pipeline that loads daily sales from 50 stores.', '<p>A good answer walks the layers: stores drop files to ADLS or S3 → event or schedule trigger → copy raw files to bronze with a load timestamp → validate schema and row counts → clean and de-duplicate into silver → build a fact and dimensions in gold with dbt → BI on top. Add: control table for status, alerts on failure or missing stores, retries, idempotent loads, and a data-quality dashboard.</p>'],
+    ['dbt & concepts', 'Basic', 'What does ACID mean?', '<p><b>Atomicity</b> (all or nothing), <b>Consistency</b> (rules always hold), <b>Isolation</b> (concurrent transactions don\'t see each other\'s half-done work), <b>Durability</b> (committed data survives crashes). Delta Lake and Iceberg bring ACID to data lakes.</p>']
+  ];
+  var topic = '', topics = ['All'].concat(Q.map(function(x){ return x[0]; }).filter(function(v, i, a){ return a.indexOf(v) === i; }));
+  topics.forEach(function(t){ var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-btn' + (t === 'All' ? ' on' : ''); b.textContent = t; b.addEventListener('click', function(){ topic = t === 'All' ? '' : t; document.querySelectorAll('#topics .chip-btn').forEach(function(x){ x.classList.toggle('on', x === b); }); show(); }); $('topics').appendChild(b); });
+  var box = $('list');
+  Q.forEach(function(x, i){ var d = document.createElement('details'); d.dataset.t = x[0]; d.dataset.l = x[1]; d.dataset.s = (x[2] + ' ' + x[3].replace(/<[^>]+>/g, ' ')).toLowerCase(); d.innerHTML = '<summary>' + (i + 1) + '. ' + x[2] + '<span class="tagline">' + x[0] + ' · ' + x[1] + '</span></summary>' + x[3]; box.appendChild(d); });
+  function show(){
+    var q = $('q').value.trim().toLowerCase(), l = $('lvl').value, n = 0;
+    box.querySelectorAll('details').forEach(function(d){ var ok = (!topic || d.dataset.t === topic) && (!l || d.dataset.l === l) && (!q || d.dataset.s.indexOf(q) >= 0); d.hidden = !ok; if (ok) n++; });
+    $('count').textContent = n + ' question' + (n === 1 ? '' : 's');
+  }
+  $('q').addEventListener('input', show); $('lvl').addEventListener('change', show);
+  $('open').addEventListener('click', function(){ box.querySelectorAll('details:not([hidden])').forEach(function(d){ d.open = true; }); });
+  $('shut').addEventListener('click', function(){ box.querySelectorAll('details').forEach(function(d){ d.open = false; }); });
+  $('rand').addEventListener('click', function(){ var v = Array.prototype.filter.call(box.querySelectorAll('details'), function(d){ return !d.hidden; }); if (!v.length) return; box.querySelectorAll('details').forEach(function(d){ d.open = false; }); var d = v[Math.floor(Math.random() * v.length)]; d.scrollIntoView({ block: 'center', behavior: 'smooth' }); d.querySelector('summary').focus(); });
+  show();
+})();
+</script>
+
+</body>
+</html>

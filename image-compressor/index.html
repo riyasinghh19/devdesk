@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Image Compressor: reduce photo size to 20 KB, 50 KB or 100 KB (free) · DevDesk</title>
+<meta name="description" content="Compress JPG, PNG and WebP images to a target size like 50 KB for exam and job forms. Resize and convert in your browser; photos are never uploaded. Free, no sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/image-compressor/">
+<meta property="og:title" content="Image Compressor: reduce photo size to 20 KB, 50 KB or 100 KB (free) · DevDesk">
+<meta property="og:description" content="Compress JPG, PNG and WebP images to a target size like 50 KB for exam and job forms. Resize and convert in your browser; photos are never uploaded. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/image-compressor/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Everyday utilities / Image compressor</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Everyday utilities</span>
+    <h1>Image <span class="hand">compressor</span></h1>
+    <p>Form says "photo under 50 KB"? Drop your image, pick the size and download. Everything happens on your device, so your photos are never uploaded.</p>
+  </header>
+
+  <section class="panel" aria-label="Image compressor">
+    <div class="toolbar">
+      <div class="opt"><label for="goal">Target</label>
+        <select id="goal"><option value="20">Under 20 KB (signature)</option><option value="50" selected>Under 50 KB (form photo)</option><option value="100">Under 100 KB</option><option value="200">Under 200 KB</option><option value="500">Under 500 KB</option><option value="1000">Under 1 MB</option><option value="q">Choose quality myself</option></select></div>
+      <div class="opt" id="qWrap" hidden><label for="q">Quality: <span id="qv">80</span>%</label><input type="range" id="q" min="10" max="100" value="80" style="width:160px"></div>
+      <div class="opt"><label for="maxw">Max width</label>
+        <select id="maxw"><option value="0">Keep original</option><option value="2048">2048 px</option><option value="1600">1600 px</option><option value="1200" selected>1200 px</option><option value="800">800 px</option><option value="600">600 px</option><option value="300">300 px</option></select></div>
+      <div class="opt"><label for="fmt">Save as</label><select id="fmt"><option value="image/jpeg">JPG</option><option value="image/webp">WebP</option><option value="image/png">PNG (no size target)</option></select></div>
+    </div>
+    <div class="panel-body">
+      <label class="drop" id="drop" for="file">
+        <b style="font-size:18px">Drop images here or tap to choose</b><br><span class="say">JPG, PNG or WebP · several at once is fine</span>
+        <input type="file" id="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      </label>
+      <p class="say" id="say" aria-live="polite" style="margin-top:12px"></p>
+      <div class="thumbs" id="thumbs" style="margin-top:12px"></div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Common size limits on Indian forms</h2>
+    <table>
+      <thead><tr><th>Form</th><th>Photo</th><th>Signature</th></tr></thead>
+      <tbody>
+        <tr><td>Many government exams (SSC, banking, railways)</td><td>20–50 KB</td><td>10–20 KB</td></tr>
+        <tr><td>Passport Seva</td><td>Up to 1 MB, JPG</td><td>—</td></tr>
+        <tr><td>Job portals and HR systems</td><td>Usually up to 1–2 MB</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p>Limits change between notifications, so always check the form's instructions for size and pixel dimensions.</p>
+    <h2>How it works</h2>
+    <ol>
+      <li>Your image is drawn onto a canvas in your browser, resized to the maximum width you chose.</li>
+      <li>For a size target, the tool tries different JPG or WebP quality levels and keeps the best one under the limit.</li>
+      <li>If even low quality is too big, it shrinks the dimensions step by step until the file fits.</li>
+    </ol>
+    <h2>Tips</h2>
+    <ul>
+      <li><b>JPG</b> is best for photos. <b>PNG</b> is for screenshots and logos with flat colours; it can't hit small size targets.</li>
+      <li>For a signature, crop tightly first, so the pixels are spent on the ink and not the white paper.</li>
+      <li>Photo metadata (EXIF), including phone location, is removed in the compressed copy.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Are my photos uploaded?</summary><p>No. Compression runs in your browser. You can switch off the internet after the page loads and it still works.</p></details>
+    <details><summary>Why does my photo look sideways?</summary><p>Modern browsers apply the phone's rotation automatically. If an older browser shows it sideways, rotate it in your gallery first.</p></details>
+    <h2>More everyday tools</h2>
+    <div class="related"><a class="note live c-everyday" href="../word-counter/index.html" data-q="word &amp; character counter counts with linkedin and x limits built in."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Word &amp; Character Counter</h3><p>Counts with LinkedIn and X limits built in.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../age-calculator/index.html" data-q="age calculator exact age in years, months and days."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Age Calculator</h3><p>Exact age in years, months and days.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../days-between-dates/index.html" data-q="days between dates count days, weeks and working days between two dates."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Days Between Dates</h3><p>Count days, weeks and working days between two dates.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../qr-code-generator/index.html" data-q="qr code generator make a qr code for a link, upi id or wi-fi."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>QR Code Generator</h3><p>Make a QR code for a link, UPI ID or Wi-Fi.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var files = [];
+  function kb(n){ return n < 1024 * 1024 ? (n / 1024).toFixed(1) + ' KB' : (n / 1048576).toFixed(2) + ' MB'; }
+  function toBlob(c, type, q){ return new Promise(function(res){ c.toBlob(res, type, q); }); }
+  function load(file){ return new Promise(function(res, rej){ var img = new Image(); img.onload = function(){ res(img); }; img.onerror = rej; img.src = URL.createObjectURL(file); }); }
+  function canvasFor(img, w){
+    var s = w && img.naturalWidth > w ? w / img.naturalWidth : 1, c = document.createElement('canvas');
+    c.width = Math.max(1, Math.round(img.naturalWidth * s)); c.height = Math.max(1, Math.round(img.naturalHeight * s));
+    var x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(img, 0, 0, c.width, c.height); return c;
+  }
+  async function compress(file){
+    var img = await load(file), type = $('fmt').value, goal = $('goal').value, maxw = +$('maxw').value, w = maxw || img.naturalWidth;
+    if (type === 'image/png' || goal === 'q') { var c0 = canvasFor(img, w); return { blob: await toBlob(c0, type, type === 'image/png' ? undefined : +$('q').value / 100), w: c0.width, h: c0.height, hit: true }; }
+    var limit = +goal * 1024, best = null;
+    for (var round = 0; round < 12; round++) {
+      var c = canvasFor(img, w), lo = 0.1, hi = 0.95, found = null;
+      var top = await toBlob(c, type, hi); if (top.size <= limit) { found = { blob: top, q: hi }; }
+      else for (var k = 0; k < 7; k++) { var mid = (lo + hi) / 2, b = await toBlob(c, type, mid); if (b.size <= limit) { found = { blob: b, q: mid }; lo = mid; } else hi = mid; }
+      if (found) { best = { blob: found.blob, w: c.width, h: c.height, hit: true, q: found.q }; break; }
+      w = Math.round(c.width * 0.8); if (w < 60) break;
+    }
+    if (!best) { var cl = canvasFor(img, w); best = { blob: await toBlob(cl, type, 0.1), w: cl.width, h: cl.height, hit: false }; }
+    URL.revokeObjectURL(img.src); return best;
+  }
+  async function runAll(){
+    if (!files.length) return;
+    TB.save('dd-img', { goal: $('goal').value, maxw: $('maxw').value, fmt: $('fmt').value, q: $('q').value });
+    var box = $('thumbs'); box.innerHTML = ''; $('say').className = 'say'; $('say').textContent = 'Compressing…';
+    var before = 0, after = 0;
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      try {
+        var r = await compress(f), ext = r.blob.type === 'image/webp' ? 'webp' : r.blob.type === 'image/png' ? 'png' : 'jpg';
+        before += f.size; after += r.blob.size;
+        var fig = document.createElement('figure'), im = document.createElement('img'), cap = document.createElement('figcaption'), btn = document.createElement('button');
+        im.src = URL.createObjectURL(r.blob); im.alt = 'Compressed ' + f.name;
+        cap.innerHTML = '<b></b><br><span></span>'; cap.querySelector('b').textContent = f.name;
+        cap.querySelector('span').textContent = kb(f.size) + ' → ' + kb(r.blob.size) + ' · ' + r.w + '×' + r.h + (r.hit ? '' : ' · couldn\'t reach the target');
+        btn.type = 'button'; btn.className = 'btn primary'; btn.textContent = 'Download';
+        (function(blob, name){ btn.addEventListener('click', function(){ TB.download(blob, name); }); })(r.blob, f.name.replace(/\.[^.]+$/, '') + '-compressed.' + ext);
+        fig.appendChild(im); fig.appendChild(cap); fig.appendChild(btn); box.appendChild(fig);
+      } catch(e) { var p = document.createElement('p'); p.className = 'say err'; p.textContent = f.name + ': couldn\'t open this image.'; box.appendChild(p); }
+    }
+    $('say').className = 'say ok'; $('say').textContent = files.length + ' image' + (files.length > 1 ? 's' : '') + ': ' + kb(before) + ' → ' + kb(after) + (before ? ' (' + Math.round((1 - after / before) * 100) + '% smaller)' : '');
+  }
+  function take(list){ files = Array.prototype.filter.call(list, function(f){ return /^image\//.test(f.type); }).slice(0, 30); runAll(); }
+  $('file').addEventListener('change', function(){ take(this.files); this.value = ''; });
+  var drop = $('drop');
+  ['dragenter', 'dragover'].forEach(function(e){ drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function(e){ drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(ev){ take(ev.dataTransfer.files); });
+  function opts(){ $('qWrap').hidden = $('goal').value !== 'q'; $('qv').textContent = $('q').value; runAll(); }
+  ['goal', 'maxw', 'fmt'].forEach(function(id){ $(id).addEventListener('change', opts); });
+  $('q').addEventListener('change', opts); $('q').addEventListener('input', function(){ $('qv').textContent = this.value; });
+  var o = TB.load('dd-img'); if (o) { $('goal').value = o.goal; $('maxw').value = o.maxw; $('fmt').value = o.fmt; $('q').value = o.q; }
+  $('qWrap').hidden = $('goal').value !== 'q'; $('qv').textContent = $('q').value;
+})();
+</script>
+
+</body>
+</html>

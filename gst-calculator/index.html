@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GST Calculator: add or remove GST, CGST/SGST/IGST split (free) · DevDesk</title>
+<meta name="description" content="Add GST to a price or take GST out of an inclusive price at 5%, 18%, 40% or any rate. Shows the CGST, SGST and IGST split. Free, no sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/gst-calculator/">
+<meta property="og:title" content="GST Calculator: add or remove GST, CGST/SGST/IGST split (free) · DevDesk">
+<meta property="og:description" content="Add GST to a price or take GST out of an inclusive price at 5%, 18%, 40% or any rate. Shows the CGST, SGST and IGST split. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/gst-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Money calculators / GST calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Money calculators</span>
+    <h1>GST <span class="hand">calculator</span></h1>
+    <p>Add GST to a price, or work out the GST hidden inside a price that already includes it. The split between CGST, SGST and IGST is shown too.</p>
+  </header>
+
+  <section class="panel" aria-label="GST calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><span class="lbl">What do you have?</span>
+          <div class="seg" role="group" aria-label="Mode"><button type="button" id="mAdd" aria-pressed="true">Price before GST</button><button type="button" id="mRem" aria-pressed="false">Price including GST</button></div></div>
+        <div class="field"><label for="amt" id="amtLbl">Price before GST (₹)</label><input class="big-input" id="amt" type="number" inputmode="decimal" min="0" step="0.01" value="1000"></div>
+        <div class="field"><span class="lbl">GST rate</span>
+          <div class="chips-row" id="rates" role="group" aria-label="GST rate"></div>
+          <div class="top"><label for="rate" class="hint">Or type a rate (%)</label><input class="inp" id="rate" type="number" inputmode="decimal" min="0" max="100" step="0.01" value="18" style="width:100px"></div></div>
+        <div class="field"><span class="lbl">Where is the buyer?</span>
+          <div class="seg" role="group" aria-label="Supply type"><button type="button" id="sIn" aria-pressed="true">Same state</button><button type="button" id="sOut" aria-pressed="false">Another state</button></div>
+          <span class="hint">Same state: CGST + SGST. Another state: IGST.</span></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k" id="bigLbl">Price including GST</span><b id="big">—</b></div>
+        <div class="kv" id="out"></div>
+        <button class="icon-btn" id="copy" type="button" style="align-self:flex-start">Copy breakdown</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>The formulas</h2>
+    <table>
+      <thead><tr><th>You have</th><th>GST amount</th><th>Other price</th></tr></thead>
+      <tbody>
+        <tr><td>Price before GST</td><td><code>price × rate ÷ 100</code></td><td><code>price + GST</code></td></tr>
+        <tr><td>Price including GST</td><td><code>price × rate ÷ (100 + rate)</code></td><td><code>price − GST</code></td></tr>
+      </tbody>
+    </table>
+    <p>Example: ₹1,180 including 18% GST. GST = 1180 × 18 ÷ 118 = ₹180, so the price before GST is ₹1,000. A common mistake is to take 18% of ₹1,180 (₹212.40), which is wrong.</p>
+    <h2>GST rates in India</h2>
+    <p>Since 22 September 2025, most goods and services fall into two main rates, with a higher rate for a few items:</p>
+    <table>
+      <thead><tr><th>Rate</th><th>Typical items</th></tr></thead>
+      <tbody>
+        <tr><td>0%</td><td>Fresh food, milk, health and life insurance for individuals</td></tr>
+        <tr><td>5%</td><td>Packaged food, everyday essentials, many medicines</td></tr>
+        <tr><td>18%</td><td>Most goods and services, including IT and professional services</td></tr>
+        <tr><td>40%</td><td>Luxury and "sin" goods such as tobacco and aerated drinks</td></tr>
+        <tr><td>3% / 0.25%</td><td>Gold and jewellery / rough diamonds</td></tr>
+      </tbody>
+    </table>
+    <p>The older 12% and 28% rates were merged into these. Always check the rate for your exact item (its HSN or SAC code) on the GST portal.</p>
+    <h2>CGST, SGST and IGST</h2>
+    <p>When the seller and buyer are in the <b>same state</b>, GST is split equally: half is CGST (central) and half is SGST (state). At 18%, that's 9% + 9%. When they're in <b>different states</b>, the full 18% is charged as IGST. The total is the same either way.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Do freelancers have to charge GST?</summary><p>You must register once your turnover from services crosses ₹20 lakh a year (₹10 lakh in some special-category states). Exporting services to clients abroad is usually zero-rated, but registration rules still apply. Check with a chartered accountant.</p></details>
+    <details><summary>How do I round GST on an invoice?</summary><p>Calculate tax per line item and round to two decimals. The calculator shows paise so you can match your invoice.</p></details>
+    <h2>More money calculators</h2>
+    <div class="related"><a class="note live c-money" href="../emi-calculator/index.html" data-q="emi calculator monthly emi, total interest and a full repayment schedule."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>EMI Calculator</h3><p>Monthly EMI, total interest and a full repayment schedule.</p><span class="go">Open →</span></a><a class="note live c-money" href="../sip-calculator/index.html" data-q="sip calculator what your monthly sip grows to over time."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>SIP Calculator</h3><p>What your monthly SIP grows to over time.</p><span class="go">Open →</span></a><a class="note live c-money" href="../income-tax-calculator/index.html" data-q="income tax: old vs new regime compare your tax under both regimes."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>Income Tax: Old vs New Regime</h3><p>Compare your tax under both regimes.</p><span class="go">Open →</span></a><a class="note live c-money" href="../fd-rd-calculator/index.html" data-q="fd &amp; rd calculator maturity value for fixed and recurring deposits."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>FD &amp; RD Calculator</h3><p>Maturity value for fixed and recurring deposits.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var mode = 'add', inter = false, RATES = [0.25, 3, 5, 18, 40];
+  RATES.forEach(function(r){ var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-btn'; b.textContent = r + '%'; b.dataset.r = r; b.addEventListener('click', function(){ $('rate').value = r; calc(); }); $('rates').appendChild(b); });
+  function seg(a, b, on){ $(a).setAttribute('aria-pressed', on); $(b).setAttribute('aria-pressed', !on); }
+  var lines = [];
+  function calc(){
+    var A = +$('amt').value || 0, R = +$('rate').value || 0, gst, net, gross;
+    TB.save('dd-gst', { A: A, R: R, mode: mode, inter: inter });
+    document.querySelectorAll('#rates .chip-btn').forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.r === R); b.classList.toggle('on', +b.dataset.r === R); });
+    if (mode === 'add') { net = A; gst = A * R / 100; gross = A + gst; } else { gross = A; gst = A * R / (100 + R); net = A - gst; }
+    $('amtLbl').textContent = mode === 'add' ? 'Price before GST (₹)' : 'Price including GST (₹)';
+    $('bigLbl').textContent = mode === 'add' ? 'Price including GST' : 'Price before GST';
+    $('big').textContent = TB.inr(mode === 'add' ? gross : net, 2);
+    lines = [['Price before GST', TB.inr(net, 2)]];
+    if (inter) lines.push(['IGST @ ' + R + '%', TB.inr(gst, 2)]);
+    else lines.push(['CGST @ ' + R / 2 + '%', TB.inr(gst / 2, 2)], ['SGST @ ' + R / 2 + '%', TB.inr(gst / 2, 2)]);
+    lines.push(['Total GST', TB.inr(gst, 2)], ['Price including GST', TB.inr(gross, 2)]);
+    var out = $('out'); out.innerHTML = '';
+    lines.forEach(function(l){ var k = document.createElement('div'); k.className = 'k'; k.textContent = l[0]; var v = document.createElement('div'); v.className = 'v'; v.textContent = l[1]; var c = document.createElement('div'); c.className = 'c'; out.appendChild(k); out.appendChild(v); out.appendChild(c); });
+  }
+  $('mAdd').addEventListener('click', function(){ mode = 'add'; seg('mAdd', 'mRem', true); calc(); });
+  $('mRem').addEventListener('click', function(){ mode = 'rem'; seg('mAdd', 'mRem', false); calc(); });
+  $('sIn').addEventListener('click', function(){ inter = false; seg('sIn', 'sOut', true); calc(); });
+  $('sOut').addEventListener('click', function(){ inter = true; seg('sIn', 'sOut', false); calc(); });
+  ['amt', 'rate'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  $('copy').addEventListener('click', function(){ var b = this; TB.copy(lines.map(function(l){ return l[0] + ': ' + l[1]; }).join('\n')).then(function(ok){ b.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(function(){ b.textContent = 'Copy breakdown'; }, 1400); }); });
+  var o = TB.load('dd-gst'); if (o) { $('amt').value = o.A; $('rate').value = o.R; mode = o.mode || 'add'; inter = !!o.inter; seg('mAdd', 'mRem', mode === 'add'); seg('sIn', 'sOut', !inter); }
+  calc();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Word &amp; Character Counter with LinkedIn and X limits (free) · DevDesk</title>
+<meta name="description" content="Count words, characters, sentences and reading time as you type. Checks LinkedIn, X, Instagram and SEO length limits, finds your most-used words and changes text case.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/word-counter/">
+<meta property="og:title" content="Word &amp; Character Counter with LinkedIn and X limits (free) · DevDesk">
+<meta property="og:description" content="Count words, characters, sentences and reading time as you type. Checks LinkedIn, X, Instagram and SEO length limits, finds your most-used words and changes text case.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/word-counter/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Everyday utilities / Word counter</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Everyday utilities</span>
+    <h1>Word &amp; character <span class="hand">counter</span></h1>
+    <p>Paste or type your text. Counts update as you type, and the limits below turn red when a LinkedIn post, tweet or meta description is too long.</p>
+  </header>
+
+  <section class="panel" aria-label="Word counter">
+    <div class="toolbar">
+      <div class="stats" style="flex:1 1 100%;grid-template-columns:repeat(auto-fit,minmax(110px,1fr))">
+        <div><span class="k">Words</span><b id="w">0</b></div>
+        <div><span class="k">Characters</span><b id="c">0</b></div>
+        <div><span class="k">Without spaces</span><b id="cn">0</b></div>
+        <div><span class="k">Sentences</span><b id="s">0</b></div>
+        <div><span class="k">Paragraphs</span><b id="p">0</b></div>
+        <div><span class="k">Reading time</span><b id="rt">0 sec</b></div>
+        <div><span class="k">Speaking time</span><b id="st">0 sec</b></div>
+      </div>
+    </div>
+    <label for="txt" class="sr">Your text</label>
+    <textarea id="txt" class="code" style="min-height:260px;border:0;border-radius:0;font-family:var(--f-body);font-size:16.5px;line-height:1.6" placeholder="Start typing or paste your text here…"></textarea>
+    <div class="actions" style="flex-wrap:wrap;gap:8px">
+      <button class="icon-btn" type="button" data-case="upper">UPPERCASE</button>
+      <button class="icon-btn" type="button" data-case="lower">lowercase</button>
+      <button class="icon-btn" type="button" data-case="title">Title Case</button>
+      <button class="icon-btn" type="button" data-case="sentence">Sentence case</button>
+      <button class="icon-btn" type="button" data-case="space">Remove extra spaces</button>
+      <span class="spacer" style="flex:1"></span>
+      <button class="icon-btn" type="button" id="copy">Copy text</button>
+      <button class="icon-btn" type="button" id="clear">Clear</button>
+    </div>
+  </section>
+
+  <div class="two" style="margin-top:18px">
+    <section class="panel card-box" aria-label="Platform limits"><h2 class="box-title">Fits on…</h2><div class="limits" id="limits"></div></section>
+    <section class="panel card-box" aria-label="Most used words"><h2 class="box-title">Most used words</h2><p class="say" id="kwSay">Common words like "the" and "and" are skipped.</p><div class="data-wrap"><table class="data-table" id="kw"><thead><tr><th>Word</th><th class="n">Times</th><th class="n">Share</th></tr></thead><tbody></tbody></table></div></section>
+  </div>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Character limits worth knowing</h2>
+    <table>
+      <thead><tr><th>Where</th><th>Limit</th><th>Tip</th></tr></thead>
+      <tbody>
+        <tr><td>LinkedIn post</td><td>3,000 characters</td><td>Only the first ~210 show before "…see more". Put the hook there.</td></tr>
+        <tr><td>LinkedIn headline</td><td>220 characters</td><td>Role, skills, and what you help with.</td></tr>
+        <tr><td>LinkedIn About</td><td>2,600 characters</td><td>The first 3 lines show by default.</td></tr>
+        <tr><td>X (Twitter) post</td><td>280 characters</td><td>Links count as 23 characters.</td></tr>
+        <tr><td>Instagram caption</td><td>2,200 characters</td><td>About 125 show before "more".</td></tr>
+        <tr><td>Google title tag</td><td>~60 characters</td><td>Longer titles get cut off in results.</td></tr>
+        <tr><td>Meta description</td><td>~155–160 characters</td><td>Shown under your page in Google.</td></tr>
+        <tr><td>SMS</td><td>160 characters</td><td>70 if it contains Hindi or emoji.</td></tr>
+      </tbody>
+    </table>
+    <h2>How the counts work</h2>
+    <ul>
+      <li><b>Words</b> are groups of letters or numbers separated by spaces or punctuation. "Data-driven" counts as one word.</li>
+      <li><b>Characters</b> count emoji and Indian-language letters as people see them, not as computer code units.</li>
+      <li><b>Reading time</b> uses 230 words a minute; <b>speaking time</b> uses 140, a comfortable pace for a talk or video.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is my text saved or sent anywhere?</summary><p>It stays in your browser. Your last text is kept on this device so it's still there if you refresh; Clear removes it.</p></details>
+    <details><summary>Does it work for Hindi and other Indian languages?</summary><p>Yes. Words and characters are counted correctly for Devanagari, Tamil, Bengali and other scripts.</p></details>
+    <h2>More everyday tools</h2>
+    <div class="related"><a class="note live c-everyday" href="../age-calculator/index.html" data-q="age calculator exact age in years, months and days."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Age Calculator</h3><p>Exact age in years, months and days.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../days-between-dates/index.html" data-q="days between dates count days, weeks and working days between two dates."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Days Between Dates</h3><p>Count days, weeks and working days between two dates.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../qr-code-generator/index.html" data-q="qr code generator make a qr code for a link, upi id or wi-fi."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>QR Code Generator</h3><p>Make a QR code for a link, UPI ID or Wi-Fi.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../password-generator/index.html" data-q="password generator strong, random passwords made on your device."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Password Generator</h3><p>Strong, random passwords made on your device.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var t = $('txt');
+  var LIMITS = [['X post', 280], ['LinkedIn headline', 220], ['LinkedIn post', 3000], ['LinkedIn About', 2600], ['Instagram caption', 2200], ['Title tag', 60], ['Meta description', 160], ['SMS', 160]];
+  var STOP = 'a an the and or but if then of to in on at for from by with as is are was were be been being it its this that these those i you he she we they me my our your their his her them us not no so do does did have has had will would can could should may might just than too very also into about over after before up out what which who whom when where why how all any each more most other some such only own same s t don now there here am'.split(' ');
+  var stopSet = {}; STOP.forEach(function(w){ stopSet[w] = 1; });
+  var seg = window.Intl && Intl.Segmenter ? new Intl.Segmenter(undefined, { granularity: 'grapheme' }) : null;
+  var wseg = window.Intl && Intl.Segmenter ? new Intl.Segmenter(undefined, { granularity: 'word' }) : null;
+  function chars(s){ if (!seg) return Array.from(s).length; var n = 0; for (var x of seg.segment(s)) n++; return n; }
+  function words(s){
+    if (wseg) { var out = []; for (var x of wseg.segment(s)) if (x.isWordLike) out.push(x.segment); return mergeHyphen(s, out); }
+    return s.match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}'’\-]*/gu) || [];
+  }
+  function mergeHyphen(s, arr){ var m = s.match(/[\p{L}\p{N}\p{M}]+(?:[-'’][\p{L}\p{N}\p{M}]+)*/gu); return m && m.length <= arr.length ? m : arr; }
+  function time(n, wpm){ var sec = Math.round(n / wpm * 60); return sec < 60 ? sec + ' sec' : Math.floor(sec / 60) + ' min ' + (sec % 60 ? sec % 60 + ' sec' : ''); }
+  function update(){
+    var s = t.value; try { localStorage.setItem('dd-wc', s.slice(0, 200000)); } catch(e){}
+    var ws = words(s), c = chars(s);
+    $('w').textContent = ws.length.toLocaleString('en-IN'); $('c').textContent = c.toLocaleString('en-IN'); $('cn').textContent = chars(s.replace(/\s/g, '')).toLocaleString('en-IN');
+    $('s').textContent = (s.match(/[^.!?।\n]+[.!?।]+/g) || []).length + (/[^.!?।\s]\s*$/.test(s) ? 1 : 0);
+    $('p').textContent = s.split(/\n\s*\n/).filter(function(x){ return x.trim(); }).length;
+    $('rt').textContent = time(ws.length, 230); $('st').textContent = time(ws.length, 140);
+    var box = $('limits'); box.innerHTML = '';
+    LIMITS.forEach(function(l){ var d = document.createElement('div'), over = c > l[1]; if (over) d.className = 'over'; d.innerHTML = '<span class="k"></span><br><b></b>'; d.querySelector('.k').textContent = l[0]; d.querySelector('b').textContent = over ? (c - l[1]) + ' over ✕' : (l[1] - c) + ' left ✓'; box.appendChild(d); });
+    var freq = {}, total = 0; ws.forEach(function(w){ w = w.toLowerCase(); if (stopSet[w] || w.length < 2 || /^\d+$/.test(w)) return; freq[w] = (freq[w] || 0) + 1; total++; });
+    var top = Object.keys(freq).sort(function(a, b){ return freq[b] - freq[a]; }).slice(0, 12), tb = $('kw').tBodies[0]; tb.innerHTML = '';
+    top.forEach(function(w){ var tr = tb.insertRow(); tr.insertCell().textContent = w; var a = tr.insertCell(); a.className = 'n'; a.textContent = freq[w]; var b = tr.insertCell(); b.className = 'n'; b.textContent = (freq[w] / total * 100).toFixed(1) + '%'; });
+  }
+  function caseIt(k){
+    var s = t.value;
+    if (k === 'upper') s = s.toUpperCase();
+    else if (k === 'lower') s = s.toLowerCase();
+    else if (k === 'title') s = s.toLowerCase().replace(/(^|[\s\-("'])(\p{L})/gu, function(_, a, b){ return a + b.toUpperCase(); });
+    else if (k === 'sentence') s = s.toLowerCase().replace(/(^\s*|[.!?।]\s+)(\p{L})/gu, function(_, a, b){ return a + b.toUpperCase(); }).replace(/\bi\b/g, 'I');
+    else if (k === 'space') s = s.replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+    t.value = s; update();
+  }
+  t.addEventListener('input', update);
+  document.querySelectorAll('[data-case]').forEach(function(b){ b.addEventListener('click', function(){ caseIt(b.dataset.case); }); });
+  $('copy').addEventListener('click', function(){ var b = this; TB.copy(t.value).then(function(ok){ b.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(function(){ b.textContent = 'Copy text'; }, 1400); }); });
+  $('clear').addEventListener('click', function(){ t.value = ''; update(); t.focus(); });
+  try { t.value = localStorage.getItem('dd-wc') || ''; } catch(e){}
+  update();
+})();
+</script>
+
+</body>
+</html>

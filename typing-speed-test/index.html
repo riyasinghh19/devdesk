@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Typing Speed Test: check your WPM and accuracy (free) · DevDesk</title>
+<meta name="description" content="A free 30, 60 or 120-second typing test. See your words per minute, accuracy and mistakes, with plain English, numbers or code passages. Nothing to install, no sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/typing-speed-test/">
+<meta property="og:title" content="Typing Speed Test: check your WPM and accuracy (free) · DevDesk">
+<meta property="og:description" content="A free 30, 60 or 120-second typing test. See your words per minute, accuracy and mistakes, with plain English, numbers or code passages. Nothing to install, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/typing-speed-test/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Typing speed test</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Typing <span class="hand">speed test</span></h1>
+    <p>Start typing and the clock starts. Many data-entry and typist job tests ask for 30 to 40 words per minute at 95% accuracy or better.</p>
+  </header>
+
+  <section class="panel" aria-label="Typing test"><div class="panel-body" style="display:flex;flex-direction:column;gap:14px">
+    <div class="row-inline" style="justify-content:space-between">
+      <div class="row-inline">
+        <div class="seg" role="radiogroup" aria-label="Duration"><label><input type="radio" name="dur" value="30"><span>30 s</span></label><label><input type="radio" name="dur" value="60" checked><span>60 s</span></label><label><input type="radio" name="dur" value="120"><span>2 min</span></label></div>
+        <div class="seg" role="radiogroup" aria-label="Passage type"><label><input type="radio" name="kind" value="words" checked><span>Sentences</span></label><label><input type="radio" name="kind" value="nums"><span>With numbers</span></label><label><input type="radio" name="kind" value="code"><span>SQL</span></label></div>
+      </div>
+      <button class="btn" id="restart" type="button">New passage</button>
+    </div>
+    <div class="tiles" id="live"></div>
+    <div class="typing-text" id="text" aria-hidden="true"></div>
+    <label for="typed" class="sr">Type the passage shown above</label>
+    <textarea id="typed" class="code" style="min-height:90px" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Click here and start typing…"></textarea>
+    <p class="say" id="say" aria-live="polite">The timer starts with your first key.</p>
+  </div></section>
+
+  <section class="panel card-box" id="resultBox" style="margin-top:18px" hidden aria-label="Your result">
+    <h2 class="box-title">Your result</h2>
+    <div class="tiles" id="result"></div>
+    <p class="say" id="verdict"></p>
+    <div class="row-inline"><button class="btn" id="again" type="button">Try again</button><span class="say" id="best"></span></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How the score is worked out</h2>
+    <ul>
+      <li><b>Words per minute (WPM)</b> counts every 5 correctly typed characters, including spaces, as one word. This is the standard used by typing tests worldwide.</li>
+      <li><b>Raw WPM</b> counts everything you typed, right or wrong.</li>
+      <li><b>Accuracy</b> is the share of characters you typed correctly.</li>
+    </ul>
+    <h2>What is a good typing speed?</h2>
+    <table>
+      <thead><tr><th>WPM</th><th>Level</th></tr></thead>
+      <tbody>
+        <tr><td>Under 25</td><td>Beginner. Practise touch typing without looking at the keys.</td></tr>
+        <tr><td>25–40</td><td>Average. Enough for most office work.</td></tr>
+        <tr><td>40–60</td><td>Good. Comfortably passes most job typing tests.</td></tr>
+        <tr><td>60–80</td><td>Fast. Typical of people who type all day.</td></tr>
+        <tr><td>80+</td><td>Very fast.</td></tr>
+      </tbody>
+    </table>
+    <h2>Tips to type faster</h2>
+    <ul>
+      <li>Keep your fingers on the home row (<code>ASDF</code> and <code>JKL;</code>) and return to it after every key.</li>
+      <li>Accuracy first. Speed follows once you stop correcting mistakes.</li>
+      <li>Practise 10 minutes a day rather than an hour once a week.</li>
+      <li>Look at the screen, not the keyboard.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Do government typing tests use the same method?</summary><p>Most use 5 characters per word too, but some count only full correct words or deduct for each mistake. Check the rules for your exam.</p></details>
+    <details><summary>Does Backspace count against me?</summary><p>No. Only what is in the box when time runs out counts, so fixing a mistake helps your accuracy.</p></details>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../salary-hike-calculator/index.html" data-q="salary hike calculator your new ctc from a hike percentage, and the reverse."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Salary Hike Calculator</h3><p>Your new CTC from a hike percentage, and the reverse.</p><span class="go">Open →</span></a><a class="note live c-career" href="../notice-period-calculator/index.html" data-q="notice period calculator your last working day from your resignation date."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Notice Period Calculator</h3><p>Your last working day from your resignation date.</p><span class="go">Open →</span></a><a class="note live c-career" href="../resume-bullet-builder/index.html" data-q="resume bullet builder strong action verbs and templates for resume points."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Resume Bullet Builder</h3><p>Strong action verbs and templates for resume points.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineer-interview-questions/index.html" data-q="data engineer interview questions sql, adf and snowflake questions with answers."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineer Interview Questions</h3><p>SQL, ADF and Snowflake questions with answers.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var P = {
+    words: [
+      'The best way to learn something new is to do a little of it every day. Small steps add up, and before long the hard parts feel easy.',
+      'A good report answers one question clearly. It shows the numbers, explains what changed and says what the reader should do next.',
+      'Our team meets every Monday morning to plan the week. We review open tasks, share blockers and agree on who will take each item.',
+      'Clean data saves hours later. Check for missing values, remove duplicates and make sure every date is stored in the same format.',
+      'When you write an email, put the main point in the first line. People are busy, and most of them will only read the start.',
+      'Monsoon evenings in Pune are perfect for a cup of hot chai, a plate of pakoras and a long chat with old friends on the balcony.',
+      'Practice makes progress. Keep your eyes on the screen, trust your fingers and do not worry if the first few tries feel slow.'
+    ],
+    nums: [
+      'Invoice 4521 was raised on 31 October 2026 for Rs 1,24,999 including 18% GST. Payment is due within 30 days of the invoice date.',
+      'The train leaves Mumbai at 06:45 and reaches Bengaluru at 21:10. Coach B4, seats 31 to 34, have been booked for the team of 4.',
+      'Sales grew 12.5% in Q2, from 8,420 units to 9,473 units. The North region led with 3,210 units, followed by West with 2,875.',
+      'Call 98765 43210 between 10 am and 6 pm, or write to support@example.com. Our office is at 221 MG Road, Pune 411001.'
+    ],
+    code: [
+      'SELECT customer_id, SUM(amount) AS total FROM orders WHERE order_date >= \'2026-01-01\' GROUP BY customer_id ORDER BY total DESC;',
+      'UPDATE employees SET salary = salary * 1.10 WHERE department = \'Data\' AND joined_on < \'2025-04-01\';',
+      'WITH ranked AS (SELECT id, ROW_NUMBER() OVER (PARTITION BY email ORDER BY updated_at DESC) AS rn FROM users) SELECT id FROM ranked WHERE rn = 1;',
+      'CREATE TABLE sales (id INT PRIMARY KEY, region VARCHAR(20), amount DECIMAL(12,2), sold_at TIMESTAMP);'
+    ]
+  };
+  var target = '', start = 0, timer = null, done = false, dur = 60, lastPick = -1;
+  function val(name){ return document.querySelector('input[name="' + name + '"]:checked').value; }
+  function passage(){
+    var list = P[val('kind')], i; do { i = Math.floor(Math.random() * list.length); } while (list.length > 1 && i === lastPick); lastPick = i;
+    var s = list[i], k = i; while (s.length < 900) { k = (k + 1) % list.length; s += ' ' + list[k]; }
+    return s;
+  }
+  function reset(newText){
+    clearInterval(timer); timer = null; start = 0; done = false; dur = +val('dur');
+    if (newText !== false) target = passage();
+    $('typed').value = ''; $('typed').disabled = false; $('resultBox').hidden = true;
+    $('say').className = 'say'; $('say').textContent = 'The timer starts with your first key.';
+    paint(); stats();
+  }
+  function paint(){
+    var t = $('typed').value, h = '', esc = function(c){ return c === '<' ? '&lt;' : c === '>' ? '&gt;' : c === '&' ? '&amp;' : c; };
+    var end = Math.min(target.length, Math.max(t.length + 160, 260));
+    for (var i = 0; i < end; i++) {
+      var c = target[i], cls = i < t.length ? (t[i] === c ? 'ok' : 'bad') : (i === t.length ? 'cur' : '');
+      h += cls ? '<span class="' + cls + '">' + esc(c === ' ' && cls === 'bad' ? '·' : c) + '</span>' : esc(c);
+    }
+    $('text').innerHTML = h;
+  }
+  function score(){
+    var t = $('typed').value, ok = 0;
+    for (var i = 0; i < t.length; i++) if (t[i] === target[i]) ok++;
+    var mins = start ? Math.max((Math.min(Date.now(), start + dur * 1000) - start) / 60000, 1 / 60) : 0;
+    return { ok: ok, typed: t.length, wrong: t.length - ok, wpm: mins ? Math.round(ok / 5 / mins) : 0, raw: mins ? Math.round(t.length / 5 / mins) : 0, acc: t.length ? Math.round(ok / t.length * 100) : 100, left: start ? Math.max(0, Math.ceil(dur - (Date.now() - start) / 1000)) : dur };
+  }
+  function stats(){
+    var s = score();
+    var el = $('live'); el.innerHTML = '';
+    [['Time left', s.left + ' s', 'hero'], ['WPM', String(s.wpm)], ['Accuracy', s.acc + '%'], ['Mistakes', String(s.wrong)]].forEach(function(x){
+      var d = document.createElement('div'); d.className = 'tile' + (x[2] ? ' ' + x[2] : ''); d.innerHTML = '<span class="tk"></span><b></b>'; d.firstChild.textContent = x[0]; d.lastChild.textContent = x[1]; el.appendChild(d);
+    });
+  }
+  function finish(){
+    clearInterval(timer); timer = null; done = true; $('typed').disabled = true;
+    var s = score(), el = $('result'); el.innerHTML = '';
+    [['Words per minute', String(s.wpm), 'hero'], ['Accuracy', s.acc + '%'], ['Raw WPM', String(s.raw)], ['Characters', s.ok + ' right · ' + s.wrong + ' wrong']].forEach(function(x){
+      var d = document.createElement('div'); d.className = 'tile' + (x[2] ? ' ' + x[2] : ''); d.innerHTML = '<span class="tk"></span><b></b>'; d.firstChild.textContent = x[0]; d.lastChild.textContent = x[1]; el.appendChild(d);
+    });
+    var w = s.wpm, lvl = w < 25 ? 'Beginner. Keep practising touch typing.' : w < 40 ? 'Average: fine for most office work.' : w < 60 ? 'Good: you\'d pass most job typing tests.' : w < 80 ? 'Fast!' : 'Very fast. Impressive.';
+    $('verdict').textContent = lvl + (s.acc < 95 ? ' Work on accuracy: aim for 95% or more.' : '');
+    var key = 'dd-typing-best-' + val('kind'), best = 0; try { best = +localStorage.getItem(key) || 0; if (w > best && s.acc >= 90) localStorage.setItem(key, w); } catch(e){}
+    $('best').textContent = best ? (w > best && s.acc >= 90 ? 'New personal best! Previous: ' + best + ' WPM.' : 'Your best: ' + best + ' WPM.') : '';
+    $('resultBox').hidden = false; $('resultBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'typing-test-finished', event: true }); } catch(e){}
+  }
+  $('typed').addEventListener('input', function(){
+    if (done) return;
+    if (!start && this.value.length) { start = Date.now(); timer = setInterval(function(){ stats(); if (Date.now() - start >= dur * 1000) finish(); }, 250); $('say').textContent = 'Go! Keep your eyes on the text.'; }
+    if (this.value.length >= target.length) target += ' ' + passage();
+    paint(); stats();
+  });
+  $('typed').addEventListener('paste', function(e){ e.preventDefault(); $('say').className = 'say err'; $('say').textContent = 'Pasting is turned off for the test.'; });
+  document.querySelectorAll('input[name="dur"], input[name="kind"]').forEach(function(x){ x.addEventListener('change', function(){ reset(); }); });
+  $('restart').addEventListener('click', function(){ reset(); $('typed').focus(); });
+  $('again').addEventListener('click', function(){ reset(); $('typed').focus(); });
+  reset();
+})();
+</script>
+
+</body>
+</html>

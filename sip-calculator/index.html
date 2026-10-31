@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SIP Calculator with step-up: mutual fund SIP returns (free) · DevDesk</title>
+<meta name="description" content="See what your monthly SIP grows to. Add a yearly step-up and a lump sum, and view the value after inflation with a year-by-year table. Free, no sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/sip-calculator/">
+<meta property="og:title" content="SIP Calculator with step-up: mutual fund SIP returns (free) · DevDesk">
+<meta property="og:description" content="See what your monthly SIP grows to. Add a yearly step-up and a lump sum, and view the value after inflation with a year-by-year table. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/sip-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Money calculators / SIP calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Money calculators</span>
+    <h1>SIP <span class="hand">calculator</span></h1>
+    <p>How much will a monthly SIP grow to? Try a yearly step-up to see how raising your SIP with your salary changes the result.</p>
+  </header>
+
+  <section class="panel" aria-label="SIP calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><div class="top"><label for="sip">Monthly SIP (₹)</label><input class="inp" id="sip" type="number" inputmode="numeric" min="100" step="500" value="10000"></div>
+          <input type="range" id="sipR" min="500" max="200000" step="500" value="10000" aria-label="Monthly SIP slider"></div>
+        <div class="field"><div class="top"><label for="ret">Expected return (% a year)</label><input class="inp" id="ret" type="number" inputmode="decimal" min="0" max="40" step="0.5" value="12"></div>
+          <input type="range" id="retR" min="1" max="30" step="0.5" value="12" aria-label="Expected return slider"></div>
+        <div class="field"><div class="top"><label for="yrs">Time period (years)</label><input class="inp" id="yrs" type="number" inputmode="numeric" min="1" max="50" step="1" value="15"></div>
+          <input type="range" id="yrsR" min="1" max="40" step="1" value="15" aria-label="Years slider"></div>
+        <div class="field"><div class="top"><label for="step">Yearly step-up (%)</label><input class="inp" id="step" type="number" inputmode="decimal" min="0" max="50" step="1" value="0"></div>
+          <input type="range" id="stepR" min="0" max="25" step="1" value="0" aria-label="Step-up slider"><span class="hint">Raise your SIP by this much every year, for example with your hike.</span></div>
+        <div class="field"><div class="top"><label for="lump">Lump sum at start (₹)</label><input class="inp" id="lump" type="number" inputmode="numeric" min="0" step="1000" value="0"></div></div>
+        <div class="field"><div class="top"><label for="inf">Inflation (% a year)</label><input class="inp" id="inf" type="number" inputmode="decimal" min="0" max="20" step="0.5" value="6"></div></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Value after <span id="yLbl">15</span> years</span><b id="fv">—</b></div>
+        <div class="split-bar" aria-hidden="true"><i id="barI"></i><i id="barG"></i></div>
+        <div class="legend"><span>You invest</span><span>Growth</span></div>
+        <div class="stats">
+          <div><span class="k">Total invested</span><b id="inv">—</b></div>
+          <div><span class="k">Estimated growth</span><b id="gain">—</b></div>
+          <div><span class="k">In today's money</span><b id="real">—</b></div>
+          <div><span class="k">Last monthly SIP</span><b id="last">—</b></div>
+        </div>
+        <p class="say">Returns are an estimate. Mutual fund returns go up and down and are not guaranteed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:22px" aria-label="Year by year">
+    <h2 class="box-title" style="margin-bottom:10px">Year by year</h2>
+    <div class="data-wrap"><table class="data-table" id="tbl"><thead><tr><th>Year</th><th class="n">Monthly SIP</th><th class="n">Invested so far</th><th class="n">Value</th><th class="n">Growth</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How SIP returns are calculated</h2>
+    <p>Each monthly instalment grows for the months left until the end. With a monthly rate <b>i</b> (annual return ÷ 12 ÷ 100) and <b>n</b> months, a fixed SIP of <b>P</b> grows to:</p>
+    <pre><code>FV = P × ((1 + i)^n − 1) / i × (1 + i)</code></pre>
+    <p>This assumes you invest at the start of each month, which is how most SIP calculators from fund houses work. With a step-up, the calculator simply raises the instalment every 12 months and adds up each one's growth.</p>
+    <h2>Why step-up matters</h2>
+    <p>₹10,000 a month for 20 years at 12% grows to about ₹1 crore. Raise it by 10% every year and it grows to about ₹2 crore. Most of the extra comes from the later, larger instalments, so it fits naturally with yearly appraisals.</p>
+    <h2>What return should I assume?</h2>
+    <ul>
+      <li><b>Large-cap or index equity funds:</b> 10–12% has been typical over long periods, with big swings year to year.</li>
+      <li><b>Hybrid funds:</b> 8–10%.</li>
+      <li><b>Debt funds:</b> 6–7.5%.</li>
+    </ul>
+    <p>Use a conservative number for planning. Past returns don't guarantee future returns.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is the value after tax?</summary><p>No. Equity fund gains above ₹1.25 lakh a year are taxed at 12.5% when held over a year (long-term capital gains). The calculator shows the value before tax.</p></details>
+    <details><summary>What does "in today's money" mean?</summary><p>It divides the final value by inflation, so you can see what it would buy today. At 6% inflation, ₹1 crore in 15 years buys what about ₹42 lakh buys now.</p></details>
+    <details><summary>SIP or lump sum, which is better?</summary><p>A lump sum invested early has more time to grow when markets rise. A SIP spreads your buying over time, so you worry less about timing. Most salaried investors use SIPs because they invest from monthly income.</p></details>
+    <h2>More money calculators</h2>
+    <div class="related"><a class="note live c-money" href="../emi-calculator/index.html" data-q="emi calculator monthly emi, total interest and a full repayment schedule."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>EMI Calculator</h3><p>Monthly EMI, total interest and a full repayment schedule.</p><span class="go">Open →</span></a><a class="note live c-money" href="../gst-calculator/index.html" data-q="gst calculator add or remove gst at any rate in one click."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>GST Calculator</h3><p>Add or remove GST at any rate in one click.</p><span class="go">Open →</span></a><a class="note live c-money" href="../income-tax-calculator/index.html" data-q="income tax: old vs new regime compare your tax under both regimes."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>Income Tax: Old vs New Regime</h3><p>Compare your tax under both regimes.</p><span class="go">Open →</span></a><a class="note live c-money" href="../fd-rd-calculator/index.html" data-q="fd &amp; rd calculator maturity value for fixed and recurring deposits."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>FD &amp; RD Calculator</h3><p>Maturity value for fixed and recurring deposits.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function calc(){
+    var P = +$('sip').value || 0, R = +$('ret').value || 0, Y = Math.round(+$('yrs').value || 0), S = +$('step').value || 0, L = +$('lump').value || 0, inf = +$('inf').value || 0;
+    TB.save('dd-sip', { P: P, R: R, Y: Y, S: S, L: L, inf: inf });
+    if (Y < 1) return;
+    var i = R / 1200, val = L, inv = L, sip = P, html = '';
+    for (var y = 1; y <= Y; y++) {
+      for (var m = 0; m < 12; m++) { val = (val + sip) * (1 + i); inv += sip; }
+      html += '<tr><td>' + y + '</td><td class="n">' + TB.inr(sip) + '</td><td class="n">' + TB.inr(inv) + '</td><td class="n">' + TB.inr(val) + '</td><td class="n">' + TB.inr(val - inv) + '</td></tr>';
+      if (y < Y) sip = sip * (1 + S / 100);
+    }
+    $('yLbl').textContent = Y; $('fv').textContent = TB.inr(val); $('inv').textContent = TB.inr(inv); $('gain').textContent = TB.inr(val - inv);
+    $('real').textContent = TB.inr(val / Math.pow(1 + inf / 100, Y)); $('last').textContent = TB.inr(sip);
+    var pi = val > 0 ? inv / val * 100 : 100; $('barI').style.width = pi + '%'; $('barG').style.width = (100 - pi) + '%';
+    $('tbl').tBodies[0].innerHTML = html;
+  }
+  ['sip', 'ret', 'yrs', 'step'].forEach(function(id){ TB.pair(id, id + 'R', calc); });
+  ['lump', 'inf'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  var o = TB.load('dd-sip'); if (o) { [['sip', 'P'], ['ret', 'R'], ['yrs', 'Y'], ['step', 'S'], ['lump', 'L'], ['inf', 'inf']].forEach(function(k){ if (o[k[1]] != null) { $(k[0]).value = o[k[1]]; var r = $(k[0] + 'R'); if (r) r.value = o[k[1]]; } }); }
+  calc();
+})();
+</script>
+
+</body>
+</html>

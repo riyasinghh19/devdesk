@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Income Tax Calculator FY 2026-27: Old vs New Regime (free) · DevDesk</title>
+<meta name="description" content="Compare your income tax under the old and new regimes for FY 2026-27 (AY 2027-28). Includes the ₹75,000 standard deduction, 87A rebate up to ₹12 lakh, 80C, 80D, HRA and home loan interest.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/income-tax-calculator/">
+<meta property="og:title" content="Income Tax Calculator FY 2026-27: Old vs New Regime (free) · DevDesk">
+<meta property="og:description" content="Compare your income tax under the old and new regimes for FY 2026-27 (AY 2027-28). Includes the ₹75,000 standard deduction, 87A rebate up to ₹12 lakh, 80C, 80D, HRA and home loan interest.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/income-tax-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Money calculators / Income tax: old vs new</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Money calculators · FY 2026-27</span>
+    <h1>Income tax: <span class="hand">old vs new</span></h1>
+    <p>Enter your salary and deductions. The calculator works out your tax under both regimes for FY 2026-27 and tells you which one saves more.</p>
+  </header>
+
+  <section class="panel" aria-label="Income tax calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><div class="top"><label for="sal">Gross salary for the year (₹)</label><input class="inp" id="sal" type="number" inputmode="numeric" min="0" step="10000" value="1800000"></div>
+          <input type="range" id="salR" min="0" max="10000000" step="50000" value="1800000" aria-label="Salary slider"><span class="hint">Your CTC minus employer PF and gratuity, or "gross salary" on Form 16.</span></div>
+        <div class="field"><div class="top"><label for="oth">Other income (₹)</label><input class="inp" id="oth" type="number" inputmode="numeric" min="0" step="1000" value="0"></div><span class="hint">Savings and FD interest, rent received, freelance income.</span></div>
+        <div class="field"><div class="top"><label for="age">Your age</label>
+          <select class="inp" id="age" style="width:150px"><option value="0">Below 60</option><option value="60">60 to 79</option><option value="80">80 or above</option></select></div></div>
+        <div class="field"><div class="top"><label for="enps">Employer NPS contribution (₹)</label><input class="inp" id="enps" type="number" inputmode="numeric" min="0" step="1000" value="0"></div><span class="hint">Allowed in both regimes (up to 14% of basic in new, 10% in old).</span></div>
+        <details class="field" open><summary class="lbl" style="cursor:pointer">Old-regime deductions</summary>
+          <div class="field" style="margin-top:12px"><div class="top"><label for="d80c">80C: PF, PPF, ELSS, LIC, tuition (₹)</label><input class="inp" id="d80c" type="number" min="0" step="1000" value="150000"></div><span class="hint">Max ₹1,50,000.</span></div>
+          <div class="field"><div class="top"><label for="d80d">80D: health insurance (₹)</label><input class="inp" id="d80d" type="number" min="0" step="1000" value="25000"></div><span class="hint">Up to ₹25,000 for you (₹50,000 if 60+), plus up to ₹50,000 for senior parents.</span></div>
+          <div class="field"><div class="top"><label for="hra">HRA exemption (₹)</label><input class="inp" id="hra" type="number" min="0" step="1000" value="0"></div><span class="hint">The exempt part shown on your payslip or Form 16.</span></div>
+          <div class="field"><div class="top"><label for="home">Home loan interest, 24(b) (₹)</label><input class="inp" id="home" type="number" min="0" step="1000" value="0"></div><span class="hint">Max ₹2,00,000 for a self-occupied home.</span></div>
+          <div class="field"><div class="top"><label for="nps">Own NPS, 80CCD(1B) (₹)</label><input class="inp" id="nps" type="number" min="0" step="1000" value="0"></div><span class="hint">Max ₹50,000, over and above 80C.</span></div>
+          <div class="field"><div class="top"><label for="othd">Other deductions (₹)</label><input class="inp" id="othd" type="number" min="0" step="1000" value="0"></div><span class="hint">80E education loan interest, 80G donations, 80TTA, professional tax, LTA.</span></div>
+        </details>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Better for you</span><b id="best">—</b></div>
+        <p class="say" id="saveSay"></p>
+        <div class="data-wrap"><table class="data-table" id="cmp"><thead><tr><th></th><th class="n">Old regime</th><th class="n">New regime</th></tr></thead><tbody></tbody></table></div>
+        <p class="say" id="breakEven"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="two" style="margin-top:18px">
+    <section class="panel card-box" aria-label="New regime slabs"><h2 class="box-title">New regime: your slabs</h2><div class="data-wrap"><table class="data-table" id="slabNew"><thead><tr><th>Income slab</th><th class="n">Rate</th><th class="n">Tax</th></tr></thead><tbody></tbody></table></div></section>
+    <section class="panel card-box" aria-label="Old regime slabs"><h2 class="box-title">Old regime: your slabs</h2><div class="data-wrap"><table class="data-table" id="slabOld"><thead><tr><th>Income slab</th><th class="n">Rate</th><th class="n">Tax</th></tr></thead><tbody></tbody></table></div></section>
+  </div>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Tax slabs for FY 2026-27 (AY 2027-28)</h2>
+    <p>Budget 2026 kept the slabs from Budget 2025 unchanged.</p>
+    <table>
+      <thead><tr><th>New regime (default)</th><th>Rate</th></tr></thead>
+      <tbody><tr><td>Up to ₹4 lakh</td><td>Nil</td></tr><tr><td>₹4–8 lakh</td><td>5%</td></tr><tr><td>₹8–12 lakh</td><td>10%</td></tr><tr><td>₹12–16 lakh</td><td>15%</td></tr><tr><td>₹16–20 lakh</td><td>20%</td></tr><tr><td>₹20–24 lakh</td><td>25%</td></tr><tr><td>Above ₹24 lakh</td><td>30%</td></tr></tbody>
+    </table>
+    <table>
+      <thead><tr><th>Old regime (below 60)</th><th>Rate</th></tr></thead>
+      <tbody><tr><td>Up to ₹2.5 lakh</td><td>Nil</td></tr><tr><td>₹2.5–5 lakh</td><td>5%</td></tr><tr><td>₹5–10 lakh</td><td>20%</td></tr><tr><td>Above ₹10 lakh</td><td>30%</td></tr></tbody>
+    </table>
+    <p>In the old regime, the nil slab is ₹3 lakh for ages 60–79 and ₹5 lakh for 80 and above.</p>
+    <h2>Key rules the calculator applies</h2>
+    <ul>
+      <li><b>Standard deduction:</b> ₹75,000 in the new regime, ₹50,000 in the old.</li>
+      <li><b>Section 87A rebate:</b> no tax in the new regime if taxable income is up to ₹12 lakh, with marginal relief just above it. In the old regime, no tax up to ₹5 lakh.</li>
+      <li><b>So a salary of up to ₹12.75 lakh pays no tax</b> in the new regime.</li>
+      <li><b>Surcharge:</b> 10% above ₹50 lakh, 15% above ₹1 crore, 25% above ₹2 crore (the maximum in the new regime), 37% above ₹5 crore in the old regime, with marginal relief.</li>
+      <li><b>Health and education cess:</b> 4% on tax plus surcharge.</li>
+    </ul>
+    <h2>Which regime should you choose?</h2>
+    <p>The new regime wins for most salaried people now. The old regime only wins if your deductions are large: typically full 80C, health insurance, a big HRA exemption and home loan interest together. The calculator shows the deductions you'd need for the old regime to break even.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Can I switch between regimes every year?</summary><p>Salaried people can choose each year when filing the return. People with business income can switch back to the old regime only once.</p></details>
+    <details><summary>Does this cover capital gains?</summary><p>No. Capital gains on shares and mutual funds are taxed at special rates and the 87A rebate doesn't apply to them. This calculator is for salary and regular income.</p></details>
+    <details><summary>Is this tax advice?</summary><p>No. It's an estimate to help you compare. For filing, use the Income Tax Department's portal or speak to a chartered accountant.</p></details>
+    <h2>More money calculators</h2>
+    <div class="related"><a class="note live c-money" href="../emi-calculator/index.html" data-q="emi calculator monthly emi, total interest and a full repayment schedule."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>EMI Calculator</h3><p>Monthly EMI, total interest and a full repayment schedule.</p><span class="go">Open →</span></a><a class="note live c-money" href="../sip-calculator/index.html" data-q="sip calculator what your monthly sip grows to over time."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>SIP Calculator</h3><p>What your monthly SIP grows to over time.</p><span class="go">Open →</span></a><a class="note live c-money" href="../gst-calculator/index.html" data-q="gst calculator add or remove gst at any rate in one click."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>GST Calculator</h3><p>Add or remove GST at any rate in one click.</p><span class="go">Open →</span></a><a class="note live c-money" href="../fd-rd-calculator/index.html" data-q="fd &amp; rd calculator maturity value for fixed and recurring deposits."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>FD &amp; RD Calculator</h3><p>Maturity value for fixed and recurring deposits.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var L = 100000;
+  var NEW = [[4 * L, 0], [8 * L, 5], [12 * L, 10], [16 * L, 15], [20 * L, 20], [24 * L, 25], [Infinity, 30]];
+  function OLD(age){ var nil = age >= 80 ? 5 * L : age >= 60 ? 3 * L : 2.5 * L; return age >= 80 ? [[nil, 0], [10 * L, 20], [Infinity, 30]] : [[nil, 0], [5 * L, 5], [10 * L, 20], [Infinity, 30]]; }
+  function slabTax(inc, slabs){ var t = 0, lo = 0, parts = []; slabs.forEach(function(s){ var hi = s[0], amt = Math.max(0, Math.min(inc, hi) - lo); if (lo < inc || lo === 0) parts.push([lo, hi, s[1], amt * s[1] / 100]); t += amt * s[1] / 100; lo = hi; }); return { tax: t, parts: parts }; }
+  function surcharge(inc, tax, slabs, cap){
+    var bands = [[50 * L, 10], [100 * L, 15], [200 * L, 25], [500 * L, 37]].filter(function(b){ return b[1] <= cap; });
+    var rate = 0, th = 0; bands.forEach(function(b){ if (inc > b[0]) { rate = b[1]; th = b[0]; } });
+    if (!rate) return 0;
+    var sc = tax * rate / 100, prevRate = 0; bands.forEach(function(b){ if (b[0] < th) prevRate = b[1]; });
+    var atTh = slabTax(th, slabs).tax; atTh += atTh * prevRate / 100;
+    return Math.max(0, Math.min(sc, atTh + (inc - th) - tax));
+  }
+  function regime(kind, gross, oth, age, enps, ded){
+    var std = gross > 0 ? Math.min(gross, kind === 'new' ? 75000 : 50000) : 0;
+    var d = kind === 'new' ? enps : enps + ded, taxable = Math.max(0, gross + oth - std - d);
+    var slabs = kind === 'new' ? NEW : OLD(age), st = slabTax(taxable, slabs), tax = st.tax, rebate = 0;
+    if (kind === 'new') { if (taxable <= 12 * L) rebate = tax; else if (tax > taxable - 12 * L) rebate = tax - (taxable - 12 * L); }
+    else if (taxable <= 5 * L) rebate = Math.min(tax, 12500);
+    var after = tax - rebate, sc = surcharge(taxable, after, slabs, kind === 'new' ? 25 : 37), cess = (after + sc) * 0.04;
+    return { std: std, ded: d, taxable: taxable, slab: tax, rebate: rebate, sc: sc, cess: cess, total: Math.round(after + sc + cess), parts: st.parts };
+  }
+  function oldDed(){
+    var c = Math.min(+$('d80c').value || 0, 150000), d = Math.min(+$('d80d').value || 0, 100000), h = +$('hra').value || 0, home = Math.min(+$('home').value || 0, 200000), n = Math.min(+$('nps').value || 0, 50000), o = +$('othd').value || 0;
+    return c + d + h + home + n + o;
+  }
+  function fmtL(v){ return v === Infinity ? 'above' : '₹' + (v / L).toLocaleString('en-IN') + ' L'; }
+  function slabTable(id, r){
+    $(id).tBodies[0].innerHTML = r.parts.map(function(p){ return '<tr><td>' + (p[1] === Infinity ? 'Above ' + fmtL(p[0]) : fmtL(p[0]) + ' – ' + fmtL(p[1])) + '</td><td class="n">' + p[2] + '%</td><td class="n">' + TB.inr(p[3]) + '</td></tr>'; }).join('');
+  }
+  function calc(){
+    var g = +$('sal').value || 0, oth = +$('oth').value || 0, age = +$('age').value, enps = +$('enps').value || 0, ded = oldDed();
+    TB.save('dd-tax', ['sal', 'oth', 'age', 'enps', 'd80c', 'd80d', 'hra', 'home', 'nps', 'othd'].map(function(id){ return $(id).value; }));
+    var o = regime('old', g, oth, age, enps, ded), n = regime('new', g, oth, age, enps, 0);
+    var rows = [['Gross income', TB.inr(g + oth), TB.inr(g + oth)], ['Standard deduction', '− ' + TB.inr(o.std), '− ' + TB.inr(n.std)], ['Other deductions', '− ' + TB.inr(o.ded), '− ' + TB.inr(n.ded)], ['Taxable income', TB.inr(o.taxable), TB.inr(n.taxable)], ['Tax on slabs', TB.inr(o.slab), TB.inr(n.slab)], ['87A rebate', '− ' + TB.inr(o.rebate), '− ' + TB.inr(n.rebate)], ['Surcharge', TB.inr(o.sc), TB.inr(n.sc)], ['Cess (4%)', TB.inr(o.cess), TB.inr(n.cess)]];
+    var tb = $('cmp').tBodies[0]; tb.innerHTML = rows.map(function(r){ return '<tr><td>' + r[0] + '</td><td class="n">' + r[1] + '</td><td class="n">' + r[2] + '</td></tr>'; }).join('') + '<tr class="sum"><td>Total tax</td><td class="n">' + TB.inr(o.total) + '</td><td class="n">' + TB.inr(n.total) + '</td></tr><tr><td>Per month</td><td class="n">' + TB.inr(o.total / 12) + '</td><td class="n">' + TB.inr(n.total / 12) + '</td></tr>';
+    var diff = o.total - n.total;
+    $('best').textContent = diff > 0 ? 'New regime' : diff < 0 ? 'Old regime' : 'Either: same tax';
+    $('saveSay').className = 'say ok'; $('saveSay').textContent = diff ? 'You save ' + TB.inr(Math.abs(diff)) + ' a year (' + TB.inr(Math.abs(diff) / 12) + ' a month).' : '';
+    // deductions needed for the old regime to match the new one
+    var be = $('breakEven');
+    if (diff > 0) {
+      var lo = 0, hi = g + oth; if (regime('old', g, oth, age, enps, hi).total > n.total) be.textContent = 'Even with very large deductions, the old regime can\'t beat the new one at this income.';
+      else { for (var k = 0; k < 40; k++) { var mid = (lo + hi) / 2; if (regime('old', g, oth, age, enps, mid).total > n.total) lo = mid; else hi = mid; } be.textContent = 'The old regime would need about ' + TB.inr(Math.ceil(hi / 1000) * 1000) + ' of deductions (you entered ' + TB.inr(ded) + ') to match the new regime.'; }
+    } else be.textContent = '';
+    slabTable('slabNew', n); slabTable('slabOld', o);
+  }
+  TB.pair('sal', 'salR', calc);
+  ['oth', 'age', 'enps', 'd80c', 'd80d', 'hra', 'home', 'nps', 'othd'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  var s = TB.load('dd-tax'); if (s && s.length === 10) ['sal', 'oth', 'age', 'enps', 'd80c', 'd80d', 'hra', 'home', 'nps', 'othd'].forEach(function(id, i){ $(id).value = s[i]; if (id === 'sal') $('salR').value = s[i]; });
+  calc();
+})();
+</script>
+
+</body>
+</html>

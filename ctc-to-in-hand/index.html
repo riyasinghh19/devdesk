@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CTC to In-Hand Salary Calculator FY 2026-27 (free) · DevDesk</title>
+<meta name="description" content="Find your monthly take-home salary from your CTC. Accounts for employer and employee PF, gratuity, professional tax, variable pay and income tax under the new or old regime.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/ctc-to-in-hand/">
+<meta property="og:title" content="CTC to In-Hand Salary Calculator FY 2026-27 (free) · DevDesk">
+<meta property="og:description" content="Find your monthly take-home salary from your CTC. Accounts for employer and employee PF, gratuity, professional tax, variable pay and income tax under the new or old regime.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/ctc-to-in-hand/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Money calculators / CTC to in-hand</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Money calculators · FY 2026-27</span>
+    <h1>CTC to <span class="hand">in-hand</span> salary</h1>
+    <p>An offer letter says ₹18 LPA. What actually lands in your account each month? Enter your CTC and see where every rupee goes.</p>
+  </header>
+
+  <section class="panel" aria-label="CTC to in-hand calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><div class="top"><label for="ctc">Annual CTC (₹)</label><input class="inp" id="ctc" type="number" inputmode="numeric" min="0" step="10000" value="1800000"></div>
+          <input type="range" id="ctcR" min="300000" max="10000000" step="50000" value="1800000" aria-label="CTC slider"></div>
+        <div class="field"><div class="top"><label for="bp">Basic pay (% of CTC)</label><input class="inp" id="bp" type="number" inputmode="decimal" min="10" max="100" step="1" value="50"></div>
+          <input type="range" id="bpR" min="20" max="70" step="1" value="50" aria-label="Basic percentage slider"><span class="hint">Under the new labour codes, basic is usually at least 50% of pay. Check your offer letter.</span></div>
+        <div class="field"><div class="top"><label for="vp">Variable pay / bonus in CTC (₹ a year)</label><input class="inp" id="vp" type="number" inputmode="numeric" min="0" step="10000" value="0"></div><span class="hint">Paid once or quarterly, not monthly.</span></div>
+        <div class="field"><div class="top"><label for="pf">PF contribution</label>
+          <select class="inp" id="pf" style="width:210px"><option value="full">12% of basic</option><option value="cap">Capped at ₹1,800 a month</option><option value="none">No PF</option></select></div></div>
+        <div class="field"><div class="top"><label for="gr">Gratuity is part of CTC</label><select class="inp" id="gr" style="width:110px"><option value="1">Yes</option><option value="0">No</option></select></div><span class="hint">4.81% of basic, paid when you leave after 5 years.</span></div>
+        <div class="field"><div class="top"><label for="ins">Employer health insurance in CTC (₹ a year)</label><input class="inp" id="ins" type="number" inputmode="numeric" min="0" step="1000" value="0"></div></div>
+        <div class="field"><div class="top"><label for="pt">Professional tax (₹ a year)</label>
+          <select class="inp" id="pt" style="width:250px"><option value="2500">Maharashtra (₹2,500)</option><option value="2400">Karnataka (₹2,400)</option><option value="2500">Tamil Nadu (~₹2,500)</option><option value="2400">Telangana / Andhra (₹2,400)</option><option value="2500">West Bengal (₹2,500)</option><option value="2400">Gujarat (₹2,400)</option><option value="0">Delhi, Haryana, UP, Rajasthan (none)</option></select></div></div>
+        <div class="field"><div class="top"><label for="reg">Tax regime</label><select class="inp" id="reg" style="width:170px"><option value="new">New (default)</option><option value="old">Old</option></select></div>
+          <div class="top" id="oldRow" hidden><label for="ded" class="hint">Other old-regime deductions (₹)</label><input class="inp" id="ded" type="number" min="0" step="1000" value="0"></div></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">In-hand every month</span><b id="mon">—</b></div>
+        <p class="say" id="vpSay"></p>
+        <div class="kv" id="out"></div>
+        <div class="split-bar" aria-hidden="true"><i id="b1"></i><i id="b2"></i><i id="b3"></i></div>
+        <div class="legend"><span>Take-home</span><span>Tax &amp; PT</span><span>PF, gratuity &amp; benefits</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Why in-hand is less than CTC ÷ 12</h2>
+    <p>CTC (cost to company) is everything your employer spends on you, including money you don't receive every month:</p>
+    <ul>
+      <li><b>Employer PF (12% of basic)</b> goes into your EPF account. It's your money, but you get it later.</li>
+      <li><b>Gratuity (4.81% of basic)</b> is paid only if you leave after five or more years of service.</li>
+      <li><b>Variable pay or bonus</b> is paid once or a few times a year, often depending on performance.</li>
+      <li><b>Insurance premiums</b> and other benefits are paid to the insurer, not to you.</li>
+    </ul>
+    <p>Then from your gross salary, <b>employee PF</b> (another 12% of basic), <b>professional tax</b> and <b>income tax (TDS)</b> are deducted.</p>
+    <h2>A quick example</h2>
+    <p>CTC ₹18 lakh, basic 50%, full PF, gratuity in CTC, new regime, Maharashtra: employer PF ₹1.08 lakh and gratuity ₹43,290 come out first. From the gross, employee PF ₹1.08 lakh, PT ₹2,500 and about ₹1.2 lakh of tax are deducted, leaving roughly ₹1.18 lakh a month.</p>
+    <h2>Ways to raise your take-home</h2>
+    <ul>
+      <li><b>Choose the PF cap</b> if your employer allows it (12% of ₹15,000 = ₹1,800 a month). You save less for retirement but take home more.</li>
+      <li><b>Employer NPS</b> (up to 14% of basic) is tax-free in the new regime, which lowers TDS.</li>
+      <li><b>Compare regimes</b> with the <a href="../income-tax-calculator/index.html">old vs new tax calculator</a>.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is the in-hand the same every month?</summary><p>Usually close. Employers spread TDS across the year, and it can rise in the last quarter if you submit investment proofs late or get a bonus.</p></details>
+    <details><summary>Does HRA change my in-hand?</summary><p>HRA is part of your gross salary. In the old regime, its exempt part lowers your tax. In the new regime, HRA is fully taxed.</p></details>
+    <h2>More money calculators</h2>
+    <div class="related"><a class="note live c-money" href="../emi-calculator/index.html" data-q="emi calculator monthly emi, total interest and a full repayment schedule."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>EMI Calculator</h3><p>Monthly EMI, total interest and a full repayment schedule.</p><span class="go">Open →</span></a><a class="note live c-money" href="../sip-calculator/index.html" data-q="sip calculator what your monthly sip grows to over time."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>SIP Calculator</h3><p>What your monthly SIP grows to over time.</p><span class="go">Open →</span></a><a class="note live c-money" href="../gst-calculator/index.html" data-q="gst calculator add or remove gst at any rate in one click."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>GST Calculator</h3><p>Add or remove GST at any rate in one click.</p><span class="go">Open →</span></a><a class="note live c-money" href="../income-tax-calculator/index.html" data-q="income tax: old vs new regime compare your tax under both regimes."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>Income Tax: Old vs New Regime</h3><p>Compare your tax under both regimes.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var L = 100000;
+  function slab(inc, s){ var t = 0, lo = 0; s.forEach(function(x){ t += Math.max(0, Math.min(inc, x[0]) - lo) * x[1] / 100; lo = x[0]; }); return t; }
+  var NEW = [[4 * L, 0], [8 * L, 5], [12 * L, 10], [16 * L, 15], [20 * L, 20], [24 * L, 25], [Infinity, 30]], OLD = [[2.5 * L, 0], [5 * L, 5], [10 * L, 20], [Infinity, 30]];
+  function tax(gross, reg, pfEmp, pt, ded){
+    var ti, t;
+    if (reg === 'new') { ti = Math.max(0, gross - 75000); t = slab(ti, NEW); if (ti <= 12 * L) t = 0; else t = Math.min(t, ti - 12 * L); }
+    else { ti = Math.max(0, gross - 50000 - pt - Math.min(150000, pfEmp) - ded); t = slab(ti, OLD); if (ti <= 5 * L) t = Math.max(0, t - 12500); }
+    var sc = ti > 200 * L ? 0.25 : ti > 100 * L ? 0.15 : ti > 50 * L ? 0.10 : 0;
+    return t * (1 + sc) * 1.04;
+  }
+  var rowsOut = [];
+  function calc(){
+    var ctc = +$('ctc').value || 0, bp = (+$('bp').value || 0) / 100, vp = +$('vp').value || 0, pfm = $('pf').value, gr = $('gr').value === '1', ins = +$('ins').value || 0, pt = +$('pt').value, reg = $('reg').value, ded = +$('ded').value || 0;
+    $('oldRow').hidden = reg !== 'old';
+    TB.save('dd-ctc', ['ctc', 'bp', 'vp', 'pf', 'gr', 'ins', 'pt', 'reg', 'ded'].map(function(id){ return $(id).value; }));
+    var fixed = ctc - vp, basic = fixed * bp;
+    var pf = pfm === 'none' ? 0 : pfm === 'cap' ? Math.min(basic * 0.12, 21600) : basic * 0.12;
+    var grat = gr ? basic * 0.0481 : 0;
+    var gross = ctc - pf - grat - ins;
+    var t = tax(gross, reg, pf, pt, ded), monthlyGross = (gross - vp) / 12;
+    var inHand = monthlyGross - pf / 12 - pt / 12 - t / 12;
+    $('mon').textContent = TB.inr(inHand);
+    $('vpSay').textContent = vp > 0 ? 'Plus about ' + TB.inr(vp * (1 - (t / Math.max(gross, 1)))) + ' of variable pay after tax, when it is paid.' : '';
+    rowsOut = [['Annual CTC', ctc], ['− Employer PF', pf], ['− Gratuity', grat], ['− Insurance & benefits', ins], ['= Gross salary', gross], ['− Employee PF', pf], ['− Professional tax', pt], ['− Income tax (' + (reg === 'new' ? 'new' : 'old') + ' regime)', t], ['= Take-home for the year', gross - pf - pt - t]];
+    var out = $('out'); out.innerHTML = '';
+    rowsOut.forEach(function(r){ var k = document.createElement('div'); k.className = 'k'; k.textContent = r[0]; var v = document.createElement('div'); v.className = 'v'; v.textContent = TB.inr(r[1]); var c = document.createElement('div'); c.className = 'c'; c.textContent = r[0].indexOf('=') === 0 || r[0] === 'Annual CTC' ? '' : TB.inr(r[1] / 12) + '/mo'; c.style.cssText = 'font-size:12.5px;color:var(--muted)'; out.appendChild(k); out.appendChild(v); out.appendChild(c); });
+    var take = gross - pf - pt - t, taxes = t + pt, rest = ctc - take - taxes;
+    if (ctc > 0) { $('b1').style.width = take / ctc * 100 + '%'; $('b2').style.width = taxes / ctc * 100 + '%'; $('b3').style.width = Math.max(0, rest) / ctc * 100 + '%'; }
+  }
+  ['ctc', 'bp'].forEach(function(id){ TB.pair(id, id + 'R', calc); });
+  ['vp', 'pf', 'gr', 'ins', 'pt', 'reg', 'ded'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  var s = TB.load('dd-ctc'); if (s && s.length === 9) ['ctc', 'bp', 'vp', 'pf', 'gr', 'ins', 'pt', 'reg', 'ded'].forEach(function(id, i){ $(id).value = s[i]; var r = $(id + 'R'); if (r) r.value = s[i]; });
+  calc();
+})();
+</script>
+
+</body>
+</html>

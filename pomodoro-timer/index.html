@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pomodoro Timer online: 25/5 focus timer with breaks (free) · DevDesk</title>
+<meta name="description" content="A simple Pomodoro timer: 25 minutes of focus, 5-minute breaks and a longer break every fourth round. Gentle sound, tab-title countdown, custom lengths and a daily count. No sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/pomodoro-timer/">
+<meta property="og:title" content="Pomodoro Timer online: 25/5 focus timer with breaks (free) · DevDesk">
+<meta property="og:description" content="A simple Pomodoro timer: 25 minutes of focus, 5-minute breaks and a longer break every fourth round. Gentle sound, tab-title countdown, custom lengths and a daily count. No sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/pomodoro-timer/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Career tools / Pomodoro timer</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Career tools</span>
+    <h1>Pomodoro <span class="hand">timer</span></h1>
+    <p>Work for 25 minutes, rest for 5. After four rounds, take a longer break. The countdown also shows in your browser tab.</p>
+  </header>
+
+  <section class="panel" aria-label="Pomodoro timer"><div class="panel-body ring-wrap">
+    <div class="seg" role="radiogroup" aria-label="Mode">
+      <label><input type="radio" name="mode" value="focus" checked><span>Focus</span></label>
+      <label><input type="radio" name="mode" value="short"><span>Short break</span></label>
+      <label><input type="radio" name="mode" value="long"><span>Long break</span></label>
+    </div>
+    <div class="timer-face" id="face" role="timer" aria-live="off">25:00</div>
+    <div class="split-bar" style="width:min(100%,520px)"><span class="s0" id="prog" style="width:0%"></span></div>
+    <p class="say" id="say" aria-live="polite">Round 1 of 4. Press Start when you're ready.</p>
+    <div class="row-inline" style="justify-content:center">
+      <button class="btn" id="go" type="button" style="min-width:140px">Start</button>
+      <button class="icon-btn" id="skip" type="button">Skip</button>
+      <button class="icon-btn" id="reset" type="button">Reset</button>
+    </div>
+    <div class="tiles" style="width:min(100%,520px)" id="today"></div>
+  </div></section>
+
+  <section class="panel card-box" style="margin-top:18px" aria-label="Settings">
+    <h2 class="box-title">Settings</h2>
+    <div class="field-row">
+      <div class="field"><label for="fMin">Focus (minutes)</label><input class="inp" id="fMin" type="number" min="1" max="120" value="25"></div>
+      <div class="field"><label for="sMin">Short break</label><input class="inp" id="sMin" type="number" min="1" max="60" value="5"></div>
+      <div class="field"><label for="lMin">Long break</label><input class="inp" id="lMin" type="number" min="1" max="60" value="15"></div>
+      <div class="field"><label for="every">Long break after</label><select id="every"><option value="2">2 rounds</option><option value="3">3 rounds</option><option value="4" selected>4 rounds</option><option value="5">5 rounds</option></select></div>
+    </div>
+    <div class="chips-row">
+      <label class="opt check"><input type="checkbox" id="sound" checked> Play a soft chime</label>
+      <label class="opt check"><input type="checkbox" id="auto"> Start the next timer automatically</label>
+      <button class="chip-btn" type="button" data-p="25,5,15">25 / 5</button>
+      <button class="chip-btn" type="button" data-p="50,10,20">50 / 10</button>
+      <button class="chip-btn" type="button" data-p="90,20,30">90 / 20</button>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>What is the Pomodoro Technique?</h2>
+    <p>A time-management method created by Francesco Cirillo in the late 1980s, named after his tomato-shaped kitchen timer ("pomodoro" is Italian for tomato). You work in short, focused rounds with planned breaks, which makes big tasks easier to start and keeps your energy steady through the day.</p>
+    <h2>How to use it</h2>
+    <ol>
+      <li>Pick one task. Write it down.</li>
+      <li>Start a 25-minute focus round. Close chat and email, and put your phone face down.</li>
+      <li>If a thought pops up, note it on paper and carry on.</li>
+      <li>When the chime goes, take a 5-minute break. Stand up, stretch, refill your water.</li>
+      <li>After four rounds, take a 15 to 30-minute break.</li>
+    </ol>
+    <h2>Which length should I use?</h2>
+    <ul>
+      <li><b>25 / 5:</b> the classic. Good for studying, email and admin.</li>
+      <li><b>50 / 10:</b> better for coding, writing and data work, where getting into the flow takes a while.</li>
+      <li><b>90 / 20:</b> for deep work on one big problem.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Will the timer keep running in another tab?</summary><p>Yes. It's based on the clock, not on counting ticks, so it stays accurate even if your browser slows down background tabs. Keep this tab open.</p></details>
+    <details><summary>Why didn't I hear the chime?</summary><p>Browsers only allow sound after you've clicked on the page. Press Start once and the chime will work. Also check that the tab isn't muted.</p></details>
+    <details><summary>Is my count saved?</summary><p>Today's finished rounds are saved in this browser only, and reset each day.</p></details>
+    <h2>More career tools</h2>
+    <div class="related"><a class="note live c-career" href="../salary-hike-calculator/index.html" data-q="salary hike calculator your new ctc from a hike percentage, and the reverse."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Salary Hike Calculator</h3><p>Your new CTC from a hike percentage, and the reverse.</p><span class="go">Open →</span></a><a class="note live c-career" href="../notice-period-calculator/index.html" data-q="notice period calculator your last working day from your resignation date."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Notice Period Calculator</h3><p>Your last working day from your resignation date.</p><span class="go">Open →</span></a><a class="note live c-career" href="../resume-bullet-builder/index.html" data-q="resume bullet builder strong action verbs and templates for resume points."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Resume Bullet Builder</h3><p>Strong action verbs and templates for resume points.</p><span class="go">Open →</span></a><a class="note live c-career" href="../data-engineer-interview-questions/index.html" data-q="data engineer interview questions sql, adf and snowflake questions with answers."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Career</span><h3>Data Engineer Interview Questions</h3><p>SQL, ADF and Snowflake questions with answers.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var mode = 'focus', round = 1, endAt = 0, left = 0, running = false, tick = null, ac = null, baseTitle = document.title;
+  var LABEL = { focus: 'Focus', short: 'Short break', long: 'Long break' };
+  function mins(m){ return Math.max(1, Math.min(180, +$({ focus: 'fMin', short: 'sMin', long: 'lMin' }[m]).value || 1)) * 60000; }
+  function fmt(ms){ var s = Math.ceil(ms / 1000), m = Math.floor(s / 60); return String(m).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+  function day(){ var d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+  function stats(){ try { var o = JSON.parse(localStorage.getItem('dd-pomo-day') || '{}'); return o.d === day() ? o : { d: day(), n: 0, m: 0 }; } catch(e){ return { d: day(), n: 0, m: 0 }; } }
+  function showStats(){
+    var s = stats(), el = $('today'); el.innerHTML = '';
+    [['Rounds today', String(s.n), 'hero'], ['Focus time today', Math.floor(s.m / 60) + ' h ' + (s.m % 60) + ' m']].forEach(function(x){ var d = document.createElement('div'); d.className = 'tile' + (x[2] ? ' ' + x[2] : ''); d.innerHTML = '<span class="tk"></span><b></b>'; d.firstChild.textContent = x[0]; d.lastChild.textContent = x[1]; el.appendChild(d); });
+  }
+  function setMode(m, keepRunning){
+    mode = m; document.querySelector('input[name="mode"][value="' + m + '"]').checked = true;
+    left = mins(m); running = false; clearInterval(tick); $('go').textContent = 'Start';
+    draw(); say();
+    if (keepRunning) start();
+  }
+  function say(){ $('say').textContent = mode === 'focus' ? 'Round ' + round + ' of ' + $('every').value + '. ' + (running ? 'Stay with one task.' : 'Press Start when you\'re ready.') : (mode === 'long' ? 'Long break. Step away from the screen.' : 'Short break. Stretch, drink some water.'); }
+  function draw(){
+    var total = mins(mode), rem = running ? Math.max(0, endAt - Date.now()) : left;
+    $('face').textContent = fmt(rem);
+    $('prog').style.width = ((1 - rem / total) * 100) + '%';
+    $('prog').className = mode === 'focus' ? 's0' : 's2';
+    document.title = running ? fmt(rem) + ' · ' + LABEL[mode] : baseTitle;
+    if (running && rem <= 0) done();
+  }
+  function start(){
+    if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){} }
+    if (ac && ac.state === 'suspended') ac.resume();
+    endAt = Date.now() + left; running = true; $('go').textContent = 'Pause'; clearInterval(tick); tick = setInterval(draw, 250); say(); draw();
+  }
+  function pause(){ left = Math.max(0, endAt - Date.now()); running = false; clearInterval(tick); $('go').textContent = 'Resume'; document.title = '⏸ ' + fmt(left) + ' · ' + LABEL[mode]; }
+  function chime(){
+    if (!$('sound').checked || !ac) return;
+    [0, 0.35, 0.7].forEach(function(t, i){
+      var o = ac.createOscillator(), g = ac.createGain(); o.type = 'sine'; o.frequency.value = [660, 880, 990][i];
+      g.gain.setValueAtTime(0.0001, ac.currentTime + t); g.gain.exponentialRampToValueAtTime(0.25, ac.currentTime + t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + t + 0.6);
+      o.connect(g); g.connect(ac.destination); o.start(ac.currentTime + t); o.stop(ac.currentTime + t + 0.65);
+    });
+  }
+  function done(){
+    running = false; clearInterval(tick); chime();
+    var next;
+    if (mode === 'focus') {
+      var s = stats(); s.n++; s.m += Math.round(mins('focus') / 60000); try { localStorage.setItem('dd-pomo-day', JSON.stringify(s)); } catch(e){} showStats();
+      next = round % +$('every').value === 0 ? 'long' : 'short';
+      try { if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'pomodoro-round', event: true }); } catch(e){}
+    } else { if (mode === 'long') round = 0; round++; next = 'focus'; }
+    document.title = (mode === 'focus' ? '✓ Break time' : '✓ Back to focus') + ' · ' + baseTitle;
+    setMode(next, $('auto').checked);
+  }
+  $('go').addEventListener('click', function(){ running ? pause() : start(); });
+  $('skip').addEventListener('click', function(){ running = false; clearInterval(tick); if (mode !== 'focus') { if (mode === 'long') round = 0; round++; setMode('focus'); } else setMode(round % +$('every').value === 0 ? 'long' : 'short'); });
+  $('reset').addEventListener('click', function(){ round = 1; setMode('focus'); document.title = baseTitle; });
+  document.querySelectorAll('input[name="mode"]').forEach(function(x){ x.addEventListener('change', function(){ setMode(x.value); }); });
+  var ids = ['fMin', 'sMin', 'lMin', 'every', 'sound', 'auto'];
+  function save(){ try { var o = {}; ids.forEach(function(id){ var el = $(id); o[id] = el.type === 'checkbox' ? el.checked : el.value; }); localStorage.setItem('dd-pomo', JSON.stringify(o)); } catch(e){} }
+  ids.forEach(function(id){ $(id).addEventListener('change', function(){ save(); if (!running) { left = mins(mode); draw(); say(); } }); });
+  document.querySelectorAll('[data-p]').forEach(function(b){ b.addEventListener('click', function(){ var p = b.dataset.p.split(','); $('fMin').value = p[0]; $('sMin').value = p[1]; $('lMin').value = p[2]; save(); if (!running) { left = mins(mode); draw(); } }); });
+  try { var o = JSON.parse(localStorage.getItem('dd-pomo') || '{}'); ids.forEach(function(id){ if (o[id] != null) { if ($(id).type === 'checkbox') $(id).checked = o[id]; else $(id).value = o[id]; } }); } catch(e){}
+  document.addEventListener('keydown', function(e){ if (e.code === 'Space' && !/INPUT|SELECT|TEXTAREA|BUTTON/.test(document.activeElement.tagName)) { e.preventDefault(); $('go').click(); } });
+  setMode('focus'); showStats();
+})();
+</script>
+
+</body>
+</html>

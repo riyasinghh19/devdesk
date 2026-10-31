@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Days Between Dates: count days, weeks and working days (free) · DevDesk</title>
+<meta name="description" content="Count the days, weeks, months and working days between two dates, skipping weekends and your own holidays. Also add or subtract days from a date. Free, no sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/days-between-dates/">
+<meta property="og:title" content="Days Between Dates: count days, weeks and working days (free) · DevDesk">
+<meta property="og:description" content="Count the days, weeks, months and working days between two dates, skipping weekends and your own holidays. Also add or subtract days from a date. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/days-between-dates/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Everyday utilities / Days between dates</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Everyday utilities</span>
+    <h1>Days between <span class="hand">dates</span></h1>
+    <p>How many days until the deadline? How many working days in this sprint? Pick two dates and see.</p>
+  </header>
+
+  <section class="panel" aria-label="Days between dates">
+    <div class="calc">
+      <div class="in">
+        <div class="row-inline">
+          <div class="field" style="flex:1 1 160px"><label for="a">Start date</label><input class="inp wide" id="a" type="date"></div>
+          <div class="field" style="flex:1 1 160px"><label for="b">End date</label><input class="inp wide" id="b" type="date"></div>
+        </div>
+        <label class="opt check"><input type="checkbox" id="incl"> Include the end date (count both days)</label>
+        <div class="field"><div class="top"><label for="wk">Weekend</label><select class="inp" id="wk" style="width:200px"><option value="06">Saturday &amp; Sunday</option><option value="0">Sunday only</option><option value="0a">Sunday + 2nd &amp; 4th Saturday</option></select></div></div>
+        <div class="field"><label for="hol">Holidays to skip (one date per line)</label><textarea id="hol" class="code" style="min-height:90px" spellcheck="false" placeholder="2026-11-08&#10;2026-12-25"></textarea><span class="hint">Format YYYY-MM-DD. Only holidays on working days are subtracted.</span></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Calendar days</span><b id="days">—</b></div>
+        <div class="stats">
+          <div><span class="k">Working days</span><b id="work">—</b></div>
+          <div><span class="k">Weekend days</span><b id="wend">—</b></div>
+          <div><span class="k">Weeks</span><b id="weeks">—</b></div>
+          <div><span class="k">Months</span><b id="months">—</b></div>
+        </div>
+        <p class="say" id="say"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel card-box" style="margin-top:18px" aria-label="Add or subtract days">
+    <h2 class="box-title">Add or subtract days</h2>
+    <div class="row-inline">
+      <div class="opt"><label for="base">From</label><input class="inp" id="base" type="date"></div>
+      <div class="opt"><label for="op">Do</label><select id="op"><option value="1">Add</option><option value="-1">Subtract</option></select></div>
+      <div class="opt"><label for="n">Number</label><input class="inp" id="n" type="number" inputmode="numeric" value="90" min="0" style="width:110px"></div>
+      <div class="opt"><label for="unit">Of</label><select id="unit"><option value="d">Calendar days</option><option value="w">Working days (Mon–Fri)</option><option value="wk">Weeks</option><option value="m">Months</option></select></div>
+    </div>
+    <div class="big-result"><span class="k">Result</span><b id="res2" style="font-size:clamp(22px,3vw,30px)">—</b></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Should I include the end date?</h2>
+    <p>By default the count is the difference between the dates: from Monday to Friday is 4 days. If you're counting days on which something happens, like a leave from Monday to Friday, tick "include the end date" to get 5.</p>
+    <h2>Working days</h2>
+    <p>Working days skip weekends and any holidays you list. Indian banks and many government offices close on the 2nd and 4th Saturday, so there's an option for that. Add your company's holiday list to get an exact count.</p>
+    <h2>Common uses</h2>
+    <ul>
+      <li>Days left until a project deadline or exam.</li>
+      <li>Working days in a sprint or billing period.</li>
+      <li>90 days from today for a notice period, visa or warranty (use "Add or subtract days").</li>
+      <li>Days between two transactions for interest calculations.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Are leap years handled?</summary><p>Yes. The count uses real calendar dates, so 29 February is counted in leap years.</p></details>
+    <details><summary>Does it know Indian public holidays?</summary><p>Holidays differ by state and employer, so add your own list. Paste dates one per line.</p></details>
+    <h2>More everyday tools</h2>
+    <div class="related"><a class="note live c-everyday" href="../word-counter/index.html" data-q="word &amp; character counter counts with linkedin and x limits built in."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Word &amp; Character Counter</h3><p>Counts with LinkedIn and X limits built in.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../age-calculator/index.html" data-q="age calculator exact age in years, months and days."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Age Calculator</h3><p>Exact age in years, months and days.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../qr-code-generator/index.html" data-q="qr code generator make a qr code for a link, upi id or wi-fi."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>QR Code Generator</h3><p>Make a QR code for a link, UPI ID or Wi-Fi.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../password-generator/index.html" data-q="password generator strong, random passwords made on your device."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Password Generator</h3><p>Strong, random passwords made on your device.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function iso(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function parse(v){ var p = v.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function dc(a, b){ return Math.round((Date.UTC(b.getFullYear(), b.getMonth(), b.getDate()) - Date.UTC(a.getFullYear(), a.getMonth(), a.getDate())) / 86400000); }
+  function isWeekend(d, mode){
+    var w = d.getDay();
+    if (w === 0) return true;
+    if (mode === '06') return w === 6;
+    if (mode === '0a' && w === 6) { var nth = Math.ceil(d.getDate() / 7); return nth === 2 || nth === 4; }
+    return false;
+  }
+  function calc(){
+    var av = $('a').value, bv = $('b').value; if (!av || !bv) return;
+    TB.save('dd-dbd', { a: av, b: bv, incl: $('incl').checked, wk: $('wk').value, hol: $('hol').value });
+    var a = parse(av), b = parse(bv), sign = 1; if (b < a) { var t = a; a = b; b = t; sign = -1; }
+    var incl = $('incl').checked, days = dc(a, b) + (incl ? 1 : 0), mode = $('wk').value;
+    var hol = {}; $('hol').value.split(/\s+/).forEach(function(x){ if (/^\d{4}-\d{2}-\d{2}$/.test(x)) hol[x] = 1; });
+    var work = 0, wend = 0, holi = 0, d = new Date(a);
+    for (var i = 0; i < days && i < 40000; i++) { if (isWeekend(d, mode)) wend++; else if (hol[iso(d)]) holi++; else work++; d.setDate(d.getDate() + 1); }
+    $('days').textContent = (sign < 0 ? '−' : '') + days.toLocaleString('en-IN');
+    $('work').textContent = work.toLocaleString('en-IN'); $('wend').textContent = wend.toLocaleString('en-IN');
+    $('weeks').textContent = Math.floor(days / 7) + (days % 7 ? ' wk ' + days % 7 + ' d' : ' wk');
+    var months = (b.getFullYear() - a.getFullYear()) * 12 + b.getMonth() - a.getMonth(); if (b.getDate() < a.getDate()) months--;
+    var after = new Date(a.getFullYear(), a.getMonth() + months, a.getDate()); $('months').textContent = months + ' mo ' + dc(after, b) + ' d';
+    $('say').textContent = (holi ? holi + ' holiday' + (holi > 1 ? 's' : '') + ' skipped. ' : '') + (sign < 0 ? 'The end date is before the start date, so the count is negative.' : '');
+  }
+  function addWork(d, n, dir){ var c = 0, x = new Date(d); while (c < n) { x.setDate(x.getDate() + dir); var w = x.getDay(); if (w !== 0 && w !== 6) c++; } return x; }
+  function calc2(){
+    var bv = $('base').value; if (!bv) return;
+    var d = parse(bv), n = Math.max(0, Math.round(+$('n').value || 0)), dir = +$('op').value, u = $('unit').value, r;
+    if (u === 'd') { r = new Date(d); r.setDate(r.getDate() + dir * n); }
+    else if (u === 'wk') { r = new Date(d); r.setDate(r.getDate() + dir * n * 7); }
+    else if (u === 'm') { var t = d.getMonth() + dir * n, y = d.getFullYear() + Math.floor(t / 12), m = ((t % 12) + 12) % 12; r = new Date(y, m, Math.min(d.getDate(), new Date(y, m + 1, 0).getDate())); }
+    else r = addWork(d, n, dir);
+    $('res2').textContent = r.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  var now = new Date(), end = new Date(now.getFullYear(), 11, 31);
+  $('a').value = iso(now); $('b').value = iso(end); $('base').value = iso(now);
+  var o = TB.load('dd-dbd'); if (o) { $('a').value = o.a; $('b').value = o.b; $('incl').checked = o.incl; $('wk').value = o.wk; $('hol').value = o.hol || ''; }
+  ['a', 'b', 'incl', 'wk', 'hol'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  ['base', 'op', 'n', 'unit'].forEach(function(id){ $(id).addEventListener('input', calc2); });
+  calc(); calc2();
+})();
+</script>
+
+</body>
+</html>

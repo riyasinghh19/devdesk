@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>QR Code Generator: link, UPI, Wi-Fi, WhatsApp, contact (free, no watermark) · DevDesk</title>
+<meta name="description" content="Make a QR code for a website, UPI payment, Wi-Fi password, WhatsApp chat or contact card. Pick colours and download PNG or SVG. Made in your browser, never expires, no watermark.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/qr-code-generator/">
+<meta property="og:title" content="QR Code Generator: link, UPI, Wi-Fi, WhatsApp, contact (free, no watermark) · DevDesk">
+<meta property="og:description" content="Make a QR code for a website, UPI payment, Wi-Fi password, WhatsApp chat or contact card. Pick colours and download PNG or SVG. Made in your browser, never expires, no watermark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/qr-code-generator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Everyday utilities / QR code generator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Everyday utilities</span>
+    <h1>QR code <span class="hand">generator</span></h1>
+    <p>Make a QR code for a link, a UPI payment, your Wi-Fi or a WhatsApp chat. The code is made on your device, never expires and has no watermark.</p>
+  </header>
+
+  <section class="panel" aria-label="QR code generator">
+    <div class="calc">
+      <div class="in">
+        <div class="chips-row" id="types" role="group" aria-label="QR type">
+          <button class="chip-btn" type="button" data-t="url">Link</button>
+          <button class="chip-btn" type="button" data-t="upi">UPI payment</button>
+          <button class="chip-btn" type="button" data-t="wifi">Wi-Fi</button>
+          <button class="chip-btn" type="button" data-t="wa">WhatsApp</button>
+          <button class="chip-btn" type="button" data-t="vcard">Contact card</button>
+          <button class="chip-btn" type="button" data-t="text">Plain text</button>
+        </div>
+        <div id="f-url" class="grp"><div class="field"><label for="url">Website or link</label><input class="inp wide" id="url" type="url" value="https://riyasinghh19.github.io/devdesk/" spellcheck="false"></div></div>
+        <div id="f-upi" class="grp" hidden>
+          <div class="field"><label for="upiId">UPI ID</label><input class="inp wide" id="upiId" placeholder="yourname@okhdfcbank" spellcheck="false"></div>
+          <div class="field"><label for="upiName">Name shown to payer</label><input class="inp wide" id="upiName" placeholder="Riya Singh"></div>
+          <div class="row-inline"><div class="field" style="flex:1 1 120px"><label for="upiAmt">Amount (₹, optional)</label><input class="inp wide" id="upiAmt" type="number" min="0" step="1"></div>
+            <div class="field" style="flex:2 1 160px"><label for="upiNote">Note (optional)</label><input class="inp wide" id="upiNote" maxlength="50"></div></div>
+        </div>
+        <div id="f-wifi" class="grp" hidden>
+          <div class="field"><label for="ssid">Wi-Fi name (SSID)</label><input class="inp wide" id="ssid" spellcheck="false"></div>
+          <div class="field"><label for="wpass">Password</label><input class="inp wide" id="wpass" type="text" spellcheck="false" autocomplete="off"></div>
+          <div class="row-inline"><div class="opt"><label for="wsec">Security</label><select id="wsec"><option value="WPA">WPA / WPA2 / WPA3</option><option value="WEP">WEP</option><option value="nopass">None</option></select></div>
+            <label class="opt check"><input type="checkbox" id="whid"> Hidden network</label></div>
+        </div>
+        <div id="f-wa" class="grp" hidden>
+          <div class="field"><label for="waNum">Phone number with country code</label><input class="inp wide" id="waNum" inputmode="tel" placeholder="91 98765 43210"></div>
+          <div class="field"><label for="waMsg">Pre-filled message (optional)</label><input class="inp wide" id="waMsg" placeholder="Hi! I saw your post…"></div>
+        </div>
+        <div id="f-vcard" class="grp" hidden>
+          <div class="row-inline"><div class="field" style="flex:1 1 140px"><label for="vFirst">First name</label><input class="inp wide" id="vFirst"></div><div class="field" style="flex:1 1 140px"><label for="vLast">Last name</label><input class="inp wide" id="vLast"></div></div>
+          <div class="field"><label for="vPhone">Phone</label><input class="inp wide" id="vPhone" inputmode="tel"></div>
+          <div class="field"><label for="vEmail">Email</label><input class="inp wide" id="vEmail" type="email"></div>
+          <div class="row-inline"><div class="field" style="flex:1 1 140px"><label for="vOrg">Company</label><input class="inp wide" id="vOrg"></div><div class="field" style="flex:1 1 140px"><label for="vTitle">Job title</label><input class="inp wide" id="vTitle"></div></div>
+          <div class="field"><label for="vUrl">Website or LinkedIn</label><input class="inp wide" id="vUrl" type="url"></div>
+        </div>
+        <div id="f-text" class="grp" hidden><div class="field"><label for="txt">Text</label><textarea id="txt" class="code" style="min-height:100px"></textarea></div></div>
+        <div class="row-inline">
+          <div class="opt"><label for="fg">Colour</label><input type="color" id="fg" value="#1A1D24" style="width:56px;height:42px;border:1.5px solid var(--line);border-radius:10px;padding:2px"></div>
+          <div class="opt"><label for="bg">Background</label><input type="color" id="bg" value="#FFFFFF" style="width:56px;height:42px;border:1.5px solid var(--line);border-radius:10px;padding:2px"></div>
+          <div class="opt"><label for="ecc">Error correction</label><select id="ecc"><option value="L">Low (7%)</option><option value="M" selected>Medium (15%)</option><option value="Q">Quartile (25%)</option><option value="H">High (30%)</option></select></div>
+          <div class="opt"><label for="size">PNG size</label><select id="size"><option value="512">512 px</option><option value="1024" selected>1024 px</option><option value="2048">2048 px (print)</option></select></div>
+        </div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="qr-out"><canvas id="cv" width="280" height="280" role="img" aria-label="QR code preview"></canvas>
+          <p class="say" id="say"></p>
+          <div class="row-inline" style="justify-content:center"><button class="btn primary" id="png" type="button">Download PNG</button><button class="btn" id="svg" type="button">Download SVG</button></div>
+          <p class="say" style="font-size:13px;text-align:center">Content: <code id="raw" style="overflow-wrap:anywhere"></code></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Tips for a QR code that scans first time</h2>
+    <ul>
+      <li><b>Keep strong contrast.</b> Dark code on a light background. Light-on-dark codes fail on many phones; the tool warns you.</li>
+      <li><b>Print it at least 2 cm wide</b>, bigger if people scan from a distance. A rough rule: width = scanning distance ÷ 10.</li>
+      <li><b>Test it</b> with two different phones before you print hundreds.</li>
+      <li><b>Use High error correction</b> if the code may get scratched or you'll put a small logo in the middle.</li>
+    </ul>
+    <h2>UPI QR codes</h2>
+    <p>A UPI QR opens any UPI app (Google Pay, PhonePe, Paytm, BHIM) with your UPI ID filled in. Add an amount to fix the price, or leave it blank so the payer types it. Double-check your UPI ID: the payment goes wherever the code points.</p>
+    <h2>Do these QR codes expire?</h2>
+    <p>No. These are static QR codes: the link or details are stored inside the pattern itself, not on a server. They work forever. The flip side is you can't change where it points after printing; make a new one instead.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is my Wi-Fi password or UPI ID sent anywhere?</summary><p>No. The QR code is drawn in your browser. Nothing you type is uploaded.</p></details>
+    <details><summary>PNG or SVG?</summary><p>PNG for WhatsApp, slides and documents. SVG for printing and designers: it stays sharp at any size.</p></details>
+    <h2>More everyday tools</h2>
+    <div class="related"><a class="note live c-everyday" href="../word-counter/index.html" data-q="word &amp; character counter counts with linkedin and x limits built in."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Word &amp; Character Counter</h3><p>Counts with LinkedIn and X limits built in.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../age-calculator/index.html" data-q="age calculator exact age in years, months and days."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Age Calculator</h3><p>Exact age in years, months and days.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../days-between-dates/index.html" data-q="days between dates count days, weeks and working days between two dates."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Days Between Dates</h3><p>Count days, weeks and working days between two dates.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../password-generator/index.html" data-q="password generator strong, random passwords made on your device."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Password Generator</h3><p>Strong, random passwords made on your device.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script src="../assets/qrcode.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  qrcode.stringToBytes = qrcode.stringToBytesFuncs['UTF-8'];
+  var type = 'url', qr = null, content = '';
+  function esc(s){ return String(s).replace(/([\\;,:"])/g, '\\$1'); }
+  function build(){
+    var v = function(id){ return $(id).value.trim(); };
+    if (type === 'url') { var u = v('url'); if (u && !/^[a-z][a-z0-9+.-]*:/i.test(u)) u = 'https://' + u; return u; }
+    if (type === 'text') return $('txt').value;
+    if (type === 'upi') { if (!v('upiId')) return ''; var p = ['pa=' + encodeURIComponent(v('upiId'))]; if (v('upiName')) p.push('pn=' + encodeURIComponent(v('upiName'))); if (+v('upiAmt') > 0) p.push('am=' + (+v('upiAmt')).toFixed(2)); p.push('cu=INR'); if (v('upiNote')) p.push('tn=' + encodeURIComponent(v('upiNote'))); return 'upi://pay?' + p.join('&'); }
+    if (type === 'wifi') { if (!v('ssid')) return ''; var sec = $('wsec').value; return 'WIFI:T:' + sec + ';S:' + esc(v('ssid')) + ';' + (sec !== 'nopass' ? 'P:' + esc($('wpass').value) + ';' : '') + ($('whid').checked ? 'H:true;' : '') + ';'; }
+    if (type === 'wa') { var n = v('waNum').replace(/\D/g, ''); if (!n) return ''; if (n.length === 10) n = '91' + n; return 'https://wa.me/' + n + (v('waMsg') ? '?text=' + encodeURIComponent(v('waMsg')) : ''); }
+    if (type === 'vcard') { if (!v('vFirst') && !v('vLast')) return ''; return ['BEGIN:VCARD', 'VERSION:3.0', 'N:' + esc(v('vLast')) + ';' + esc(v('vFirst')) + ';;;', 'FN:' + esc((v('vFirst') + ' ' + v('vLast')).trim())].concat(v('vOrg') ? ['ORG:' + esc(v('vOrg'))] : [], v('vTitle') ? ['TITLE:' + esc(v('vTitle'))] : [], v('vPhone') ? ['TEL;TYPE=CELL:' + v('vPhone')] : [], v('vEmail') ? ['EMAIL:' + v('vEmail')] : [], v('vUrl') ? ['URL:' + v('vUrl')] : [], ['END:VCARD']).join('\n'); }
+  }
+  function lum(hex){ var n = parseInt(hex.slice(1), 16), c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(function(x){ x /= 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); }); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; }
+  function draw(cv, size){
+    var n = qr.getModuleCount(), q = 4, cell = size / (n + q * 2), ctx = cv.getContext('2d');
+    cv.width = size; cv.height = size;
+    ctx.fillStyle = $('bg').value; ctx.fillRect(0, 0, size, size); ctx.fillStyle = $('fg').value;
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (qr.isDark(r, c)) ctx.fillRect(Math.floor((c + q) * cell), Math.floor((r + q) * cell), Math.ceil(cell), Math.ceil(cell));
+  }
+  function render(){
+    content = build(); $('raw').textContent = content.length > 160 ? content.slice(0, 160) + '…' : content;
+    TB.save('dd-qr', { type: type, fg: $('fg').value, bg: $('bg').value, ecc: $('ecc').value });
+    var say = $('say'), cv = $('cv');
+    if (!content) { qr = null; cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); say.className = 'say'; say.textContent = 'Fill in the details to make your code.'; return; }
+    try { qr = qrcode(0, $('ecc').value); qr.addData(content); qr.make(); }
+    catch(e) { qr = null; say.className = 'say err'; say.textContent = 'That\'s too much text for one QR code. Shorten it or lower the error correction.'; return; }
+    draw(cv, 560);
+    var l1 = lum($('fg').value), l2 = lum($('bg').value), ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+    if (l1 > l2) { say.className = 'say err'; say.textContent = 'Light code on a dark background won\'t scan on many phones. Swap the colours.'; }
+    else if (ratio < 4) { say.className = 'say err'; say.textContent = 'The colours are too close. Use a darker code colour so it scans reliably.'; }
+    else { say.className = 'say ok'; say.textContent = qr.getModuleCount() + ' × ' + qr.getModuleCount() + ' modules. Ready to download.'; }
+  }
+  function setType(t){
+    type = t; document.querySelectorAll('#types .chip-btn').forEach(function(b){ var on = b.dataset.t === t; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    document.querySelectorAll('.grp').forEach(function(g){ g.hidden = g.id !== 'f-' + t; }); render();
+  }
+  document.querySelectorAll('#types .chip-btn').forEach(function(b){ b.addEventListener('click', function(){ setType(b.dataset.t); }); });
+  document.querySelectorAll('.calc .in input, .calc .in select, .calc .in textarea').forEach(function(el){ el.addEventListener('input', render); });
+  $('png').addEventListener('click', function(){ if (!qr) return; var c = document.createElement('canvas'); draw(c, +$('size').value); c.toBlob(function(b){ TB.download(b, 'qr-code.png'); }); });
+  $('svg').addEventListener('click', function(){
+    if (!qr) return; var n = qr.getModuleCount(), q = 4, s = n + q * 2, d = '';
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (qr.isDark(r, c)) d += 'M' + (c + q) + ' ' + (r + q) + 'h1v1h-1z';
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + s + ' ' + s + '" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="' + $('bg').value + '"/><path d="' + d + '" fill="' + $('fg').value + '"/></svg>';
+    TB.download(new Blob([svg], { type: 'image/svg+xml' }), 'qr-code.svg');
+  });
+  var o = TB.load('dd-qr'); if (o) { $('fg').value = o.fg; $('bg').value = o.bg; $('ecc').value = o.ecc; }
+  setType(o && o.type ? o.type : 'url');
+})();
+</script>
+
+</body>
+</html>

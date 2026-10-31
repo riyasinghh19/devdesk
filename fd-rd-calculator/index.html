@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FD &amp; RD Calculator: fixed and recurring deposit maturity (free) · DevDesk</title>
+<meta name="description" content="Calculate the maturity value and interest on a fixed deposit or recurring deposit, with quarterly compounding as Indian banks use. Includes post-tax returns. Free, no sign-up.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/fd-rd-calculator/">
+<meta property="og:title" content="FD &amp; RD Calculator: fixed and recurring deposit maturity (free) · DevDesk">
+<meta property="og:description" content="Calculate the maturity value and interest on a fixed deposit or recurring deposit, with quarterly compounding as Indian banks use. Includes post-tax returns. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/fd-rd-calculator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Money calculators / FD &amp; RD calculator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Money calculators</span>
+    <h1>FD &amp; RD <span class="hand">calculator</span></h1>
+    <p>See what a fixed deposit or recurring deposit pays at maturity, with interest compounded quarterly as most Indian banks do.</p>
+  </header>
+
+  <section class="panel" aria-label="FD and RD calculator">
+    <div class="calc">
+      <div class="in">
+        <div class="seg" role="group" aria-label="Deposit type"><button type="button" id="tFD" aria-pressed="true">Fixed deposit (FD)</button><button type="button" id="tRD" aria-pressed="false">Recurring deposit (RD)</button></div>
+        <div class="field"><div class="top"><label for="amt" id="amtLbl">Deposit amount (₹)</label><input class="inp" id="amt" type="number" inputmode="numeric" min="100" step="1000" value="500000"></div>
+          <input type="range" id="amtR" min="1000" max="5000000" step="1000" value="500000" aria-label="Amount slider"></div>
+        <div class="field"><div class="top"><label for="rate">Interest rate (% a year)</label><input class="inp" id="rate" type="number" inputmode="decimal" min="0" max="20" step="0.05" value="7"></div>
+          <input type="range" id="rateR" min="2" max="10" step="0.05" value="7" aria-label="Rate slider"></div>
+        <div class="field"><div class="top"><label for="mon">Tenure (months)</label><input class="inp" id="mon" type="number" inputmode="numeric" min="1" max="120" step="1" value="36"></div>
+          <input type="range" id="monR" min="3" max="120" step="1" value="36" aria-label="Tenure slider"><span class="hint" id="monHint"></span></div>
+        <div class="field" id="compF"><div class="top"><label for="comp">Interest is</label>
+          <select class="inp" id="comp" style="width:220px"><option value="4">Compounded quarterly</option><option value="12">Compounded monthly</option><option value="2">Compounded half-yearly</option><option value="1">Compounded yearly</option><option value="0">Paid out (simple interest)</option></select></div></div>
+        <div class="field"><div class="top"><label for="slab">Your tax slab</label>
+          <select class="inp" id="slab" style="width:150px"><option value="0">0%</option><option value="5">5%</option><option value="10">10%</option><option value="15">15%</option><option value="20">20%</option><option value="25">25%</option><option value="30" selected>30%</option></select></div><span class="hint">FD and RD interest is taxed at your slab rate.</span></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k">Maturity value</span><b id="mat">—</b></div>
+        <div class="split-bar" aria-hidden="true"><i id="barP"></i><i id="barI"></i></div>
+        <div class="legend"><span>Deposited</span><span>Interest</span></div>
+        <div class="stats">
+          <div><span class="k">You deposit</span><b id="dep">—</b></div>
+          <div><span class="k">Interest earned</span><b id="int">—</b></div>
+          <div><span class="k">Effective yearly yield</span><b id="yield">—</b></div>
+          <div><span class="k">Interest after tax</span><b id="post">—</b></div>
+        </div>
+        <p class="say" id="note"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How FD interest is calculated</h2>
+    <pre><code>Maturity = P × (1 + r / n)^(n × t)</code></pre>
+    <p><b>P</b> is the deposit, <b>r</b> the yearly rate as a decimal, <b>n</b> how many times a year interest compounds (4 for quarterly) and <b>t</b> the time in years. ₹5 lakh at 7% for 3 years, compounded quarterly, grows to about ₹6.16 lakh.</p>
+    <h2>How RD interest is calculated</h2>
+    <p>Each monthly instalment earns compound interest for the months it stays in the account. The first instalment earns for the full tenure, the last for just one month. Banks compound RD interest quarterly, and the calculator adds up every instalment the same way.</p>
+    <h2>Things to know</h2>
+    <ul>
+      <li><b>Senior citizens</b> usually get 0.25–0.75% extra. Enter the higher rate.</li>
+      <li><b>TDS:</b> banks deduct 10% TDS when interest crosses ₹50,000 a year (₹1 lakh for senior citizens). Submit Form 15G/15H if your total income is below the taxable limit.</li>
+      <li><b>Tax-saver FDs</b> have a 5-year lock-in and qualify for 80C in the old regime only.</li>
+      <li><b>Deposit insurance:</b> DICGC insures up to ₹5 lakh per depositor per bank, including interest.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why is my bank's figure slightly different?</summary><p>Banks count tenure in exact days and some use different rounding. For tenures under 6 months, banks usually pay simple interest. The difference is normally a few rupees.</p></details>
+    <details><summary>FD or debt mutual fund?</summary><p>Both are taxed at your slab rate now. FDs give a fixed, known return. Debt funds can give slightly more but the return isn't guaranteed.</p></details>
+    <h2>More money calculators</h2>
+    <div class="related"><a class="note live c-money" href="../emi-calculator/index.html" data-q="emi calculator monthly emi, total interest and a full repayment schedule."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>EMI Calculator</h3><p>Monthly EMI, total interest and a full repayment schedule.</p><span class="go">Open →</span></a><a class="note live c-money" href="../sip-calculator/index.html" data-q="sip calculator what your monthly sip grows to over time."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>SIP Calculator</h3><p>What your monthly SIP grows to over time.</p><span class="go">Open →</span></a><a class="note live c-money" href="../gst-calculator/index.html" data-q="gst calculator add or remove gst at any rate in one click."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>GST Calculator</h3><p>Add or remove GST at any rate in one click.</p><span class="go">Open →</span></a><a class="note live c-money" href="../income-tax-calculator/index.html" data-q="income tax: old vs new regime compare your tax under both regimes."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Money</span><h3>Income Tax: Old vs New Regime</h3><p>Compare your tax under both regimes.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var type = 'fd';
+  function calc(){
+    var A = +$('amt').value || 0, R = +$('rate').value || 0, M = Math.round(+$('mon').value || 0), n = +$('comp').value, slab = +$('slab').value, mat, dep;
+    TB.save('dd-fdrd', { type: type, A: A, R: R, M: M, n: n, slab: slab });
+    $('monHint').textContent = M >= 12 ? Math.floor(M / 12) + ' yr' + (M % 12 ? ' ' + (M % 12) + ' mo' : '') : '';
+    if (type === 'fd') {
+      dep = A; var t = M / 12;
+      mat = n === 0 ? A * (1 + R / 100 * t) : A * Math.pow(1 + R / 100 / n, n * t);
+      $('note').textContent = n === 0 ? 'With payout, interest is paid out regularly instead of being added to the deposit, so it does not compound.' : '';
+    } else {
+      dep = A * M; mat = 0;
+      for (var k = M; k >= 1; k--) mat += A * Math.pow(1 + R / 400, 4 * k / 12);
+      $('note').textContent = 'RD interest is compounded quarterly.';
+    }
+    var int = mat - dep;
+    $('mat').textContent = TB.inr(mat); $('dep').textContent = TB.inr(dep); $('int').textContent = TB.inr(int); $('post').textContent = TB.inr(int * (1 - slab / 100 * 1.04));
+    var eff = type === 'fd' && n > 0 ? (Math.pow(1 + R / 100 / n, n) - 1) * 100 : type === 'fd' ? R : (Math.pow(1 + R / 400, 4) - 1) * 100;
+    $('yield').textContent = eff.toFixed(2) + '%';
+    var p = mat > 0 ? dep / mat * 100 : 100; $('barP').style.width = p + '%'; $('barI').style.width = (100 - p) + '%';
+  }
+  function setType(t){
+    type = t; $('tFD').setAttribute('aria-pressed', t === 'fd'); $('tRD').setAttribute('aria-pressed', t === 'rd');
+    $('amtLbl').textContent = t === 'fd' ? 'Deposit amount (₹)' : 'Monthly instalment (₹)';
+    $('compF').hidden = t === 'rd';
+    var r = $('amtR'); if (t === 'rd') { r.max = 200000; r.step = 500; if (+$('amt').value > 200000) { $('amt').value = 5000; } } else { r.max = 5000000; r.step = 1000; }
+    r.value = $('amt').value; calc();
+  }
+  ['amt', 'rate', 'mon'].forEach(function(id){ TB.pair(id, id + 'R', calc); });
+  ['comp', 'slab'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  $('tFD').addEventListener('click', function(){ if (type !== 'fd') { $('amt').value = 500000; setType('fd'); } });
+  $('tRD').addEventListener('click', function(){ if (type !== 'rd') { $('amt').value = 5000; setType('rd'); } });
+  var o = TB.load('dd-fdrd'); if (o) { $('amt').value = o.A; $('rate').value = o.R; $('rateR').value = o.R; $('mon').value = o.M; $('monR').value = o.M; $('comp').value = o.n; $('slab').value = o.slab; }
+  setType(o && o.type === 'rd' ? 'rd' : 'fd');
+})();
+</script>
+
+</body>
+</html>

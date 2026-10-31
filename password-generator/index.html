@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Password Generator: strong random passwords and passphrases (free) · DevDesk</title>
+<meta name="description" content="Generate strong, random passwords or easy-to-type passphrases on your own device. Choose length and characters, avoid look-alike letters and see how long it would take to crack.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/password-generator/">
+<meta property="og:title" content="Password Generator: strong random passwords and passphrases (free) · DevDesk">
+<meta property="og:description" content="Generate strong, random passwords or easy-to-type passphrases on your own device. Choose length and characters, avoid look-alike letters and see how long it would take to crack.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/password-generator/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Everyday utilities / Password generator</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Everyday utilities</span>
+    <h1>Password <span class="hand">generator</span></h1>
+    <p>Strong, random passwords made with your browser's secure random generator. Nothing is sent anywhere or saved.</p>
+  </header>
+
+  <section class="panel" aria-label="Password generator">
+    <div class="calc">
+      <div class="in">
+        <div class="seg" role="group" aria-label="Kind"><button type="button" id="kPw" aria-pressed="true">Password</button><button type="button" id="kPh" aria-pressed="false">Passphrase</button></div>
+        <div id="pwOpts">
+          <div class="field"><div class="top"><label for="len">Length</label><input class="inp" id="len" type="number" min="6" max="128" value="16" style="width:90px"></div>
+            <input type="range" id="lenR" min="6" max="64" value="16" aria-label="Length slider"></div>
+          <div class="field" style="margin-top:14px">
+            <label class="opt check"><input type="checkbox" id="up" checked> Capital letters (A–Z)</label>
+            <label class="opt check"><input type="checkbox" id="lo" checked> Small letters (a–z)</label>
+            <label class="opt check"><input type="checkbox" id="di" checked> Numbers (0–9)</label>
+            <label class="opt check"><input type="checkbox" id="sy" checked> Symbols (!@#$…)</label>
+            <label class="opt check"><input type="checkbox" id="amb"> Avoid look-alikes (0 O o 1 l I |)</label>
+          </div>
+        </div>
+        <div id="phOpts" hidden>
+          <div class="field"><div class="top"><label for="wc">Number of words</label><input class="inp" id="wc" type="number" min="3" max="10" value="4" style="width:90px"></div>
+            <input type="range" id="wcR" min="3" max="10" value="4" aria-label="Words slider"></div>
+          <div class="row-inline" style="margin-top:12px"><div class="opt"><label for="sep">Separator</label><select id="sep"><option value="-">Hyphen ( - )</option><option value=".">Dot ( . )</option><option value="_">Underscore</option><option value=" ">Space</option></select></div>
+            <label class="opt check"><input type="checkbox" id="cap" checked> Capitalise words</label><label class="opt check"><input type="checkbox" id="num" checked> Add a number</label></div>
+        </div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="pw-out" id="out">—</div>
+        <div class="row-inline"><button class="btn primary" id="copy" type="button">Copy</button><button class="btn" id="again" type="button">New one ↻</button></div>
+        <div class="meter" aria-hidden="true"><i id="bar"></i></div>
+        <div class="stats"><div><span class="k">Strength</span><b id="str">—</b></div><div><span class="k">Entropy</span><b id="bits">—</b></div><div><span class="k">Time to crack*</span><b id="crack">—</b></div></div>
+        <p class="say" style="font-size:13px">* Offline attack guessing 10 billion passwords a second.</p>
+        <h3 style="font-size:16px;margin-top:6px">More options</h3>
+        <ul class="runs" id="more"></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>What makes a password strong</h2>
+    <p><b>Length beats complexity.</b> Each extra character multiplies the number of guesses needed. A random 16-character password with letters, numbers and symbols would take longer than the age of the universe to brute-force. An 8-character one can fall in hours.</p>
+    <p><b>Randomness matters more than cleverness.</b> "Riya@1998" looks complex but follows a pattern attackers try first: name, symbol, birth year.</p>
+    <h2>Passwords or passphrases?</h2>
+    <p>A passphrase like <code>Mango-Ticket-Silver-Plant-42</code> is easier to type on a phone and to remember, and four or five random words are as strong as a long random password. Use passphrases for things you type by hand, such as your laptop login or password manager. Use random passwords for everything stored in a password manager.</p>
+    <h2>Good habits</h2>
+    <ul>
+      <li>Use a different password for every site. A leak on one site then can't unlock the others.</li>
+      <li>Use a password manager (Bitwarden, 1Password, or the one in your browser or phone).</li>
+      <li>Turn on two-factor authentication for email, banking and work accounts.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is it safe to generate passwords on a website?</summary><p>This page creates passwords in your browser with <code>crypto.getRandomValues</code>, the same secure generator browsers use for encryption. Nothing is sent over the network or stored. You can even disconnect from the internet and it still works.</p></details>
+    <details><summary>Why avoid look-alike characters?</summary><p>If you'll ever read the password out or type it from paper, 0 and O or l and 1 cause mistakes. Leaving them out costs very little strength.</p></details>
+    <h2>More everyday tools</h2>
+    <div class="related"><a class="note live c-everyday" href="../word-counter/index.html" data-q="word &amp; character counter counts with linkedin and x limits built in."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Word &amp; Character Counter</h3><p>Counts with LinkedIn and X limits built in.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../age-calculator/index.html" data-q="age calculator exact age in years, months and days."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Age Calculator</h3><p>Exact age in years, months and days.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../days-between-dates/index.html" data-q="days between dates count days, weeks and working days between two dates."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Days Between Dates</h3><p>Count days, weeks and working days between two dates.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../qr-code-generator/index.html" data-q="qr code generator make a qr code for a link, upi id or wi-fi."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>QR Code Generator</h3><p>Make a QR code for a link, UPI ID or Wi-Fi.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var WORDS = 'able acid aged also area army away baby back ball band bank base bath bear beat bell belt best bird blue boat body bold bone book boot born boss bowl bread brick brief bring broad brown brush build bulb burn bush busy cable cake calm camel camp candy card care cargo carpet cart case cash cast cedar chair chalk charm chess chief child chili cider city clay clean clock cloud coast coat cocoa coin cold comet coral corn cotton couch crane cream crisp crown curry cycle daily dance dawn deep delta denim desk dial diary disco dock dome door dove dream drift drum duck dusk eagle early earth easel echo elbow ember empty enjoy equal event fable fair falcon fancy farm feast fern ferry fiber field final flame flash fleet flute focus forest fork fossil frame fresh frost fruit gallop garden gate gecko giant ginger glass globe glow goat golden grain grape grass gravy green grid guava guide habit hammer harbor hazel heart hello hero hill honey hotel house humble icon idea igloo indigo inlet iron island ivory jacket jade jasmine jelly jewel jolly journey judge juice jumbo jungle karma kayak kettle kind kite koala ladder lagoon lamp lane laser lemon level light lily lime linen lion lotus lucky lunar lunch magic mango maple marble market meadow melon metal mint mirror model monsoon moon mosaic motor mount music nectar needle nest nickel night noble north novel ocean olive omega onion opal orbit orchid otter oven owl paddle palace panda paper parrot pastel peach pearl pepper piano pilot pine planet plaza plum poem polar pond poppy potato pride prism pulse puzzle quartz queen quest quiet radar radio rain raven reef ribbon rice ridge river robin rocket rose royal ruby saffron sail salad salt sand satin scarf school scout season shadow shell silk silver simple sketch sky slate smile snow solar sonic spice spoon spring square stamp star steel stone storm sugar summer sunny swan table tango teal temple tiger timber toast topaz torch tower train travel tulip tunnel turtle umber union unity urban valley vanilla velvet violet vivid voice wagon walnut water wave wheat whale willow window winter wizard wonder yacht yellow yoga zebra zephyr zinc zone'.split(' ');
+  var SETS = { up: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', lo: 'abcdefghijklmnopqrstuvwxyz', di: '0123456789', sy: '!@#$%^&*()-_=+[]{};:,.?/~' };
+  var AMB = /[0Oo1lI|]/g, kind = 'pw', cur = '';
+  function rnd(n){ var max = Math.floor(4294967296 / n) * n, a = new Uint32Array(1); do { crypto.getRandomValues(a); } while (a[0] >= max); return a[0] % n; }
+  function shuffle(arr){ for (var i = arr.length - 1; i > 0; i--) { var j = rnd(i + 1), t = arr[i]; arr[i] = arr[j]; arr[j] = t; } return arr; }
+  function pools(){ var p = []; ['up', 'lo', 'di', 'sy'].forEach(function(k){ if ($(k).checked) { var s = SETS[k]; if ($('amb').checked) s = s.replace(AMB, ''); p.push(s); } }); return p; }
+  function genPw(){
+    var len = Math.max(6, Math.min(128, +$('len').value || 16)), ps = pools(); if (!ps.length) return { pw: '', bits: 0 };
+    var all = ps.join(''), out = ps.map(function(s){ return s[rnd(s.length)]; });
+    while (out.length < len) out.push(all[rnd(all.length)]);
+    return { pw: shuffle(out).slice(0, len).join(''), bits: len * Math.log2(all.length) };
+  }
+  function genPh(){
+    var n = Math.max(3, Math.min(10, +$('wc').value || 4)), w = [];
+    for (var i = 0; i < n; i++) { var x = WORDS[rnd(WORDS.length)]; w.push($('cap').checked ? x[0].toUpperCase() + x.slice(1) : x); }
+    var bits = n * Math.log2(WORDS.length); if ($('num').checked) { w.push(String(rnd(90) + 10)); bits += Math.log2(90); }
+    return { pw: w.join($('sep').value), bits: bits };
+  }
+  function crack(bits){
+    var s = Math.pow(2, bits) / 2 / 1e10;
+    if (s < 1) return 'instantly'; if (s < 60) return Math.round(s) + ' seconds'; if (s < 3600) return Math.round(s / 60) + ' minutes'; if (s < 86400) return Math.round(s / 3600) + ' hours';
+    if (s < 3.15e7) return Math.round(s / 86400) + ' days'; var y = s / 3.15e7; if (y < 1000) return Math.round(y) + ' years'; if (y < 1e6) return Math.round(y / 1000) + ' thousand years'; if (y < 1e9) return Math.round(y / 1e6) + ' million years'; return 'billions of years+';
+  }
+  function gen(){
+    TB.save('dd-pw', { kind: kind, len: $('len').value, up: $('up').checked, lo: $('lo').checked, di: $('di').checked, sy: $('sy').checked, amb: $('amb').checked, wc: $('wc').value, sep: $('sep').value, cap: $('cap').checked, num: $('num').checked });
+    var g = kind === 'pw' ? genPw() : genPh(); cur = g.pw;
+    $('out').textContent = g.pw || 'Pick at least one type of character.';
+    var b = Math.round(g.bits), lvl = b < 40 ? ['Weak', '#C42B1C', 25] : b < 60 ? ['Fair', '#D97706', 50] : b < 80 ? ['Strong', '#16804A', 75] : ['Very strong', '#16804A', 100];
+    $('str').textContent = lvl[0]; $('bits').textContent = b + ' bits'; $('crack').textContent = crack(g.bits);
+    $('bar').style.width = lvl[2] + '%'; $('bar').style.background = lvl[1];
+    var ul = $('more'); ul.innerHTML = '';
+    for (var i = 0; i < 4; i++) { var x = (kind === 'pw' ? genPw() : genPh()).pw, li = document.createElement('li'), s = document.createElement('code'), btn = document.createElement('button'); s.textContent = x; s.style.overflowWrap = 'anywhere'; btn.type = 'button'; btn.className = 'icon-btn'; btn.textContent = 'Copy'; (function(v, bt){ bt.addEventListener('click', function(){ TB.copy(v).then(function(ok){ bt.textContent = ok ? 'Copied ✓' : 'Failed'; setTimeout(function(){ bt.textContent = 'Copy'; }, 1300); }); }); })(x, btn); li.appendChild(s); li.appendChild(btn); ul.appendChild(li); }
+  }
+  function setKind(k){ kind = k; $('kPw').setAttribute('aria-pressed', k === 'pw'); $('kPh').setAttribute('aria-pressed', k === 'ph'); $('pwOpts').hidden = k !== 'pw'; $('phOpts').hidden = k !== 'ph'; gen(); }
+  $('kPw').addEventListener('click', function(){ setKind('pw'); }); $('kPh').addEventListener('click', function(){ setKind('ph'); });
+  TB.pair('len', 'lenR', gen); TB.pair('wc', 'wcR', gen);
+  ['up', 'lo', 'di', 'sy', 'amb', 'sep', 'cap', 'num'].forEach(function(id){ $(id).addEventListener('input', gen); });
+  $('again').addEventListener('click', gen);
+  $('copy').addEventListener('click', function(){ var b = this; if (!cur) return; TB.copy(cur).then(function(ok){ b.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(function(){ b.textContent = 'Copy'; }, 1400); }); });
+  var o = TB.load('dd-pw'); if (o) { $('len').value = o.len; $('lenR').value = o.len; ['up', 'lo', 'di', 'sy', 'amb', 'cap', 'num'].forEach(function(k){ $(k).checked = o[k]; }); $('wc').value = o.wc; $('wcR').value = o.wc; $('sep').value = o.sep; }
+  setKind(o && o.kind === 'ph' ? 'ph' : 'pw');
+})();
+</script>
+
+</body>
+</html>

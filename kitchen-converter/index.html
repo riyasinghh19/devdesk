@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kitchen Unit Converter: cups to grams for flour, sugar, atta, butter (free) · DevDesk</title>
+<meta name="description" content="Convert cups, tablespoons and teaspoons to grams and millilitres for flour, maida, atta, sugar, butter, ghee, rice, besan and more. Includes oven temperatures in °C, °F and gas mark.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/kitchen-converter/">
+<meta property="og:title" content="Kitchen Unit Converter: cups to grams for flour, sugar, atta, butter (free) · DevDesk">
+<meta property="og:description" content="Convert cups, tablespoons and teaspoons to grams and millilitres for flour, maida, atta, sugar, butter, ghee, rice, besan and more. Includes oven temperatures in °C, °F and gas mark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/kitchen-converter/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Everyday utilities / Kitchen converter</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Everyday utilities</span>
+    <h1>Kitchen unit <span class="hand">converter</span></h1>
+    <p>A recipe says "1 cup maida" and you have a kitchen scale? Pick the ingredient and see every unit at once. A cup of flour and a cup of sugar weigh very different amounts.</p>
+  </header>
+
+  <section class="panel" aria-label="Kitchen converter">
+    <div class="calc">
+      <div class="in">
+        <div class="field"><label for="ing">Ingredient</label><select class="inp wide" id="ing"></select></div>
+        <div class="row-inline">
+          <div class="field" style="flex:1 1 110px"><label for="amt">Amount</label><input class="inp wide" id="amt" type="text" inputmode="decimal" value="1"></div>
+          <div class="field" style="flex:1 1 140px"><label for="unit">Unit</label><select class="inp wide" id="unit"></select></div>
+        </div>
+        <span class="hint">Fractions work too: 1/2, 3/4, 1 1/2.</span>
+        <div class="field"><div class="top"><label for="cup">Cup size</label><select class="inp" id="cup" style="width:240px"><option value="240">Standard cup (240 ml)</option><option value="236.6">US cup (236.6 ml)</option><option value="250">Metric cup (250 ml, UK/AU)</option><option value="200">Small Indian cup / katori (200 ml)</option></select></div></div>
+      </div>
+      <div class="res" aria-live="polite">
+        <div class="big-result"><span class="k" id="bigK">In grams</span><b id="big">—</b></div>
+        <div class="kv" id="out"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel card-box" style="margin-top:18px" aria-label="Oven temperatures">
+    <h2 class="box-title">Oven temperatures</h2>
+    <div class="row-inline"><div class="opt"><label for="tc">°C</label><input class="inp" id="tc" type="number" value="180" style="width:110px"></div><div class="opt"><label for="tf">°F</label><input class="inp" id="tf" type="number" value="356" style="width:110px"></div><div class="opt"><label>Gas mark</label><b id="gm" style="font-size:22px;padding-top:6px">4</b></div><div class="opt"><label>Fan oven</label><b id="fan" style="font-size:22px;padding-top:6px">160 °C</b></div></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Cups to grams: quick reference</h2>
+    <p>For a standard 240 ml cup, spooned and levelled:</p>
+    <div id="ref"></div>
+    <h2>Why weight is more accurate</h2>
+    <p>Flour can weigh anywhere from 110 g to 150 g a cup depending on how you fill it. Scooping straight from the bag packs it down. For baking, weigh if you can. If you must use cups, spoon the flour into the cup and level it with a knife.</p>
+    <h2>Spoons</h2>
+    <ul>
+      <li>1 tablespoon (tbsp) = 3 teaspoons (tsp) = 15 ml</li>
+      <li>1 cup = 16 tablespoons</li>
+      <li>A teaspoon from your cutlery drawer is often only 3–4 ml, not 5. Use measuring spoons for baking powder and salt.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Which cup does my recipe use?</summary><p>American recipes use the US cup (about 237 ml). British, Australian and many Indian baking blogs use 250 ml. The difference is small for cooking but can matter in baking.</p></details>
+    <details><summary>Are the gram values exact?</summary><p>They're typical averages from standard references. Brands, humidity and how you fill the cup all change the real weight slightly.</p></details>
+    <h2>More everyday tools</h2>
+    <div class="related"><a class="note live c-everyday" href="../word-counter/index.html" data-q="word &amp; character counter counts with linkedin and x limits built in."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Word &amp; Character Counter</h3><p>Counts with LinkedIn and X limits built in.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../age-calculator/index.html" data-q="age calculator exact age in years, months and days."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Age Calculator</h3><p>Exact age in years, months and days.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../days-between-dates/index.html" data-q="days between dates count days, weeks and working days between two dates."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>Days Between Dates</h3><p>Count days, weeks and working days between two dates.</p><span class="go">Open →</span></a><a class="note live c-everyday" href="../qr-code-generator/index.html" data-q="qr code generator make a qr code for a link, upi id or wi-fi."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Everyday</span><h3>QR Code Generator</h3><p>Make a QR code for a link, UPI ID or Wi-Fi.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  // grams per 240 ml cup
+  var ING = [['Water', 240], ['Milk', 245], ['Curd / yogurt', 245], ['Maida / all-purpose flour', 125], ['Atta / whole wheat flour', 120], ['Besan / gram flour', 92], ['Rava / sooji / semolina', 170], ['Cornflour / cornstarch', 128], ['Sugar (white)', 200], ['Brown sugar (packed)', 220], ['Powdered / icing sugar', 120], ['Jaggery (grated)', 180], ['Butter', 227], ['Ghee', 218], ['Oil', 218], ['Honey', 340], ['Rice (uncooked)', 185], ['Poha (thick)', 75], ['Toor / moong dal', 200], ['Rolled oats', 90], ['Cocoa powder', 85], ['Desiccated coconut', 80], ['Salt (table)', 290], ['Chopped nuts', 120], ['Cream (fresh)', 240]];
+  var VOL = { ml: 1, l: 1000, tsp: 5, tbsp: 15, cup: null, floz: 29.5735 }, WT = { g: 1, kg: 1000, oz: 28.3495, lb: 453.592 };
+  var NAMES = { cup: 'cups', tbsp: 'tablespoons', tsp: 'teaspoons', ml: 'millilitres', l: 'litres', floz: 'fluid ounces', g: 'grams', kg: 'kilograms', oz: 'ounces', lb: 'pounds' };
+  ING.forEach(function(x, i){ var o = document.createElement('option'); o.value = i; o.textContent = x[0]; $('ing').appendChild(o); });
+  ['cup', 'tbsp', 'tsp', 'ml', 'l', 'floz', 'g', 'kg', 'oz', 'lb'].forEach(function(u){ var o = document.createElement('option'); o.value = u; o.textContent = NAMES[u]; $('unit').appendChild(o); });
+  $('ing').value = 3;
+  function num(s){ s = String(s).trim(); var m = /^(\d+)\s+(\d+)\/(\d+)$/.exec(s); if (m) return +m[1] + m[2] / m[3]; m = /^(\d+)\/(\d+)$/.exec(s); if (m) return m[1] / m[2]; return parseFloat(s); }
+  function nice(v){ if (!isFinite(v)) return '—'; if (v >= 100) return Math.round(v).toLocaleString('en-IN'); if (v >= 10) return (Math.round(v * 10) / 10).toString(); return (Math.round(v * 100) / 100).toString(); }
+  function cupFrac(v){ var w = Math.floor(v + 1e-6), f = v - w, fr = [[0, ''], [0.25, '¼'], [1 / 3, '⅓'], [0.5, '½'], [2 / 3, '⅔'], [0.75, '¾'], [1, '']], best = fr.reduce(function(a, b){ return Math.abs(b[0] - f) < Math.abs(a[0] - f) ? b : a; }); if (Math.abs(best[0] - f) > 0.04) return ''; if (best[0] === 1) { w++; best = [0, '']; } return '≈ ' + (w ? w + ' ' : '') + best[1]; }
+  function calc(){
+    var ing = ING[+$('ing').value], cup = +$('cup').value, a = num($('amt').value), u = $('unit').value;
+    TB.save('dd-kitchen', { i: $('ing').value, a: $('amt').value, u: u, c: cup });
+    var dens = ing[1] / 240, vols = Object.assign({}, VOL, { cup: cup });
+    var ml = vols[u] != null ? a * vols[u] : a * WT[u] / dens, g = ml * dens;
+    var bigUnit = WT[u] ? 'cup' : 'g';
+    $('bigK').textContent = bigUnit === 'g' ? 'In grams' : 'In cups';
+    $('big').textContent = !isFinite(a) ? '—' : bigUnit === 'g' ? nice(g) + ' g' : nice(ml / cup) + ' cups';
+    var rows = [['Cups', ml / cup, cupFrac(ml / cup)], ['Tablespoons', ml / 15, ''], ['Teaspoons', ml / 5, ''], ['Millilitres', ml, ''], ['Grams', g, ''], ['Ounces (weight)', g / 28.3495, ''], ['Pounds', g / 453.592, '']];
+    var out = $('out'); out.innerHTML = '';
+    rows.forEach(function(r){ var k = document.createElement('div'); k.className = 'k'; k.textContent = r[0]; var v = document.createElement('div'); v.className = 'v'; v.textContent = isFinite(a) ? nice(r[1]) : '—'; var c = document.createElement('div'); c.className = 'c'; c.style.cssText = 'font-size:13px;color:var(--muted)'; c.textContent = r[2]; out.appendChild(k); out.appendChild(v); out.appendChild(c); });
+  }
+  var ref = '<table><thead><tr><th>Ingredient</th><th>1 cup</th><th>1 tbsp</th></tr></thead><tbody>' + ING.map(function(x){ return '<tr><td>' + x[0] + '</td><td>' + x[1] + ' g</td><td>' + (Math.round(x[1] / 16 * 10) / 10) + ' g</td></tr>'; }).join('') + '</tbody></table>';
+  $('ref').innerHTML = ref;
+  function gas(c){ var t = [[135, '1'], [150, '2'], [165, '3'], [180, '4'], [190, '5'], [200, '6'], [220, '7'], [230, '8'], [245, '9']]; if (c < 125) return '¼–½'; var best = t.reduce(function(a, b){ return Math.abs(b[0] - c) < Math.abs(a[0] - c) ? b : a; }); return best[1]; }
+  function temps(src){
+    if (src === 'c') $('tf').value = Math.round(+$('tc').value * 9 / 5 + 32); else $('tc').value = Math.round((+$('tf').value - 32) * 5 / 9);
+    var c = +$('tc').value; $('gm').textContent = gas(c); $('fan').textContent = (c - 20) + ' °C';
+  }
+  $('tc').addEventListener('input', function(){ temps('c'); }); $('tf').addEventListener('input', function(){ temps('f'); });
+  ['ing', 'amt', 'unit', 'cup'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  var o = TB.load('dd-kitchen'); if (o) { $('ing').value = o.i; $('amt').value = o.a; $('unit').value = o.u; $('cup').value = o.c; }
+  calc(); temps('c');
+})();
+</script>
+
+</body>
+</html>
