@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>ATS Resume Score Checker: match your resume to a job · DevDesk</title>
-<meta name="description" content="Check how well your resume matches a job description. Get an ATS score, missing keywords and specific fixes. Upload a PDF or Word file. ₹169 (about $2).">
+<title>Free ATS Resume Score Checker: match your resume to a job · DevDesk</title>
+<meta name="description" content="Check how well your resume matches a job description. Free ATS resume checker: get a score out of 100, missing keywords, AI-suggested bullet rewrites and specific fixes. Upload a PDF or Word file. No sign-up.">
 <link rel="canonical" href="https://riyasinghh19.github.io/devdesk/ats-score-checker/">
-<meta property="og:title" content="ATS Resume Score Checker: match your resume to a job · DevDesk">
-<meta property="og:description" content="Check how well your resume matches a job description. Get an ATS score, missing keywords and specific fixes. Upload a PDF or Word file. ₹169 (about $2).">
+<meta property="og:title" content="Free ATS Resume Score Checker: match your resume to a job · DevDesk">
+<meta property="og:description" content="Check how well your resume matches a job description. Free ATS resume checker: get a score out of 100, missing keywords, AI-suggested bullet rewrites and specific fixes. Upload a PDF or Word file. No sign-up.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://riyasinghh19.github.io/devdesk/ats-score-checker/">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
@@ -27,11 +27,11 @@
 <main>
 
 <div class="wrap">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Pro tools / ATS Score Checker</nav>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Resume tools / ATS Score Checker</nav>
   <header class="tool-head">
-    <span class="eyebrow">Pro · Career · ₹169</span>
+    <span class="eyebrow">Free · Resume tools</span>
     <h1>ATS <span class="hand">Score Checker</span></h1>
-    <p>Upload your resume and paste the job you want. You get a score out of 100, the keywords you're missing, and a short list of fixes to make before you apply.</p>
+    <p>Upload your resume and paste the job you want. You get a score out of 100, the keywords you're missing, AI-suggested rewrites of weak bullets, and a short list of fixes to make before you apply. Free, no sign-up.</p>
   </header>
 
   <section class="panel" aria-label="ATS score checker">
@@ -52,10 +52,10 @@
       </div>
     </div>
     <div class="actions">
-      <button class="btn primary" id="checkBtn" type="button">Get my ATS score · ₹169</button>
+      <button class="btn primary" id="checkBtn" type="button">Check my resume</button>
       <span class="status" id="status" aria-live="polite"></span>
     </div>
-    <p class="paynote">Secure payment by Razorpay: UPI, cards, net banking and wallets. One payment covers up to 5 checks in this tab for 48 hours, so you can fix your resume and check again.</p>
+    <p class="paynote">Your score is worked out instantly in your browser. AI suggestions take a few more seconds and are limited to a few per person each day so the tool stays free.</p>
   </section>
 
   <section class="report" id="report" hidden aria-live="polite">
@@ -63,6 +63,7 @@
       <div class="dial note c-pro"><span class="d">ATS score</span><b id="rScore">0</b><span class="grade" id="rGrade"></span></div>
       <div class="breakdown" id="rParts"></div>
     </div>
+    <p class="ai-note" id="aiNote" hidden></p>
     <div class="fit" id="rFitBox" hidden><h3>How you fit this job</h3><p id="rFit"></p></div>
     <div class="kw">
       <div><h3>Missing keywords</h3><p class="kw-note">Add the ones you genuinely have, using the same wording as the job.</p><div class="chips miss" id="rMissing"></div></div>
@@ -100,26 +101,26 @@
     </ul>
 
     <h2>Frequently asked questions</h2>
-    <details><summary>What do I get for ₹169?</summary><p>Your score out of 100 with a breakdown, the missing and matched keywords, and a list of fixes. The payment covers up to 5 checks in the same browser tab for 48 hours, so you can edit and re-check.</p></details>
+    <details><summary>Is it really free?</summary><p>Yes. The score, keywords and fixes are free and unlimited, because they are worked out in your browser. The AI suggestions run on our server, so each person gets a few free AI reviews per day. If you hit the limit, your score is still complete.</p></details>
     <details><summary>Does it use AI?</summary><p>Partly. The score itself comes from fixed, consistent rules, so the same resume always gets the same score. On top of that, an AI model (Llama, running on Cloudflare) spots skills you list under different wording, sums up how well you fit the job, and rewrites a few weak bullets. Anything the AI claims about your resume is checked against your actual text before we show it.</p></details>
-    <details><summary>Is my resume stored?</summary><p>No. Your resume and the job description are sent to our server only to calculate the report and are not saved. We keep only the payment reference, so we can count your checks.</p></details>
+    <details><summary>Is my resume stored?</summary><p>No. The score is calculated in your browser. For the AI suggestions, your resume and the job description are sent to our server on Cloudflare, used once to write the suggestions, and not saved.</p></details>
     <details><summary>Which files can I upload?</summary><p>PDF, Word (.docx) and plain text. The file is read in your browser. If a scanned PDF shows no text, paste your resume text instead.</p></details>
-    <details><summary>Can I get a refund?</summary><p>If you paid and didn't get your report because of a problem on our side, email us within 7 days and we'll refund you in full. See the <a href="../refund.html">refund policy</a>.</p></details>
     <details><summary>Does a high score guarantee interviews?</summary><p>No. It means your resume is clear, complete and closely matched to the job, which gives it the best chance of reaching a person.</p></details>
 
     <h2>More career tools</h2>
-    <div class="related"><a class="note live c-pro" href="../resume-builder/index.html" data-q="resume builder fill a form, see it live, download a clean ats-friendly pdf."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Pro · ₹169</span><h3>Resume Builder</h3><p>Fill a form, see it live, download a clean ATS-friendly PDF.</p><span class="go">Open →</span></a></div>
+    <div class="related"><a class="note live c-pro" href="../resume-builder/index.html" data-q="resume builder fill a form, see it live, download a clean ats-friendly pdf."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Free · Resume</span><h3>Resume Builder</h3><p>Fill a form, see it live, download a clean ATS-friendly PDF.</p><span class="go">Open →</span></a></div>
   </article>
 </div>
 
 </main>
 <footer class="site-foot"><div class="wrap">
   <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
-  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../refund.html">Refunds</a><a href="../privacy.html">Privacy</a></nav>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
 </div></footer>
 <script src="../assets/site.js"></script>
 
-<script src="../assets/pay.js"></script>
+<script src="../assets/api.js"></script>
+<script src="../assets/ats-score.js"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -190,21 +191,29 @@
     $('rRwBox').hidden = !(r.rewrites && r.rewrites.length);
     var tips = $('rTips'); tips.innerHTML = '';
     (r.tips.length ? r.tips : ['Your resume is in great shape for this job.']).forEach(function(t){ var li = document.createElement('li'); li.textContent = t; tips.appendChild(li); });
-    $('report').hidden = false; $('report').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var first = $('report').hidden; $('report').hidden = false; if (first) $('report').scrollIntoView({ behavior: 'smooth', block: 'start' });
     window._ddReport = r;
   }
 
   btn.addEventListener('click', function(){
     if (words(rText.value) < 40) { say('Upload or paste your full resume first.', 'err'); rText.focus(); return; }
     if (words(jText.value) < 20) { say('Paste the job description too. It drives the keyword score.', 'err'); jText.focus(); return; }
-    if (!DDPay.ready()) { say('Payments open very soon. Please check back in a little while.', 'err'); return; }
-    btn.disabled = true; say(DDPay.hasPaid('ats') ? 'Checking…' : 'Opening secure payment…');
-    DDPay.run('ats', '/ats', { resume: rText.value, jd: jText.value })
-      .then(function(res){ show(res.report); say('Report ready ✓', 'ok'); btn.textContent = 'Check again'; })
-      .catch(function(e){ say(e.message, 'err'); })
-      .then(function(){ btn.disabled = false; });
+    var resume = rText.value, jd = jText.value, note = $('aiNote');
+    var local = ATS.score(resume, jd); delete local.bulletsText;
+    show(local); say('Score ready ✓', 'ok'); btn.textContent = 'Check again';
+    if (!window.DD_API) return;
+    btn.disabled = true; note.hidden = false; note.className = 'ai-note busy'; note.textContent = 'Adding AI suggestions: wording matches, a fit summary and stronger bullets…';
+    var ctrl = window.AbortController ? new AbortController() : null, timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, 45000);
+    fetch(window.DD_API + '/review', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ resume: resume, jd: jd }), signal: ctrl ? ctrl.signal : undefined })
+      .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || ''); return j; }); })
+      .then(function(j){
+        if (rText.value !== resume || jText.value !== jd) return;
+        if (j.report && j.report.ai) { show(j.report); note.className = 'ai-note ok'; note.textContent = 'AI suggestions added ✓'; }
+        else { note.className = 'ai-note'; note.textContent = "AI suggestions weren't available this time. Your score above is complete."; }
+      })
+      .catch(function(e){ note.className = 'ai-note'; note.textContent = (e && e.message && !/abort|fetch|network/i.test(e.message)) ? e.message : "AI suggestions weren't available this time. Your score above is complete."; })
+      .then(function(){ clearTimeout(timer); btn.disabled = false; });
   });
-  if (DDPay.hasPaid('ats')) btn.textContent = 'Check again';
 
   $('copyReport').addEventListener('click', function(){
     var r = window._ddReport; if (!r) return;

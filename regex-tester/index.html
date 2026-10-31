@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Regex Tester &amp; Explainer: test JavaScript regular expressions online (free) · DevDesk</title>
+<meta name="description" content="Test a regular expression against your text, highlight every match, see capture groups, try a replacement and read what each part of the pattern means. Ready-made patterns for email, Indian mobile, PAN, IFSC and more.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/regex-tester/">
+<meta property="og:title" content="Regex Tester &amp; Explainer: test JavaScript regular expressions online (free) · DevDesk">
+<meta property="og:description" content="Test a regular expression against your text, highlight every match, see capture groups, try a replacement and read what each part of the pattern means. Ready-made patterns for email, Indian mobile, PAN, IFSC and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/regex-tester/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Data &amp; developer tools / Regex tester</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Day 06 · Data &amp; developer tools</span>
+    <h1>Regex <span class="hand">tester</span></h1>
+    <p>Type a pattern, paste some text and watch the matches light up. Below, every part of the pattern is explained in plain English.</p>
+  </header>
+
+  <section class="panel" aria-label="Regex tester">
+    <div class="panel-body">
+      <div class="row-inline regex-row">
+        <span class="slash">/</span>
+        <label class="sr" for="pattern">Regular expression</label>
+        <input class="big-input" id="pattern" spellcheck="false" autocomplete="off" placeholder="\b[A-Z]{5}[0-9]{4}[A-Z]\b">
+        <span class="slash">/</span>
+        <label class="sr" for="flagsShow">Flags</label>
+        <input class="inp" id="flagsShow" readonly style="width:64px;text-align:center">
+      </div>
+      <div class="chips-row" role="group" aria-label="Flags">
+        <label class="opt check"><input type="checkbox" data-f="g" checked> g · all matches</label>
+        <label class="opt check"><input type="checkbox" data-f="i"> i · ignore case</label>
+        <label class="opt check"><input type="checkbox" data-f="m"> m · ^ $ per line</label>
+        <label class="opt check"><input type="checkbox" data-f="s"> s · . matches newline</label>
+        <label class="opt check"><input type="checkbox" data-f="u"> u · unicode</label>
+      </div>
+      <div class="chips-row" id="presets" aria-label="Common patterns"></div>
+      <p class="say" id="say" aria-live="polite"></p>
+    </div>
+    <div class="panes">
+      <div class="pane">
+        <div class="pane-head"><span>Test text</span><div class="pane-actions"><button class="icon-btn" id="sampleBtn" type="button">Sample text</button></div></div>
+        <label for="text" class="sr">Test text</label>
+        <textarea id="text" class="code" spellcheck="false"></textarea>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span>Matches highlighted <span class="meta" id="countMeta"></span></span></div>
+        <div class="code out hl-out" id="hl" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="two" style="margin-top:18px">
+    <section class="panel card-box" aria-label="Explanation">
+      <h2 class="box-title">What the pattern means</h2>
+      <ol class="explain" id="explain"></ol>
+    </section>
+    <section class="panel card-box" aria-label="Matches and groups">
+      <h2 class="box-title">Matches &amp; groups</h2>
+      <div class="data-wrap"><table class="data-table" id="matchTable"><thead><tr><th>#</th><th>Match</th><th>At</th><th>Groups</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </div>
+
+  <section class="panel card-box" style="margin-top:18px" aria-label="Replace">
+    <h2 class="box-title">Replace</h2>
+    <p class="say">Use <code>$1</code>, <code>$2</code> for groups, <code>$&amp;</code> for the whole match and <code>$&lt;name&gt;</code> for named groups.</p>
+    <label class="sr" for="repl">Replacement</label><input class="inp" id="repl" spellcheck="false" placeholder="[$&amp;]" style="width:100%">
+    <div class="row-inline" style="margin-top:10px"><button class="icon-btn" id="copyRepl" type="button">Copy result</button></div>
+    <pre class="code out" id="replOut" style="white-space:pre-wrap;margin-top:10px;min-height:60px"></pre>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Regex cheat sheet</h2>
+    <table>
+      <thead><tr><th>Pattern</th><th>Means</th></tr></thead>
+      <tbody>
+        <tr><td><code>.</code></td><td>Any character except a line break</td></tr>
+        <tr><td><code>\d \w \s</code></td><td>Digit, word character (letter, digit, _), whitespace</td></tr>
+        <tr><td><code>\D \W \S</code></td><td>The opposite of each</td></tr>
+        <tr><td><code>[abc] [^abc] [a-z]</code></td><td>One of, none of, a range</td></tr>
+        <tr><td><code>* + ?</code></td><td>0 or more, 1 or more, 0 or 1</td></tr>
+        <tr><td><code>{3} {2,5} {2,}</code></td><td>Exactly 3, 2 to 5, 2 or more</td></tr>
+        <tr><td><code>*? +?</code></td><td>Lazy: as few as possible</td></tr>
+        <tr><td><code>^ $ \b</code></td><td>Start, end, word boundary</td></tr>
+        <tr><td><code>(…) (?:…) (?&lt;name&gt;…)</code></td><td>Capture group, non-capturing group, named group</td></tr>
+        <tr><td><code>a|b</code></td><td>a or b</td></tr>
+        <tr><td><code>(?=…) (?!…) (?&lt;=…) (?&lt;!…)</code></td><td>Followed by, not followed by, preceded by, not preceded by</td></tr>
+      </tbody>
+    </table>
+    <h2>Regex in SQL</h2>
+    <p>This tester uses JavaScript regex. Most patterns work the same in SQL, with small differences:</p>
+    <ul>
+      <li><b>Snowflake:</b> <code>REGEXP_LIKE(col, pattern)</code> must match the <i>whole</i> string. Use <code>REGEXP_SUBSTR</code> or <code>REGEXP_COUNT</code> to find a part. Backslashes must be doubled inside single quotes (<code>'\\d+'</code>), or use <code>$$\d+$$</code>.</li>
+      <li><b>PostgreSQL:</b> <code>col ~ 'pattern'</code> (case-sensitive) and <code>~*</code> (ignore case), or <code>REGEXP_REPLACE</code>.</li>
+      <li><b>BigQuery:</b> <code>REGEXP_CONTAINS(col, r'pattern')</code>. The <code>r''</code> raw string avoids doubling backslashes.</li>
+      <li><b>SQL Server</b> has no regex in older versions; <code>LIKE</code> with <code>[0-9]</code> covers simple cases. SQL Server 2025 adds <code>REGEXP_LIKE</code>.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why does my page not freeze on a bad pattern?</summary><p>Patterns run in a background worker with a time limit. Patterns like <code>(a+)+$</code> can take exponential time ("catastrophic backtracking"); the tester stops them after one second and tells you.</p></details>
+    <details><summary>Is this regex flavour the same as Python?</summary><p>Very close. Python uses <code>(?P&lt;name&gt;…)</code> for named groups, while JavaScript uses <code>(?&lt;name&gt;…)</code>. Everything else in the cheat sheet works in both.</p></details>
+    <details><summary>Is my text sent anywhere?</summary><p>No. Everything runs in your browser.</p></details>
+    <h2>More data tools</h2>
+    <div class="related"><a class="note live c-data" href="../sql-formatter/index.html" data-q="sql formatter turn messy sql into clean, readable queries. snowflake, sql server, postgres and more."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 01 · Data</span><h3>SQL Formatter</h3><p>Turn messy SQL into clean, readable queries. Snowflake, SQL Server, Postgres and more.</p><span class="go">Open →</span></a><a class="note live c-data" href="../cron-explainer/index.html" data-q="cron expression explainer paste a cron schedule and read it in plain english, with the next run times."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 02 · Data</span><h3>Cron Expression Explainer</h3><p>Paste a cron schedule and read it in plain English, with the next run times.</p><span class="go">Open →</span></a><a class="note live c-data" href="../json-to-csv/index.html" data-q="json to csv converter flatten json arrays into a spreadsheet-ready csv."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 03 · Data</span><h3>JSON to CSV Converter</h3><p>Flatten JSON arrays into a spreadsheet-ready CSV.</p><span class="go">Open →</span></a><a class="note live c-data" href="../csv-to-sql/index.html" data-q="csv to sql insert turn a csv into insert statements for any table."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 04 · Data</span><h3>CSV to SQL INSERT</h3><p>Turn a CSV into INSERT statements for any table.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var PRESETS = [
+    ['Email', '[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+', 'gi'],
+    ['Indian mobile', '(?:\\+91[\\s-]?)?[6-9]\\d{9}\\b', 'g'],
+    ['PAN', '\\b[A-Z]{5}[0-9]{4}[A-Z]\\b', 'g'],
+    ['IFSC', '\\b[A-Z]{4}0[A-Z0-9]{6}\\b', 'g'],
+    ['Pincode', '\\b[1-9]\\d{5}\\b', 'g'],
+    ['Date YYYY-MM-DD', '\\b(?<year>\\d{4})-(?<month>0[1-9]|1[0-2])-(?<day>0[1-9]|[12]\\d|3[01])\\b', 'g'],
+    ['URL', 'https?:\\/\\/[^\\s/$.?#].[^\\s]*', 'gi'],
+    ['IPv4', '\\b(?:(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)\\b', 'g'],
+    ['Hex colour', '#(?:[0-9a-fA-F]{3}){1,2}\\b', 'g'],
+    ['Amount ₹', '₹\\s?\\d{1,3}(?:,\\d{2,3})*(?:\\.\\d{2})?', 'g']
+  ];
+  var SAMPLE = 'Order #4521 placed on 2026-10-31 by asha.k@example.com (mobile +91 98765 43210, alt 9123456789).\nPAN: ABCDE1234F  IFSC: HDFC0001234  Pincode: 411001\nPaid ₹1,24,999.00 via https://pay.example.in/r/4521?src=app from 192.168.1.20\nBrand colours: #ff6f61, #0ea5e9 and #abc. Invalid date: 2026-13-45.';
+  var flags = function(){ return Array.prototype.map.call(document.querySelectorAll('[data-f]:checked'), function(c){ return c.dataset.f; }).join(''); };
+  var esc = function(s){ return s.replace(/[&<>"]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  function say(t, cls){ $('say').textContent = t; $('say').className = 'say' + (cls ? ' ' + cls : ''); }
+
+  // Matching runs in a worker so a runaway pattern can't freeze the page.
+  var WCODE = 'onmessage=function(e){var d=e.data,out={matches:[],replaced:null};try{var re=new RegExp(d.p,d.f.indexOf("g")<0?d.f+"g":d.f),m,n=0;while((m=re.exec(d.t))!==null){out.matches.push({i:m.index,s:m[0],g:Array.prototype.slice.call(m,1),n:m.groups||null});if(m[0]==="")re.lastIndex++;if(++n>=5000){out.capped=true;break;}if(d.f.indexOf("g")<0)break;}if(d.r!==null)out.replaced=d.t.replace(new RegExp(d.p,d.f),d.r);}catch(err){out.error=err.message;}postMessage(out);};';
+  var wurl = URL.createObjectURL(new Blob([WCODE], { type: 'text/javascript' })), worker = null, timer = null, seq = 0;
+  function run(){
+    var p = $('pattern').value, t = $('text').value, f = flags(), r = $('repl').value;
+    $('flagsShow').value = f;
+    try { localStorage.setItem('dd-regex', JSON.stringify({ p: p, f: f, r: r })); } catch(e){}
+    explain(p);
+    if (!p) { $('hl').textContent = t; $('countMeta').textContent = ''; $('matchTable').tBodies[0].innerHTML = ''; $('replOut').textContent = ''; say('Type a pattern, or pick a common one above.'); return; }
+    try { new RegExp(p, f); } catch(e) { say('Pattern error: ' + e.message.replace(/^Invalid regular expression: /, ''), 'err'); $('hl').textContent = t; $('countMeta').textContent = ''; return; }
+    if (worker) worker.terminate();
+    worker = new Worker(wurl); var my = ++seq;
+    clearTimeout(timer);
+    timer = setTimeout(function(){ if (my !== seq) return; worker.terminate(); worker = null; $('hl').textContent = t; $('countMeta').textContent = ''; $('matchTable').tBodies[0].innerHTML = ''; say('Stopped after 1 second: this pattern is backtracking too much. Avoid nested repeats like (a+)+ .', 'err'); }, 1000);
+    worker.onmessage = function(e){ if (my !== seq) return; clearTimeout(timer); show(e.data, t); };
+    worker.postMessage({ p: p, f: f, t: t, r: r === '' ? null : r });
+  }
+  function show(d, t){
+    if (d.error) { say('Pattern error: ' + d.error, 'err'); return; }
+    var ms = d.matches, h = '', last = 0;
+    ms.forEach(function(m, k){ if (m.s === '') return; h += esc(t.slice(last, m.i)) + '<mark' + (k % 2 ? ' class="alt"' : '') + '>' + esc(m.s) + '</mark>'; last = m.i + m.s.length; });
+    $('hl').innerHTML = h + esc(t.slice(last));
+    $('countMeta').textContent = ms.length + (d.capped ? '+' : '') + ' match' + (ms.length === 1 ? '' : 'es');
+    say(ms.length ? 'Found ' + ms.length + (d.capped ? '+ (showing first 5,000)' : '') + ' match' + (ms.length === 1 ? '' : 'es') + '.' : 'No matches.', ms.length ? 'ok' : '');
+    var tb = $('matchTable').tBodies[0]; tb.innerHTML = '';
+    ms.slice(0, 200).forEach(function(m, k){
+      var tr = tb.insertRow(), g = m.n ? Object.keys(m.n).map(function(n){ return n + ' = ' + (m.n[n] === undefined ? '—' : m.n[n]); }) : m.g.map(function(x, i){ return '$' + (i + 1) + ' = ' + (x === undefined ? '—' : x); });
+      [k + 1, m.s === '' ? '(empty)' : m.s, m.i, g.join('   ') || '—'].forEach(function(v){ tr.insertCell().textContent = v; });
+    });
+    $('replOut').textContent = d.replaced === null ? '' : d.replaced;
+  }
+
+  // Plain-English explanation of each token.
+  function explain(p){
+    var ol = $('explain'); ol.innerHTML = '';
+    if (!p) { ol.innerHTML = '<li class="muted">Each part of your pattern will be explained here.</li>'; return; }
+    var i = 0, items = [], depth = 0;
+    var CLS = { d: 'a digit (0–9)', D: 'any character that isn\'t a digit', w: 'a word character (letter, digit or _)', W: 'any character that isn\'t a word character', s: 'a whitespace character (space, tab, line break)', S: 'any non-whitespace character', b: 'a word boundary', B: 'a position that isn\'t a word boundary', n: 'a line break', t: 'a tab', r: 'a carriage return' };
+    function quant(){
+      var m = /^(\*|\+|\?|\{\d+(,\d*)?\})(\?)?/.exec(p.slice(i)); if (!m) return '';
+      i += m[0].length; var q = m[1], lazy = m[3] ? ', as few as possible' : '', t;
+      if (q === '*') t = 'zero or more times'; else if (q === '+') t = 'one or more times'; else if (q === '?') t = 'optional (zero or one time)';
+      else { var a = /\{(\d+)(,(\d*))?\}/.exec(q); t = !a[2] ? 'exactly ' + a[1] + ' time' + (a[1] === '1' ? '' : 's') : a[3] === '' ? a[1] + ' or more times' : 'between ' + a[1] + ' and ' + a[3] + ' times'; }
+      return ', ' + t + lazy;
+    }
+    while (i < p.length && items.length < 60) {
+      var c = p[i], tok, desc;
+      if (c === '\\') {
+        var s0 = i, k = p[i + 1] || ''; i += 2;
+        if (/[1-9]/.test(k)) desc = 'the same text matched by group ' + k;
+        else if (k === 'k') { var nm = /^<([^>]+)>/.exec(p.slice(i)); if (nm) i += nm[0].length; desc = 'the same text as the group named "' + (nm ? nm[1] : '?') + '"'; }
+        else if (k === 'x' || k === 'u') { var hx = (k === 'x' ? /^[0-9a-fA-F]{2}/ : /^\{[0-9a-fA-F]+\}|^[0-9a-fA-F]{4}/).exec(p.slice(i)); var code = hx ? hx[0] : ''; i += code.length; desc = 'the character with code ' + (code.replace(/[{}]/g, '') || '?'); }
+        else if (k === 'p' || k === 'P') { var pp = /^\{[^}]+\}/.exec(p.slice(i)); i += pp ? pp[0].length : 0; desc = (k === 'P' ? 'a character NOT in ' : 'a character in ') + 'the Unicode group ' + (pp ? pp[0] : ''); }
+        else desc = CLS[k] || 'the character "' + k + '"';
+        desc += quant(); tok = p.slice(s0, i);
+      } else if (c === '[') {
+        var j = i + 1; if (p[j] === '^') j++; if (p[j] === ']') j++;
+        while (j < p.length && p[j] !== ']') { if (p[j] === '\\') j++; j++; }
+        var body = p.slice(i + 1, j), neg = body[0] === '^'; var start = i; i = j + 1;
+        var parts = (neg ? body.slice(1) : body).replace(/\\(.)/g, function(_, x){ return CLS[x] ? '‹' + x + '›' : x; });
+        var nice = parts.replace(/(\w)-(\w)/g, '$1 to $2').replace(/‹(.)›/g, function(_, x){ return CLS[x].replace(/^an? /, '').replace(/ \(.*\)$/, '') + ', '; });
+        desc = (neg ? 'one character that is NOT any of: ' : 'one character from: ') + nice.replace(/, $/, '') + quant();
+        tok = p.slice(start, i);
+      } else if (c === '(') {
+        var start2 = i, m2 = /^\(\?(:|=|!|<=|<!|<([A-Za-z_]\w*)>)?/.exec(p.slice(i)) || ['('], kind = m2[1];
+        i += m2[0].length; depth++;
+        desc = !kind ? 'start of capture group' : kind === ':' ? 'start of a group (not captured)' : kind === '=' ? 'start of a look-ahead: must be followed by…' : kind === '!' ? 'start of a negative look-ahead: must NOT be followed by…' : kind === '<=' ? 'start of a look-behind: must be preceded by…' : kind === '<!' ? 'start of a negative look-behind: must NOT be preceded by…' : 'start of group named "' + m2[2] + '"';
+        tok = p.slice(start2, i);
+      } else if (c === ')') { var s3 = i; i++; depth = Math.max(0, depth - 1); desc = 'end of group' + quant(); tok = p.slice(s3, i); }
+      else if (c === '|') { i++; tok = '|'; desc = 'OR: match either the part before or the part after'; }
+      else if (c === '^') { i++; tok = '^'; desc = 'start of the text (or of a line with the m flag)'; }
+      else if (c === '$') { i++; tok = '$'; desc = 'end of the text (or of a line with the m flag)'; }
+      else if (c === '.') { var s4 = i; i++; desc = 'any character except a line break' + quant(); tok = p.slice(s4, i); }
+      else {
+        var s5 = i, lit = ''; while (i < p.length && !/[\\\[\]().|^$*+?{]/.test(p[i])) { lit += p[i]; i++; }
+        if (!lit) { lit = p[i]; i++; }
+        if (/^[*+?{]/.test(p[i] || '') && lit.length > 1) { i--; lit = lit.slice(0, -1); }
+        var qq = quant(); desc = (lit.length === 1 ? 'the character "' + lit + '"' : 'the text "' + lit + '"') + qq; tok = p.slice(s5, i);
+      }
+      items.push([tok, desc]);
+    }
+    items.forEach(function(it){ var li = document.createElement('li'), code = document.createElement('code'); code.textContent = it[0]; li.appendChild(code); li.appendChild(document.createTextNode(' ' + it[1])); ol.appendChild(li); });
+  }
+
+  var pr = $('presets');
+  PRESETS.forEach(function(x){
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-btn'; b.textContent = x[0];
+    b.addEventListener('click', function(){ $('pattern').value = x[1]; document.querySelectorAll('[data-f]').forEach(function(c){ c.checked = x[2].indexOf(c.dataset.f) >= 0; }); if (!$('text').value.trim()) $('text').value = SAMPLE; run(); });
+    pr.appendChild(b);
+  });
+  var t; function later(){ clearTimeout(t); t = setTimeout(run, 120); }
+  ['pattern', 'text', 'repl'].forEach(function(id){ $(id).addEventListener('input', later); });
+  document.querySelectorAll('[data-f]').forEach(function(c){ c.addEventListener('change', run); });
+  $('sampleBtn').addEventListener('click', function(){ $('text').value = SAMPLE; run(); });
+  $('copyRepl').addEventListener('click', function(){ var b = this, v = $('replOut').textContent; if (!v) return; TB.copy(v).then(function(ok){ b.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(function(){ b.textContent = 'Copy result'; }, 1400); }); });
+  var o = {}; try { o = JSON.parse(localStorage.getItem('dd-regex') || '{}'); } catch(e){}
+  $('pattern').value = o.p != null ? o.p : PRESETS[2][1];
+  if (o.f != null) document.querySelectorAll('[data-f]').forEach(function(c){ c.checked = o.f.indexOf(c.dataset.f) >= 0; });
+  if (o.r) $('repl').value = o.r;
+  $('text').value = SAMPLE; run();
+})();
+</script>
+
+</body>
+</html>

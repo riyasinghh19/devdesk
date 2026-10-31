@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Epoch &amp; Unix Timestamp Converter: IST, UTC and back (free) · DevDesk</title>
+<meta name="description" content="Convert Unix epoch time to a readable date in IST, UTC or any time zone, and turn a date back into an epoch. Detects seconds, milliseconds, microseconds and nanoseconds. Includes SQL and Python snippets.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/epoch-converter/">
+<meta property="og:title" content="Epoch &amp; Unix Timestamp Converter: IST, UTC and back (free) · DevDesk">
+<meta property="og:description" content="Convert Unix epoch time to a readable date in IST, UTC or any time zone, and turn a date back into an epoch. Detects seconds, milliseconds, microseconds and nanoseconds. Includes SQL and Python snippets.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/epoch-converter/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Data &amp; developer tools / Epoch converter</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Day 05 · Data &amp; developer tools</span>
+    <h1>Epoch &amp; <span class="hand">timestamp</span> converter</h1>
+    <p>Paste a Unix timestamp from a log, an API or a database and see exactly when it was, in IST, UTC and your own time zone. Or go the other way.</p>
+  </header>
+
+  <section class="panel" aria-label="Current epoch time">
+    <div class="clock panel-body">
+      <div><span class="k">Epoch right now</span><b id="nowS">—</b></div>
+      <div><span class="k">In milliseconds</span><b id="nowMs">—</b></div>
+      <div><span class="k">IST</span><b id="nowIst">—</b></div>
+      <div><span class="k">UTC</span><b id="nowUtc">—</b></div>
+      <button class="icon-btn" id="copyNow" type="button">Copy epoch</button>
+    </div>
+  </section>
+
+  <div class="two" style="margin-top:18px">
+    <section class="panel card-box" aria-label="Epoch to date">
+      <h2 class="box-title">Epoch → date</h2>
+      <label for="epochIn" class="sr">Epoch timestamp</label>
+      <input class="big-input" id="epochIn" inputmode="numeric" spellcheck="false" placeholder="1761897600">
+      <p class="say" id="unitSay">Seconds, milliseconds, microseconds or nanoseconds, detected automatically.</p>
+      <div class="kv" id="epochOut"></div>
+    </section>
+    <section class="panel card-box" aria-label="Date to epoch">
+      <h2 class="box-title">Date → epoch</h2>
+      <div class="row-inline">
+        <label class="sr" for="dateIn">Date and time</label><input class="inp" type="datetime-local" id="dateIn" step="1">
+        <label class="sr" for="dateTz">Time zone</label>
+        <select id="dateTz"><option value="Asia/Kolkata">IST (India)</option><option value="UTC">UTC</option><option value="local">My time zone</option><option value="America/New_York">New York</option><option value="Europe/London">London</option><option value="Asia/Singapore">Singapore</option><option value="Asia/Dubai">Dubai</option></select>
+      </div>
+      <p class="say">Or type any date, like <code>2026-10-31 18:30</code> or <code>2026-10-31T13:00:00Z</code>:</p>
+      <label class="sr" for="dateText">Date as text</label><input class="inp" id="dateText" spellcheck="false" placeholder="2026-10-31 18:30" style="width:100%">
+      <div class="kv" id="dateOut" style="margin-top:12px"></div>
+    </section>
+  </div>
+
+  <section class="panel card-box" style="margin-top:18px" aria-label="Batch convert">
+    <h2 class="box-title">Convert a list</h2>
+    <p class="say">Paste one timestamp per line (from a log or a query result).</p>
+    <label class="sr" for="batchIn">Timestamps, one per line</label>
+    <textarea id="batchIn" class="code" style="min-height:110px" spellcheck="false" placeholder="1761897600&#10;1761901200000"></textarea>
+    <div class="data-wrap" id="batchWrap" hidden style="margin-top:12px"><table class="data-table" id="batchTable"><thead><tr><th>Input</th><th>Unit</th><th>IST</th><th>UTC</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>What is epoch time?</h2>
+    <p>Unix epoch time counts the seconds since <b>1 January 1970, 00:00:00 UTC</b>. It has no time zone: the same number means the same instant everywhere. Time zones only matter when you display it.</p>
+    <h2>How to tell the unit</h2>
+    <table>
+      <thead><tr><th>Digits (for dates near today)</th><th>Unit</th><th>Common in</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>Seconds</td><td>Unix, Python <code>time.time()</code>, most SQL</td></tr>
+        <tr><td>13</td><td>Milliseconds</td><td>JavaScript <code>Date.now()</code>, Java, Kafka</td></tr>
+        <tr><td>16</td><td>Microseconds</td><td>Postgres internals, BigQuery, Spark</td></tr>
+        <tr><td>19</td><td>Nanoseconds</td><td>Go, Parquet files, pandas</td></tr>
+      </tbody>
+    </table>
+    <h2>Convert epoch in SQL and code</h2>
+    <table class="snip">
+      <thead><tr><th>Where</th><th>Epoch → timestamp</th><th>Timestamp → epoch</th></tr></thead>
+      <tbody>
+        <tr><td>Snowflake</td><td><code>TO_TIMESTAMP(1761897600)</code><br><code>TO_TIMESTAMP(1761897600000, 3)</code> for ms</td><td><code>DATE_PART(EPOCH_SECOND, ts)</code></td></tr>
+        <tr><td>PostgreSQL</td><td><code>TO_TIMESTAMP(1761897600)</code></td><td><code>EXTRACT(EPOCH FROM ts)</code></td></tr>
+        <tr><td>SQL Server</td><td><code>DATEADD(SECOND, 1761897600, '1970-01-01')</code></td><td><code>DATEDIFF_BIG(SECOND, '1970-01-01', ts)</code></td></tr>
+        <tr><td>MySQL</td><td><code>FROM_UNIXTIME(1761897600)</code></td><td><code>UNIX_TIMESTAMP(ts)</code></td></tr>
+        <tr><td>BigQuery</td><td><code>TIMESTAMP_SECONDS(1761897600)</code></td><td><code>UNIX_SECONDS(ts)</code></td></tr>
+        <tr><td>Python</td><td><code>datetime.fromtimestamp(1761897600, tz=timezone.utc)</code></td><td><code>int(dt.timestamp())</code></td></tr>
+        <tr><td>JavaScript</td><td><code>new Date(1761897600 * 1000)</code></td><td><code>Math.floor(Date.now() / 1000)</code></td></tr>
+      </tbody>
+    </table>
+    <h2>The IST gotcha</h2>
+    <p>IST is UTC + 5:30, with no daylight saving. If a timestamp column looks 5½ hours off, the database is showing UTC and you are reading it as IST (or the other way round). In Snowflake, <code>CONVERT_TIMEZONE('UTC', 'Asia/Kolkata', ts)</code> fixes the display.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Why do I get a date in 1970?</summary><p>You probably passed milliseconds to a function that expects seconds, or the other way round, a very small number. Check the digit count.</p></details>
+    <details><summary>What is the year 2038 problem?</summary><p>Systems that store epoch seconds in a signed 32-bit integer overflow on 19 January 2038 at 03:14:07 UTC. Use 64-bit integers (BIGINT) for timestamp columns.</p></details>
+    <details><summary>Are leap seconds counted?</summary><p>No. Unix time ignores leap seconds, so every day is exactly 86,400 seconds.</p></details>
+    <h2>More data tools</h2>
+    <div class="related"><a class="note live c-data" href="../sql-formatter/index.html" data-q="sql formatter turn messy sql into clean, readable queries. snowflake, sql server, postgres and more."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 01 · Data</span><h3>SQL Formatter</h3><p>Turn messy SQL into clean, readable queries. Snowflake, SQL Server, Postgres and more.</p><span class="go">Open →</span></a><a class="note live c-data" href="../cron-explainer/index.html" data-q="cron expression explainer paste a cron schedule and read it in plain english, with the next run times."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 02 · Data</span><h3>Cron Expression Explainer</h3><p>Paste a cron schedule and read it in plain English, with the next run times.</p><span class="go">Open →</span></a><a class="note live c-data" href="../json-to-csv/index.html" data-q="json to csv converter flatten json arrays into a spreadsheet-ready csv."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 03 · Data</span><h3>JSON to CSV Converter</h3><p>Flatten JSON arrays into a spreadsheet-ready CSV.</p><span class="go">Open →</span></a><a class="note live c-data" href="../csv-to-sql/index.html" data-q="csv to sql insert turn a csv into insert statements for any table."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 04 · Data</span><h3>CSV to SQL INSERT</h3><p>Turn a CSV into INSERT statements for any table.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var LOCAL = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  function fmt(ms, tz){
+    try {
+      return new Intl.DateTimeFormat('en-GB', { timeZone: tz, weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(new Date(ms)).replace(/,/g, '');
+    } catch(e) { return '—'; }
+  }
+  function offsetMin(tz, ms){
+    var p = {}; new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(ms)).forEach(function(x){ p[x.type] = x.value; });
+    var asUtc = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute, +p.second);
+    return Math.round((asUtc - Math.floor(ms / 1000) * 1000) / 60000);
+  }
+  function rel(ms){
+    var d = (ms - Date.now()) / 1000, a = Math.abs(d), u = [[31536000, 'year'], [2592000, 'month'], [86400, 'day'], [3600, 'hour'], [60, 'minute'], [1, 'second']];
+    if (a < 1) return 'right now';
+    for (var i = 0; i < u.length; i++) if (a >= u[i][0]) { var n = Math.floor(a / u[i][0]); return d < 0 ? n + ' ' + u[i][1] + (n > 1 ? 's' : '') + ' ago' : 'in ' + n + ' ' + u[i][1] + (n > 1 ? 's' : ''); }
+  }
+  function detect(str){
+    var s = String(str).trim().replace(/[,_\s]/g, '');
+    if (!/^-?\d+(\.\d+)?$/.test(s)) return null;
+    var neg = s[0] === '-', digits = s.replace(/^-/, '').split('.')[0].length, n = Number(s), unit, ms;
+    if (digits <= 11) { unit = 'seconds'; ms = n * 1000; }
+    else if (digits <= 14) { unit = 'milliseconds'; ms = n; }
+    else if (digits <= 17) { unit = 'microseconds'; ms = n / 1000; }
+    else { unit = 'nanoseconds'; ms = Number(BigInt(s.split('.')[0]) / 1000000n); }
+    if (!isFinite(ms) || Math.abs(ms) > 8.64e15) return null;
+    return { unit: unit, ms: ms, neg: neg };
+  }
+  function kv(el, rows){
+    el.innerHTML = '';
+    rows.forEach(function(r){
+      var k = document.createElement('div'); k.className = 'k'; k.textContent = r[0];
+      var v = document.createElement('div'); v.className = 'v'; v.textContent = r[1];
+      var c = document.createElement('button'); c.type = 'button'; c.className = 'c icon-btn'; c.textContent = 'Copy';
+      c.addEventListener('click', function(){ TB.copy(r[1]).then(function(ok){ c.textContent = ok ? 'Copied ✓' : 'Select it'; setTimeout(function(){ c.textContent = 'Copy'; }, 1400); }); });
+      el.appendChild(k); el.appendChild(v); el.appendChild(c);
+    });
+  }
+  function isoIn(ms, tz){
+    var off = offsetMin(tz, ms), local = new Date(ms + off * 60000).toISOString().slice(0, 19), sign = off < 0 ? '-' : '+', a = Math.abs(off);
+    return local + sign + String(Math.floor(a / 60)).padStart(2, '0') + ':' + String(a % 60).padStart(2, '0');
+  }
+  function tick(){
+    var ms = Date.now();
+    $('nowS').textContent = Math.floor(ms / 1000); $('nowMs').textContent = ms;
+    $('nowIst').textContent = fmt(ms, 'Asia/Kolkata').slice(4); $('nowUtc').textContent = fmt(ms, 'UTC').slice(4);
+  }
+  tick(); setInterval(tick, 1000);
+  $('copyNow').addEventListener('click', function(){ var b = this; TB.copy(String(Math.floor(Date.now() / 1000))).then(function(ok){ b.textContent = ok ? 'Copied ✓' : 'Copy failed'; setTimeout(function(){ b.textContent = 'Copy epoch'; }, 1400); }); });
+
+  function fromEpoch(){
+    var v = $('epochIn').value, out = $('epochOut'), say = $('unitSay');
+    try { localStorage.setItem('dd-epoch', v); } catch(e){}
+    if (!v.trim()) { out.innerHTML = ''; say.className = 'say'; say.textContent = 'Seconds, milliseconds, microseconds or nanoseconds, detected automatically.'; return; }
+    var d = detect(v);
+    if (!d) { out.innerHTML = ''; say.className = 'say err'; say.textContent = 'That doesn\'t look like an epoch number. Use digits only, for example 1761897600.'; return; }
+    say.className = 'say'; say.textContent = 'Read as ' + d.unit + '.';
+    var rows = [['IST', fmt(d.ms, 'Asia/Kolkata')], ['UTC', fmt(d.ms, 'UTC')]];
+    if (fmt(d.ms, LOCAL) !== fmt(d.ms, 'Asia/Kolkata') && fmt(d.ms, LOCAL) !== fmt(d.ms, 'UTC')) rows.push([LOCAL.split('/').pop().replace(/_/g, ' '), fmt(d.ms, LOCAL)]);
+    rows.push(['ISO 8601 (UTC)', new Date(d.ms).toISOString()], ['ISO 8601 (IST)', isoIn(d.ms, 'Asia/Kolkata')], ['Relative', rel(d.ms)], ['In seconds', String(Math.floor(d.ms / 1000))], ['In milliseconds', String(Math.round(d.ms))]);
+    kv(out, rows);
+  }
+  $('epochIn').addEventListener('input', fromEpoch);
+
+  function zoneToUtc(y, mo, da, h, mi, s, tz){
+    if (tz === 'UTC') return Date.UTC(y, mo, da, h, mi, s);
+    var guess = Date.UTC(y, mo, da, h, mi, s);
+    var off = offsetMin(tz, guess); var t = guess - off * 60000;
+    var off2 = offsetMin(tz, t); if (off2 !== off) t = guess - off2 * 60000;
+    return t;
+  }
+  function fromDate(src){
+    var tz = $('dateTz').value === 'local' ? LOCAL : $('dateTz').value, ms = null, out = $('dateOut');
+    var text = src === 'text' ? $('dateText').value.trim() : $('dateIn').value;
+    if (!text) { out.innerHTML = ''; return; }
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?)?\s*(Z|[+-]\d{2}:?\d{2})?$/i.exec(text);
+    if (m) {
+      if (m[7]) ms = Date.parse(m[1] + '-' + m[2].padStart(2, '0') + '-' + m[3].padStart(2, '0') + 'T' + (m[4] || '0').padStart(2, '0') + ':' + (m[5] || '00') + ':' + (m[6] || '00') + (m[7].toUpperCase() === 'Z' ? 'Z' : m[7].replace(/^([+-]\d{2})(\d{2})$/, '$1:$2')));
+      else ms = zoneToUtc(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0), +(m[6] || 0), tz);
+    } else { var p = Date.parse(text); if (!isNaN(p)) ms = p; }
+    if (ms === null || isNaN(ms)) { out.innerHTML = '<p class="say err">Couldn\'t read that date. Try the format 2026-10-31 18:30.</p>'; return; }
+    if (src === 'text') { try { var off = offsetMin(tz, ms); $('dateIn').value = new Date(ms + off * 60000).toISOString().slice(0, 19); } catch(e){} }
+    kv(out, [['Epoch seconds', String(Math.floor(ms / 1000))], ['Epoch milliseconds', String(ms)], ['UTC', fmt(ms, 'UTC')], ['IST', fmt(ms, 'Asia/Kolkata')], ['ISO 8601', new Date(ms).toISOString()]]);
+  }
+  $('dateIn').addEventListener('input', function(){ fromDate('picker'); });
+  $('dateText').addEventListener('input', function(){ fromDate('text'); });
+  $('dateTz').addEventListener('change', function(){ fromDate($('dateText').value.trim() ? 'text' : 'picker'); });
+
+  $('batchIn').addEventListener('input', function(){
+    var lines = this.value.split(/\r?\n/).map(function(l){ return l.trim(); }).filter(Boolean).slice(0, 500), tb = $('batchTable').tBodies[0];
+    tb.innerHTML = '';
+    lines.forEach(function(l){
+      var d = detect(l), tr = tb.insertRow();
+      [l, d ? d.unit : 'not a number', d ? fmt(d.ms, 'Asia/Kolkata') : '', d ? fmt(d.ms, 'UTC') : ''].forEach(function(v){ tr.insertCell().textContent = v; });
+    });
+    $('batchWrap').hidden = !lines.length;
+  });
+
+  var saved = ''; try { saved = localStorage.getItem('dd-epoch') || ''; } catch(e){}
+  $('epochIn').value = saved || String(Math.floor(Date.now() / 1000)); fromEpoch();
+  var now = new Date(), off = offsetMin('Asia/Kolkata', now.getTime());
+  $('dateIn').value = new Date(now.getTime() + off * 60000).toISOString().slice(0, 16) + ':00'; fromDate('picker');
+})();
+</script>
+
+</body>
+</html>

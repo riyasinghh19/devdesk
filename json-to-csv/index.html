@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JSON to CSV Converter: flatten nested JSON online (free) · DevDesk</title>
+<meta name="description" content="Convert JSON to CSV in your browser. Flattens nested objects into columns, handles arrays, previews the table and downloads an Excel-ready CSV. Nothing is uploaded.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/json-to-csv/">
+<meta property="og:title" content="JSON to CSV Converter: flatten nested JSON online (free) · DevDesk">
+<meta property="og:description" content="Convert JSON to CSV in your browser. Flattens nested objects into columns, handles arrays, previews the table and downloads an Excel-ready CSV. Nothing is uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/json-to-csv/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Data &amp; developer tools / JSON to CSV</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Day 03 · Data &amp; developer tools</span>
+    <h1>JSON to <span class="hand">CSV</span></h1>
+    <p>Paste JSON from an API, a log or a NoSQL export and get a clean CSV you can open in Excel or load into a database. Nested objects become their own columns.</p>
+  </header>
+
+  <section class="panel" aria-label="JSON to CSV converter">
+    <div class="toolbar">
+      <div class="opt"><label for="delim">Separator</label>
+        <select id="delim"><option value=",">Comma ( , )</option><option value=";">Semicolon ( ; )</option><option value="tab">Tab</option><option value="|">Pipe ( | )</option></select></div>
+      <div class="opt"><label for="nested">Nested objects</label>
+        <select id="nested"><option value="flat">Flatten (user.city)</option><option value="json">Keep as JSON text</option></select></div>
+      <div class="opt"><label for="arrays">Lists of values</label>
+        <select id="arrays"><option value="join">Join with ; </option><option value="json">Keep as JSON text</option><option value="index">One column each (tags.0)</option></select></div>
+      <div class="opt check"><input type="checkbox" id="bom" checked><label for="bom">Excel-friendly download</label></div>
+      <span class="spacer"></span>
+      <button class="btn" id="sampleBtn" type="button">Try a sample</button>
+    </div>
+    <div class="panes">
+      <div class="pane">
+        <div class="pane-head"><span>JSON <span class="meta" id="inMeta"></span></span>
+          <div class="pane-actions"><label class="icon-btn" for="file">Open file</label><input type="file" id="file" accept=".json,application/json,.txt" hidden><button class="icon-btn" id="clearBtn" type="button">Clear</button></div></div>
+        <label for="jsonIn" class="sr">JSON input</label>
+        <textarea id="jsonIn" class="code" spellcheck="false" placeholder='[{"id": 1, "name": "Riya", "city": "Pune"}]'></textarea>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span>CSV <span class="meta" id="outMeta"></span></span>
+          <div class="pane-actions"><button class="icon-btn" id="copyBtn" type="button">Copy</button><button class="icon-btn" id="dlBtn" type="button">.csv</button></div></div>
+        <label for="csvOut" class="sr">CSV output</label>
+        <textarea id="csvOut" class="code out" spellcheck="false" readonly placeholder="Your CSV appears here."></textarea>
+      </div>
+    </div>
+    <div class="actions"><span class="status" id="status" aria-live="polite">Converts as you type.</span></div>
+  </section>
+
+  <section style="margin-top:22px" aria-label="Preview">
+    <div class="data-wrap" id="previewWrap" hidden><table class="data-table" id="preview"></table></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How the conversion works</h2>
+    <ol>
+      <li><b>Find the rows.</b> If your JSON is a list, each item becomes a row. If it's an object holding a list (like <code>{"data": [...]}</code>), the tool finds that list for you.</li>
+      <li><b>Find the columns.</b> Every key that appears in any row becomes a column, in the order it first appears. Missing values are left blank.</li>
+      <li><b>Flatten nested data.</b> <code>{"user": {"city": "Pune"}}</code> becomes a column called <code>user.city</code>.</li>
+      <li><b>Quote safely.</b> Values containing the separator, quotes or line breaks are wrapped in quotes, following the CSV standard (RFC 4180).</li>
+    </ol>
+    <h2>Example</h2>
+    <pre><code>[{"id": 1, "name": "Asha", "address": {"city": "Pune"}, "skills": ["SQL", "Python"]}]</code></pre>
+    <pre><code>id,name,address.city,skills
+1,Asha,Pune,SQL; Python</code></pre>
+    <h2>Tips</h2>
+    <ul>
+      <li><b>Opening in Excel?</b> Keep "Excel-friendly download" on. It adds a marker that makes Excel read Hindi, Tamil, ₹ and other non-English characters correctly.</li>
+      <li><b>European Excel</b> often expects semicolons. Switch the separator if everything lands in one column.</li>
+      <li><b>Loading into a warehouse?</b> Snowflake <code>COPY INTO</code> and BigQuery load CSV with a header row directly. Or turn the CSV into INSERT statements with <a href="../csv-to-sql/index.html">CSV to SQL</a>.</li>
+    </ul>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is my data uploaded?</summary><p>No. Conversion happens in your browser, so it's safe for production data and API responses.</p></details>
+    <details><summary>How big a file can it handle?</summary><p>Tens of thousands of rows work well. Very large files (hundreds of MB) are better handled with a script, for example Python's <code>pandas.json_normalize</code>.</p></details>
+    <details><summary>It says my JSON is invalid. Why?</summary><p>The message shows the line and column. Common causes are single quotes instead of double quotes, a trailing comma after the last item, or comments. JSON allows none of these.</p></details>
+    <details><summary>Does it support JSON Lines (one object per line)?</summary><p>Yes. If the text isn't one JSON value, the tool tries reading each line as its own object.</p></details>
+    <h2>More data tools</h2>
+    <div class="related"><a class="note live c-data" href="../sql-formatter/index.html" data-q="sql formatter turn messy sql into clean, readable queries. snowflake, sql server, postgres and more."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 01 · Data</span><h3>SQL Formatter</h3><p>Turn messy SQL into clean, readable queries. Snowflake, SQL Server, Postgres and more.</p><span class="go">Open →</span></a><a class="note live c-data" href="../cron-explainer/index.html" data-q="cron expression explainer paste a cron schedule and read it in plain english, with the next run times."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 02 · Data</span><h3>Cron Expression Explainer</h3><p>Paste a cron schedule and read it in plain English, with the next run times.</p><span class="go">Open →</span></a><a class="note live c-data" href="../csv-to-sql/index.html" data-q="csv to sql insert turn a csv into insert statements for any table."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 04 · Data</span><h3>CSV to SQL INSERT</h3><p>Turn a CSV into INSERT statements for any table.</p><span class="go">Open →</span></a><a class="note live c-data" href="../epoch-converter/index.html" data-q="epoch &amp; timestamp converter convert unix time to ist, utc and back."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 05 · Data</span><h3>Epoch &amp; Timestamp Converter</h3><p>Convert Unix time to IST, UTC and back.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var inp = $('jsonIn'), out = $('csvOut'), status = $('status');
+  var SAMPLE = JSON.stringify({ data: [
+    { id: 101, name: 'Asha Kulkarni', email: 'asha@example.com', address: { city: 'Pune', pin: '411001' }, skills: ['SQL', 'Python'], active: true },
+    { id: 102, name: 'Rahul Mehta', email: 'rahul@example.com', address: { city: 'Bengaluru', pin: '560001' }, skills: ['Power BI'], active: false, note: 'Joined, "Q3" batch' },
+    { id: 103, name: 'Meera Iyer', address: { city: 'Chennai' }, skills: [], active: true }
+  ] }, null, 2);
+  function say(t, cls){ status.textContent = t; status.className = 'status' + (cls ? ' ' + cls : ''); }
+  function delim(){ var d = $('delim').value; return d === 'tab' ? '\t' : d; }
+
+  function parseInput(text){
+    try { return JSON.parse(text); }
+    catch(e) {
+      var lines = text.split(/\r?\n/).filter(function(l){ return l.trim(); });
+      if (lines.length > 1) { try { return lines.map(function(l){ return JSON.parse(l); }); } catch(e2){} }
+      var m = /position (\d+)/.exec(e.message), where = '';
+      if (m) { var pos = +m[1], before = text.slice(0, pos), line = before.split('\n').length, col = pos - before.lastIndexOf('\n'); where = ' (line ' + line + ', column ' + col + ')'; }
+      else { var lc = /line (\d+) column (\d+)/.exec(e.message); if (lc) where = ' (line ' + lc[1] + ', column ' + lc[2] + ')'; }
+      throw new Error('That isn\'t valid JSON' + where + '. Check for single quotes, a trailing comma or a missing bracket.');
+    }
+  }
+  function findRows(v){
+    if (Array.isArray(v)) return v;
+    if (v && typeof v === 'object') {
+      var keys = Object.keys(v);
+      for (var i = 0; i < keys.length; i++) if (Array.isArray(v[keys[i]]) && v[keys[i]].length && typeof v[keys[i]][0] === 'object') return v[keys[i]];
+      for (var j = 0; j < keys.length; j++) { var x = v[keys[j]]; if (x && typeof x === 'object' && !Array.isArray(x)) { var k2 = Object.keys(x); for (var q = 0; q < k2.length; q++) if (Array.isArray(x[k2[q]]) && x[k2[q]].length && typeof x[k2[q]][0] === 'object') return x[k2[q]]; } }
+      return [v];
+    }
+    return [{ value: v }];
+  }
+  function flatten(obj, prefix, row, opts){
+    Object.keys(obj).forEach(function(k){
+      var v = obj[k], key = prefix ? prefix + '.' + k : k;
+      if (v === null || v === undefined) { row[key] = ''; }
+      else if (Array.isArray(v)) {
+        var prim = v.every(function(x){ return x === null || typeof x !== 'object'; });
+        if (opts.arrays === 'json' || (!prim && opts.nested === 'json')) row[key] = JSON.stringify(v);
+        else if (opts.arrays === 'join' && prim) row[key] = v.join('; ');
+        else v.forEach(function(x, i){ if (x && typeof x === 'object') flatten(x, key + '.' + i, row, opts); else row[key + '.' + i] = x; });
+      }
+      else if (typeof v === 'object') { if (opts.nested === 'json') row[key] = JSON.stringify(v); else flatten(v, key, row, opts); }
+      else row[key] = v;
+    });
+    return row;
+  }
+  function cell(v, d){
+    var s = v === undefined || v === null ? '' : String(v);
+    return (s.indexOf(d) >= 0 || /["\r\n]/.test(s) || /^\s|\s$/.test(s)) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+  var lastRows = [], lastCols = [];
+  function convert(){
+    var text = inp.value.trim();
+    try { localStorage.setItem('dd-j2c', JSON.stringify({ d: $('delim').value, n: $('nested').value, a: $('arrays').value, b: $('bom').checked })); } catch(e){}
+    if (!text) { out.value = ''; $('outMeta').textContent = ''; $('inMeta').textContent = ''; $('previewWrap').hidden = true; say('Converts as you type.'); return; }
+    try {
+      var opts = { nested: $('nested').value, arrays: $('arrays').value };
+      var rows = findRows(parseInput(text)).map(function(r){ return r && typeof r === 'object' && !Array.isArray(r) ? flatten(r, '', {}, opts) : { value: Array.isArray(r) ? JSON.stringify(r) : r }; });
+      var cols = [], seen = {};
+      rows.forEach(function(r){ Object.keys(r).forEach(function(k){ if (!seen[k]) { seen[k] = 1; cols.push(k); } }); });
+      var d = delim();
+      out.value = [cols.map(function(c){ return cell(c, d); }).join(d)].concat(rows.map(function(r){ return cols.map(function(c){ return cell(r[c], d); }).join(d); })).join('\n');
+      lastRows = rows; lastCols = cols;
+      $('inMeta').textContent = (text.length / 1024).toFixed(1) + ' KB'; $('outMeta').textContent = rows.length + ' rows × ' + cols.length + ' columns';
+      preview(rows, cols); say('Converted ✓', 'ok');
+    } catch(e) { out.value = ''; $('outMeta').textContent = ''; $('previewWrap').hidden = true; say(e.message, 'err'); }
+  }
+  function preview(rows, cols){
+    var t = $('preview'), max = Math.min(rows.length, 100), h = '<thead><tr>' + cols.map(function(c){ return '<th></th>'; }).join('') + '</tr></thead><tbody>';
+    for (var i = 0; i < max; i++) h += '<tr>' + cols.map(function(){ return '<td></td>'; }).join('') + '</tr>';
+    t.innerHTML = h + '</tbody>';
+    var ths = t.querySelectorAll('th'); cols.forEach(function(c, i){ ths[i].textContent = c; });
+    var trs = t.querySelectorAll('tbody tr');
+    for (var r = 0; r < max; r++) { var tds = trs[r].children; cols.forEach(function(c, j){ var v = rows[r][c]; tds[j].textContent = v === undefined ? '' : String(v); if (typeof v === 'number') tds[j].className = 'n'; }); }
+    $('previewWrap').hidden = false;
+  }
+  var timer; inp.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(convert, 200); });
+  ['delim', 'nested', 'arrays'].forEach(function(id){ $(id).addEventListener('change', convert); });
+  $('bom').addEventListener('change', convert);
+  $('sampleBtn').addEventListener('click', function(){ inp.value = SAMPLE; convert(); });
+  $('clearBtn').addEventListener('click', function(){ inp.value = ''; convert(); inp.focus(); });
+  $('file').addEventListener('change', function(){ var f = this.files[0]; this.value = ''; if (!f) return; f.text().then(function(t){ inp.value = t; convert(); }); });
+  $('copyBtn').addEventListener('click', function(){ if (!out.value) return say('Nothing to copy yet.', 'err'); TB.copy(out.value).then(function(ok){ if (ok) say('Copied ✓', 'ok'); else { out.select(); say('Selected. Press Ctrl + C to copy.'); } }); });
+  $('dlBtn').addEventListener('click', function(){
+    if (!out.value) return say('Nothing to download yet.', 'err');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([($('bom').checked ? '﻿' : '') + out.value.replace(/\n/g, '\r\n')], { type: 'text/csv;charset=utf-8' }));
+    a.download = 'converted.csv'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500); say('Downloaded converted.csv ✓', 'ok');
+  });
+  try { var o = JSON.parse(localStorage.getItem('dd-j2c') || '{}'); if (o.d) $('delim').value = o.d; if (o.n) $('nested').value = o.n; if (o.a) $('arrays').value = o.a; if (o.b === false) $('bom').checked = false; } catch(e){}
+})();
+</script>
+
+</body>
+</html>

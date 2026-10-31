@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cron Expression Explainer: read cron in plain English · DevDesk</title>
+<meta name="description" content="Paste a cron schedule and read it in plain English, with the next run times in IST, UTC or your local time. Works for Linux crontab, GitHub Actions, Airflow and Kubernetes.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/cron-explainer/">
+<meta property="og:title" content="Cron Expression Explainer: read cron in plain English · DevDesk">
+<meta property="og:description" content="Paste a cron schedule and read it in plain English, with the next run times in IST, UTC or your local time. Works for Linux crontab, GitHub Actions, Airflow and Kubernetes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/cron-explainer/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Data &amp; developer tools / Cron Explainer</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Day 02 · Data &amp; developer tools</span>
+    <h1>Cron <span class="hand">Explainer</span></h1>
+    <p>Type a cron expression and see what it means in plain English, plus exactly when it will run next. Works for crontab, GitHub Actions, Airflow, Kubernetes CronJobs and most schedulers.</p>
+  </header>
+
+  <section class="panel" aria-label="Cron explainer">
+    <div class="panel-body">
+      <label for="cron" class="sr">Cron expression</label>
+      <input id="cron" class="big-input" value="0 9 * * 1-5" spellcheck="false" autocomplete="off" autocapitalize="off">
+      <div class="chips-row" id="presets"><span class="lbl">Try</span></div>
+      <p class="say" id="say" aria-live="polite"></p>
+      <div class="fields" id="fields"></div>
+      <div class="row-inline">
+        <div class="opt"><label for="tz">Show next runs in</label>
+          <select id="tz"><option value="local">My local time</option><option value="Asia/Kolkata">IST (India)</option><option value="UTC">UTC</option><option value="America/New_York">US Eastern</option><option value="Europe/London">UK</option></select></div>
+        <div class="opt"><label for="count">How many</label>
+          <select id="count"><option>5</option><option selected>10</option><option>20</option></select></div>
+      </div>
+      <ol class="runs" id="runs" aria-label="Next run times"></ol>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>How to read a cron expression</h2>
+    <p>A standard cron expression has five fields separated by spaces. Each field says when the job may run, and the job runs when all of them match.</p>
+    <pre><code>┌───────── minute (0–59)
+│ ┌─────── hour (0–23)
+│ │ ┌───── day of month (1–31)
+│ │ │ ┌─── month (1–12 or JAN–DEC)
+│ │ │ │ ┌─ day of week (0–6 or SUN–SAT, 7 is also Sunday)
+│ │ │ │ │
+0 9 * * 1-5   →  at 09:00, Monday to Friday</code></pre>
+
+    <h2>Special characters</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Symbol</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><code>*</code></td><td>Every value</td><td><code>* * * * *</code> runs every minute</td></tr>
+        <tr><td><code>,</code></td><td>A list of values</td><td><code>0 9,18 * * *</code> runs at 09:00 and 18:00</td></tr>
+        <tr><td><code>-</code></td><td>A range</td><td><code>0 9 * * 1-5</code> runs on weekdays</td></tr>
+        <tr><td><code>/</code></td><td>A step</td><td><code>*/15 * * * *</code> runs every 15 minutes</td></tr>
+        <tr><td><code>@daily</code></td><td>Shortcut for <code>0 0 * * *</code></td><td>Also <code>@hourly</code>, <code>@weekly</code>, <code>@monthly</code>, <code>@yearly</code></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Gotchas that catch everyone</h2>
+    <ul>
+      <li><b>Time zones.</b> Cron runs in the server's time zone. GitHub Actions and most cloud schedulers use <b>UTC</b>, so 9 AM IST is <code>30 3 * * *</code>.</li>
+      <li><b>Day of month OR day of week.</b> If you set both, the job runs when <i>either</i> matches. <code>0 0 13 * 5</code> runs on every 13th <i>and</i> every Friday, not only on Friday the 13th.</li>
+      <li><b>Steps start from the range.</b> <code>*/10</code> in the minute field means 0, 10, 20…, not "10 minutes after the job starts".</li>
+      <li><b>Six fields?</b> Quartz and Spring add a seconds field at the start, and AWS EventBridge adds a year at the end. This tool reads the standard five fields; drop the extra one to check your schedule.</li>
+    </ul>
+
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do I run a job every 5 minutes?</summary><p>Use <code>*/5 * * * *</code>. For every 5 minutes during office hours on weekdays, use <code>*/5 9-17 * * 1-5</code>.</p></details>
+    <details><summary>How do I schedule 9 AM IST in GitHub Actions?</summary><p>GitHub Actions uses UTC, and IST is UTC+5:30, so 9:00 IST is 3:30 UTC: <code>30 3 * * *</code>. Pick UTC in the time zone menu above to check.</p></details>
+    <details><summary>How do I run on the last day of the month?</summary><p>Standard cron has no "last day" symbol. A common trick is to run on days 28–31 and check the date in your script, for example <code>[ "$(date -d tomorrow +%d)" = "01" ] && ./job.sh</code>. Quartz supports <code>L</code> for this.</p></details>
+    <details><summary>Is anything I type sent anywhere?</summary><p>No. The explanation and run times are calculated in your browser.</p></details>
+
+    <h2>More data tools</h2>
+    <div class="related"><a class="note live c-data" href="../sql-formatter/index.html" data-q="sql formatter turn messy sql into clean, readable queries. snowflake, sql server, postgres and more."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 01 · Data</span><h3>SQL Formatter</h3><p>Turn messy SQL into clean, readable queries. Snowflake, SQL Server, Postgres and more.</p><span class="go">Open →</span></a><a class="note live c-data" href="../json-to-csv/index.html" data-q="json to csv converter flatten json arrays into a spreadsheet-ready csv."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 03 · Data</span><h3>JSON to CSV Converter</h3><p>Flatten JSON arrays into a spreadsheet-ready CSV.</p><span class="go">Open →</span></a><a class="note live c-data" href="../csv-to-sql/index.html" data-q="csv to sql insert turn a csv into insert statements for any table."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 04 · Data</span><h3>CSV to SQL INSERT</h3><p>Turn a CSV into INSERT statements for any table.</p><span class="go">Open →</span></a><a class="note live c-data" href="../epoch-converter/index.html" data-q="epoch &amp; timestamp converter convert unix time to ist, utc and back."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 05 · Data</span><h3>Epoch &amp; Timestamp Converter</h3><p>Convert Unix time to IST, UTC and back.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var MON = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  var DOW = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var MACROS = { '@yearly':'0 0 1 1 *', '@annually':'0 0 1 1 *', '@monthly':'0 0 1 * *', '@weekly':'0 0 * * 0', '@daily':'0 0 * * *', '@midnight':'0 0 * * *', '@hourly':'0 * * * *' };
+  var SPEC = [
+    { name:'minute', min:0, max:59 }, { name:'hour', min:0, max:23 }, { name:'day of month', min:1, max:31 },
+    { name:'month', min:1, max:12, names:MON }, { name:'day of week', min:0, max:7, names:DOW }
+  ];
+  var PRESETS = ['*/5 * * * *', '0 9 * * 1-5', '30 3 * * *', '0 */6 * * *', '0 0 1 * *', '0 9-17 * * 1-5', '15 10 * * 6,0', '@daily'];
+
+  function err(msg){ var e = new Error(msg); e.cron = true; throw e; }
+  function num(tok, sp){
+    var t = tok.toUpperCase();
+    if (sp.names) { var i = sp.names.indexOf(t); if (i >= 0) return sp === SPEC[3] ? i + 1 : i; }
+    if (!/^\d+$/.test(t)) err('"' + tok + '" isn\'t a valid ' + sp.name + '.');
+    var n = +t; if (n < sp.min || n > sp.max) err('The ' + sp.name + ' must be between ' + sp.min + ' and ' + sp.max + ', not ' + n + '.');
+    return n;
+  }
+  function parseField(text, sp){
+    var set = {}, star = false;
+    text.split(',').forEach(function(part){
+      if (!part) err('There\'s an empty item in the ' + sp.name + ' field.');
+      var m = part.split('/'); if (m.length > 2) err('"' + part + '" has too many slashes.');
+      var range = m[0], step = m.length === 2 ? +m[1] : 1;
+      if (m.length === 2 && (!/^\d+$/.test(m[1]) || step < 1)) err('The step in "' + part + '" must be a positive number.');
+      var lo, hi;
+      if (range === '*' || range === '?') { lo = sp.min; hi = sp.max === 7 ? 6 : sp.max; if (step === 1) star = true; }
+      else if (range.indexOf('-') > 0) { var r = range.split('-'); lo = num(r[0], sp); hi = num(r[1], sp); if (hi < lo) err('The range "' + range + '" goes backwards.'); }
+      else { lo = num(range, sp); hi = m.length === 2 ? (sp.max === 7 ? 6 : sp.max) : lo; }
+      for (var v = lo; v <= hi; v += step) set[sp.max === 7 && v === 7 ? 0 : v] = true;
+    });
+    var vals = Object.keys(set).map(Number).sort(function(a, b){ return a - b; });
+    return { text: text, vals: vals, star: star, has: set };
+  }
+  function parse(expr){
+    var e = expr.trim().replace(/\s+/g, ' ');
+    if (!e) err('Type a cron expression, like 0 9 * * 1-5.');
+    var low = e.toLowerCase(); if (MACROS[low]) e = MACROS[low]; else if (e[0] === '@') err('"' + e + '" isn\'t a known shortcut. Try @hourly, @daily, @weekly, @monthly or @yearly.');
+    var p = e.split(' ');
+    if (p.length === 6) err('That has 6 fields. Standard cron has 5. If the first field is seconds (Quartz, Spring), remove it; if the last is a year (AWS), remove that.');
+    if (p.length !== 5) err('A cron expression needs 5 fields: minute, hour, day of month, month and day of week. This one has ' + p.length + '.');
+    return { raw: e, f: p.map(function(t, i){ return parseField(t, SPEC[i]); }) };
+  }
+
+  /* ---------- English ---------- */
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function hhmm(h, m){ return pad(h) + ':' + pad(m); }
+  function ampm(h){ return h === 0 ? '12 AM' : h < 12 ? h + ' AM' : h === 12 ? '12 PM' : (h - 12) + ' PM'; }
+  function joinList(a){ return a.length <= 1 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
+  function stepOf(text){ var m = text.match(/^(\*|\d+)\/(\d+)$/); return m ? { from: m[1] === '*' ? null : +m[1], step: +m[2] } : null; }
+  function rangeOf(text){ var m = text.match(/^(\w+)-(\w+)$/); return m ? [m[1], m[2]] : null; }
+  function isContig(v){ for (var i = 1; i < v.length; i++) if (v[i] !== v[i - 1] + 1) return false; return v.length > 2; }
+
+  function timePart(mi, hr){
+    var ms = stepOf(mi.text), hs = stepOf(hr.text);
+    if (mi.star && hr.star) return 'Every minute';
+    if (ms && ms.from === null && hr.star) return 'Every ' + ms.step + ' minutes';
+    if (mi.star && hs && hs.from === null) return 'Every minute of every ' + ordinalStep(hs.step) + ' hour';
+    if (mi.star) return 'Every minute during ' + hoursPhrase(hr);
+    if (ms && ms.from === null) return 'Every ' + ms.step + ' minutes during ' + hoursPhrase(hr);
+    if (hr.star) return mi.vals.length === 1 ? 'At ' + mi.vals[0] + ' minute' + (mi.vals[0] === 1 ? '' : 's') + ' past every hour' : 'At minutes ' + joinList(mi.vals.map(String)) + ' past every hour';
+    if (hs && hs.from === null && mi.vals.length === 1) return 'At ' + mi.vals[0] + ' minute' + (mi.vals[0] === 1 ? '' : 's') + ' past every ' + ordinalStep(hs.step) + ' hour (' + joinList(hr.vals.map(function(h){ return hhmm(h, mi.vals[0]); })) + ')';
+    if (isContig(hr.vals) && mi.vals.length === 1) return 'At ' + mi.vals[0] + ' minute' + (mi.vals[0] === 1 ? '' : 's') + ' past every hour from ' + hhmm(hr.vals[0], mi.vals[0]) + ' to ' + hhmm(hr.vals[hr.vals.length - 1], mi.vals[0]);
+    var times = []; hr.vals.forEach(function(h){ mi.vals.forEach(function(m){ times.push(hhmm(h, m)); }); });
+    if (times.length <= 8) return 'At ' + joinList(times);
+    return 'At minutes ' + joinList(mi.vals.map(String)) + ' past ' + hoursPhrase(hr);
+  }
+  function ordinalStep(n){ return n === 1 ? '' : n === 2 ? 'second' : n === 3 ? 'third' : n + 'th'; }
+  function hoursPhrase(hr){
+    if (isContig(hr.vals)) return 'every hour from ' + ampm(hr.vals[0]) + ' to ' + ampm(hr.vals[hr.vals.length - 1]) + ' (until ' + hhmm(hr.vals[hr.vals.length - 1], 59) + ')';
+    return 'hours ' + joinList(hr.vals.map(function(h){ return ampm(h); }));
+  }
+  function listNames(field, names, offset){
+    var r = rangeOf(field.text);
+    if (r && isContig(field.vals)) return names[field.vals[0] - offset] + ' through ' + names[field.vals[field.vals.length - 1] - offset];
+    return joinList(field.vals.map(function(v){ return names[v - offset]; }));
+  }
+  function dayPart(dom, mon, dow){
+    var out = [];
+    var domS = !dom.star, dowS = !dow.star;
+    var ds = stepOf(dom.text);
+    var domTxt = ds && ds.from === null ? 'every ' + ordinalStep(ds.step) + ' day of the month' :
+      dom.vals.length === 1 ? 'on day ' + dom.vals[0] + ' of the month' :
+      isContig(dom.vals) ? 'on days ' + dom.vals[0] + ' to ' + dom.vals[dom.vals.length - 1] + ' of the month' : 'on days ' + joinList(dom.vals.map(String)) + ' of the month';
+    var dowTxt = 'on ' + (dow.vals.join() === '1,2,3,4,5' ? 'weekdays (Monday to Friday)' : dow.vals.join() === '0,6' ? 'weekends' : listNames(dow, DAY_NAMES, 0));
+    if (domS && dowS) out.push(domTxt + ', and also ' + dowTxt);
+    else if (domS) out.push(domTxt);
+    else if (dowS) out.push(dowTxt);
+    if (!mon.star) { var ms = stepOf(mon.text); out.push(ms && ms.from === null ? 'every ' + ordinalStep(ms.step) + ' month' : 'in ' + listNames(mon, MONTH_NAMES, 1)); }
+    return out.join(', ');
+  }
+  function describe(c){
+    var f = c.f, t = timePart(f[0], f[1]), d = dayPart(f[2], f[3], f[4]);
+    var s = t + (d ? ', ' + d : '') + '.';
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+  function fieldNote(fi, i){
+    if (fi.star) return 'every ' + ['minute', 'hour', 'day', 'month', 'day'][i];
+    var st = stepOf(fi.text); if (st && st.from === null) return 'every ' + st.step + ' ' + ['minutes', 'hours', 'days', 'months', 'days'][i];
+    var v = fi.vals.map(function(x){ return i === 3 ? MONTH_NAMES[x - 1].slice(0, 3) : i === 4 ? DAY_NAMES[x].slice(0, 3) : i === 1 ? ampm(x) : String(x); });
+    return v.length > 6 ? v.slice(0, 5).join(', ') + '… (' + v.length + ')' : v.join(', ');
+  }
+
+  /* ---------- next runs (wall-clock time in the chosen zone) ---------- */
+  function wallNow(tz){
+    var d = new Date();
+    if (tz === 'local') return { y: d.getFullYear(), mo: d.getMonth() + 1, d: d.getDate(), h: d.getHours(), mi: d.getMinutes() };
+    var p = {}; new Intl.DateTimeFormat('en-GB', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' })
+      .formatToParts(d).forEach(function(x){ p[x.type] = +x.value; });
+    return { y: p.year, mo: p.month, d: p.day, h: p.hour % 24, mi: p.minute };
+  }
+  function nextRuns(c, tz, count){
+    var f = c.f, now = wallNow(tz), out = [];
+    var base = Date.UTC(now.y, now.mo - 1, now.d);
+    var domR = !f[2].star, dowR = !f[4].star;
+    for (var k = 0; k < 366 * 8 && out.length < count; k++) {
+      var day = new Date(base + k * 864e5), mo = day.getUTCMonth() + 1, dd = day.getUTCDate(), wd = day.getUTCDay();
+      if (!f[3].has[mo]) continue;
+      var dm = f[2].has[dd], dw = f[4].has[wd];
+      if (!(domR && dowR ? (dm || dw) : (dm && dw))) continue;
+      for (var hi = 0; hi < f[1].vals.length && out.length < count; hi++) {
+        var h = f[1].vals[hi];
+        for (var mj = 0; mj < f[0].vals.length && out.length < count; mj++) {
+          var m = f[0].vals[mj];
+          if (k === 0 && (h < now.h || (h === now.h && m <= now.mi))) continue;
+          out.push({ t: base + k * 864e5 + (h * 60 + m) * 6e4, nowT: Date.UTC(now.y, now.mo - 1, now.d, now.h, now.mi) });
+        }
+      }
+    }
+    return out;
+  }
+  function rel(ms){
+    var m = Math.round(ms / 6e4);
+    if (m < 60) return 'in ' + m + ' min';
+    var h = Math.round(m / 60); if (h < 48) return 'in ' + h + ' hour' + (h === 1 ? '' : 's');
+    var d = Math.round(h / 24); return 'in ' + d + ' days';
+  }
+  var fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+
+  function render(){
+    var v = $('cron').value, sayEl = $('say'), fields = $('fields'), runs = $('runs');
+    try { localStorage.setItem('dd-cron', v); } catch(e){}
+    try {
+      var c = parse(v);
+      sayEl.className = 'say'; sayEl.textContent = describe(c);
+      fields.innerHTML = '';
+      c.f.forEach(function(fi, i){
+        var d = document.createElement('div');
+        d.innerHTML = '<b></b><small></small><p></p>';
+        d.querySelector('b').textContent = fi.text; d.querySelector('small').textContent = SPEC[i].name; d.querySelector('p').textContent = fieldNote(fi, i);
+        fields.appendChild(d);
+      });
+      var list = nextRuns(c, $('tz').value, +$('count').value);
+      runs.innerHTML = '';
+      if (!list.length) { runs.innerHTML = '<li>This schedule never runs, for example a date like 30 February.</li>'; return; }
+      list.forEach(function(r){
+        var li = document.createElement('li'), s = document.createElement('span');
+        li.textContent = fmt.format(new Date(r.t)); s.textContent = rel(r.t - r.nowT); li.appendChild(s); runs.appendChild(li);
+      });
+    } catch(e) {
+      if (!e.cron) throw e;
+      sayEl.className = 'say err'; sayEl.textContent = e.message; fields.innerHTML = ''; runs.innerHTML = '';
+    }
+  }
+  var pr = $('presets');
+  PRESETS.forEach(function(p){ var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-btn'; b.textContent = p; b.addEventListener('click', function(){ $('cron').value = p; render(); }); pr.appendChild(b); });
+  try { var saved = localStorage.getItem('dd-cron'); if (saved) $('cron').value = saved; } catch(e){}
+  $('cron').addEventListener('input', render); $('tz').addEventListener('change', render); $('count').addEventListener('change', render);
+  render();
+})();
+</script>
+
+</body>
+</html>

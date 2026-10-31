@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CSV to SQL INSERT Generator: Snowflake, Postgres, MySQL, SQL Server (free) · DevDesk</title>
+<meta name="description" content="Turn a CSV into SQL INSERT statements in your browser. Choose the dialect, batch rows, handle NULLs and get a CREATE TABLE with guessed column types. Nothing is uploaded.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/csv-to-sql/">
+<meta property="og:title" content="CSV to SQL INSERT Generator: Snowflake, Postgres, MySQL, SQL Server (free) · DevDesk">
+<meta property="og:description" content="Turn a CSV into SQL INSERT statements in your browser. Choose the dialect, batch rows, handle NULLs and get a CREATE TABLE with guessed column types. Nothing is uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/csv-to-sql/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Data &amp; developer tools / CSV to SQL</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Day 04 · Data &amp; developer tools</span>
+    <h1>CSV to <span class="hand">SQL INSERT</span></h1>
+    <p>Paste a CSV, name the table and get ready-to-run INSERT statements. Text is quoted safely, numbers stay numbers and blanks can become NULL.</p>
+  </header>
+
+  <section class="panel" aria-label="CSV to SQL converter">
+    <div class="toolbar">
+      <div class="opt"><label for="table">Table name</label><input class="inp" id="table" value="my_table" spellcheck="false" style="width:150px"></div>
+      <div class="opt"><label for="dialect">Database</label>
+        <select id="dialect"><option value="snowflake">Snowflake</option><option value="postgres">PostgreSQL</option><option value="mysql">MySQL</option><option value="sqlserver">SQL Server</option><option value="standard">Standard SQL</option></select></div>
+      <div class="opt"><label for="batch">Rows per INSERT</label>
+        <select id="batch"><option value="1">1</option><option value="100" selected>100</option><option value="500">500</option><option value="1000">1000</option></select></div>
+      <div class="opt"><label for="nulls">Empty cells</label>
+        <select id="nulls"><option value="null">NULL</option><option value="empty">Empty text ''</option></select></div>
+      <div class="opt check"><input type="checkbox" id="create" checked><label for="create">Add CREATE TABLE</label></div>
+      <div class="opt check"><input type="checkbox" id="quoteId"><label for="quoteId">Quote column names</label></div>
+      <span class="spacer"></span>
+      <button class="btn" id="sampleBtn" type="button">Try a sample</button>
+    </div>
+    <div class="panes">
+      <div class="pane">
+        <div class="pane-head"><span>CSV <span class="meta" id="inMeta"></span></span>
+          <div class="pane-actions"><label class="icon-btn" for="file">Open file</label><input type="file" id="file" accept=".csv,.tsv,.txt,text/csv" hidden><button class="icon-btn" id="clearBtn" type="button">Clear</button></div></div>
+        <label for="csvIn" class="sr">CSV input</label>
+        <textarea id="csvIn" class="code" spellcheck="false" placeholder="id,name,city&#10;1,Asha,Pune"></textarea>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span>SQL <span class="meta" id="outMeta"></span></span>
+          <div class="pane-actions"><button class="icon-btn" id="copyBtn" type="button">Copy</button><button class="icon-btn" id="dlBtn" type="button">.sql</button></div></div>
+        <label for="sqlOut" class="sr">SQL output</label>
+        <textarea id="sqlOut" class="code out" spellcheck="false" readonly placeholder="Your INSERT statements appear here."></textarea>
+      </div>
+    </div>
+    <div class="actions"><span class="status" id="status" aria-live="polite">Converts as you type. The first row is used as column names.</span></div>
+  </section>
+
+  <section style="margin-top:22px" aria-label="Detected columns">
+    <div class="data-wrap" id="colsWrap" hidden><table class="data-table" id="cols"><thead><tr><th>Column</th><th>Guessed type</th><th>Example</th><th>Blanks</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>What it does with your data</h2>
+    <ul>
+      <li><b>Separator is detected</b> from the first line: comma, semicolon, tab or pipe.</li>
+      <li><b>Quoted fields are respected</b>, including commas and line breaks inside quotes (the CSV standard, RFC 4180).</li>
+      <li><b>Single quotes in text are doubled</b> (<code>O'Brien</code> → <code>'O''Brien'</code>), so the SQL never breaks and can't be injected.</li>
+      <li><b>Numbers stay unquoted</b> only when the whole column is numeric. A column like <code>pin</code> with <code>0411</code> stays text so the leading zero survives.</li>
+      <li><b>Column names are cleaned</b>: spaces and symbols become underscores (<code>First Name</code> → <code>first_name</code>).</li>
+    </ul>
+    <h2>Dialect differences</h2>
+    <table>
+      <thead><tr><th>Database</th><th>Quoted names</th><th>Max rows per INSERT</th><th>True / false</th></tr></thead>
+      <tbody>
+        <tr><td>Snowflake</td><td><code>"col"</code></td><td>16,384</td><td><code>TRUE</code> / <code>FALSE</code></td></tr>
+        <tr><td>PostgreSQL</td><td><code>"col"</code></td><td>No hard limit</td><td><code>TRUE</code> / <code>FALSE</code></td></tr>
+        <tr><td>MySQL</td><td><code>`col`</code></td><td>Limited by <code>max_allowed_packet</code></td><td><code>1</code> / <code>0</code></td></tr>
+        <tr><td>SQL Server</td><td><code>[col]</code></td><td>1,000 (the tool caps it)</td><td><code>1</code> / <code>0</code> (BIT)</td></tr>
+      </tbody>
+    </table>
+    <h2>When not to use INSERTs</h2>
+    <p>For more than a few thousand rows, bulk loading is much faster: <code>COPY INTO</code> from a stage in Snowflake, <code>\copy</code> in Postgres, <code>LOAD DATA INFILE</code> in MySQL or <code>BULK INSERT</code> in SQL Server. INSERTs are best for seed data, test fixtures and small lookup tables.</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Is my CSV uploaded?</summary><p>No. Everything runs in your browser.</p></details>
+    <details><summary>How are dates handled?</summary><p>Values like <code>2026-10-31</code> or <code>2026-10-31 09:30:00</code> are recognised and the column type is set to DATE or TIMESTAMP. They are inserted as quoted strings, which every database listed converts automatically.</p></details>
+    <details><summary>My CSV has no header row.</summary><p>Add one line at the top with column names, for example <code>col1,col2,col3</code>.</p></details>
+    <h2>More data tools</h2>
+    <div class="related"><a class="note live c-data" href="../sql-formatter/index.html" data-q="sql formatter turn messy sql into clean, readable queries. snowflake, sql server, postgres and more."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 01 · Data</span><h3>SQL Formatter</h3><p>Turn messy SQL into clean, readable queries. Snowflake, SQL Server, Postgres and more.</p><span class="go">Open →</span></a><a class="note live c-data" href="../cron-explainer/index.html" data-q="cron expression explainer paste a cron schedule and read it in plain english, with the next run times."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 02 · Data</span><h3>Cron Expression Explainer</h3><p>Paste a cron schedule and read it in plain English, with the next run times.</p><span class="go">Open →</span></a><a class="note live c-data" href="../json-to-csv/index.html" data-q="json to csv converter flatten json arrays into a spreadsheet-ready csv."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 03 · Data</span><h3>JSON to CSV Converter</h3><p>Flatten JSON arrays into a spreadsheet-ready CSV.</p><span class="go">Open →</span></a><a class="note live c-data" href="../epoch-converter/index.html" data-q="epoch &amp; timestamp converter convert unix time to ist, utc and back."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 05 · Data</span><h3>Epoch &amp; Timestamp Converter</h3><p>Convert Unix time to IST, UTC and back.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var inp = $('csvIn'), out = $('sqlOut'), status = $('status');
+  var SAMPLE = 'id,First Name,city,pin,salary,joined_on,is_active,notes\n1,Asha,Pune,0411,85000.50,2026-01-15,true,\n2,Rahul,Bengaluru,5600,92000,2025-11-03,false,"Moved from Delhi, 2025"\n3,Meera O\'Brien,Chennai,6000,,2026-08-21,true,"Says ""hi"""\n';
+  function say(t, cls){ status.textContent = t; status.className = 'status' + (cls ? ' ' + cls : ''); }
+
+  function detect(text){
+    var first = text.split(/\r?\n/)[0] || '', best = ',', n = 0;
+    [',', ';', '\t', '|'].forEach(function(d){ var c = first.split(d).length; if (c > n) { n = c; best = d; } });
+    return best;
+  }
+  function parseCSV(text, d){
+    var rows = [], row = [], f = '', q = false, i = 0, c;
+    while (i < text.length) {
+      c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"' && f === '') q = true;
+      else if (c === d) { row.push(f); f = ''; }
+      else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(f); rows.push(row); row = []; f = ''; }
+      else f += c;
+      i++;
+    }
+    if (q) throw new Error('A quoted value is never closed. Look for a stray " in your data.');
+    if (f !== '' || row.length) { row.push(f); rows.push(row); }
+    return rows.filter(function(r){ return !(r.length === 1 && r[0].trim() === ''); });
+  }
+  function cleanName(s, i, used){
+    var n = s.trim().replace(/^﻿/, '').toLowerCase().replace(/[^a-z0-9_]+/g, '_').replace(/^_+|_+$/g, '') || 'col' + (i + 1);
+    if (/^[0-9]/.test(n)) n = 'c_' + n;
+    var base = n, k = 2; while (used[n]) n = base + '_' + k++; used[n] = 1; return n;
+  }
+  var RE = { int: /^-?(0|[1-9]\d*)$/, num: /^-?(0|[1-9]\d*)(\.\d+)?$/, bool: /^(true|false|yes|no)$/i, date: /^\d{4}-\d{2}-\d{2}$/, ts: /^\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?$/ };
+  function guess(vals){
+    var v = vals.filter(function(x){ return x.trim() !== ''; });
+    if (!v.length) return 'text';
+    var all = function(re){ return v.every(function(x){ return re.test(x.trim()); }); };
+    if (all(RE.int)) { var big = v.some(function(x){ return Math.abs(+x) > 2147483647; }); return big ? 'bigint' : 'int'; }
+    if (all(RE.num)) return 'decimal';
+    if (all(RE.bool)) return 'bool';
+    if (all(RE.date)) return 'date';
+    if (all(RE.ts)) return 'timestamp';
+    return 'text';
+  }
+  function typeName(t, dialect, maxLen){
+    var M = {
+      snowflake: { int: 'INTEGER', bigint: 'BIGINT', decimal: 'NUMBER(18,4)', bool: 'BOOLEAN', date: 'DATE', timestamp: 'TIMESTAMP_NTZ', text: 'VARCHAR' },
+      postgres: { int: 'INTEGER', bigint: 'BIGINT', decimal: 'NUMERIC(18,4)', bool: 'BOOLEAN', date: 'DATE', timestamp: 'TIMESTAMP', text: 'TEXT' },
+      mysql: { int: 'INT', bigint: 'BIGINT', decimal: 'DECIMAL(18,4)', bool: 'TINYINT(1)', date: 'DATE', timestamp: 'DATETIME', text: 'VARCHAR(' + Math.max(255, Math.ceil(maxLen / 50) * 50) + ')' },
+      sqlserver: { int: 'INT', bigint: 'BIGINT', decimal: 'DECIMAL(18,4)', bool: 'BIT', date: 'DATE', timestamp: 'DATETIME2', text: maxLen > 4000 ? 'NVARCHAR(MAX)' : 'NVARCHAR(' + Math.max(255, Math.ceil(maxLen / 50) * 50) + ')' },
+      standard: { int: 'INTEGER', bigint: 'BIGINT', decimal: 'DECIMAL(18,4)', bool: 'BOOLEAN', date: 'DATE', timestamp: 'TIMESTAMP', text: 'VARCHAR(' + Math.max(255, Math.ceil(maxLen / 50) * 50) + ')' }
+    };
+    return M[dialect][t];
+  }
+  function qid(n, dialect, force){
+    if (!force) return n;
+    if (dialect === 'mysql') return '`' + n.replace(/`/g, '``') + '`';
+    if (dialect === 'sqlserver') return '[' + n.replace(/]/g, ']]') + ']';
+    return '"' + n.replace(/"/g, '""') + '"';
+  }
+  function qtable(t, dialect, force){ return t.split('.').map(function(p){ return qid(p, dialect, force); }).join('.'); }
+  function lit(v, type, dialect, nulls){
+    if (v.trim() === '') return nulls === 'null' ? 'NULL' : "''";
+    var s = v.trim();
+    if (type === 'int' || type === 'bigint' || type === 'decimal') return s;
+    if (type === 'bool') { var t = /^(true|yes)$/i.test(s); return (dialect === 'mysql' || dialect === 'sqlserver') ? (t ? '1' : '0') : (t ? 'TRUE' : 'FALSE'); }
+    var esc = "'" + v.replace(/'/g, "''") + "'";
+    if (dialect === 'mysql') esc = esc.replace(/\\/g, '\\\\');
+    return (dialect === 'sqlserver' && type === 'text' && /[^\x00-\x7f]/.test(v)) ? 'N' + esc : esc;
+  }
+  function convert(){
+    var text = inp.value;
+    try { localStorage.setItem('dd-c2s', JSON.stringify({ t: $('table').value, d: $('dialect').value, b: $('batch').value, n: $('nulls').value, c: $('create').checked, q: $('quoteId').checked })); } catch(e){}
+    if (!text.trim()) { out.value = ''; $('outMeta').textContent = ''; $('inMeta').textContent = ''; $('colsWrap').hidden = true; say('Converts as you type. The first row is used as column names.'); return; }
+    try {
+      var d = detect(text), rows = parseCSV(text.replace(/^﻿/, ''), d);
+      if (rows.length < 2) throw new Error('Add at least one data row below the header.');
+      var used = {}, head = rows[0].map(function(h, i){ return cleanName(h, i, used); }), data = rows.slice(1), w = head.length;
+      var bad = data.filter(function(r){ return r.length !== w; }).length;
+      data = data.map(function(r){ r = r.slice(0, w); while (r.length < w) r.push(''); return r; });
+      var dialect = $('dialect').value, nulls = $('nulls').value, force = $('quoteId').checked;
+      var types = head.map(function(_, j){ return guess(data.map(function(r){ return r[j]; })); });
+      var maxLen = head.map(function(_, j){ return data.reduce(function(m, r){ return Math.max(m, r[j].length); }, 0); });
+      var table = ($('table').value.trim() || 'my_table').replace(/[^A-Za-z0-9_.]/g, '_');
+      var batch = +$('batch').value; if (dialect === 'sqlserver') batch = Math.min(batch, 1000);
+      var cols = head.map(function(h){ return qid(h, dialect, force); }).join(', ');
+      var tname = qtable(table, dialect, force), parts = [];
+      if ($('create').checked) parts.push('CREATE TABLE ' + tname + ' (\n' + head.map(function(h, j){ return '  ' + qid(h, dialect, force) + ' ' + typeName(types[j], dialect, maxLen[j]); }).join(',\n') + '\n);\n');
+      for (var i = 0; i < data.length; i += batch) {
+        var chunk = data.slice(i, i + batch).map(function(r){ return '  (' + r.map(function(v, j){ return lit(v, types[j], dialect, nulls); }).join(', ') + ')'; });
+        parts.push('INSERT INTO ' + tname + ' (' + cols + ')\nVALUES\n' + chunk.join(',\n') + ';');
+      }
+      out.value = parts.join('\n');
+      $('inMeta').textContent = data.length + ' rows · ' + ({ ',': 'comma', ';': 'semicolon', '\t': 'tab', '|': 'pipe' })[d] + ' separated';
+      $('outMeta').textContent = Math.ceil(data.length / batch) + ' INSERT statement' + (Math.ceil(data.length / batch) === 1 ? '' : 's');
+      var tb = $('cols').tBodies[0]; tb.innerHTML = '';
+      head.forEach(function(h, j){
+        var tr = tb.insertRow(), ex = (data.find(function(r){ return r[j].trim(); }) || [])[j] || '', blanks = data.filter(function(r){ return !r[j].trim(); }).length;
+        [h + (h !== rows[0][j].trim() ? '  (was "' + rows[0][j].trim() + '")' : ''), typeName(types[j], dialect, maxLen[j]), ex.length > 40 ? ex.slice(0, 40) + '…' : ex, blanks || '—'].forEach(function(v){ tr.insertCell().textContent = v; });
+      });
+      $('colsWrap').hidden = false;
+      say(bad ? 'Converted, but ' + bad + ' row' + (bad === 1 ? ' has' : 's have') + ' a different number of values than the header. Missing values became blanks.' : 'Converted ✓', bad ? 'err' : 'ok');
+    } catch(e) { out.value = ''; $('outMeta').textContent = ''; $('colsWrap').hidden = true; say(e.message, 'err'); }
+  }
+  var timer; inp.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(convert, 200); });
+  $('table').addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(convert, 200); });
+  ['dialect', 'batch', 'nulls', 'create', 'quoteId'].forEach(function(id){ $(id).addEventListener('change', convert); });
+  $('sampleBtn').addEventListener('click', function(){ inp.value = SAMPLE; convert(); });
+  $('clearBtn').addEventListener('click', function(){ inp.value = ''; convert(); inp.focus(); });
+  $('file').addEventListener('change', function(){ var f = this.files[0]; this.value = ''; if (!f) return; var base = f.name.replace(/\.[^.]+$/, '').toLowerCase().replace(/[^a-z0-9_]+/g, '_'); if (base) $('table').value = base; f.text().then(function(t){ inp.value = t; convert(); }); });
+  $('copyBtn').addEventListener('click', function(){ if (!out.value) return say('Nothing to copy yet.', 'err'); TB.copy(out.value).then(function(ok){ if (ok) say('Copied ✓', 'ok'); else { out.select(); say('Selected. Press Ctrl + C to copy.'); } }); });
+  $('dlBtn').addEventListener('click', function(){
+    if (!out.value) return say('Nothing to download yet.', 'err');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([out.value], { type: 'text/plain;charset=utf-8' }));
+    a.download = ($('table').value.trim() || 'insert') + '.sql'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500); say('Downloaded ✓', 'ok');
+  });
+  try { var o = JSON.parse(localStorage.getItem('dd-c2s') || '{}'); if (o.t) $('table').value = o.t; if (o.d) $('dialect').value = o.d; if (o.b) $('batch').value = o.b; if (o.n) $('nulls').value = o.n; if (o.c === false) $('create').checked = false; if (o.q) $('quoteId').checked = true; } catch(e){}
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SQL Date Format Cheat Sheet: Snowflake, SQL Server, Postgres, MySQL, BigQuery · DevDesk</title>
+<meta name="description" content="Pick the date format you want and get the exact SQL for Snowflake, SQL Server, PostgreSQL, MySQL, BigQuery and Spark side by side, with live example output and every format code explained.">
+<link rel="canonical" href="https://riyasinghh19.github.io/devdesk/sql-date-formats/">
+<meta property="og:title" content="SQL Date Format Cheat Sheet: Snowflake, SQL Server, Postgres, MySQL, BigQuery · DevDesk">
+<meta property="og:description" content="Pick the date format you want and get the exact SQL for Snowflake, SQL Server, PostgreSQL, MySQL, BigQuery and Spark side by side, with live example output and every format code explained.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://riyasinghh19.github.io/devdesk/sql-date-formats/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+
+<!-- ADSENSE: paste the AdSense <script> tag here once approved -->
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="../index.html"><i aria-hidden="true"></i>DevDesk</a>
+  <nav class="head-nav" aria-label="Main">
+    <a href="../index.html">All tools</a>
+    <a href="../about.html">About</a>
+  </nav>
+</div></header>
+<main>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">All tools</a> / Data &amp; developer tools / SQL date formats</nav>
+  <header class="tool-head">
+    <span class="eyebrow">Day 07 · Data &amp; developer tools</span>
+    <h1>SQL date format <span class="hand">cheat sheet</span></h1>
+    <p>Every database spells date formats differently. Pick the output you want and copy the SQL for your database.</p>
+  </header>
+
+  <section class="panel" aria-label="Date format picker">
+    <div class="toolbar">
+      <div class="opt"><label for="when">Example date</label><input class="inp" type="datetime-local" id="when" step="1"></div>
+      <div class="opt"><label for="col">Column name</label><input class="inp" id="col" value="order_date" spellcheck="false" style="width:140px"></div>
+      <span class="spacer"></span>
+      <button class="btn" id="nowBtn" type="button">Use now</button>
+    </div>
+    <div class="panel-body">
+      <p class="say">1. Pick the format you want:</p>
+      <div class="fmt-list" id="fmts" role="radiogroup" aria-label="Output format"></div>
+      <p class="say" style="margin-top:16px">2. Copy the SQL for your database:</p>
+      <div class="data-wrap"><table class="data-table" id="sqlTable"><thead><tr><th>Database</th><th>SQL</th><th></th></tr></thead><tbody></tbody></table></div>
+      <p class="say" id="note"></p>
+    </div>
+  </section>
+
+  <div class="ad-slot"><!-- ADSENSE: below tool --></div>
+
+  <article class="article narrow">
+    <h2>Format codes side by side</h2>
+    <p>Example date: <b>Friday 31 October 2026, 18:05:09</b>.</p>
+    <table>
+      <thead><tr><th>Part</th><th>Snowflake</th><th>PostgreSQL</th><th>SQL Server FORMAT</th><th>MySQL</th><th>BigQuery</th><th>Spark</th><th>Output</th></tr></thead>
+      <tbody>
+        <tr><td>4-digit year</td><td><code>YYYY</code></td><td><code>YYYY</code></td><td><code>yyyy</code></td><td><code>%Y</code></td><td><code>%Y</code></td><td><code>yyyy</code></td><td>2026</td></tr>
+        <tr><td>2-digit year</td><td><code>YY</code></td><td><code>YY</code></td><td><code>yy</code></td><td><code>%y</code></td><td><code>%y</code></td><td><code>yy</code></td><td>26</td></tr>
+        <tr><td>Month number</td><td><code>MM</code></td><td><code>MM</code></td><td><code>MM</code></td><td><code>%m</code></td><td><code>%m</code></td><td><code>MM</code></td><td>10</td></tr>
+        <tr><td>Month short</td><td><code>MON</code></td><td><code>Mon</code></td><td><code>MMM</code></td><td><code>%b</code></td><td><code>%b</code></td><td><code>MMM</code></td><td>Oct</td></tr>
+        <tr><td>Month full</td><td><code>MMMM</code></td><td><code>FMMonth</code></td><td><code>MMMM</code></td><td><code>%M</code></td><td><code>%B</code></td><td><code>MMMM</code></td><td>October</td></tr>
+        <tr><td>Day of month</td><td><code>DD</code></td><td><code>DD</code></td><td><code>dd</code></td><td><code>%d</code></td><td><code>%d</code></td><td><code>dd</code></td><td>31</td></tr>
+        <tr><td>Weekday short</td><td><code>DY</code></td><td><code>Dy</code></td><td><code>ddd</code></td><td><code>%a</code></td><td><code>%a</code></td><td><code>EEE</code></td><td>Fri</td></tr>
+        <tr><td>Weekday full</td><td>—*</td><td><code>FMDay</code></td><td><code>dddd</code></td><td><code>%W</code></td><td><code>%A</code></td><td><code>EEEE</code></td><td>Friday</td></tr>
+        <tr><td>Hour 24h</td><td><code>HH24</code></td><td><code>HH24</code></td><td><code>HH</code></td><td><code>%H</code></td><td><code>%H</code></td><td><code>HH</code></td><td>18</td></tr>
+        <tr><td>Hour 12h</td><td><code>HH12</code></td><td><code>HH12</code></td><td><code>hh</code></td><td><code>%h</code></td><td><code>%I</code></td><td><code>hh</code></td><td>06</td></tr>
+        <tr><td>Minute</td><td><code>MI</code></td><td><code>MI</code></td><td><code>mm</code></td><td><code>%i</code></td><td><code>%M</code></td><td><code>mm</code></td><td>05</td></tr>
+        <tr><td>Second</td><td><code>SS</code></td><td><code>SS</code></td><td><code>ss</code></td><td><code>%s</code></td><td><code>%S</code></td><td><code>ss</code></td><td>09</td></tr>
+        <tr><td>AM / PM</td><td><code>AM</code></td><td><code>AM</code></td><td><code>tt</code></td><td><code>%p</code></td><td><code>%p</code></td><td><code>a</code></td><td>PM</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">* Snowflake has no full weekday code in TO_CHAR; use <code>DAYNAME()</code> (returns "Fri") or a <code>DECODE</code>. </p>
+    <h2>The traps that catch everyone</h2>
+    <ul>
+      <li><b><code>MM</code> vs <code>mm</code> in SQL Server.</b> <code>MM</code> is month, <code>mm</code> is minutes. <code>FORMAT(d, 'yyyy-mm-dd')</code> gives "2026-05-31" for 31 October at 18:05.</li>
+      <li><b><code>MI</code> vs <code>MM</code> in Snowflake and Postgres.</b> Minutes are <code>MI</code>. Using <code>HH24:MM</code> prints the month in place of minutes.</li>
+      <li><b>Postgres pads names.</b> <code>TO_CHAR(d, 'Month')</code> returns "October&nbsp;&nbsp;" with trailing spaces. Add <code>FM</code> to trim: <code>'FMMonth'</code>.</li>
+      <li><b>MySQL <code>%M</code> is the month name</b>, not minutes. Minutes are <code>%i</code>.</li>
+      <li><b>Spark: <code>YYYY</code> is the week-based year.</b> On 31 December it can show next year. Use lower-case <code>yyyy</code>.</li>
+      <li><b>SQL Server FORMAT is slow</b> on large tables (it runs through .NET). For millions of rows, use <code>CONVERT</code> with a style number.</li>
+    </ul>
+    <h2>SQL Server CONVERT styles</h2>
+    <table>
+      <thead><tr><th>Style</th><th>Output</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td><code>23</code></td><td>2026-10-31</td><td>ISO date</td></tr>
+        <tr><td><code>120</code></td><td>2026-10-31 18:05:09</td><td>ISO date and time</td></tr>
+        <tr><td><code>126</code></td><td>2026-10-31T18:05:09</td><td>ISO 8601 with T</td></tr>
+        <tr><td><code>103</code></td><td>31/10/2026</td><td>Indian / British</td></tr>
+        <tr><td><code>101</code></td><td>10/31/2026</td><td>US</td></tr>
+        <tr><td><code>105</code></td><td>31-10-2026</td><td>Day-month-year with dashes</td></tr>
+        <tr><td><code>106</code></td><td>31 Oct 2026</td><td>Readable</td></tr>
+        <tr><td><code>112</code></td><td>20261031</td><td>Compact, for file names and keys</td></tr>
+        <tr><td><code>108</code></td><td>18:05:09</td><td>Time only</td></tr>
+      </tbody>
+    </table>
+    <h2>Frequently asked questions</h2>
+    <details><summary>How do I parse a text date instead of formatting one?</summary><p>Use the same codes with the parsing function: Snowflake <code>TO_DATE('31/10/2026', 'DD/MM/YYYY')</code>, Postgres <code>TO_DATE(...)</code> the same way, SQL Server <code>CONVERT(date, '31/10/2026', 103)</code>, MySQL <code>STR_TO_DATE('31/10/2026', '%d/%m/%Y')</code>, BigQuery <code>PARSE_DATE('%d/%m/%Y', '31/10/2026')</code>.</p></details>
+    <details><summary>Should I store dates as formatted text?</summary><p>No. Store DATE or TIMESTAMP and format only when you display. Text dates sort wrongly ("10/02" before "9/30") and can't be compared or added to.</p></details>
+    <details><summary>Which format should I use in reports for India?</summary><p>DD/MM/YYYY or DD-Mon-YYYY (31-Oct-2026). The month name removes any doubt between Indian and US readers.</p></details>
+    <h2>More data tools</h2>
+    <div class="related"><a class="note live c-data" href="../sql-formatter/index.html" data-q="sql formatter turn messy sql into clean, readable queries. snowflake, sql server, postgres and more."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 01 · Data</span><h3>SQL Formatter</h3><p>Turn messy SQL into clean, readable queries. Snowflake, SQL Server, Postgres and more.</p><span class="go">Open →</span></a><a class="note live c-data" href="../cron-explainer/index.html" data-q="cron expression explainer paste a cron schedule and read it in plain english, with the next run times."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 02 · Data</span><h3>Cron Expression Explainer</h3><p>Paste a cron schedule and read it in plain English, with the next run times.</p><span class="go">Open →</span></a><a class="note live c-data" href="../json-to-csv/index.html" data-q="json to csv converter flatten json arrays into a spreadsheet-ready csv."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 03 · Data</span><h3>JSON to CSV Converter</h3><p>Flatten JSON arrays into a spreadsheet-ready CSV.</p><span class="go">Open →</span></a><a class="note live c-data" href="../csv-to-sql/index.html" data-q="csv to sql insert turn a csv into insert statements for any table."><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="d">Day 04 · Data</span><h3>CSV to SQL INSERT</h3><p>Turn a CSV into INSERT statements for any table.</p><span class="go">Open →</span></a></div>
+  </article>
+</div>
+
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>&copy; <span id="year">2026</span> DevDesk. Built by <a href="https://riyasinghh19.github.io/Profile_resume/">Riya Singh</a>, data engineer.</span>
+  <nav aria-label="Footer"><a href="../index.html">All tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></nav>
+</div></footer>
+<script src="../assets/site.js"></script>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], MONTH = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAY = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var p2 = function(n){ return String(n).padStart(2, '0'); };
+  function h12(d){ return p2(d.getHours() % 12 || 12); }
+  function isoWeek(d){ var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())), day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day); var y = new Date(Date.UTC(t.getUTCFullYear(), 0, 1)); return Math.ceil(((t - y) / 86400000 + 1) / 7); }
+  // Each format: label, example(d), and SQL per database ({c} = column).
+  var F = [
+    { id: 'iso', l: 'YYYY-MM-DD', ex: function(d){ return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); },
+      sf: "TO_CHAR({c}, 'YYYY-MM-DD')", pg: "TO_CHAR({c}, 'YYYY-MM-DD')", ms: "CONVERT(varchar(10), {c}, 23)", my: "DATE_FORMAT({c}, '%Y-%m-%d')", bq: "FORMAT_DATE('%Y-%m-%d', {c})", sp: "date_format({c}, 'yyyy-MM-dd')" },
+    { id: 'in', l: 'DD/MM/YYYY', ex: function(d){ return p2(d.getDate()) + '/' + p2(d.getMonth() + 1) + '/' + d.getFullYear(); },
+      sf: "TO_CHAR({c}, 'DD/MM/YYYY')", pg: "TO_CHAR({c}, 'DD/MM/YYYY')", ms: "CONVERT(varchar(10), {c}, 103)", my: "DATE_FORMAT({c}, '%d/%m/%Y')", bq: "FORMAT_DATE('%d/%m/%Y', {c})", sp: "date_format({c}, 'dd/MM/yyyy')" },
+    { id: 'us', l: 'MM/DD/YYYY', ex: function(d){ return p2(d.getMonth() + 1) + '/' + p2(d.getDate()) + '/' + d.getFullYear(); },
+      sf: "TO_CHAR({c}, 'MM/DD/YYYY')", pg: "TO_CHAR({c}, 'MM/DD/YYYY')", ms: "CONVERT(varchar(10), {c}, 101)", my: "DATE_FORMAT({c}, '%m/%d/%Y')", bq: "FORMAT_DATE('%m/%d/%Y', {c})", sp: "date_format({c}, 'MM/dd/yyyy')" },
+    { id: 'dmon', l: 'DD-Mon-YYYY', ex: function(d){ return p2(d.getDate()) + '-' + MON[d.getMonth()] + '-' + d.getFullYear(); },
+      sf: "TO_CHAR({c}, 'DD-MON-YYYY')", pg: "TO_CHAR({c}, 'DD-Mon-YYYY')", ms: "FORMAT({c}, 'dd-MMM-yyyy')", my: "DATE_FORMAT({c}, '%d-%b-%Y')", bq: "FORMAT_DATE('%d-%b-%Y', {c})", sp: "date_format({c}, 'dd-MMM-yyyy')" },
+    { id: 'long', l: 'Month D, YYYY', ex: function(d){ return MONTH[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); },
+      sf: "TO_CHAR({c}, 'MMMM DD, YYYY')", pg: "TO_CHAR({c}, 'FMMonth FMDD, YYYY')", ms: "FORMAT({c}, 'MMMM d, yyyy')", my: "DATE_FORMAT({c}, '%M %e, %Y')", bq: "FORMAT_DATE('%B %e, %Y', {c})", sp: "date_format({c}, 'MMMM d, yyyy')",
+      note: 'Snowflake DD keeps the leading zero (October 01). BigQuery %e pads single digits with a space; wrap in TRIM if needed.' },
+    { id: 'ts', l: 'YYYY-MM-DD HH:MI:SS', ex: function(d){ return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + ' ' + p2(d.getHours()) + ':' + p2(d.getMinutes()) + ':' + p2(d.getSeconds()); },
+      sf: "TO_CHAR({c}, 'YYYY-MM-DD HH24:MI:SS')", pg: "TO_CHAR({c}, 'YYYY-MM-DD HH24:MI:SS')", ms: "CONVERT(varchar(19), {c}, 120)", my: "DATE_FORMAT({c}, '%Y-%m-%d %H:%i:%s')", bq: "FORMAT_TIMESTAMP('%Y-%m-%d %H:%M:%S', {c})", sp: "date_format({c}, 'yyyy-MM-dd HH:mm:ss')" },
+    { id: 'iso8601', l: 'ISO 8601 (T)', ex: function(d){ return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + 'T' + p2(d.getHours()) + ':' + p2(d.getMinutes()) + ':' + p2(d.getSeconds()); },
+      sf: "TO_CHAR({c}, 'YYYY-MM-DD\"T\"HH24:MI:SS')", pg: "TO_CHAR({c}, 'YYYY-MM-DD\"T\"HH24:MI:SS')", ms: "CONVERT(varchar(19), {c}, 126)", my: "DATE_FORMAT({c}, '%Y-%m-%dT%H:%i:%s')", bq: "FORMAT_TIMESTAMP('%Y-%m-%dT%H:%M:%S', {c})", sp: "date_format({c}, \"yyyy-MM-dd'T'HH:mm:ss\")" },
+    { id: 'ampm', l: 'DD/MM/YYYY hh:mm AM', ex: function(d){ return p2(d.getDate()) + '/' + p2(d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + h12(d) + ':' + p2(d.getMinutes()) + ' ' + (d.getHours() < 12 ? 'AM' : 'PM'); },
+      sf: "TO_CHAR({c}, 'DD/MM/YYYY HH12:MI AM')", pg: "TO_CHAR({c}, 'DD/MM/YYYY HH12:MI AM')", ms: "FORMAT({c}, 'dd/MM/yyyy hh:mm tt')", my: "DATE_FORMAT({c}, '%d/%m/%Y %h:%i %p')", bq: "FORMAT_TIMESTAMP('%d/%m/%Y %I:%M %p', {c})", sp: "date_format({c}, 'dd/MM/yyyy hh:mm a')" },
+    { id: 'compact', l: 'YYYYMMDD', ex: function(d){ return d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate()); },
+      sf: "TO_CHAR({c}, 'YYYYMMDD')", pg: "TO_CHAR({c}, 'YYYYMMDD')", ms: "CONVERT(char(8), {c}, 112)", my: "DATE_FORMAT({c}, '%Y%m%d')", bq: "FORMAT_DATE('%Y%m%d', {c})", sp: "date_format({c}, 'yyyyMMdd')" },
+    { id: 'ym', l: 'YYYY-MM (month key)', ex: function(d){ return d.getFullYear() + '-' + p2(d.getMonth() + 1); },
+      sf: "TO_CHAR({c}, 'YYYY-MM')", pg: "TO_CHAR({c}, 'YYYY-MM')", ms: "FORMAT({c}, 'yyyy-MM')", my: "DATE_FORMAT({c}, '%Y-%m')", bq: "FORMAT_DATE('%Y-%m', {c})", sp: "date_format({c}, 'yyyy-MM')" },
+    { id: 'monyy', l: 'Mon-YY', ex: function(d){ return MON[d.getMonth()] + '-' + String(d.getFullYear()).slice(2); },
+      sf: "INITCAP(TO_CHAR({c}, 'MON-YY'))", pg: "TO_CHAR({c}, 'Mon-YY')", ms: "FORMAT({c}, 'MMM-yy')", my: "DATE_FORMAT({c}, '%b-%y')", bq: "FORMAT_DATE('%b-%y', {c})", sp: "date_format({c}, 'MMM-yy')" },
+    { id: 'q', l: 'Quarter (Q4 2026)', ex: function(d){ return 'Q' + (Math.floor(d.getMonth() / 3) + 1) + ' ' + d.getFullYear(); },
+      sf: "'Q' || QUARTER({c}) || ' ' || YEAR({c})", pg: "TO_CHAR({c}, '\"Q\"Q YYYY')", ms: "CONCAT('Q', DATEPART(QUARTER, {c}), ' ', YEAR({c}))", my: "CONCAT('Q', QUARTER({c}), ' ', YEAR({c}))", bq: "FORMAT_DATE('Q%Q %Y', {c})", sp: "concat('Q', quarter({c}), ' ', year({c}))",
+      note: 'For an Indian financial year (April start), shift the date first: add 9 months, or use DATEADD(month, 9, col), before taking the quarter and year.' },
+    { id: 'day', l: 'Weekday name', ex: function(d){ return DAY[d.getDay()]; },
+      sf: "DECODE(DAYOFWEEK({c}), 0,'Sunday',1,'Monday',2,'Tuesday',3,'Wednesday',4,'Thursday',5,'Friday',6,'Saturday')", pg: "TO_CHAR({c}, 'FMDay')", ms: "DATENAME(WEEKDAY, {c})", my: "DAYNAME({c})", bq: "FORMAT_DATE('%A', {c})", sp: "date_format({c}, 'EEEE')",
+      note: 'Snowflake DAYNAME() returns only the short name (Fri), hence the DECODE. DAYOFWEEK depends on the WEEK_START parameter; the mapping shown is for the default.' },
+    { id: 'wk', l: 'ISO week (2026-W44)', ex: function(d){ var w = isoWeek(d), t = new Date(d); t.setDate(t.getDate() + 4 - (t.getDay() || 7)); return t.getFullYear() + '-W' + p2(w); },
+      sf: "YEAROFWEEKISO({c}) || '-W' || LPAD(WEEKISO({c}), 2, '0')", pg: "TO_CHAR({c}, 'IYYY-\"W\"IW')", ms: "CONCAT(YEAR(DATEADD(DAY, 26 - DATEPART(ISO_WEEK, {c}), {c})), '-W', RIGHT('0' + CAST(DATEPART(ISO_WEEK, {c}) AS varchar(2)), 2))", my: "DATE_FORMAT({c}, '%x-W%v')", bq: "FORMAT_DATE('%G-W%V', {c})", sp: "concat(year(date_add({c}, 4 - ((dayofweek({c}) + 5) % 7 + 1))), '-W', lpad(weekofyear({c}), 2, '0'))",
+      note: 'ISO weeks start on Monday, and the first week of the year is the one containing a Thursday. So 1 January can fall in week 52 or 53 of the previous year.' }
+  ];
+  var DB = [['sf', 'Snowflake'], ['pg', 'PostgreSQL'], ['ms', 'SQL Server'], ['my', 'MySQL'], ['bq', 'BigQuery'], ['sp', 'Spark / Databricks']];
+  var cur = 'iso';
+  function getDate(){ var v = $('when').value; var d = v ? new Date(v) : new Date(); return isNaN(d) ? new Date() : d; }
+  function renderList(){
+    var d = getDate(), box = $('fmts'); box.innerHTML = '';
+    F.forEach(function(f){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-btn fmt' + (f.id === cur ? ' on' : ''); b.setAttribute('role', 'radio'); b.setAttribute('aria-checked', f.id === cur);
+      var s = document.createElement('span'); s.className = 'fx'; s.textContent = f.ex(d);
+      var l = document.createElement('span'); l.className = 'fl'; l.textContent = f.l;
+      b.appendChild(s); b.appendChild(l);
+      b.addEventListener('click', function(){ cur = f.id; save(); renderList(); renderSql(); });
+      box.appendChild(b);
+    });
+  }
+  function renderSql(){
+    var f = F.find(function(x){ return x.id === cur; }), col = ($('col').value.trim() || 'order_date').replace(/[^\w.\[\]"`]/g, '_'), tb = $('sqlTable').tBodies[0];
+    tb.innerHTML = '';
+    DB.forEach(function(db){
+      var sql = f[db[0]].replace(/\{c\}/g, col), tr = tb.insertRow();
+      tr.insertCell().textContent = db[1];
+      var td = tr.insertCell(), code = document.createElement('code'); code.textContent = sql; td.appendChild(code);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'icon-btn'; b.textContent = 'Copy';
+      b.addEventListener('click', function(){ TB.copy(sql).then(function(ok){ b.textContent = ok ? 'Copied ✓' : 'Select it'; setTimeout(function(){ b.textContent = 'Copy'; }, 1400); }); });
+      tr.insertCell().appendChild(b);
+    });
+    $('note').textContent = f.note || '';
+  }
+  function save(){ try { localStorage.setItem('dd-sqldate', JSON.stringify({ f: cur, c: $('col').value })); } catch(e){} }
+  function setNow(){ var n = new Date(); $('when').value = n.getFullYear() + '-' + p2(n.getMonth() + 1) + '-' + p2(n.getDate()) + 'T' + p2(n.getHours()) + ':' + p2(n.getMinutes()) + ':' + p2(n.getSeconds()); renderList(); }
+  $('when').addEventListener('input', renderList);
+  $('col').addEventListener('input', function(){ save(); renderSql(); });
+  $('nowBtn').addEventListener('click', setNow);
+  try { var o = JSON.parse(localStorage.getItem('dd-sqldate') || '{}'); if (o.f && F.some(function(x){ return x.id === o.f; })) cur = o.f; if (o.c) $('col').value = o.c; } catch(e){}
+  setNow(); renderSql();
+})();
+</script>
+
+</body>
+</html>
